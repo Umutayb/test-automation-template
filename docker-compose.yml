@@ -1,0 +1,93 @@
+version: '3.5'
+
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+    networks:
+      - grid
+    environment:
+      GRID_MAX_SESSION: 40
+      GRID_BROWSER_TIMEOUT: 180
+      GRID_TIMEOUT: 180
+
+  chrome:
+    image: selenium/node-chrome-debug
+    container_name: web-automation_chrome
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 10
+      NODE_MAX_INSTANCES: 5
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9001:5900"
+    links:
+      - hub
+    networks:
+      - grid
+
+  firefox:
+    image: selenium/node-firefox-debug
+    container_name: web-automation_firefox
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 10
+      NODE_MAX_INSTANCES: 5
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9002:5900"
+    links:
+      - hub
+    networks:
+      - grid
+
+  opera:
+    image: selenium/node-opera-debug
+    container_name: web-automation_opera
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 10
+      NODE_MAX_INSTANCES: 5
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9003:5900"
+    links:
+      - hub
+    networks:
+      - grid
+
+  edge:
+    image: selenium/node-edge:91.0-edgedriver-91.0-grid-4.0.0-beta-3-20210426
+    container_name: web-automation_edge
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 10
+      NODE_MAX_INSTANCES: 1
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9004:5900"
+    links:
+      - hub
+    networks:
+      - grid
+
+networks:
+  grid:
+    driver: bridge
