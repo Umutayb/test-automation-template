@@ -7,11 +7,13 @@
     <version>0.0.2</version>
 
     <name>Web Automation</name>
-    <url>https://github.com/Umutayb/Web-Automation-Sample.git</url>
+    <url>https://github.com/Umutayb/Web-Automation-Sample/Cucumber.git</url>
 
     <properties>
-        <name>${project.name}</name>
         <browser>Chrome</browser>
+        <name>${project.name}</name>
+        <cucumber.version>4.8.0</cucumber.version>
+        <maven.surefire.version>2.22.1</maven.surefire.version>
     </properties>
 
     <dependencies>
@@ -110,12 +112,41 @@
             <version>1.6.2</version>
         </dependency>
 
-        <!-- Gauge -->
+        <!-- Cucumber -->
         <dependency>
-            <groupId>com.thoughtworks.gauge</groupId>
-            <artifactId>gauge-java</artifactId>
-            <version>0.7.15</version>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>datatable-dependencies</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>5.1.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>datatable</artifactId>
+            <version>1.1.14</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- Assert -->
@@ -138,21 +169,55 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+
+            <!-- Cucumber JVM Parallel plugin (This generates test suites (.xml files) for each feature file) -->
             <plugin>
-                <groupId>com.thoughtworks.gauge.maven</groupId>
-                <artifactId>gauge-maven-plugin</artifactId>
-                <version>1.4.3</version>
+                <groupId>com.github.temyers</groupId>
+                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+                <version>4.2.0</version>
                 <executions>
                     <execution>
-                        <phase>test</phase>
-                        <configuration>
-                            <specsDir>specs</specsDir>
-                        </configuration>
+                        <id>generateRunners</id>
+                        <phase>generate-test-sources</phase>
                         <goals>
-                            <goal>execute</goal>
+                            <goal>generateRunners</goal>
                         </goals>
+                        <configuration>
+                            <glue>steps</glue>
+                            <featuresDirectory>src/test/java/features</featuresDirectory>
+                            <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
+
+                            <plugins>
+                                <plugin>
+                                    <name>testng</name>
+                                </plugin>
+                            </plugins>
+                            <monochrome>false</monochrome>
+                            <useTestNG>true</useTestNG>
+                            <namingScheme>simple</namingScheme>
+                            <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
+                            <namingPattern>Parallel{c}IT</namingPattern>
+                            <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
+                            <parallelScheme>FEATURE</parallelScheme>
+                        </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Maven Surefire Plugin (This generates runner classes using the automatically generated test suites [.xml files]) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <forkCount>10</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <includes>
+                        <include>**/Parallel*IT.class</include>
+                    </includes>
+                </configuration>
             </plugin>
 
             <plugin>

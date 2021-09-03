@@ -1,24 +1,35 @@
 package steps;
 
-import com.thoughtworks.gauge.Step;
 import utils.Utilities;
+import io.cucumber.java.*;
+import io.cucumber.java.en.*;
+import utils.driver.Initialize;
+import io.cucumber.core.api.Scenario;
 
-public class CommonSteps extends Utilities{
+public class CommonSteps extends Utilities {
 
-    @Step("Navigate to <url>")
+    Initialize driverManager = new Initialize();
+
+    @Before
+    public void start(){driverManager.init();}
+
+    @After
+    public void kill(Scenario scenario){driverManager.kill(scenario);}
+
+    @Given("Navigate to {}")
     public void getUrl(String url) {navigate(url);}
 
-    @Step("Refresh the page")
+    @Given("Refresh the page")
     public void refresh() {
         refreshThePage();
     }
 
-    @Step("Navigate browser <direction>")
+    @Given("Navigate browser {}")
     public void browserNavigate(String direction) {
         navigateBrowser(direction);
     }
 
-    @Step("Wait <duration> seconds")
+    @Given("Wait {} seconds")
     public void wait(Integer duration) {
         waitFor(duration);
     }

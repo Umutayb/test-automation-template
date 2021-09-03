@@ -1,13 +1,13 @@
 package steps;
 
-import com.thoughtworks.gauge.Step;
+import io.cucumber.java.en.*;
 import pages.HomePage;
 
 public class HomePageSteps {
 
     HomePage homePage = new HomePage();
 
-    @Step("Click category card named <cardName>")
+    @Given("Click category card named {}")
     public void clickCategoryCard(String cardName) {
         homePage.clickCategoryCardNamed(cardName);
     }

@@ -9,7 +9,7 @@ utils/driver/DriverFactory.class
 utils/Utilities.class
 resources/Database.class
 utils/PropertiesReader.class
-utils/CustomScreenshotGrabber.class
+utils/driver/Initialize.class
 utils/TextParser.class
 resources/Colors.class
 utils/StringUtilities.class
