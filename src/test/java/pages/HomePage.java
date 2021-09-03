@@ -8,7 +8,7 @@ import utils.Printer;
 import java.util.List;
 import static resources.Colors.*;
 
-public class HomePage extends Utilities{
+public class HomePage extends Utilities {
 
     Printer log = new Printer();
 
