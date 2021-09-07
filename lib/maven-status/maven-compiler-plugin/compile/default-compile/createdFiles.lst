@@ -2,6 +2,7 @@ utils/driver/Driver.class
 resources/api/APILibrary.class
 utils/Printer.class
 utils/JsonUtilities.class
+utils/NumericUtilities.class
 utils/TerminalUtils.class
 utils/FileUtilities.class
 utils/ApiUtilities.class

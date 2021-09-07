@@ -14,14 +14,14 @@ mvn clean package -DbuildDirectory=/Users/Umut/Github/Web-Automation-Sample-Cucu
 There, the imported jar file should be added as a dependency in pom.xml file of that project:
 ```
 <!-- Framework -->
-        <dependency>
-            <groupId>bora</groupId>
-            <artifactId>POM-Framework-0.0.2.jar</artifactId>
-            <version>0.0.2</version>
-            <systemPath>${project.basedir}/lib/POM-FRAMEWORK-0.0.2.jar</systemPath>
-            <scope>system</scope>
-            <type>jar</type>
-        </dependency>
+<dependency>
+    <groupId>bora</groupId>
+    <artifactId>POM-Framework-0.0.2.jar</artifactId>
+    <version>0.0.2</version>
+    <systemPath>${project.basedir}/lib/POM-FRAMEWORK-0.0.2.jar</systemPath>
+    <scope>system</scope>
+    <type>jar</type>
+</dependency>
 ```
 After updating your project, the quickstart library is ready to use.
 ___
