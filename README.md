@@ -162,9 +162,9 @@ ___
                 </configuration>
             </plugin>
 ####Example execution command:
->In order to execute a specific feature file in a specific browser, use:
+>In order to execute a specific feature file in a specific browser, add tags to the first line of your feature file & use:
 >```
->mvn test -Dcucumber.options="src/test/java/features/Explore.feature" -Dbrowser=chrome
+>mvn clean test -Dcucumber.options="--tags @DemoQA" -Dbrowser=chrome
 >```
 ___
 >####To create a cucumber project:
