@@ -4,10 +4,10 @@
 
     <groupId>bora</groupId>
     <artifactId>Web-Automation</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.5</version>
 
     <name>Web Automation</name>
-    <url>https://github.com/Umutayb/Web-Automation-Sample/Cucumber.git</url>
+    <url>https://github.com/Umutayb/Web-Automation-Sample-Cucumber</url>
 
     <properties>
         <browser>Chrome</browser>
@@ -20,9 +20,12 @@
     <dependencies>
         <!-- Framework -->
         <dependency>
-            <groupId>com.github.Umutayb</groupId>
-            <artifactId>Pickleib</artifactId>
-            <version>0.0.4</version>
+            <groupId>bora</groupId>
+            <artifactId>POM-Framework-0.0.5.jar</artifactId>
+            <version>0.0.5</version>
+            <systemPath>${project.basedir}/lib/POM-FRAMEWORK-0.0.5.jar</systemPath>
+            <scope>system</scope>
+            <type>jar</type>
         </dependency>
 
         <!-- Selenium -->

@@ -25,9 +25,7 @@ public class CommonSteps extends Utilities {
     }
 
     @Given("Navigate browser {}")
-    public void browserNavigate(String direction) {
-        navigateBrowser(direction);
-    }
+    public void browserNavigate(String direction) {navigateBrowser(direction);}
 
     @Given("Wait {} seconds")
     public void wait(Integer duration) {
