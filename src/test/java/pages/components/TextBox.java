@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import utils.Printer;
 import utils.Utilities;
 
-import static resources.Colors.BLUE;
+import static resources.Colors.*;
 
 public class TextBox extends Utilities {
 
