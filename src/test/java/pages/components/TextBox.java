@@ -9,7 +9,7 @@ import static resources.Colors.*;
 
 public class TextBox extends Utilities {
 
-    Printer log = new Printer();
+    Printer log = new Printer(TextBox.class);
 
     @FindBy(css = "button[id='submit']")
     public WebElement submitButton;
@@ -27,27 +27,27 @@ public class TextBox extends Utilities {
     public WebElement permanentAddressInput;
 
     public void clickSubmit(){
-        log.print("Clicking submit button","info");
+        log.new info("Clicking submit button");
         clickElement(submitButton);
     }
 
     public void fillNameInput(String text){
-        log.print("Filling name input with "+BLUE+text,"info");
+        log.new info("Filling name input with "+BLUE+text);
         clearFillInput(nameInput, text, true);
     }
 
     public void fillEmailInput(String text){
-        log.print("Filling email input with "+BLUE+text,"info");
+        log.new info("Filling email input with "+BLUE+text);
         clearFillInput(emailInput, text, true);
     }
 
     public void fillCurrentAddressInput(String text){
-        log.print("Filling current address input with "+BLUE+text,"info");
+        log.new info("Filling current address input with "+BLUE+text);
         clearFillInput(currentAddressInput, text, true);
     }
 
     public void fillPermanentAddressInput(String text){
-        log.print("Filling permanent address input with "+BLUE+text,"info");
+        log.new info("Filling permanent address input with "+BLUE+text);
         clearFillInput(permanentAddressInput, text, true);
     }
 

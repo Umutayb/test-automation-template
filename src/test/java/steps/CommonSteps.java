@@ -3,12 +3,12 @@ package steps;
 import utils.Utilities;
 import io.cucumber.java.*;
 import io.cucumber.java.en.*;
-import utils.driver.Initialize;
+import utils.driver.DriverManager;
 import io.cucumber.core.api.Scenario;
 
 public class CommonSteps extends Utilities {
 
-    Initialize driverManager = new Initialize();
+    DriverManager driverManager = new DriverManager();
 
     @Before
     public void start(){driverManager.init();}

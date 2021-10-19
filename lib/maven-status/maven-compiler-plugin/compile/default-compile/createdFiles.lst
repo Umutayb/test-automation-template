@@ -8,8 +8,13 @@ utils/FileUtilities.class
 utils/ApiUtilities.class
 utils/driver/DriverFactory.class
 utils/Utilities.class
+utils/Printer$success.class
 resources/Database.class
+utils/Printer$info.class
 utils/PropertiesReader.class
+utils/Printer$important.class
+utils/Printer$error.class
+utils/Printer$warning.class
 utils/driver/Initialize.class
 utils/TextParser.class
 resources/Colors.class

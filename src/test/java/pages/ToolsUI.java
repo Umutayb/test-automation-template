@@ -3,7 +3,6 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.components.TextBox;
 import utils.Utilities;
 import utils.Printer;
 import java.util.List;
@@ -11,7 +10,7 @@ import static resources.Colors.*;
 
 public class ToolsUI extends Utilities {
 
-    Printer log = new Printer();
+    Printer log = new Printer(ToolsUI.class);
 
     @FindBy(css = "[class='accordion'] [class='element-group']")
     public List<WebElement> toolTypes;
@@ -20,7 +19,7 @@ public class ToolsUI extends Utilities {
     public List<WebElement> tools;
 
     public void selectToolTypeNamed(String toolType){
-        log.print("Clicking tool type named "+BLUE+toolType,"info");
+        log.new info("Clicking tool type named "+BLUE+toolType);
         for (WebElement card:toolTypes) {
             if (card.getText().contains(toolType)){
                 clickElement(card);
@@ -31,7 +30,7 @@ public class ToolsUI extends Utilities {
     }
 
     public void selectToolNamed(String toolType){
-        log.print("Clicking tool named "+BLUE+toolType,"info");
+        log.new info("Clicking tool named "+BLUE+toolType);
         for (WebElement card:tools) {
             if (card.getText().contains(toolType)){
                 clickElement(card);

@@ -10,13 +10,13 @@ import static resources.Colors.*;
 
 public class HomePage extends Utilities {
 
-    Printer log = new Printer();
+    Printer log = new Printer(HomePage.class);
 
     @FindBy(css = "[class='card mt-4 top-card']")
     public List<WebElement> categoryCards;
 
     public void clickCategoryCardNamed(String cardName){
-        log.print("Clicking card named "+BLUE+cardName,"info");
+        log.new info("Clicking card named "+BLUE+cardName);
         for (WebElement card:categoryCards) {
             if (card.getText().contains(cardName)){
                 clickElement(card);

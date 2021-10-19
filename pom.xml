@@ -4,7 +4,7 @@
 
     <groupId>bora</groupId>
     <artifactId>Web-Automation</artifactId>
-    <version>0.0.6</version>
+    <version>0.4.0</version>
 
     <name>Web Automation</name>
     <url>https://github.com/Umutayb/Web-Automation-Sample-Cucumber</url>
@@ -13,7 +13,7 @@
         <browser>Chrome</browser>
         <name>${project.name}</name>
         <cucumber.version>4.8.0</cucumber.version>
-        <framework.version>0.0.6</framework.version>
+        <framework.version>0.4.6</framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
     </properties>
 
@@ -28,9 +28,9 @@
         <!-- Framework as jar
         <dependency>
             <groupId>bora</groupId>
-            <artifactId>POM-Framework-0.0.5.jar</artifactId>
-            <version>0.0.5</version>
-            <systemPath>${project.basedir}/lib/POM-FRAMEWORK-0.0.5.jar</systemPath>
+            <artifactId>POM-Framework-${framework.version}.jar</artifactId>
+            <version>${framework.version}</version>
+            <systemPath>${project.basedir}/lib/POM-FRAMEWORK-${framework.version}.jar</systemPath>
             <scope>system</scope>
             <type>jar</type>
         </dependency>
@@ -176,6 +176,14 @@
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
 
