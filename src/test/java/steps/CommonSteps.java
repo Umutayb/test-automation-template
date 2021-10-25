@@ -3,18 +3,18 @@ package steps;
 import utils.Utilities;
 import io.cucumber.java.*;
 import io.cucumber.java.en.*;
-import utils.driver.DriverManager;
+import utils.driver.Driver;
 import io.cucumber.core.api.Scenario;
 
 public class CommonSteps extends Utilities {
 
-    DriverManager driverManager = new DriverManager();
+    Driver browser = new Driver();
 
     @Before
-    public void start(){driverManager.init();}
+    public void start(){browser.initialize();}
 
     @After
-    public void kill(Scenario scenario){driverManager.kill(scenario);}
+    public void kill(Scenario scenario){browser.terminate(scenario);}
 
     @Given("Navigate to {}")
     public void getUrl(String url) {navigate(url);}

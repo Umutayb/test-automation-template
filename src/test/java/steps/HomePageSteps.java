@@ -8,7 +8,5 @@ public class HomePageSteps {
     HomePage homePage = new HomePage();
 
     @Given("Click category card named {}")
-    public void clickCategoryCard(String cardName) {
-        homePage.clickCategoryCardNamed(cardName);
-    }
+    public void clickCategoryCard(String cardName) {homePage.clickCategoryCardNamed(cardName);}
 }
