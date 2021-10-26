@@ -2,17 +2,17 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.components.TextBox;
 import utils.EmailUtilities;
 import utils.Printer;
 import utils.Utilities;
-
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Scanner;
 
 public class UpsHomePage extends Utilities {
 
     Printer log = new Printer(UpsHomePage.class);
-
     EmailUtilities email = new EmailUtilities();
 
     @FindBy(css = "modal-shipment-view-details")
@@ -24,26 +24,42 @@ public class UpsHomePage extends Utilities {
     @FindBy(css = "[id*='stApp_activitydetails']")
     public List<WebElement> activities;
 
-    private final String lastUpdate = "21/10/2021\n" +
-            "11:51 Yolda\n" +
-            "UPS gümrük bilgileri için alıcı veya ithalatçıyla iletişimi başlattı. Bilgiler alındığında gümrük işlemine gönderilecek. / Alıcıyla irtibata geçtik.\n" +
-            "Istanbul, Turkey";
-
     public void listActivities(){
         String subject = "Order status has changed!";
         StringBuilder content = new StringBuilder();
         String receiver = "umutaybora@gmail.com";
         String password ="Notifier1234";
         String id = "umutayb.notification@gmail.com";
+        String lastStatus = activities.get(0).getText();
+        String lastUpdate;
+
+        Scanner scanner = new Scanner(lastStatus);
+        File file = new File("src/test/resources/Files/LastCargoState.txt");
+
+        try(Scanner in = new Scanner(file, StandardCharsets.UTF_8)){
+            StringBuilder status = new StringBuilder();
+            while(in.hasNext()) {status.append(in.nextLine());}
+            in.close();
+            lastUpdate = status.toString();
+        }
+        catch (IOException ignored) {lastUpdate = null;}
 
         for (WebElement activity:activities) {
             log.new info(activity.getText());
-            content.append("\n").append(activity.getText());
+            content.append("\n").append(activity.getText()).append("\n");
         }
-        if (!activities.get(0).getText().equals(lastUpdate)){
-            log.new important("Order status has changed!");
-            log.new important(activities.get(0).getText());
-            email.sendEmail(subject,content.toString(),receiver,id,password);
+
+        while (scanner.hasNext()){
+            assert lastUpdate != null;
+            String line = scanner.nextLine();
+            if (!lastUpdate.contains(line)){
+                log.new important("Order status has changed!");
+                log.new important(lastStatus);
+                email.sendEmail(subject,content.toString(),receiver,id,password);
+                try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
+                catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
+                break;
+            }
         }
     }
 }
