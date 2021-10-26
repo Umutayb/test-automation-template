@@ -27,6 +27,9 @@ public class CommonSteps extends Utilities {
     @Given("Navigate browser {}")
     public void browserNavigate(String direction) {navigateBrowser(direction);}
 
+    @Given("Click button with {} text")
+    public void clickWithText(String text) {clickButtonWithText(text);}
+
     @Given("Wait {} seconds")
     public void wait(Integer duration) {
         waitFor(duration);
