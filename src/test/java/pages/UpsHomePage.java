@@ -34,7 +34,7 @@ public class UpsHomePage extends Utilities {
         String lastUpdate;
 
         Scanner scanner = new Scanner(lastStatus);
-        File file = new File("src/test/resources/Files/LastCargoState.txt");
+        File file = new File("src/test/resources/files/LastCargoState.txt");
 
         try(Scanner in = new Scanner(file, StandardCharsets.UTF_8)){
             StringBuilder status = new StringBuilder();
