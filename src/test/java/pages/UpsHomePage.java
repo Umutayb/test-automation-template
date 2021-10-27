@@ -21,8 +21,14 @@ public class UpsHomePage extends Utilities {
     @FindBy(css = "[data-tab='shipment-progress-tab']")
     public WebElement progressTab;
 
-    @FindBy(css = "[id*='stApp_activitydetails']")
+    @FindBy(css = "[id=\"ctl00_MainContent_DataListSonIslem\"] table")
     public List<WebElement> activities;
+
+    @FindBy(css = "[name='ctl00$text_yurtici_takip']")
+    public WebElement domesticPackageTrackingNumberInput;
+
+    @FindBy(css = "[type='submit'][name*='yurtici_takip']")
+    public WebElement domesticPackageTrackingNumberSubmitButton;
 
     public void listActivities(){
         String subject = "Order status has changed!";
@@ -30,7 +36,7 @@ public class UpsHomePage extends Utilities {
         String receiver = "umutaybora@gmail.com";
         String password ="Notifier1234";
         String id = "umutayb.notification@gmail.com";
-        String lastStatus = activities.get(0).getText();
+        String lastStatus = activities.get(1).getText();
         String lastUpdate;
 
         Scanner scanner = new Scanner(lastStatus);
