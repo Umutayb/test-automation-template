@@ -73,8 +73,8 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>20030203.000550</version>
-            <scope>test</scope>
+            <version>2.11.0</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- REST Assured -->
@@ -169,6 +169,12 @@
             <groupId>com.github.webdriverextensions</groupId>
             <artifactId>webdriverextensions</artifactId>
             <version>3.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
