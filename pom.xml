@@ -5,6 +5,7 @@
     <groupId>bora</groupId>
     <artifactId>Web-Automation</artifactId>
     <version>0.5.0</version>
+    <packaging>jar</packaging>
 
     <name>Web Automation</name>
     <url>https://github.com/Umutayb/Web-Automation-Sample-Cucumber</url>
@@ -13,7 +14,7 @@
         <browser>Chrome</browser>
         <name>${project.name}</name>
         <cucumber.version>4.8.0</cucumber.version>
-        <framework.version>0.5.4</framework.version>
+        <framework.version>b97757f6a9</framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
     </properties>
 
