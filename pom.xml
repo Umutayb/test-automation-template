@@ -224,11 +224,12 @@
                             <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
                             <plugins>
                                 <plugin>
-                                    <name>testng</name>
+                                    <name>json</name>
                                 </plugin>
                             </plugins>
                             <monochrome>false</monochrome>
                             <useTestNG>true</useTestNG>
+
                             <namingScheme>simple</namingScheme>
                             <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
                             <namingPattern>Parallel{c}IT</namingPattern>
