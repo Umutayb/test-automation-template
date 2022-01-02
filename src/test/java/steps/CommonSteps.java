@@ -14,7 +14,9 @@ public class CommonSteps extends Utilities {
     public void start(){browser.initialize();}
 
     @After
-    public void kill(Scenario scenario){browser.terminate(scenario);}
+    public void kill(Scenario scenario){
+        browser.terminate(scenario);
+    }
 
     @Given("Navigate to {}")
     public void getUrl(String url) {navigate(url);}
