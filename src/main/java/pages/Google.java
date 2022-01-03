@@ -40,6 +40,8 @@ public class Google extends Utilities {
     public void printRate(){log.new important(currencyContainer.getRateText());}
 
     public void notifyIfChanged(){
+        log.new info("Checking exchange rate");
+
         EmailUtilities email = new EmailUtilities();
 
         String subject = "Exchange rate has changed!";
@@ -49,41 +51,37 @@ public class Google extends Utilities {
         String password ="Notifier1234";
         String id = "umutayb.notification@gmail.com";
         String lastStatus = currencyContainer.getRateText();
-        String lastUpdate;
+        Double lastUpdate;
 
-        Scanner scanner = new Scanner(lastStatus);
         File file = new File("src/test/resources/files/LastExchangeState.txt");
 
         try(Scanner in = new Scanner(file, StandardCharsets.UTF_8)){
             StringBuilder status = new StringBuilder();
             while(in.hasNext()) {status.append(in.nextLine());}
             in.close();
-            lastUpdate = status.toString();
+            lastUpdate = Double.parseDouble(status.toString());
         }
         catch (IOException ignored) {lastUpdate = null;}
 
-        while (scanner.hasNext()){
-            assert lastUpdate != null;
-            String line = scanner.nextLine();
-            try {
-                if (!lastUpdate.contains(line)){
-                    log.new important("Order status has changed!");
-                    log.new important(lastStatus);
-                    content.append(lastStatus);
-                    subject = subject + " - " + currencyContainer.getRate();
-                    for (String receiver:receivers.keySet()) {
-                        email.sendEmail(subject,content.toString(), String.valueOf(receivers.get(receiver)),id,password);
-                    }
-                    try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
-                    catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
-                    break;
+        Double lastRate = lastUpdate;
+
+        assert lastUpdate != null;
+        try {
+            if (Math.abs(currencyContainer.getRate() - lastRate) > lastRate/40){
+                log.new important("Order status has changed!");
+                log.new important(lastStatus);
+                content.append(lastStatus);
+                subject = subject + " - " + currencyContainer.getRate();
+                for (String receiver:receivers.keySet()) {
+                    email.sendEmail(subject,content.toString(), String.valueOf(receivers.get(receiver)),id,password);
                 }
-            }
-            catch (NullPointerException e) {
-                try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
+                try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
-                break;
             }
+        }
+        catch (NullPointerException e) {
+            try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
+            catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
         }
     }
 }
