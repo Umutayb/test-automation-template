@@ -14,7 +14,7 @@
         <browser>Chrome</browser>
         <name>${project.name}</name>
         <cucumber.version>4.8.0</cucumber.version>
-        <framework.version>0.6.0</framework.version>
+        <framework.version>4bfaf97a5d</framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
     </properties>
 

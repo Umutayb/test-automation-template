@@ -1,5 +1,6 @@
 package pages;
 
+import com.google.gson.JsonObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,6 @@ import pages.components.GoogleSearchResult;
 import utils.EmailUtilities;
 import utils.Printer;
 import utils.Utilities;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,7 +44,8 @@ public class Google extends Utilities {
 
         String subject = "Exchange rate has changed!";
         StringBuilder content = new StringBuilder();
-        String receiver = "umutaybora@gmail.com";
+//        String receiver = "umutaybora@gmail.com";
+        JsonObject receivers = jsonUtils.parseJsonFile("src/test/resources/files/receivers","Receivers");
         String password ="Notifier1234";
         String id = "umutayb.notification@gmail.com";
         String lastStatus = currencyContainer.getRateText();
@@ -70,7 +71,9 @@ public class Google extends Utilities {
                     log.new important(lastStatus);
                     content.append(lastStatus);
                     subject = subject + " - " + currencyContainer.getRate();
-                    email.sendEmail(subject,content.toString(),receiver,id,password);
+                    for (String receiver:receivers.keySet()) {
+                        email.sendEmail(subject,content.toString(), String.valueOf(receivers.get(receiver)),id,password);
+                    }
                     try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
                     catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
                     break;
