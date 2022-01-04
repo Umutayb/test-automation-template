@@ -63,15 +63,13 @@ public class Google extends Utilities {
         }
         catch (IOException ignored) {lastUpdate = null;}
 
-        Double lastRate = lastUpdate;
-
         assert lastUpdate != null;
         try {
-            if (Math.abs(currencyContainer.getRate() - lastRate) > lastRate/40){
+            if (Math.abs(currencyContainer.getRate() - lastUpdate) > lastUpdate/40){
                 log.new important("Order status has changed!");
                 log.new important(lastStatus);
                 content.append(lastStatus);
-                subject = subject + " - " + currencyContainer.getRate();
+                subject = subject + " - " + currencyContainer.getRate() + " (Old rate was "+lastUpdate+")";
                 for (String receiver:receivers.keySet()) {
                     email.sendEmail(subject,content.toString(), String.valueOf(receivers.get(receiver)),id,password);
                 }
