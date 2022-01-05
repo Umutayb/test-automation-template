@@ -65,7 +65,7 @@ public class Google extends Utilities {
 
         assert lastUpdate != null;
         try {
-            if (Math.abs(currencyContainer.getRate() - lastUpdate) > lastUpdate/40){
+            if (Math.abs(currencyContainer.getRate() - lastUpdate) > lastUpdate/50){
                 log.new important("Order status has changed!");
                 log.new important(lastStatus);
                 content.append(lastStatus);
