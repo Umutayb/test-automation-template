@@ -65,7 +65,7 @@ public class Google extends Utilities {
 
         assert lastUpdate != null;
         try {
-            if (Math.abs(currencyContainer.getRate() - lastUpdate) > lastUpdate/50){
+            if (Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate > lastUpdate/50){
                 log.new important("Order status has changed!");
                 log.new important(lastStatus);
                 content.append(lastStatus);
@@ -76,6 +76,7 @@ public class Google extends Utilities {
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
             }
+            else log.new info("The change in exchange ratio is "+Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate+"%!");
         }
         catch (NullPointerException e) {
             try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
