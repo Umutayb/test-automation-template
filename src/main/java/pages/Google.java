@@ -76,7 +76,7 @@ public class Google extends Utilities {
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
             }
-            else log.new info("The change in exchange ratio is "+Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate+"%!");
+            else log.new info("The change in exchange ratio is "+Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100+"%!");
         }
         catch (NullPointerException e) {
             try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
