@@ -86,9 +86,9 @@ public class Google extends Utilities {
                 BodyPart attachment = new MimeBodyPart();
                 BodyPart bodyPart = new MimeBodyPart();
                 Multipart body = new MimeMultipart();
-                body.addBodyPart(attachment);
                 bodyPart.setText(content.toString());
                 body.addBodyPart(bodyPart);
+                body.addBodyPart(attachment);
                 ScreenCaptureUtility capture = new ScreenCaptureUtility();
                 File attachmentFile = capture.captureScreen("",driver);
                 DataSource source = new FileDataSource(capture.captureScreen("",driver));
