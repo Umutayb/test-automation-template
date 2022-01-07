@@ -2,13 +2,25 @@ package pages;
 
 import com.google.gson.JsonObject;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.components.GoogleCurrencyContainer;
 import pages.components.GoogleSearchResult;
 import utils.EmailUtilities;
 import utils.Printer;
+import utils.ScreenCaptureUtility;
 import utils.Utilities;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,14 +76,29 @@ public class Google extends Utilities {
         catch (IOException ignored) {lastUpdate = null;}
 
         assert lastUpdate != null;
+        double delta = numeric.shortenDouble(Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100);
         try {
-            if (Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate > lastUpdate/50){
+            if (delta > 0.5){
                 log.new important("Order status has changed!");
                 log.new important(lastStatus);
-                content.append(lastStatus);
+                content.append(lastStatus).append("\n");
                 subject = subject + " - " + currencyContainer.getRate() + " (Old rate was "+lastUpdate+")";
+                BodyPart body = new MimeBodyPart();
+                Multipart attachment = new MimeMultipart();
+                ScreenCaptureUtility capture = new ScreenCaptureUtility();
+                File attachmentFile = capture.captureScreen("",driver);
+                DataSource source = new FileDataSource(capture.captureScreen("",driver));
+                body.setDataHandler(new DataHandler(source));
+                body.setFileName(attachmentFile.getName());
+                attachment.addBodyPart(body);
                 for (String receiver:receivers.keySet()) {
-                    email.sendEmail(subject,content.toString(), String.valueOf(receivers.get(receiver)),id,password);
+                    email.sendEmail(
+                            subject,
+                            content.toString(),
+                            String.valueOf(receivers.get(receiver)),
+                            id,
+                            password,
+                            attachment);
                 }
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
@@ -81,6 +108,8 @@ public class Google extends Utilities {
         catch (NullPointerException e) {
             try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
             catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
     }
 }

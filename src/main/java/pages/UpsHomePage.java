@@ -61,7 +61,7 @@ public class UpsHomePage extends Utilities {
             if (!lastUpdate.contains(line)){
                 log.new important("Order status has changed!");
                 log.new important(lastStatus);
-                email.sendEmail(subject,content.toString(),receiver,id,password);
+                email.sendEmail(subject,content.toString(),receiver,id,password,null);
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
                 break;
