@@ -83,14 +83,17 @@ public class Google extends Utilities {
                 log.new important(lastStatus);
                 content.append(lastStatus).append("\n");
                 subject = subject + " - " + currencyContainer.getRate() + " (Old rate was "+lastUpdate+")";
-                BodyPart body = new MimeBodyPart();
-                Multipart attachment = new MimeMultipart();
+                BodyPart attachment = new MimeBodyPart();
+                BodyPart bodyPart = new MimeBodyPart();
+                Multipart body = new MimeMultipart();
+                body.addBodyPart(attachment);
+                bodyPart.setText(content.toString());
+                body.addBodyPart(bodyPart);
                 ScreenCaptureUtility capture = new ScreenCaptureUtility();
                 File attachmentFile = capture.captureScreen("",driver);
                 DataSource source = new FileDataSource(capture.captureScreen("",driver));
-                body.setDataHandler(new DataHandler(source));
-                body.setFileName(attachmentFile.getName());
-                attachment.addBodyPart(body);
+                attachment.setDataHandler(new DataHandler(source));
+                attachment.setFileName(attachmentFile.getName());
                 for (String receiver:receivers.keySet()) {
                     email.sendEmail(
                             subject,
@@ -98,7 +101,7 @@ public class Google extends Utilities {
                             String.valueOf(receivers.get(receiver)),
                             id,
                             password,
-                            attachment);
+                            body);
                 }
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
