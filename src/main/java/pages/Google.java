@@ -78,7 +78,7 @@ public class Google extends Utilities {
         assert lastUpdate != null;
         double delta = numeric.shortenDouble(Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100);
         try {
-            if (delta > 0.5){
+            if (delta > 0.8){
                 log.new important("Order status has changed!");
                 log.new important(lastStatus);
                 content.append(lastStatus).append("\n");
