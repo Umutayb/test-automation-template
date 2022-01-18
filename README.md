@@ -1,5 +1,5 @@
 # Quickstart Library
-___
+
 ### How To Get Started:
 
 First, the library should be exported into an empty automation project by using:
@@ -87,11 +87,12 @@ to extend the **Utilities** class. This also extends the **Driver** class, allow
 >Chrome, Firefox, Opera, Edge & Safari are supported.
 >In order to use this feature, please add the following plugin & property to your pom.xml:
 
-
+```xml
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
     </properties>
+```    
 ___
 ```xml
     <plugin>
