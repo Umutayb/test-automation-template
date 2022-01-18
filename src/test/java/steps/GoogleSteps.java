@@ -1,6 +1,7 @@
 package steps;
 
 import io.cucumber.java.en.Given;
+import org.openqa.selenium.NoSuchElementException;
 import pages.Google;
 
 public class GoogleSteps {
@@ -8,7 +9,10 @@ public class GoogleSteps {
     Google google = new Google();
 
     @Given("Dismiss privacy notification")
-    public void dismissPrivacyNotification(){google.click(google.cookieAcceptButton);}
+    public void dismissPrivacyNotification(){
+        try {google.click(google.cookieAcceptButton);}
+        catch (NoSuchElementException ignored) {}
+    }
 
     @Given("Perform google search for phrase: {}")
     public void search(String searchPhrase) {google.searchFor(searchPhrase);}
