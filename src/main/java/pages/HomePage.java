@@ -16,7 +16,7 @@ public class HomePage extends Utilities {
     public List<WebElement> categoryCards;
 
     public void clickCategoryCardNamed(String cardName){
-        log.new info("Clicking card named "+BLUE+cardName);
+        log.new Info("Clicking card named "+BLUE+cardName);
         for (WebElement card:categoryCards) {
             if (card.getText().contains(cardName)){
                 clickElement(card);

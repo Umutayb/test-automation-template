@@ -51,7 +51,7 @@ public class UpsHomePage extends Utilities {
         catch (IOException ignored) {lastUpdate = null;}
 
         for (WebElement activity:activities) {
-            log.new info(activity.getText());
+            log.new Info(activity.getText());
             content.append("\n").append(activity.getText()).append("\n");
         }
 
@@ -59,8 +59,8 @@ public class UpsHomePage extends Utilities {
             assert lastUpdate != null;
             String line = scanner.nextLine();
             if (!lastUpdate.contains(line)){
-                log.new important("Order status has changed!");
-                log.new important(lastStatus);
+                log.new Important("Order status has changed!");
+                log.new Important(lastStatus);
                 email.sendEmail(subject,content.toString(),receiver,id,password,null);
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}

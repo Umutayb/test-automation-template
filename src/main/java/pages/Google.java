@@ -2,8 +2,6 @@ package pages;
 
 import com.google.gson.JsonObject;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.components.GoogleCurrencyContainer;
@@ -12,7 +10,6 @@ import utils.EmailUtilities;
 import utils.Printer;
 import utils.ScreenCaptureUtility;
 import utils.Utilities;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -49,10 +46,10 @@ public class Google extends Utilities {
         searchInput.sendKeys(Keys.ENTER);
     }
 
-    public void printRate(){log.new important(currencyContainer.getRateText());}
+    public void printRate(){log.new Important(currencyContainer.getRateText());}
 
     public void notifyIfChanged(){
-        log.new info("Checking exchange rate");
+        log.new Info("Checking exchange rate");
 
         EmailUtilities email = new EmailUtilities();
 
@@ -79,8 +76,8 @@ public class Google extends Utilities {
         double delta = numeric.shortenDouble(Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100);
         try {
             if (delta > 0.8){
-                log.new important("Order status has changed!");
-                log.new important(lastStatus);
+                log.new Important("Order status has changed!");
+                log.new Important(lastStatus);
                 content.append(lastStatus).append("\n");
                 subject = subject + " - " + currencyContainer.getRate() + " (Old rate was "+lastUpdate+")";
                 BodyPart attachment = new MimeBodyPart();
@@ -106,7 +103,7 @@ public class Google extends Utilities {
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
             }
-            else log.new info("The change in exchange ratio is "+Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100+"%!");
+            else log.new Info("The change in exchange ratio is "+Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100+"%!");
         }
         catch (NullPointerException e) {
             try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}

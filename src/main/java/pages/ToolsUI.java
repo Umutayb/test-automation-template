@@ -19,7 +19,7 @@ public class ToolsUI extends Utilities {
     public List<WebElement> tools;
 
     public void selectToolTypeNamed(String toolType){
-        log.new info("Clicking tool type named "+BLUE+toolType);
+        log.new Info("Clicking tool type named "+BLUE+toolType);
         for (WebElement card:toolTypes) {
             if (card.getText().contains(toolType)){
                 clickElement(card);
@@ -30,7 +30,7 @@ public class ToolsUI extends Utilities {
     }
 
     public void selectToolNamed(String toolType){
-        log.new info("Clicking tool named "+BLUE+toolType);
+        log.new Info("Clicking tool named "+BLUE+toolType);
         for (WebElement card:tools) {
             if (card.getText().contains(toolType)){
                 clickElement(card);
