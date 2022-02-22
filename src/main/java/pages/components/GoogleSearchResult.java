@@ -1,7 +1,7 @@
 package pages.components;
 
-import utils.Utilities;
+import utils.WebUtilities;
 
-public class GoogleSearchResult extends Utilities {
+public class GoogleSearchResult extends WebUtilities {
 
 }

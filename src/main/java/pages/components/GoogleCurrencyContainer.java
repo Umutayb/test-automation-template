@@ -2,9 +2,9 @@ package pages.components;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Utilities;
+import utils.WebUtilities;
 
-public class GoogleCurrencyContainer extends Utilities {
+public class GoogleCurrencyContainer extends WebUtilities {
 
     @FindBy(css = "[id='knowledge-currency__updatable-data-column']")
     public WebElement dataColumn;

@@ -3,12 +3,13 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Utilities;
 import utils.Printer;
+import utils.WebUtilities;
+
 import java.util.List;
 import static resources.Colors.*;
 
-public class ToolsUI extends Utilities {
+public class ToolsUI extends WebUtilities {
 
     Printer log = new Printer(ToolsUI.class);
 

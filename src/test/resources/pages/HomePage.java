@@ -1,12 +1,12 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Printer;
 import utils.WebUtilities;
 
 import java.util.List;
-
 import static resources.Colors.*;
 
 public class HomePage extends WebUtilities {
@@ -24,5 +24,6 @@ public class HomePage extends WebUtilities {
                 return;
             }
         }
+        Assert.fail(RED+"No category card named "+BLUE+cardName+GRAY+" could be found in HomePage @clickCategoryCard"+RESET);
     }
 }

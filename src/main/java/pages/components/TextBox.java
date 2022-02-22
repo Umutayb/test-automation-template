@@ -3,11 +3,11 @@ package pages.components;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Printer;
-import utils.Utilities;
+import utils.WebUtilities;
 
 import static resources.Colors.*;
 
-public class TextBox extends Utilities {
+public class TextBox extends WebUtilities {
 
     Printer log = new Printer(TextBox.class);
 

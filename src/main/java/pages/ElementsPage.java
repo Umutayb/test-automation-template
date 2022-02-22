@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.support.FindBy;
 import pages.components.TextBox;
 import utils.Printer;
-import utils.Utilities;
+import utils.WebUtilities;
 
-public class ElementsPage extends Utilities {
+public class ElementsPage extends WebUtilities {
 
     Printer log = new Printer(ElementsPage.class);
 

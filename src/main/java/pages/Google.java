@@ -9,7 +9,8 @@ import pages.components.GoogleSearchResult;
 import utils.EmailUtilities;
 import utils.Printer;
 import utils.ScreenCaptureUtility;
-import utils.Utilities;
+import utils.WebUtilities;
+
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -25,7 +26,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
-public class Google extends Utilities {
+public class Google extends WebUtilities {
 
     Printer log = new Printer(Google.class);
 

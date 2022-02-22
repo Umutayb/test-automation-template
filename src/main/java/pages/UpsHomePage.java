@@ -4,13 +4,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.EmailUtilities;
 import utils.Printer;
-import utils.Utilities;
+import utils.WebUtilities;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
-public class UpsHomePage extends Utilities {
+public class UpsHomePage extends WebUtilities {
 
     Printer log = new Printer(UpsHomePage.class);
     EmailUtilities email = new EmailUtilities();

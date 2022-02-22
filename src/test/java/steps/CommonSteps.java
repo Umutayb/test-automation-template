@@ -1,12 +1,12 @@
 package steps;
 
-import utils.Utilities;
 import io.cucumber.java.*;
 import io.cucumber.java.en.*;
+import utils.WebUtilities;
 import utils.driver.Driver;
 import io.cucumber.core.api.Scenario;
 
-public class CommonSteps extends Utilities {
+public class CommonSteps extends WebUtilities {
 
     Driver browser = new Driver();
 
