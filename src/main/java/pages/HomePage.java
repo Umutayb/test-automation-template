@@ -1,13 +1,11 @@
 package pages;
 
+import utils.Printer;
+import java.util.List;
+import utils.WebUtilities;
+import static resources.Colors.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Printer;
-import utils.WebUtilities;
-
-import java.util.List;
-
-import static resources.Colors.*;
 
 public class HomePage extends WebUtilities {
 
@@ -16,7 +14,7 @@ public class HomePage extends WebUtilities {
     @FindBy(css = "[class='card mt-4 top-card']")
     public List<WebElement> categoryCards;
 
-    public void clickCategoryCardNamed(String cardName){
+    public void clickCategoryCardNamed(String cardName) throws Exception {
         log.new Info("Clicking card named "+BLUE+cardName);
         for (WebElement card:categoryCards) {
             if (card.getText().contains(cardName)){
@@ -24,5 +22,7 @@ public class HomePage extends WebUtilities {
                 return;
             }
         }
+        log.new Error("No card named " + cardName + "could be located!");
+        throw new Exception("Failed method: clickCategoryCardNamed -> HomePage");
     }
 }

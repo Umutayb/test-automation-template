@@ -1,8 +1,8 @@
 package steps;
 
+import pages.Google;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.NoSuchElementException;
-import pages.Google;
 
 public class GoogleSteps {
 
