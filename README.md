@@ -182,3 +182,5 @@ ___
 >"-Dversion=1.0.0-SNAPSHOT"                 \
 >"-DinteractiveMode=false"
 >````
+Uses:
+[![](https://jitpack.io/v/Umutayb/Pickleib.svg)](https://jitpack.io/#Umutayb/Pickleib)
