@@ -104,7 +104,7 @@ public class Google extends WebUtilities {
                 try (PrintWriter writer = new PrintWriter(file)) {writer.println(currencyContainer.getRate());}
                 catch (IOException fileNotFoundException) {fileNotFoundException.printStackTrace();}
             }
-            else log.new Info("The change in exchange ratio is "+numeric.shortenDouble(Math.abs(currencyContainer.getRate() - lastUpdate)/lastUpdate*100)+"%!");
+            else log.new Info("The change in exchange ratio is "+delta+"%!");
         }
         catch (NullPointerException e) {
             try (PrintWriter writer = new PrintWriter(file)) {writer.println(lastStatus);}
