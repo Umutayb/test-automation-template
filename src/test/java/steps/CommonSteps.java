@@ -126,7 +126,7 @@ public class CommonSteps extends WebUtilities {
         clearFillInput(getElementFromPage(inputName, pageName, new ObjectRepository()), input, false, true);
     }
 
-    @Given("Fill the listed input {} from {} list on the {} with text: {}")
+    @Given("Fill listed input {} from {} list on the {} with text: {}")
     public void fillListedInput(String inputName, String listName, String pageName, String input){
         log.new Info("Filling " +
                 highlighted(BLUE, inputName) +
@@ -141,7 +141,7 @@ public class CommonSteps extends WebUtilities {
         clearFillInput(element, input, false, true);
     }
 
-    @Given("Fill component element {} of {} component on the {} with text: {}")
+    @Given("Fill component input {} of {} component on the {} with text: {}")
     public void fill(String inputName, String componentName, String pageName, String input){
         log.new Info("Filling " +
                 highlighted(BLUE, inputName) +
@@ -160,7 +160,7 @@ public class CommonSteps extends WebUtilities {
         );
     }
 
-    @Given("Fill component element {} of {} component on the {} with text: {}")
+    @Given("Fill listed component input {} of {} component on the {} with text: {}")
     public void fillListedInput(String inputName, String listName, String componentName, String pageName, String input){
         log.new Info("Filling " +
                 highlighted(BLUE, inputName) +

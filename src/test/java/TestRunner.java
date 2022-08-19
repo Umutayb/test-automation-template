@@ -13,5 +13,7 @@ import org.junit.runner.RunWith;
 )
 public class TestRunner {
     @AfterClass
-    public static void finalSequence(){new ShutdownSequence().publishReports(System.getProperty("cucumber.filter.tags"));}
+    public static void finalSequence(){
+        //new ShutdownSequence().publishReports(System.getProperty("cucumber.filter.tags"));
+    }
 }
