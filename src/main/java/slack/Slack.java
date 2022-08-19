@@ -1,6 +1,5 @@
 package slack;
 
-import common.ApiUtilities;
 import models.slack.SimpleMessageModel;
 import models.slack.SuccessfulMessage;
 import models.slack.ThreadMessageModel;
@@ -9,13 +8,14 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import utils.Caller;
 import utils.ServiceGenerator;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import static utils.FileUtilities.properties;
 
-public class Slack extends ApiUtilities {
+public class Slack extends Caller {
 
     SlackServices slackServices = new ServiceGenerator(new Headers.Builder()
             .add("Authorization", properties.getProperty("slack-token"))

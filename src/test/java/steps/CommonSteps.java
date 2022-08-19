@@ -4,12 +4,16 @@ import io.cucumber.java.*;
 import io.cucumber.java.en.*;
 import models.common.ObjectRepository;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.Printer;
 import utils.ScreenCaptureUtility;
 import utils.WebUtilities;
 import utils.driver.Driver;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import static utils.WebUtilities.Color.*;
 
@@ -25,10 +29,7 @@ public class CommonSteps extends WebUtilities {
     public void before(Scenario scenario){
         log.new Info("Running: " + highlighted(PURPLE, scenario.getName()));
         this.scenario = scenario;
-        browser.initialize(
-                properties.getProperty("website-username"),
-                properties.getProperty("website-password")
-        );
+        browser.initialize();
     }
 
     @After
@@ -95,6 +96,23 @@ public class CommonSteps extends WebUtilities {
         clickElement(getElementFromComponent(buttonName, componentName, pageName, new ObjectRepository()), true);
     }
 
+    @Given("Click listed element {} from {} list on the {}")
+    public void clickListedButton(String buttonName, String listName, String pageName){
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        List<WebElement> elements = getElementsFromPage(listName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, buttonName, System.currentTimeMillis());
+        clickElement(element, true);
+    }
+
+    @Given("Click listed component element {} of {} from {} list on the {}")
+    public void clickListedButton(String elementName, String componentName, String listName, String pageName){
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        componentName = strUtils.firstLetterDeCapped(componentName);
+        List<WebElement> elements = getElementsFromComponent(listName, componentName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, elementName, System.currentTimeMillis());
+        clickElement(element, true);
+    }
+
     @Given("Fill the {} on the {} with text: {}")
     public void fill(String inputName, String pageName, String input){
         log.new Info("Filling " +
@@ -106,6 +124,21 @@ public class CommonSteps extends WebUtilities {
         );
         pageName = strUtils.firstLetterDeCapped(pageName);
         clearFillInput(getElementFromPage(inputName, pageName, new ObjectRepository()), input, false, true);
+    }
+
+    @Given("Fill the listed input {} from {} list on the {} with text: {}")
+    public void fillListedInput(String inputName, String listName, String pageName, String input){
+        log.new Info("Filling " +
+                highlighted(BLUE, inputName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, " with the text: ") +
+                highlighted(BLUE, input)
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        List<WebElement> elements = getElementsFromPage(listName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, inputName, System.currentTimeMillis());
+        clearFillInput(element, input, false, true);
     }
 
     @Given("Fill component element {} of {} component on the {} with text: {}")
@@ -125,6 +158,22 @@ public class CommonSteps extends WebUtilities {
                 false,
                 true
         );
+    }
+
+    @Given("Fill component element {} of {} component on the {} with text: {}")
+    public void fillListedInput(String inputName, String listName, String componentName, String pageName, String input){
+        log.new Info("Filling " +
+                highlighted(BLUE, inputName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, " with the text: ") +
+                highlighted(BLUE, input)
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        componentName = strUtils.firstLetterDeCapped(componentName);
+        List<WebElement> elements = getElementsFromComponent(listName, componentName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, inputName, System.currentTimeMillis());
+        clearFillInput(element, input, false, true);
     }
 
     @Given("Verify the text of {} on the {} to be: {}")
@@ -338,5 +387,14 @@ public class CommonSteps extends WebUtilities {
                         "\nExpected value: " + attributeValue + "\nActual value: " + element.getAttribute(attributeName),
                 wait.until(ExpectedConditions.attributeContains(element, attributeName, attributeValue))
         );
+    }
+
+    public List<WebElement> getElementsFromPage(String elementFieldName, String pageName, Object objectRepository){
+        Map<String, Object> pageFields = objectUtils.getFields(objectUtils.getFields(objectRepository).get(pageName));
+        return (List<WebElement>) pageFields.get(elementFieldName);
+    }
+
+    public List<WebElement> getElementsFromComponent(String elementFieldName, String componentName, String pageName, Object objectRepository){
+        return (List<WebElement>) getComponentFieldsFromPage(componentName, pageName, objectRepository).get(elementFieldName);
     }
 }
