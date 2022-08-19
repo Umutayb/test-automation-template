@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.support.FindBy;
-import pages.components.TextBox;
 import utils.Printer;
 import utils.WebUtilities;
 

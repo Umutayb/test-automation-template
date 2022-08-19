@@ -112,62 +112,10 @@ ___
         </executions>
     </plugin>
 ```
-___ 
->It is recommended to use ***Cucumber JVM Parallel Plugin*** which allows you to execute tests simultaneously on parallel.
-> If you would like to do that, add plugin:
-```xml
-            <plugin>
-                <groupId>com.github.temyers</groupId>
-                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                <version>4.2.0</version>
-                <executions>
-                    <execution>
-                        <id>generateRunners</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>generateRunners</goal>
-                        </goals>
-                        <configuration>
-                            <glue>steps</glue>
-                            <featuresDirectory>src/test/java/features</featuresDirectory>
-                            <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-                            <plugins>
-                                <plugin>
-                                    <name>testng</name>
-                                </plugin>
-                            </plugins>
-                            <monochrome>false</monochrome>
-                            <useTestNG>true</useTestNG>
-                            <namingScheme>simple</namingScheme>
-                            <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
-                            <namingPattern>Parallel{c}IT</namingPattern>
-                            <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
-                            <parallelScheme>SCENARIO</parallelScheme>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Maven Surefire Plugin (This generates runner classes using the automatically generated test suites [.xml files]) -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <forkCount>10</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <includes>
-                        <include>**/Parallel*IT.class</include>
-                    </includes>
-                </configuration>
-            </plugin>
-```
 #### Example execution command:
 >In order to execute a specific feature file in a specific browser, add tags to the first line of your feature file & use:
 >```shell
->mvn clean test -Dcucumber.options="--tags @DemoQA" -Dbrowser=chrome
+>mvn clean test -q -Dcucumber.filter.tags="@Registration and @TestEnv" -Dbrowser=chrome
 >```
 ___
 >#### To create a cucumber project:

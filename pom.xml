@@ -3,106 +3,96 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bora</groupId>
-    <artifactId>Web-Automation</artifactId>
-    <version>0.5.0</version>
+    <artifactId>Web-UI-Automation</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Web Automation</name>
+    <name>Web UI Automation</name>
     <url>https://github.com/Umutayb/Web-Automation-Sample-Cucumber</url>
 
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <cucumber.version>4.8.0</cucumber.version>
-        <web.ui.framework.version>0.7.5</web.ui.framework.version>
+        <web.ui.framework.version>1.0.2</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
+        <cucumber.version>7.5.0</cucumber.version>
+        <selenium.version>4.3.0</selenium.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>31.0.1-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.9.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <!-- Web UI Framework -->
+        <!-- Pickleib -->
         <dependency>
             <groupId>com.github.Umutayb</groupId>
             <artifactId>Pickleib</artifactId>
             <version>${web.ui.framework.version}</version>
         </dependency>
 
-        <!-- Framework as jar
-        <dependency>
-            <groupId>bora</groupId>
-            <artifactId>POM-Framework-${framework.version}.jar</artifactId>
-            <version>${framework.version}</version>
-            <systemPath>${project.basedir}/lib/POM-FRAMEWORK-${framework.version}.jar</systemPath>
-            <scope>system</scope>
-            <type>jar</type>
-        </dependency>
-        -->
-
         <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>datatable-dependencies</artifactId>
-            <version>1.0.0</version>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>gherkin</artifactId>
-            <version>5.1.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>datatable</artifactId>
-            <version>1.1.14</version>
-            <scope>compile</scope>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-core</artifactId>
-            <version>4.8.0</version>
-            <scope>compile</scope>
+            <artifactId>datatable-dependencies</artifactId>
+            <version>3.0.0</version>
         </dependency>
 
         <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>htmlunit-driver</artifactId>
-            <version>2.20</version>
+            <version>${selenium.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-
-        <!-- Appium -->
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>7.3.0</version>
-            <scope>compile</scope>
+            <version>${selenium.version}</version>
         </dependency>
 
         <!-- Commons -->
@@ -110,15 +100,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- REST Assured -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>4.3.0</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Jackson Databind -->
@@ -137,12 +118,11 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Wiremock -->
+        <!-- Gson -->
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8</artifactId>
-            <version>2.27.2</version>
-            <scope>compile</scope>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.9.0</version>
         </dependency>
 
         <!-- Google Simple Json -->
@@ -167,11 +147,45 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- OKHttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>4.9.3</version>
+        </dependency>
+
+        <!-- Retrofit -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-rxjava</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
         <!-- Web Driver Manager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.0.2</version>
+            <version>5.2.0</version>
         </dependency>
 
         <!-- Assert -->
@@ -187,34 +201,18 @@
             <groupId>com.github.webdriverextensions</groupId>
             <artifactId>webdriverextensions</artifactId>
             <version>3.11.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-loader</artifactId>
-            <version>2.0.1.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>bintray</name>
-            <url>https://jcenter.bintray.com</url>
-        </repository>
-        <repository>
-            <id>maven_central</id>
-            <name>Maven Central</name>
-            <url>https://repo.maven.apache.org/maven2/</url>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -225,67 +223,6 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
-                </configuration>
-            </plugin>
-
-            <!-- Cucumber JVM Parallel plugin (This generates test suites (.xml files) for each feature file) -->
-            <plugin>
-                <groupId>com.github.temyers</groupId>
-                <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-                <version>4.2.0</version>
-                <executions>
-                    <execution>
-                        <id>generateRunners</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>generateRunners</goal>
-                        </goals>
-                        <configuration>
-                            <glue>steps</glue>
-                            <featuresDirectory>src/test/java/features</featuresDirectory>
-                            <cucumberOutputDir>target/reports</cucumberOutputDir>
-                            <plugins>
-                                <plugin>
-                                    <name>json</name>
-                                    <extension>json</extension>
-                                    <outputDirectory>${project.build.directory}/reports/json</outputDirectory>
-                                </plugin>
-                                <plugin>
-                                    <name>html</name>
-                                    <extension>html</extension>
-                                    <outputDirectory>${project.build.directory}/reports/html</outputDirectory>
-                                </plugin>
-                                <plugin>
-                                    <name>testng</name>
-                                    <extension>xml</extension>
-                                    <outputDirectory>${project.build.directory}/reports/testng</outputDirectory>
-                                </plugin>
-                            </plugins>
-                            <monochrome>true</monochrome>
-                            <useTestNG>true</useTestNG>
-                            <namingScheme>simple</namingScheme>
-                            <!-- The class naming pattern to use.  Only required/used if naming scheme is 'pattern'.-->
-                            <namingPattern>Parallel{c}IT</namingPattern>
-                            <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
-                            <parallelScheme>FEATURE</parallelScheme>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Maven Surefire Plugin (This generates runner classes using the automatically generated test suites [.xml files]) -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <forkCount>10</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <includes>
-                        <include>**/Parallel*IT.class</include>
-                    </includes>
                 </configuration>
             </plugin>
 
