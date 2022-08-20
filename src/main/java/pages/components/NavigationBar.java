@@ -11,6 +11,4 @@ public class NavigationBar extends WebUtilities {
     @FindBy(tagName = "li")
     public List<WebElement> categories;
 
-
-
 }
