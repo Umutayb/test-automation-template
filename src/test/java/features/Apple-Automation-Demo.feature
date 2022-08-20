@@ -9,7 +9,4 @@ Feature: BBC test automation scenarios
   Scenario: Orbit Banner Interactions
     A Scenario where orbit banner interactions are tested
     * Click listed attribute element of navigationBar component that has accessories value for its class attribute from categories list on the LandingPage
-
-
-
-    
+    * Wait 1 seconds
