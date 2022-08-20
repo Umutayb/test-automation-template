@@ -1,13 +1,13 @@
 package pages;
 
 import org.openqa.selenium.support.FindBy;
-import pages.components.CardsShelf;
 import pages.components.NavigationBar;
 import pages.components.PageShortcuts;
-import utils.Printer;
+import pages.components.ProductCard;
+import pages.components.CardsShelf;
 import utils.WebUtilities;
-
 import java.util.List;
+import utils.Printer;
 
 public class BuyMacPage extends WebUtilities {
 
@@ -22,5 +22,6 @@ public class BuyMacPage extends WebUtilities {
     @FindBy(className = "rs-cardsshelf")
     public List<CardsShelf> cardsShelf;
 
-
+    @FindBy(css = ".rf-cards-scroller-itemview")
+    public List<ProductCard> products;
 }

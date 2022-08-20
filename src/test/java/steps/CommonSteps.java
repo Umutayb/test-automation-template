@@ -10,8 +10,6 @@ import utils.Printer;
 import utils.ScreenCaptureUtility;
 import utils.WebUtilities;
 import utils.driver.Driver;
-
-import java.time.Duration;
 import java.util.List;
 
 import static utils.WebUtilities.Color.*;
