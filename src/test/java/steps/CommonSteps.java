@@ -209,6 +209,23 @@ public class CommonSteps extends WebUtilities {
         clickElement(element, true);
     }
 
+    @Given("Click listed component element {} of {} from {} list on the {}")
+    public void clickListedButtonEX(String buttonName, String componentName, String listName, String pageName) {
+        List<WebElement> elements = getElementsFromComponent(
+                listName,
+                strUtils.firstLetterDeCapped(componentName),
+                strUtils.firstLetterDeCapped(pageName),
+                new ObjectRepository()
+        );
+        WebElement element = acquireNamedElementAmongst(elements, buttonName, System.currentTimeMillis());
+        log.new Info("Clicking " +
+                highlighted(BLUE, buttonName) +
+                highlighted(GRAY, " on the ") +
+                highlighted(BLUE, pageName)
+        );
+        clickElement(element, true);
+    }
+
     @Given("Fill the {} on the {} with text: {}")
     public void fill(String inputName, String pageName, String input) {
         log.new Info("Filling " +
