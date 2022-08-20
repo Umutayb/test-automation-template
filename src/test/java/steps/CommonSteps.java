@@ -175,7 +175,7 @@ public class CommonSteps extends WebUtilities {
         clickElement(element, true);
     }
 
-    @Given("Click listed component attribute element of {} component that has {} value for its {} attribute from {} list on the {}")
+    @Given("Click listed attribute element of {} component that has {} value for its {} attribute from {} list on the {}")
     public void clickListedButtonByAttribute(String componentName, String attributeValue, String attributeName, String listName, String pageName) {
         List<WebElement> elements = getElementsFromComponent(
                 listName,
@@ -191,8 +191,6 @@ public class CommonSteps extends WebUtilities {
         );
         clickElement(element, true);
     }
-
-
 
     @Given("Click listed component element {} of {} from {} list on the {}")
     public void clickListedButton(String buttonName, String componentName, String listName, String pageName) {
