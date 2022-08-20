@@ -4,9 +4,13 @@ Feature: BBC test automation scenarios
   Background: Navigate to the page
     Navigates to the page
     * Navigate to url: bbc.com
+    * If present, click component element refuseButton of CookiePopup component on the LandingPage
 
   Scenario: Orbit Banner Interactions
     A Scenario where orbit banner interactions are tested
+    * Click listed component element News of OrbitBanner from navItems list on the LandingPage
     * Click component element moreButton of OrbitBanner component on the LandingPage
-    * Click listed component element News of OrbitBanner from moreDrawerItems list on the LandingPage
-    * Wait 5 seconds
+    * Click listed component element Weather of OrbitBanner from moreDrawerItems list on the LandingPage
+    * Click component element moreButton of OrbitBanner component on the LandingPage
+    * Click listed component element TV of OrbitBanner from moreDrawerItems list on the LandingPage
+    * Click listed component element Home of OrbitBanner from navItems list on the LandingPage

@@ -17,6 +17,6 @@ public class OrbitBanner extends WebUtilities {
     @FindBy(css = "[class='orbit-header-links international'] li")
     public List<WebElement> navItems;
 
-    @FindBy(css = "#orbit-more-drawer li")
+    @FindBy(css = "#orbit-more-drawer li a")
     public List<WebElement> moreDrawerItems;
 }

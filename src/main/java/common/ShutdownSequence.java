@@ -4,7 +4,6 @@ import slack.Slack;
 import utils.Printer;
 
 public class ShutdownSequence extends CucumberUtilities {
-    static Slack slack = new Slack();
     static Printer log = new Printer(ShutdownSequence.class);
 
     public void publishReports(String testName){ // This method is called upon after the tests are done running

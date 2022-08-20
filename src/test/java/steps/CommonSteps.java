@@ -10,11 +10,7 @@ import utils.Printer;
 import utils.ScreenCaptureUtility;
 import utils.WebUtilities;
 import utils.driver.Driver;
-
-import java.time.Duration;
 import java.util.List;
-import java.util.Map;
-
 import static utils.WebUtilities.Color.*;
 
 public class CommonSteps extends WebUtilities {
@@ -96,20 +92,64 @@ public class CommonSteps extends WebUtilities {
         clickElement(getElementFromComponent(buttonName, componentName, pageName, new ObjectRepository()), true);
     }
 
+    @Given("If present, click the {} on the {}")
+    public void clickIfPresent(String buttonName, String pageName){
+        log.new Info("Clicking " +
+                highlighted(BLUE, buttonName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, ", if present...")
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+
+        try {clickElement(getElementFromPage(buttonName, pageName, new ObjectRepository()), true);}
+        catch (NoSuchElementException ignored){log.new Warning("The " + buttonName + " was not present");}
+    }
+
+    @Given("If present, click component element {} of {} component on the {}")
+    public void clickIfPresent(String buttonName, String componentName, String pageName){
+        log.new Info("Clicking " +
+                highlighted(BLUE, buttonName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, ", if present...")
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        componentName = strUtils.firstLetterDeCapped(componentName);
+        try {clickElement(getElementFromComponent(buttonName, componentName, pageName, new ObjectRepository()), true);}
+        catch (NoSuchElementException ignored){log.new Warning("The " + buttonName + " was not present");}
+    }
+
     @Given("Click listed element {} from {} list on the {}")
     public void clickListedButton(String buttonName, String listName, String pageName){
-        pageName = strUtils.firstLetterDeCapped(pageName);
-        List<WebElement> elements = getElementsFromPage(listName, pageName, new ObjectRepository());
+        List<WebElement> elements = getElementsFromPage(
+                listName,
+                strUtils.firstLetterDeCapped(pageName),
+                new ObjectRepository()
+        );
         WebElement element = acquireNamedElementAmongst(elements, buttonName, System.currentTimeMillis());
+        log.new Info("Clicking " +
+                highlighted(BLUE, buttonName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName)
+        );
         clickElement(element, true);
     }
 
     @Given("Click listed component element {} of {} from {} list on the {}")
-    public void clickListedButton(String elementName, String componentName, String listName, String pageName){
-        pageName = strUtils.firstLetterDeCapped(pageName);
-        componentName = strUtils.firstLetterDeCapped(componentName);
-        List<WebElement> elements = getElementsFromComponent(listName, componentName, pageName, new ObjectRepository());
-        WebElement element = acquireNamedElementAmongst(elements, elementName, System.currentTimeMillis());
+    public void clickListedButton(String buttonName, String componentName, String listName, String pageName){
+        List<WebElement> elements = getElementsFromComponent(
+                listName,
+                strUtils.firstLetterDeCapped(componentName),
+                strUtils.firstLetterDeCapped(pageName),
+                new ObjectRepository()
+        );
+        WebElement element = acquireNamedElementAmongst(elements, buttonName, System.currentTimeMillis());
+        log.new Info("Clicking " +
+                highlighted(BLUE, buttonName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName)
+        );
         clickElement(element, true);
     }
 
@@ -389,12 +429,50 @@ public class CommonSteps extends WebUtilities {
         );
     }
 
-    public List<WebElement> getElementsFromPage(String elementFieldName, String pageName, Object objectRepository){
-        Map<String, Object> pageFields = objectUtils.getFields(objectUtils.getFields(objectRepository).get(pageName));
-        return (List<WebElement>) pageFields.get(elementFieldName);
+
+    @Given("Verify that element {} from {} list on the {} has {} value for its {} attribute")
+    public void verifyListedElementContainsAttribute(
+            String elementName,
+            String listName,
+            String pageName,
+            String attributeValue,
+            String attributeName) {
+        log.new Info("Waiting for the absence of " +
+                highlighted(BLUE, elementName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName)
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        List<WebElement> elements = getElementsFromPage(listName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, elementName, System.currentTimeMillis());
+        Assert.assertTrue(
+                "The " + attributeName + " attribute of element " + elementName + " could not be verified." +
+                        "\nExpected value: " + attributeValue + "\nActual value: " + element.getAttribute(attributeName),
+                wait.until(ExpectedConditions.attributeContains(element, attributeName, attributeValue))
+        );
     }
 
-    public List<WebElement> getElementsFromComponent(String elementFieldName, String componentName, String pageName, Object objectRepository){
-        return (List<WebElement>) getComponentFieldsFromPage(componentName, pageName, objectRepository).get(elementFieldName);
+    @Given("Verify that component element {} of {} from {} list on the {} has {} value for its {} attribute")
+    public void verifyListedElementContainsAttribute(
+            String elementName,
+            String componentName,
+            String listName,
+            String pageName,
+            String attributeValue,
+            String attributeName) {
+        log.new Info("Waiting for the absence of " +
+                highlighted(BLUE, elementName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName)
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        componentName = strUtils.firstLetterDeCapped(componentName);
+        List<WebElement> elements = getElementsFromComponent(listName, componentName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, elementName, System.currentTimeMillis());
+        Assert.assertTrue(
+                "The " + attributeName + " attribute of element " + elementName + " could not be verified." +
+                        "\nExpected value: " + attributeValue + "\nActual value: " + element.getAttribute(attributeName),
+                wait.until(ExpectedConditions.attributeContains(element, attributeName, attributeValue))
+        );
     }
 }

@@ -18,7 +18,7 @@ import static utils.FileUtilities.properties;
 public class Slack extends Caller {
 
     SlackServices slackServices = new ServiceGenerator(new Headers.Builder()
-            .add("Authorization", properties.getProperty("slack-token"))
+            .add("Authorization",  properties.getProperty("slack-token"))
             .build())
             .generate(SlackServices.class);
 
