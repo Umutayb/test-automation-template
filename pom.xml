@@ -13,7 +13,7 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>1.0.6</web.ui.framework.version>
+        <web.ui.framework.version>58fbc4533c</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <cucumber.version>7.5.0</cucumber.version>
         <selenium.version>4.3.0</selenium.version>
