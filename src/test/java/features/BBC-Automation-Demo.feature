@@ -12,10 +12,6 @@ Feature: BBC test automation scenarios
     A Scenario where orbit banner interactions are tested
     * Click listed component element News of OrbitBanner from navItems list on the LandingPage
     * Click component element moreButton of OrbitBanner component on the LandingPage
-    * Click listed component element Weather of OrbitBanner from moreDrawerItems list on the LandingPage
-    * Click component element moreButton of OrbitBanner component on the LandingPage
-    * Click listed component element TV of OrbitBanner from moreDrawerItems list on the LandingPage
-    * Click listed component element Home of OrbitBanner from navItems list on the LandingPage
 
   @News
   Scenario: News Interactions
