@@ -11,4 +11,5 @@ Feature: BBC test automation scenarios
     * Click listed attribute element of navigationBar component that has accessories value for its class attribute from categories list on the LandingPage
 
 
+
     
