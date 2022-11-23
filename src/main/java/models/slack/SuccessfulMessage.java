@@ -1,21 +1,16 @@
 package models.slack;
 
+import lombok.Data;
 import java.util.List;
 
+@Data
 public class SuccessfulMessage {
     Boolean ok;
     String channel;
     String ts;
     Message message;
 
-    public Boolean ok() {return ok;}
-
-    public String channel() {return channel;}
-
-    public String ts() {return ts;}
-
-    public Message message() {return message;}
-
+    @Data
     public static class Message {
         String bot_,d;
         String type;
@@ -27,6 +22,7 @@ public class SuccessfulMessage {
         Profile bot_profile;
         List<Block> blocks;
 
+        @Data
         public static class Profile {
             String id;
             String app_id;
@@ -36,6 +32,7 @@ public class SuccessfulMessage {
             Double updated;
             String team_id;
 
+            @Data
             public static class Icons {
                 String image_36;
                 String image_48;
@@ -43,11 +40,13 @@ public class SuccessfulMessage {
             }
         }
 
+        @Data
         public static class Block {
             String type;
             String block_id;
             Text text;
 
+            @Data
             public static class Text {
                 String type;
                 String text;
