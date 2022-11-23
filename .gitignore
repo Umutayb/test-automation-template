@@ -13,7 +13,7 @@ gauge_bin
 # Gauge - java class target dir
 target
 .DS_Store
-.idea/compiler.xml
+.idea
 .idea/misc.xml
 /Web-Automation.iml
 /.idea/
