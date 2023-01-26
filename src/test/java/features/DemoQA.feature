@@ -29,14 +29,15 @@ Feature: Login
     * Click component element cityDropdown of PracticeForm component on the ToolsPage
     * Click listed component element Karnal of PracticeForm from dropdownOptions list on the ToolsPage
     * Click component element submitButton of PracticeForm component on the ToolsPage
-    * Verify text of listed component element Student Name from the resultModel of dataRows on the ToolsPage is equal to Umut Bora
-    * Verify text of listed component element Student Email from the resultModel of dataRows on the ToolsPage is equal to umutaybora@gmail.com
-    * Verify text of listed component element Gender from the resultModel of dataRows on the ToolsPage is equal to Male
-    * Verify text of listed component element Mobile from the resultModel of dataRows on the ToolsPage is equal to 0655500001
-    * Verify text of listed component element Date of Birth from the resultModel of dataRows on the ToolsPage is equal to 02 September,1996
-    * Verify text of listed component element Subjects from the resultModel of dataRows on the ToolsPage is equal to Computer Science
-    * Verify text of listed component element Hobbies from the resultModel of dataRows on the ToolsPage is equal to Music
-    * Verify text of listed component element Picture from the resultModel of dataRows on the ToolsPage is equal to profile-picture.jpeg
-    * Verify text of listed component element Address from the resultModel of dataRows on the ToolsPage is equal to Den Haag - Netherlands
-    * Verify text of listed component element State and City from the resultModel of dataRows on the ToolsPage is equal to Haryana Karnal
+    * Verify text of listed component element Student Name from the dataRows of resultModel on the ToolsPage is equal to Umut Bora
+    * Verify text of listed component element Student Email from the dataRows of resultModel on the ToolsPage is equal to umutaybora@gmail.com
+    * Verify text of listed component element Gender from the dataRows of resultModel on the ToolsPage is equal to Male
+    * Verify text of listed component element Mobile from the dataRows of resultModel on the ToolsPage is equal to 0655500001
+    * Verify text of listed component element Date of Birth from the dataRows of resultModel on the ToolsPage is equal to 02 September,1996
+    * Verify text of listed component element Subjects from the dataRows of resultModel on the ToolsPage is equal to Computer Science
+    * Verify text of listed component element Hobbies from the dataRows of resultModel on the ToolsPage is equal to Music
+    * Verify text of listed component element Picture from the dataRows of resultModel on the ToolsPage is equal to profile-picture.jpeg
+    * Verify text of listed component element Mobile from the dataRows of resultModel on the ToolsPage is equal to 0655500001
+    * Verify text of listed component element Address from the dataRows of resultModel on the ToolsPage is equal to Den Haag - Netherlands
+    * Verify text of listed component element State and City from the dataRows of resultModel on the ToolsPage is equal to Haryana Karnal
     * Click component element closeButton of ResultModel component on the ToolsPage
