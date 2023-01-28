@@ -35,7 +35,7 @@ public class ShutdownSequence extends CucumberUtilities {
                     String mediaType = Files.probeContentType(file.toPath());
                     if(mediaType != null && mediaType.equals("image/jpeg")) upload.set(true);
                 }
-                String directory = properties.getProperty("report-directory");
+                String directory = properties.getProperty("report-directory", "target/reports/Cucumber.json");
                 String channelId = properties.getProperty("slack-channel-id");
                 File reportFile = new File(directory);
                 List<CucumberReport> reports = getCucumberReport(directory);
