@@ -16,6 +16,8 @@ import org.openqa.selenium.remote.html5.RemoteWebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.*;
 import utils.driver.Driver;
+import utils.driver.DriverFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -52,7 +54,11 @@ public class CommonSteps extends WebUtilities {
     public void before(Scenario scenario){
         log.new Info("Running: " + highlighted(PURPLE, scenario.getName()));
         processScenarioTags(scenario);
-        if (initialiseBrowser) browser.initialize();
+        if (initialiseBrowser) {
+            DriverFactory.DriverType driverType = getDriverType(scenario);
+            if (driverType!=null) Driver.initialize(driverType);
+            else Driver.initialize();
+        }
         ObjectRepository.environment = null;
     }
 
@@ -69,7 +75,7 @@ public class CommonSteps extends WebUtilities {
                         driver
                 );
             }
-            browser.terminate();
+            Driver.terminate();
         }
         if (scenario.isFailed()) throw new RuntimeException(scenario.getName() + ": FAILED!");
         else log.new Success(scenario.getName() + ": PASS!");
@@ -80,6 +86,14 @@ public class CommonSteps extends WebUtilities {
         this.scenario = scenario;
         authenticate = scenario.getSourceTagNames().contains("@Authenticate");
         initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
+    }
+
+    public DriverFactory.DriverType getDriverType(Scenario scenario) {
+        for (DriverFactory.DriverType driverType: DriverFactory.DriverType.values()) {
+            if (scenario.getSourceTagNames().stream().anyMatch(tag -> tag.replaceAll("@", "").equalsIgnoreCase(driverType.name())))
+                return driverType;
+        }
+        return null;
     }
 
     @Given("Navigate to url: {}")
