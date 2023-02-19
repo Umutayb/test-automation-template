@@ -10,7 +10,6 @@ import io.cucumber.java.en.*;
 import common.ObjectRepository;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.html5.RemoteWebStorage;
@@ -26,12 +25,15 @@ import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static utils.WebUtilities.Color.*;
 
 public class CommonSteps extends WebUtilities {
 
     public Scenario scenario;
+    public boolean authenticate;
+    public boolean initialiseBrowser;
 
     Driver browser = new Driver();
     EmailInbox emailInbox = new EmailInbox();
@@ -49,21 +51,35 @@ public class CommonSteps extends WebUtilities {
     @Before
     public void before(Scenario scenario){
         log.new Info("Running: " + highlighted(PURPLE, scenario.getName()));
-        this.scenario = scenario;
-        browser.initialize();
+        processScenarioTags(scenario);
+        if (initialiseBrowser) browser.initialize();
         ObjectRepository.environment = null;
     }
 
     @After
     public void kill(Scenario scenario){
-        if (scenario.isFailed()) {
-            capture.captureScreen(
-                    scenario.getName().replaceAll(" ", "") + "@" + scenario.getLine(), driver
-            );
+        if (initialiseBrowser) {
+            if (scenario.isFailed()) {
+                capture.captureScreen(
+                        scenario.getSourceTagNames()
+                                .stream()
+                                .filter(tag -> tag.contains("SCN-"))
+                                .collect(Collectors.joining())
+                                .replaceAll("SCN-", ""),
+                        driver
+                );
+            }
+            browser.terminate();
         }
-        else log.new Success(scenario.getName() + ": PASS!");
-        browser.terminate();
         if (scenario.isFailed()) throw new RuntimeException(scenario.getName() + ": FAILED!");
+        else log.new Success(scenario.getName() + ": PASS!");
+    }
+
+    public void processScenarioTags(Scenario scenario){
+        log.new Important(scenario.getSourceTagNames());
+        this.scenario = scenario;
+        authenticate = scenario.getSourceTagNames().contains("@Authenticate");
+        initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
     }
 
     @Given("Navigate to url: {}")

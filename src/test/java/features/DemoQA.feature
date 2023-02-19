@@ -5,6 +5,7 @@ Feature: Login
   Background: Context user
     * Navigate to the test page
 
+  @Web-UI @SCN-DEMO-QA-1
   Scenario: DemoQA form interactions
     * Click listed element Forms from categoryCards list on the LandingPage
     * Click listed element Practice Form from tools list on the ToolsPage
