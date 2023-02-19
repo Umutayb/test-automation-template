@@ -1,6 +1,6 @@
 package models.common;
 
-import pages.LandingPage;
+import pages.demoqa.LandingPage;
 
 public class ObjectRepository {
     LandingPage landingPage = new LandingPage();
