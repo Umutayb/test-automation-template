@@ -11,7 +11,9 @@ import common.ObjectRepository;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.html5.LocalStorage;
+import org.openqa.selenium.remote.HttpCommandExecutor;
 import org.openqa.selenium.remote.RemoteExecuteMethod;
+import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.remote.html5.RemoteWebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.*;
@@ -23,6 +25,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -63,7 +67,7 @@ public class CommonSteps extends WebUtilities {
     }
 
     @After
-    public void kill(Scenario scenario){
+    public void kill(Scenario scenario) throws MalformedURLException {
         if (initialiseBrowser) {
             if (scenario.isFailed()) {
                 capture.captureScreen(
@@ -75,7 +79,16 @@ public class CommonSteps extends WebUtilities {
                         driver
                 );
             }
+            org.openqa.selenium.remote.SessionId sessionId = driver.getSessionId();
             Driver.terminate();
+            URL remoteServerAddress = ((HttpCommandExecutor) driver.getCommandExecutor()).getAddressOfRemoteServer();
+// Build the video info URL
+            URL videoInfoURL = new URL(remoteServerAddress, "/grid/admin/HubVideoInfoServlet/?sessionId=" + sessionId);
+// Perform a GET request against the API
+            //Response response = RestAssured.given().when().get(videoInfoURL);
+            log.new Important(videoInfoURL);
+
+//Parse and get the path of the video
         }
         if (scenario.isFailed()) throw new RuntimeException(scenario.getName() + ": FAILED!");
         else log.new Success(scenario.getName() + ": PASS!");
@@ -99,13 +112,38 @@ public class CommonSteps extends WebUtilities {
     @Given("Navigate to url: {}")
     public void getUrl(String url) {
         url = contextCheck(url);
-        navigate(url);}
+        navigate(url);
+    }
 
     @Given("Go to the {} page")
     public void toPage(String page){
         String url = driver.getCurrentUrl();
         String pageUrl = url + page;
         navigate(pageUrl);
+    }
+
+    @Given("Switch to the next tab")
+    public void switchTab() {
+        String parentHandle = switchWindowByHandle(null);
+        ContextStore.put("parentHandle", parentHandle);
+    }
+
+    @Given("Switch back to the parent tab")
+    public void switchToParentTab() {
+        switchWindowByHandle(ContextStore.get("parentHandle").toString());
+    }
+
+    @Given("Switch to the tab with handle: {}")
+    public void switchTab(String handle) {
+        handle = contextCheck(handle);
+        String parentHandle = switchWindowByHandle(handle);
+        ContextStore.put("parentHandle", parentHandle);
+    }
+
+    @Given("Switch to the tab number {}")
+    public void switchTab(Integer handle) {
+        String parentHandle = switchWindowByIndex(handle);
+        ContextStore.put("parentHandle", parentHandle);
     }
 
     @Given("Get email at {}")
@@ -115,9 +153,8 @@ public class CommonSteps extends WebUtilities {
         driver.get(url);
     }
 
-    @Given("^Navigate to the (acceptance|test) page$")
+    @Given("^Navigate to the (acceptance|test|dev) page$")
     public void getURL(ObjectRepository.Environment environment) {
-        Boolean basicAuth = Boolean.parseBoolean(properties.getProperty("website-basic-auth"));
         String username = properties.getProperty("website-username");
         String password = properties.getProperty("website-password");
         String protocol = properties.getProperty("protocol", "HTTPS").toLowerCase();
@@ -125,7 +162,7 @@ public class CommonSteps extends WebUtilities {
         String url = protocol + "://" + baseUrl;
         // appending username, password with URL
         // We check if the env is null so that we do not set credentials twice
-        if (ObjectRepository.environment == null && basicAuth) url = protocol + "://" + username + ":" + password + "@" + baseUrl;
+        if (ObjectRepository.environment == null) url = protocol + "://" + username + ":" + password + "@" + baseUrl;
         log.new Info("Navigating to " + highlighted(BLUE, url));
         driver.get(url);
         ObjectRepository.environment = environment;
@@ -159,30 +196,6 @@ public class CommonSteps extends WebUtilities {
 
     @Given("Delete cookies")
     public void deleteCookies() {driver.manage().deleteAllCookies();}
-
-    @Given("Switch to the next tab")
-    public void switchTab() {
-        String parentHandle = switchWindowByHandle(null);
-        ContextStore.put("parentHandle", parentHandle);
-    }
-
-    @Given("Switch back to the parent tab")
-    public void switchToParentTab() {
-        switchWindowByHandle(ContextStore.get("parentHandle").toString());
-    }
-
-    @Given("Switch to the tab with handle: {}")
-    public void switchTab(String handle) {
-        handle = contextCheck(handle);
-        String parentHandle = switchWindowByHandle(handle);
-        ContextStore.put("parentHandle", parentHandle);
-    }
-
-    @Given("Switch to the tab number {}")
-    public void switchTab(Integer handle) {
-        String parentHandle = switchWindowByIndex(handle);
-        ContextStore.put("parentHandle", parentHandle);
-    }
 
     @Given("^Navigate browser (BACKWARDS|FORWARDS)$")
     public void browserNavigate(Navigation direction) {navigateBrowser(direction);}
@@ -419,58 +432,6 @@ public class CommonSteps extends WebUtilities {
                 highlighted(GRAY," on the ") +
                 highlighted(BLUE, pageName)
         );
-        clickElement(element, false);
-    }
-
-    @Given("Click today date of {} from {} list on the {}")
-    public void clickTodayDateButton(String componentName, String listName, String pageName){
-        Calendar calendar = Calendar.getInstance();
-        Date today = calendar.getTime();
-
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        Date tomorrow = calendar.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("d");
-
-        String buttonName = dateFormat.format(today);
-
-        List<WebElement> elements = getElementsFromComponent(
-                listName,
-                strUtils.firstLetterDeCapped(componentName),
-                strUtils.firstLetterDeCapped(pageName),
-                new ObjectRepository()
-        );
-
-        WebElement element = acquireNamedElementAmongst(elements, buttonName);
-        log.new Info("Clicking " +
-                highlighted(BLUE, buttonName) +
-                highlighted(GRAY," on the ") +
-                highlighted(BLUE, pageName)
-        );
-        clickElement(element, true);
-    }
-
-    @Given("Click tomorrow date of {} from {} list on the {}")
-    public void clickTomorrowDateButton(String componentName, String listName, String pageName) {
-        Calendar calendar = Calendar.getInstance();
-
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        Date tomorrow = calendar.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("d");
-
-        String buttonName = dateFormat.format(tomorrow);
-
-        List<WebElement> elements = getElementsFromComponent(
-                listName,
-                strUtils.firstLetterDeCapped(componentName),
-                strUtils.firstLetterDeCapped(pageName),
-                new ObjectRepository()
-        );
-        WebElement element = acquireNamedElementAmongst(elements, buttonName);
-        log.new Info("Clicking " +
-                highlighted(BLUE, buttonName) +
-                highlighted(GRAY, " on the ") +
-                highlighted(BLUE, pageName)
-        );
         clickElement(element, true);
     }
 
@@ -499,13 +460,9 @@ public class CommonSteps extends WebUtilities {
     public void clickButtonAmongstExactNamedComponents(String selectionName, String listName, String pageName, String buttonName){
         pageName = strUtils.firstLetterDeCapped(pageName);
         listName = strUtils.firstLetterDeCapped(listName);
-        WebElement element = getElementAmongstExactComponentsFromPage(
-                buttonName,
-                selectionName,
-                listName,
-                pageName,
-                new ObjectRepository()
-        );
+        List<WebComponent> components = getComponentsFromPage(listName, pageName, new ObjectRepository());
+        WebComponent component = acquireExactNamedComponentAmongst(components, selectionName, buttonName);
+        WebElement element = getElementFromComponent(buttonName, component);
         log.new Info("Clicking listed button " +
                 highlighted(BLUE, buttonName) +
                 highlighted(GRAY," of selected ") +
@@ -529,7 +486,7 @@ public class CommonSteps extends WebUtilities {
         componentListName = strUtils.firstLetterDeCapped(componentListName);
         List<WebComponent> components = getComponentsFromPage(componentListName, pageName, new ObjectRepository());
         WebComponent component = acquireNamedComponentAmongst(components, componentName);
-        List<WebElement> elements = getElementsFromComponent(elementListName, component, pageName, new ObjectRepository());
+        List<WebElement> elements = getElementsFromComponent(elementListName, component);
         WebElement element = acquireNamedElementAmongst(elements, buttonName);
         log.new Info("Clicking listed button " +
                 highlighted(BLUE, buttonName) +
@@ -672,7 +629,8 @@ public class CommonSteps extends WebUtilities {
         );
         pageName = strUtils.firstLetterDeCapped(pageName);
         WebElement iframe = getElementFromPage(iframeName, pageName, new ObjectRepository());
-        driver.switchTo().frame(waitUntilElementIs(iframe, ElementState.DISPLAYED, false));
+        elementIs(iframe, ElementState.DISPLAYED);
+        driver.switchTo().frame(iframe);
         WebElement element = getElementFromPage(inputName, pageName, new ObjectRepository());
         clearFillInput(element, inputText,true,true);
         driver.switchTo().parentFrame();
@@ -785,9 +743,11 @@ public class CommonSteps extends WebUtilities {
         );
         pageName = strUtils.firstLetterDeCapped(pageName);
         componentName = strUtils.firstLetterDeCapped(componentName);
+        WebElement element = getElementFromComponent(elementName, componentName, pageName, new ObjectRepository());
+        elementIs(element, ElementState.DISPLAYED);
         Assert.assertEquals("The " + elementName + " does not contain text '",
                 expectedText,
-                getElementFromComponent(elementName, componentName, pageName, new ObjectRepository()).getText()
+                centerElement(element).getText()
         );
         log.new Success("Text of the element " + elementName + " was verified!");
     }
@@ -825,7 +785,7 @@ public class CommonSteps extends WebUtilities {
         );
         pageName = strUtils.firstLetterDeCapped(pageName);
         WebElement element = getElementFromPage(elementName, pageName, new ObjectRepository());
-        waitUntilElementIs(element, ElementState.DISPLAYED, true);
+        verifyElementState(element, ElementState.DISPLAYED);
         log.new Success("Presence of the element " + elementName + " was verified!");
     }
 
@@ -839,7 +799,7 @@ public class CommonSteps extends WebUtilities {
         pageName = strUtils.firstLetterDeCapped(pageName);
         componentName = strUtils.firstLetterDeCapped(componentName);
         WebElement element = getElementFromComponent(elementName, componentName, pageName, new ObjectRepository());
-        waitUntilElementIs(element, ElementState.DISPLAYED, true);
+        verifyElementState(element, ElementState.DISPLAYED);
         log.new Success("Presence of the element " + elementName + " was verified!");
     }
 
@@ -856,12 +816,12 @@ public class CommonSteps extends WebUtilities {
             );
 
             WebElement element = getElementContainingText(elementText);
-            waitUntilElementIs(element, ElementState.ENABLED, true);
+            verifyElementState(element, ElementState.ENABLED);
             log.new Success("Presence of the element text " + elementText + " was verified!");
         }
     }
 
-    @Given("close the browser")
+    @Given("Close the browser")
     public void closeBrowser(){
         driver.quit();
     }
@@ -876,7 +836,7 @@ public class CommonSteps extends WebUtilities {
         );
         pageName = strUtils.firstLetterDeCapped(pageName);
         WebElement element = getElementFromPage(elementName, pageName, new ObjectRepository());
-        waitUntilElementIs(element, ElementState.valueOf(expectedState), true);
+        verifyElementState(element, ElementState.valueOf(expectedState));
         log.new Success("The element '" + elementName + "' was verified to be enabled!");
     }
 
@@ -893,7 +853,7 @@ public class CommonSteps extends WebUtilities {
         pageName = strUtils.firstLetterDeCapped(pageName);
         componentName = strUtils.firstLetterDeCapped(componentName);
         WebElement element = getElementFromComponent(elementName, componentName, pageName, new ObjectRepository());
-        waitUntilElementIs(element, ElementState.valueOf(expectedState), true);
+        verifyElementState(element, ElementState.valueOf(expectedState));
         log.new Success("The element " + elementName + " was verified to be enabled!");
     }
 
@@ -910,7 +870,7 @@ public class CommonSteps extends WebUtilities {
         componentName = strUtils.firstLetterDeCapped(componentName);
         try {
             WebElement element = getElementFromComponent(elementName, componentName, pageName, new ObjectRepository());
-            if (elementIs(element, ElementState.DISPLAYED)) waitUntilElementIs(element, expectedState, true);
+            if (elementIs(element, ElementState.DISPLAYED)) verifyElementState(element, expectedState);
         }
         catch (WebDriverException ignored){log.new Warning("The " + elementName + " was not present");}
     }
@@ -1027,6 +987,7 @@ public class CommonSteps extends WebUtilities {
                         "\nExpected value: " + attributeValue + "\nActual value: " + element.getAttribute(attributeName),
                 wait.until(ExpectedConditions.attributeContains(element, attributeName, attributeValue))
         );
+        log.new Success("Value of '" + attributeName + "' attribute is verified to be '" + attributeValue + "'!");
     }
 
     @Given("Verify {} css attribute of element {} on the {} is {} ")
@@ -1050,6 +1011,7 @@ public class CommonSteps extends WebUtilities {
                         "\nExpected value: " + attributeValue + "\nActual value: " + element.getCssValue(attributeName),
                 attributeValue
         );
+        log.new Success("Value of '" + attributeName + "' attribute is verified to be '" + attributeValue + "'!");
     }
 
     @Given("Verify that component element {} of {} on the {} has {} value for its {} attribute")
@@ -1089,7 +1051,8 @@ public class CommonSteps extends WebUtilities {
         attributeValue = contextCheck(attributeValue);
         pageName = strUtils.firstLetterDeCapped(pageName);
         listName = strUtils.firstLetterDeCapped(listName);
-        WebElement component = acquireExactNamedComponentAmongst(selectionName, elementFieldName, listName, pageName, new ObjectRepository());
+        List<WebComponent> components = getComponentsFromPage(listName, pageName, new ObjectRepository());
+        WebComponent component = acquireExactNamedComponentAmongst(components, selectionName, elementFieldName);
         log.new Info("Verifying " +
                 highlighted(BLUE, attributeName) +
                 highlighted(GRAY, " attribute of ") +
@@ -1154,7 +1117,7 @@ public class CommonSteps extends WebUtilities {
         componentListName = strUtils.firstLetterDeCapped(componentListName);
         List<WebComponent> components = getComponentsFromPage(componentListName, pageName, new ObjectRepository());
         WebComponent component = acquireNamedComponentAmongst(components, componentName);
-        List<WebElement> elements = getElementsFromComponent(elementListName, component, pageName, new ObjectRepository());
+        List<WebElement> elements = getElementsFromComponent(elementListName, component);
         WebElement element = acquireNamedElementAmongst(elements, elementName);
         log.new Info("Verifying " +
                 highlighted(BLUE, attributeName) +
@@ -1348,18 +1311,16 @@ public class CommonSteps extends WebUtilities {
     }
 
     @Given("Verify the page is redirecting to the page {}")
-    public void verifyUrl(String url) {
+    public void verifyCurrentUrl(String url) {
         url = contextCheck(url);
         log.new Info("The url contains " + url);
-        log.new Info("The current url contains " + driver.getCurrentUrl());
-        Assert.assertTrue(driver.getCurrentUrl().contains(url));
+        Assert.assertTrue("The page is not redirected to: " + url, driver.getCurrentUrl().contains(url));
     }
 
-    @Given("Verify the page is redirecting to the {} page")
-    public void verifyTextUrl(String url) {
-        log.new Info("The url contains " + url);
-        log.new Info("The current url contains " + driver.getCurrentUrl());
-        Assert.assertTrue(driver.getCurrentUrl().contains(url));
+    @Given("Verify the url contains with the text {}")
+    public void verifyTextUrl(String text) {
+        log.new Info("The url contains " + text);
+        Assert.assertTrue("The page is not directed to: " + text ,driver.getCurrentUrl().contains(text));
     }
 
     @Given("Click the specific text {} button")
@@ -1411,23 +1372,18 @@ public class CommonSteps extends WebUtilities {
         element.sendKeys(key);
     }
 
-    @Given("Upload file on component input {} of {} component on the {} with file: {}")
-    public void fillInputWithFile(String inputName, String componentName, String pageName, String input){
-        input = contextCheck(input);
-        log.new Info("Filling " +
-                highlighted(BLUE, inputName) +
-                highlighted(GRAY," on the ") +
-                highlighted(BLUE, pageName) +
-                highlighted(GRAY, " with the text: ") +
-                highlighted(BLUE, input)
-        );
-        pageName = strUtils.firstLetterDeCapped(pageName);
-        componentName = strUtils.firstLetterDeCapped(componentName);
-        clearFillInput(
-                getElementFromComponent(inputName, componentName, pageName, new ObjectRepository()), //Element
-                input,
-                false,
-                false
-        );
+    @Given("Execute JS command: {}")
+    public void executeJSCommand(String script) {
+        executeScript(script);
+    }
+
+    @Given("Listen to {} event & print {} object")
+    public void listenGetAndPrintObject(String eventName, String objectScript)  {
+        String listenerScript = "_ddm.listen(" + eventName + ");";
+        objectScript = "return " + objectScript;
+        if (isEventFired(eventName, listenerScript)) {
+            Object object = executeScript(objectScript);
+            log.new Info(object);
+        }
     }
 }

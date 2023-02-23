@@ -42,3 +42,9 @@ Feature: Login
     * Verify text of listed component element Address from the dataRows of resultModel on the ToolsPage is equal to Den Haag - Netherlands
     * Verify text of listed component element State and City from the dataRows of resultModel on the ToolsPage is equal to Haryana Karnal
     * Click component element closeButton of ResultModel component on the ToolsPage
+
+  @Web-UI @SCN-DEMO-QA-2
+  Scenario: DemoQA slider interactions
+    * Click listed element Widgets from categoryCards list on the LandingPage
+    * Click listed element Slider from tools list on the ToolsPage
+    * Wait 5 seconds
