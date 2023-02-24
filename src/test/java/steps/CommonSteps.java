@@ -13,13 +13,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.remote.HttpCommandExecutor;
 import org.openqa.selenium.remote.RemoteExecuteMethod;
-import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.remote.html5.RemoteWebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.*;
 import utils.driver.Driver;
 import utils.driver.DriverFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -28,8 +26,6 @@ import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -45,6 +41,8 @@ public class CommonSteps extends WebUtilities {
     EmailInbox emailInbox = new EmailInbox();
     ObjectMapper objectMapper = new ObjectMapper();
     ScreenCaptureUtility capture = new ScreenCaptureUtility();
+
+    public CommonSteps(){PropertyUtility.loadProperties("src/test/resources/test.properties");}
 
     @SuppressWarnings("unused")
     @DefaultParameterTransformer
@@ -1385,5 +1383,25 @@ public class CommonSteps extends WebUtilities {
             Object object = executeScript(objectScript);
             log.new Info(object);
         }
+    }
+
+    @Given("Upload file on component input {} of {} component on the {} with file: {}")
+    public void fillInputWithFile(String inputName, String componentName, String pageName, String input){
+        input = contextCheck(input);
+        log.new Info("Filling " +
+                highlighted(BLUE, inputName) +
+                highlighted(GRAY," on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, " with the text: ") +
+                highlighted(BLUE, input)
+        );
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        componentName = strUtils.firstLetterDeCapped(componentName);
+        clearFillInput(
+                getElementFromComponent(inputName, componentName, pageName, new ObjectRepository()), //Element
+                input,
+                false,
+                false
+        );
     }
 }
