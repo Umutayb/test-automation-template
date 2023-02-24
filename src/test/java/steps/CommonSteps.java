@@ -79,14 +79,6 @@ public class CommonSteps extends WebUtilities {
             }
             org.openqa.selenium.remote.SessionId sessionId = driver.getSessionId();
             Driver.terminate();
-            URL remoteServerAddress = ((HttpCommandExecutor) driver.getCommandExecutor()).getAddressOfRemoteServer();
-// Build the video info URL
-            URL videoInfoURL = new URL(remoteServerAddress, "/grid/admin/HubVideoInfoServlet/?sessionId=" + sessionId);
-// Perform a GET request against the API
-            //Response response = RestAssured.given().when().get(videoInfoURL);
-            log.new Important(videoInfoURL);
-
-//Parse and get the path of the video
         }
         if (scenario.isFailed()) throw new RuntimeException(scenario.getName() + ": FAILED!");
         else log.new Success(scenario.getName() + ": PASS!");
