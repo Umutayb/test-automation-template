@@ -48,3 +48,9 @@ Feature: Login
     * Click listed element Widgets from categoryCards list on the LandingPage
     * Click listed element Slider from tools list on the ToolsPage
     * Wait 5 seconds
+
+  @Web-UI @SCN-DEMO-QA-3
+  Scenario: DemoQA bookstore test
+    * Click listed element Book Store Application from categoryCards list on the LandingPage
+    * Print book attribute
+    * Wait 5 seconds

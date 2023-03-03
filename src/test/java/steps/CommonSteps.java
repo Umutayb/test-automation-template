@@ -65,7 +65,7 @@ public class CommonSteps extends WebUtilities {
     }
 
     @After
-    public void kill(Scenario scenario) throws MalformedURLException {
+    public void kill(Scenario scenario) {
         if (initialiseBrowser) {
             if (scenario.isFailed()) {
                 capture.captureScreen(
@@ -102,7 +102,7 @@ public class CommonSteps extends WebUtilities {
     @Given("Navigate to url: {}")
     public void getUrl(String url) {
         url = contextCheck(url);
-        navigate(url);
+        driver.get(url);
     }
 
     @Given("Go to the {} page")
@@ -152,7 +152,7 @@ public class CommonSteps extends WebUtilities {
         String url = protocol + "://" + baseUrl;
         // appending username, password with URL
         // We check if the env is null so that we do not set credentials twice
-        if (ObjectRepository.environment == null) url = protocol + "://" + username + ":" + password + "@" + baseUrl;
+        if (ObjectRepository.environment == null && username != null && password != null) url = protocol + "://" + username + ":" + password + "@" + baseUrl;
         log.new Info("Navigating to " + highlighted(BLUE, url));
         driver.get(url);
         ObjectRepository.environment = environment;
@@ -1246,6 +1246,27 @@ public class CommonSteps extends WebUtilities {
             );
             log.new Success("Text of '" + elementName + "' verified as '" + expectedText + "'!");
         }
+    }
+
+    @Given("Verify presence of listed component element {} of {} from {} list on the {}")
+    public void verifyListedComponentElementContainsText(String elementText, String listName, String componentName, String pageName){
+        elementText = contextCheck(elementText);
+        pageName = strUtils.firstLetterDeCapped(pageName);
+        componentName = strUtils.firstLetterDeCapped(componentName);
+        List<WebElement> elements = getElementsFromComponent(listName, componentName, pageName, new ObjectRepository());
+        WebElement element = acquireNamedElementAmongst(elements, elementText);
+        log.new Info("Performing text verification for " +
+                highlighted(BLUE, elementText) +
+                highlighted(GRAY, " on the ") +
+                highlighted(BLUE, pageName) +
+                highlighted(GRAY, " with the text: ") +
+                highlighted(BLUE, elementText)
+        );
+        Assert.assertTrue(
+                "The " + elementText + " does not contain text '" + elementText + "' ",
+                element.getText().contains(elementText)
+        );
+        log.new Success("Text of '" + elementText + "' verified as '" + elementText + "'!");
     }
 
     @Given("Verify that component element {} of {} from {} list on the {} has {} value for its {} attribute")
