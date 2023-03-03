@@ -3,6 +3,7 @@ package steps;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.webdriverextensions.WebComponent;
 import common.EmailInbox;
+import common.LogUtility;
 import context.ContextStore;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.*;
@@ -11,7 +12,6 @@ import common.ObjectRepository;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.html5.LocalStorage;
-import org.openqa.selenium.remote.HttpCommandExecutor;
 import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.html5.RemoteWebStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -37,12 +35,15 @@ public class CommonSteps extends WebUtilities {
     public boolean authenticate;
     public boolean initialiseBrowser;
 
-    Driver browser = new Driver();
+    LogUtility logUtil = new LogUtility();
     EmailInbox emailInbox = new EmailInbox();
     ObjectMapper objectMapper = new ObjectMapper();
     ScreenCaptureUtility capture = new ScreenCaptureUtility();
 
-    public CommonSteps(){PropertyUtility.loadProperties("src/test/resources/test.properties");}
+    public CommonSteps(){
+        PropertyUtility.loadProperties("src/test/resources/test.properties");
+        logUtil.setLogLevel(logUtil.getLogLevel(properties.getProperty("system-log-level", "error")));
+    }
 
     @SuppressWarnings("unused")
     @DefaultParameterTransformer
