@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import utils.FileUtilities;
+import utils.PropertyUtility;
 import utils.WebUtilities;
 
 import java.io.FileReader;
@@ -25,7 +26,7 @@ public  class CucumberUtilities extends WebUtilities {
     Properties properties;
 
     public CucumberUtilities(){
-        properties = FileUtilities.properties;
+        properties = PropertyUtility.properties;
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }

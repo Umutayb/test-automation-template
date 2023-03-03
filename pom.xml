@@ -13,7 +13,7 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>1.5.8</web.ui.framework.version>
+        <web.ui.framework.version>1.6.6</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <cucumber.version>7.8.1</cucumber.version>
         <selenium.version>4.6.0</selenium.version>
@@ -187,6 +187,14 @@
             <artifactId>assertj-core</artifactId>
             <version>3.23.1</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.5</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- Web Driver Extensions -->

@@ -84,8 +84,8 @@ public class EmailInbox extends WebUtilities {
         new EmailUtilities.Inbox(
                 "pop.gmail.com",
                 "995",
-                FileUtilities.properties.getProperty("test-email"),
-                FileUtilities.properties.getProperty("email-application-password"),
+                PropertyUtility.properties.getProperty("test-email"),
+                PropertyUtility.properties.getProperty("email-application-password"),
                 "ssl",
                 false,
                 false,
