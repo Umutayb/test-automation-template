@@ -68,6 +68,7 @@ to extend the **Utilities** class. This also extends the **Driver** class, allow
 #### Step 3: Create a features package
 >Create _**.feature**_ files, create your scenarios using the steps you have implemented in ***Step 2***.
 
+Note: Your feature file must contain a @Web-UI tag to initialize the browser if it requires a web driver
 #### Step 4: Execute your tests
 >###### Selenium Grid needs to be running first, turn on Docker, then in project directory start Selenium Grid & Nodes by using the following command:
 >````shell
