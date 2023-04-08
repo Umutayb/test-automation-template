@@ -3,6 +3,8 @@ package common;
 import lombok.Getter;
 import pages.amazon.HomePage;
 import pages.demoqa.LandingPage;
+import pages.demoqa.LoginPage;
+import pages.demoqa.ProfilePage;
 import pages.demoqa.ToolsPage;
 
 @SuppressWarnings("unused")
@@ -26,4 +28,7 @@ public class ObjectRepository {
     LandingPage landingPage = new LandingPage();
     ToolsPage toolsPage = new ToolsPage();
     HomePage homePage = new HomePage();
+    LoginPage loginPage = new LoginPage();
+    ProfilePage profilePage = new ProfilePage();
+
 }

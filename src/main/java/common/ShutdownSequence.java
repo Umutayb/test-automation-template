@@ -10,6 +10,8 @@ import retrofit2.Response;
 import slack.Slack;
 import utils.FileUtilities;
 import utils.Printer;
+import utils.StringUtilities;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,7 +26,7 @@ public class ShutdownSequence extends CucumberUtilities {
     Slack slack = new Slack();
 
     public void publishReports(String testName){ // This method is called upon after the tests are done running
-        log.new Info("Performing final sequence for the test specification: " + highlighted(Color.PURPLE,testName));
+        log.new Info("Performing final sequence for the test specification: " + highlighted(StringUtilities.Color.PURPLE,testName));
         try {
             if (Boolean.parseBoolean(properties.getProperty("upload-results", "false"))) {
                 File screenshotsDirectory = new File("screenshots");
