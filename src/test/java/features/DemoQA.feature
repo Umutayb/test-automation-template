@@ -46,66 +46,12 @@ Feature: Login
 
   @Web-UI @SCN-DEMO-QA-2
   Scenario: DemoQA slider interactions
-    * Click listed element Widgets from categoryCards list on the LandingPage* Click listed element Slider from tools list on the ToolsPage
+    * Click listed element Widgets from categoryCards list on the LandingPage
+    * Click listed element Slider from tools list on the ToolsPage
     * Wait 5 seconds
 
   @Web-UI @SCN-DEMO-QA-3
   Scenario: DemoQA bookstore test
     * Click listed element Book Store Application from categoryCards list on the LandingPage
     * Print book attribute
-    * Wait 5 seconds
-
-  Scenario: Demo1
-    * Click the {} on the {}
-    * Click component element {} of {} component on the {}
-    * Fill component input {} of {} component on the {} with text: {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Verify text of listed component element {} from the {} of {} on the {} is equal to {}
-    * Click component element {} of {} component on the {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Checking the presence of the element text on the {}
-    * Wait for element {} on the {} to be visible
-    * Click component element {} of {} component on the {}
-    * Fill component form input of {} component on the {}
-    * Click button with {} text
-    * Click listed component element {} of {} from {} list on the {}
-    * Click component element {} of {} component on the {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Fill component input {} of {} component on the {} with text: {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Upload file on component input {} of {} component on the {} with file: {}
-    * Fill component input {} of {} component on the {} with text: {}
-    * Click component element {} of {} component on the {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Click component element {} of {} component on the {}
-    * Click listed component element {} of {} from {} list on the {}
-    * Click component element {} of {} component on the {}
-    * Verify text of listed component element confirmationMessage from the {} of {} on the ConfirmationPage is equal to {}
-    * Wait {} seconds
-
-
-  Scenario: Nexus-Demo-1
-    * Navigate to url: {}
-    * Click the {} on the {}
-    * Click the {} on the {}
-    * Click button with {} text
-    * Wait 5 seconds
-
-  Scenario: Nexus-Demo-2
-    * Navigate to url: {}
-    * Click the {} on the {}
-    * Click listed element {} from {} list on the {}
-    * Click button with {} text
-    * Wait for element {} on the {} to be visible
-    * Click button with {} text
-
-  Scenario: Nexus-Demo-3
-    * Navigate to url: {}
-    * Click the {} on the {}
-    * Click the {} on the {}
-    * Fill component input {} of {} component on the {} with text: {}
-    * Fill component input {} of {} component on the {} with text: {}
-    * Fill component input {} of {} component on the {} with text: {}
-    * Click button with {} text
     * Wait 5 seconds
