@@ -13,4 +13,3 @@ Feature: BookStore API
       | password      | CONTEXT-password |
     * Click component element loginButton of LoginWrapper component on the loginPage
     * Verify the book info for the user in context
-    * Wait 5 seconds
