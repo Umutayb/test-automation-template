@@ -95,7 +95,6 @@ public class CommonSteps extends WebUtilities {
                         driver
                 );
             }
-            org.openqa.selenium.remote.SessionId sessionId = driver.getSessionId();
             Driver.terminate();
         }
         if (scenario.isFailed()) throw new RuntimeException(scenario.getName() + ": FAILED!");

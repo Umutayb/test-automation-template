@@ -1,7 +1,5 @@
 package common;
 
-import calliope.Calliope;
-import calliope.CalliopeApi;
 import models.calliope.ReportResponse;
 import models.cucumber.CucumberReport;
 import models.slack.Receivers;
@@ -22,12 +20,11 @@ public class ShutdownSequence extends CucumberUtilities {
 
     Printer log = new Printer(ShutdownSequence.class);
     FileUtilities.Zip zip = new FileUtilities.Zip();
-    Calliope calliope = new Calliope();
     Slack slack = new Slack();
 
     public void publishReports(String testName){ // This method is called upon after the tests are done running
         log.new Info("Performing final sequence for the test specification: " + highlighted(StringUtilities.Color.PURPLE,testName));
-        try {
+        /*
             if (Boolean.parseBoolean(properties.getProperty("upload-results", "false"))) {
                 File screenshotsDirectory = new File("screenshots");
                 File[] screenshots = screenshotsDirectory.listFiles();
@@ -88,9 +85,8 @@ public class ShutdownSequence extends CucumberUtilities {
                     }
                     log.new Warning("Reports are posted on slack.");
                 }
-            }
-        }
-        catch (IOException e) {throw new RuntimeException(e);}
+            }            */
+
         log.new Info("Final sequence completed.");
     }
 }

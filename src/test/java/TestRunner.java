@@ -1,11 +1,8 @@
-import common.ShutdownSequence;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import utils.Printer;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,9 +31,9 @@ public class TestRunner {
 
     @AfterClass
     public static void finalSequence(){
-        String tags = System.getProperty("cucumber.filter.tags");
-        if (tags != null)
-            new ShutdownSequence().publishReports(System.getProperty("cucumber.filter.tags"));
-        else new Printer(TestRunner.class).new Warning("Tags are null!");
+        //String tags = System.getProperty("cucumber.filter.tags");
+        //if (tags != null)
+        //    new ShutdownSequence().publishReports(System.getProperty("cucumber.filter.tags"));
+        //else new Printer(TestRunner.class).new Warning("Tags are null!");
     }
 }
