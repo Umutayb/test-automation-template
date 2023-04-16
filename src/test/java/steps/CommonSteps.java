@@ -56,6 +56,21 @@ public class CommonSteps extends WebUtilities {
         return objectMapper.convertValue(fromValue, objectMapper.constructType(toValueType));
     }
 
+    public void processScenarioTags(Scenario scenario){
+        log.new Important(scenario.getSourceTagNames());
+        this.scenario = scenario;
+        authenticate = scenario.getSourceTagNames().contains("@Authenticate");
+        initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
+    }
+
+    public DriverFactory.DriverType getDriverType(Scenario scenario) {
+        for (DriverFactory.DriverType driverType: DriverFactory.DriverType.values()) {
+            if (scenario.getSourceTagNames().stream().anyMatch(tag -> tag.replaceAll("@", "").equalsIgnoreCase(driverType.name())))
+                return driverType;
+        }
+        return null;
+    }
+
     @Before
     public void before(Scenario scenario){
         log.new Info("Running: " + highlighted(PURPLE, scenario.getName()));
