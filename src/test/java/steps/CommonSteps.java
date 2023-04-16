@@ -57,7 +57,7 @@ public class CommonSteps extends WebUtilities {
     }
 
     public void processScenarioTags(Scenario scenario){
-        log.new Important(scenario.getSourceTagNames());
+        log.new Important(scenario.getSourceTagNames().toString());
         this.scenario = scenario;
         authenticate = scenario.getSourceTagNames().contains("@Authenticate");
         initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
@@ -114,21 +114,6 @@ public class CommonSteps extends WebUtilities {
         }
         if (scenario.isFailed()) throw new RuntimeException(scenario.getName() + ": FAILED!");
         else log.new Success(scenario.getName() + ": PASS!");
-    }
-
-    public void processScenarioTags(Scenario scenario){
-        log.new Important(scenario.getSourceTagNames().toString());
-        this.scenario = scenario;
-        authenticate = scenario.getSourceTagNames().contains("@Authenticate");
-        initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
-    }
-
-    public DriverFactory.DriverType getDriverType(Scenario scenario) {
-        for (DriverFactory.DriverType driverType: DriverFactory.DriverType.values()) {
-            if (scenario.getSourceTagNames().stream().anyMatch(tag -> tag.replaceAll("@", "").equalsIgnoreCase(driverType.name())))
-                return driverType;
-        }
-        return null;
     }
 
     /**
