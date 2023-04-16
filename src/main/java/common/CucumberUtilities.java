@@ -9,9 +9,8 @@ import models.slack.Receivers;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import utils.FileUtilities;
+import pickleib.utilities.WebUtilities;
 import utils.PropertyUtility;
-import utils.WebUtilities;
 
 import java.io.FileReader;
 import java.io.IOException;

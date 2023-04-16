@@ -1,6 +1,7 @@
 package common;
 
 import org.openqa.selenium.TimeoutException;
+import pickleib.utilities.WebUtilities;
 import utils.*;
 
 import java.util.concurrent.TimeUnit;

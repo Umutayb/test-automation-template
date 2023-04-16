@@ -2,7 +2,8 @@ package pages.amazon;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.WebUtilities;
+import pickleib.utilities.WebUtilities;
+
 
 import java.util.List;
 
