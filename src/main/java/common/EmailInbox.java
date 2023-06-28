@@ -28,8 +28,8 @@ public class EmailInbox extends WebUtilities {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    properties.getProperty("test-email"),
-                    properties.getProperty("email-application-password"),
+                    PropertyUtility.getProperty("test-email"),
+                    PropertyUtility.getProperty("email-application-password"),
                     "ssl",
                     filter,
                     filterKey,
@@ -60,8 +60,8 @@ public class EmailInbox extends WebUtilities {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    properties.getProperty("test-email"),
-                    properties.getProperty("email-application-password"),
+                    PropertyUtility.getProperty("test-email"),
+                    PropertyUtility.getProperty("email-application-password"),
                     "ssl",
                     filter,
                     filterKey,
@@ -85,8 +85,8 @@ public class EmailInbox extends WebUtilities {
         new EmailUtilities.Inbox(
                 "pop.gmail.com",
                 "995",
-                PropertyUtility.properties.getProperty("test-email"),
-                PropertyUtility.properties.getProperty("email-application-password"),
+                PropertyUtility.getProperty("test-email"),
+                PropertyUtility.getProperty("email-application-password"),
                 "ssl",
                 false,
                 false,

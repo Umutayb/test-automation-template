@@ -19,6 +19,9 @@ import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.html5.RemoteWebStorage;
 import pickleib.driver.*;
 import pickleib.element.*;
+import pickleib.enums.Direction;
+import pickleib.enums.ElementState;
+import pickleib.enums.Navigation;
 import pickleib.utilities.*;
 import pickleib.utilities.email.EmailAcquisition;
 import pickleib.utilities.email.EmailInbox;
@@ -44,8 +47,8 @@ public class CommonSteps extends WebUtilities {
     ElementAcquisition.PageObjectModel acquire = new ElementAcquisition.PageObjectModel();
 
     public CommonSteps(){
-        PropertyUtility.loadProperties("src/test/resources/test.properties");
-        logUtil.setLogLevel(logUtil.getLogLevel(properties.getProperty("system-log-level", "error")));
+        //PropertyUtility.loadProperties("src/test/resources/test.properties");
+        logUtil.setLogLevel(logUtil.getLogLevel(PropertyUtility.getProperty("system-log-level", "error")));
     }
 
     @SuppressWarnings("unused")
@@ -107,7 +110,8 @@ public class CommonSteps extends WebUtilities {
                                 .filter(tag -> tag.contains("SCN-"))
                                 .collect(Collectors.joining())
                                 .replaceAll("SCN-", ""),
-                        driver
+                        "jpeg", driver
+
                 );
             }
             Driver.terminate();
@@ -199,10 +203,10 @@ public class CommonSteps extends WebUtilities {
      */
     @Given("^Navigate to the (acceptance|test|dev) page$")
     public void getURL(ObjectRepository.Environment environment) {
-        String username = properties.getProperty("website-username");
-        String password = properties.getProperty("website-password");
-        String protocol = properties.getProperty("protocol", "https").toLowerCase();
-        String baseUrl = properties.getProperty(environment.getUrlKey());
+        String username = PropertyUtility.getProperty("website-username");
+        String password = PropertyUtility.getProperty("website-password");
+        String protocol = PropertyUtility.getProperty("protocol", "https").toLowerCase();
+        String baseUrl = PropertyUtility.getProperty(environment.getUrlKey());
         String url = protocol + "://" + baseUrl;
 
         if (ObjectRepository.environment == null && username != null && password != null) url = protocol + "://" + username + ":" + password + "@" + baseUrl;
@@ -310,7 +314,7 @@ public class CommonSteps extends WebUtilities {
      * Takes a screenshot of the current page.
      */
     @Given("Take a screenshot")
-    public void takeAScreenshot() {capture.captureScreen(scenario.getName().replaceAll(" ","_"), driver);}
+    public void takeAScreenshot() {capture.captureScreen(scenario.getName().replaceAll(" ","_"),"jpeg", driver);}
 
     /**
      * Clicks the specified button on the page.

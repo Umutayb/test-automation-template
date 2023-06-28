@@ -25,13 +25,12 @@ public  class CucumberUtilities extends WebUtilities {
     Properties properties;
 
     public CucumberUtilities(){
-        properties = PropertyUtility.properties;
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
     public List<Receivers.Receiver> getReceivers() {
-        try(FileReader file = new FileReader(properties.getProperty("receivers-directory"))) {
+        try(FileReader file = new FileReader(PropertyUtility.getProperty("receivers-directory"))) {
             return mapper.readValue(file, Receivers.class).receivers();
         }
         catch (IOException e) {throw new RuntimeException(e);}
