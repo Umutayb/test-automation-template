@@ -1,12 +1,12 @@
 package pages.demoqa.components;
 
+import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.utilities.WebUtilities;
 
 import java.util.List;
 
-public class ResultModel extends WebUtilities {
+public class ResultModel extends WebComponent {
 
     @FindBy(id = "example-modal-sizes-title-lg")
     WebElement header;

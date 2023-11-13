@@ -13,12 +13,12 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>1.7.7</web.ui.framework.version>
+        <web.ui.framework.version>1.9.3</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
-        <cucumber.version>7.11.1</cucumber.version>
-        <selenium.version>4.10.0</selenium.version>
+        <cucumber.version>7.14.0</cucumber.version>
+        <selenium.version>4.15.0</selenium.version>
         <retrofit.version>2.9.0</retrofit.version>
-        <okhttp.version>4.9.3</okhttp.version>
+        <okhttp.version>4.12.0</okhttp.version>
     </properties>
 
     <dependencyManagement>

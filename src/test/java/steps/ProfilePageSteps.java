@@ -2,16 +2,16 @@ package steps;
 
 import bookstore.models.BookModel;
 import bookstore.models.UserResponseModel;
+import common.PageObject;
 import context.ContextStore;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import pages.demoqa.ProfilePage;
-import pickleib.utilities.WebUtilities;
 
 import java.util.List;
 import static utils.StringUtilities.Color.*;
 
-public class ProfilePageSteps extends WebUtilities {
+public class ProfilePageSteps extends PageObject {
 
     ProfilePage profilePage = new ProfilePage();
 
@@ -32,44 +32,44 @@ public class ProfilePageSteps extends WebUtilities {
             String expectedIsbn = book.getIsbn().trim();
             String actualIsbn = profilePage.getDetailRow("ISBN").getValue().trim();
             Assert.assertEquals("Isbn not match!",expectedIsbn,actualIsbn);
-            log.new Success("Isbn matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Isbn matches for book named: " +BLUE.getValue()+book.getTitle());
 
             String expectedPublisher = book.getPublisher().trim();
             String actualPublisher = profilePage.getDetailRow("Publisher").getValue().trim();
             Assert.assertEquals("Publisher not match!", expectedPublisher, actualPublisher);
-            log.new Success("Publisher matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Publisher matches for book named: " +BLUE.getValue()+book.getTitle());
 
             String expectedAuthor = book.getAuthor().trim();
             String actualAuthor = profilePage.getDetailRow("Author").getValue().trim();
             Assert.assertEquals("Author not match!", expectedAuthor, actualAuthor);
-            log.new Success("Author matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Author matches for book named: " +BLUE.getValue()+book.getTitle());
 
             String expectedTitle = book.getTitle().trim();
             String actualTitle = profilePage.getDetailRow("Title").getValue().trim();
             Assert.assertEquals("Title not match", expectedTitle, actualTitle);
-            log.new Success("Title matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Title matches for book named: " +BLUE.getValue()+book.getTitle());
 
             String expectedDescription = book.getDescription().trim();
             String actualDescription = profilePage.getDetailRow("Description").getValue().trim();
             Assert.assertEquals("Description not match!", expectedDescription, actualDescription);
-            log.new Success("Description matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Description matches for book named: " +BLUE.getValue()+book.getTitle());
 
             String expectedWebsite = book.getWebsite().trim();
             String actualWebsite = profilePage.getDetailRow("Website").getValue().trim();
             Assert.assertEquals("Website not match", expectedWebsite, actualWebsite);
-            log.new Success("Website matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Website matches for book named: " +BLUE.getValue()+book.getTitle());
 
             String expectedSubTitle = book.getSubTitle().trim();
             String actualSubTitle = profilePage.getDetailRow("Sub Title").getValue().trim();
             Assert.assertEquals("SubTitle not match!", expectedSubTitle, actualSubTitle);
-            log.new Success("SubTitle matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("SubTitle matches for book named: " +BLUE.getValue()+book.getTitle());
 
             Integer expectedPages = book.getPages();
             Integer  actualPages = Integer.valueOf(profilePage.getDetailRow("Total Pages").getValue());
             Assert.assertEquals("Page number not match!", expectedPages, actualPages);
-            log.new Success("Page number matches for book named: " +BLUE.getValue()+book.getTitle());
+            log.success("Page number matches for book named: " +BLUE.getValue()+book.getTitle());
 
-            log.new Success("Publish date for " +BLUE.getValue()+book.getTitle() +GRAY.getValue()+" is: " +PURPLE.getValue()+book.getPublish_date().substring(0,10));
+            log.success("Publish date for " +BLUE.getValue()+book.getTitle() +GRAY.getValue()+" is: " +PURPLE.getValue()+book.getPublish_date().substring(0,10));
 
             clickElement(profilePage.backToBookStoreButton);
             profilePage.waitForList(profilePage.bookTitles);

@@ -1,12 +1,12 @@
 package pages.demoqa.components;
 
+import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.utilities.WebUtilities;
 
 import java.util.List;
 
-public class PracticeForm extends WebUtilities {
+public class PracticeForm extends WebComponent {
 
     @FindBy(css = "h5")
     public WebElement header;

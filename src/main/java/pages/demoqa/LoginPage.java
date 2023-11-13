@@ -1,11 +1,11 @@
 package pages.demoqa;
 
+import common.PageObject;
 import org.openqa.selenium.support.FindBy;
 import pages.demoqa.components.LoginWrapper;
-import pickleib.utilities.WebUtilities;
 
 
-public class LoginPage extends WebUtilities {
+public class LoginPage extends PageObject {
     @FindBy(css = ".login-wrapper")
     LoginWrapper loginWrapper;
 }

@@ -9,29 +9,23 @@ import models.slack.Receivers;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import pickleib.utilities.WebUtilities;
 import utils.PropertyUtility;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-public  class CucumberUtilities extends WebUtilities {
+public  class CucumberUtilities extends PageObject {
 
     ObjectMapper mapper = new ObjectMapper();
 
-    Properties properties;
-
     public CucumberUtilities(){
-        properties = PropertyUtility.properties;
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
     public List<Receivers.Receiver> getReceivers() {
-        try(FileReader file = new FileReader(properties.getProperty("receivers-directory"))) {
+        try(FileReader file = new FileReader(PropertyUtility.getProperty("receivers-directory"))) {
             return mapper.readValue(file, Receivers.class).receivers();
         }
         catch (IOException e) {throw new RuntimeException(e);}

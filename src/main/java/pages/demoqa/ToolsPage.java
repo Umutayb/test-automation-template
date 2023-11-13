@@ -1,15 +1,15 @@
 package pages.demoqa;
 
+import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.demoqa.components.DatePicker;
 import pages.demoqa.components.PracticeForm;
 import pages.demoqa.components.ResultModel;
-import pickleib.utilities.WebUtilities;
 
 import java.util.List;
 
-public class ToolsPage extends WebUtilities {
+public class ToolsPage extends PageObject {
 
     @FindBy(css = ".element-group")
     List<WebElement> categories;

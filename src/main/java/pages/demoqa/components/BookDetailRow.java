@@ -1,13 +1,13 @@
 package pages.demoqa.components;
 
+import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.utilities.WebUtilities;
 
 
 import java.util.List;
 
-public class BookDetailRow extends WebUtilities {
+public class BookDetailRow extends WebComponent {
 
     @FindBy(css = "[class='col-md-3 col-sm-12']")
     public WebElement label;
