@@ -71,7 +71,7 @@ public class ProfilePageSteps extends PageObject {
 
             log.success("Publish date for " +BLUE.getValue()+book.getTitle() +GRAY.getValue()+" is: " +PURPLE.getValue()+book.getPublish_date().substring(0,10));
 
-            clickElement(profilePage.backToBookStoreButton);
+            clickElement(profilePage.backToBookStoreButton, true);
             profilePage.waitForList(profilePage.bookTitles);
         }
     }

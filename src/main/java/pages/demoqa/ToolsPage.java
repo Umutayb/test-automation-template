@@ -26,4 +26,7 @@ public class ToolsPage extends PageObject {
     @FindBy(css = ".modal-content")
     ResultModel resultModel;
 
+    @FindBy(css = "#login")
+    WebElement loginButton;
+
 }
