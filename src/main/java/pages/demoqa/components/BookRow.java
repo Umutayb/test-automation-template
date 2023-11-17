@@ -1,12 +1,12 @@
 package pages.demoqa.components;
 
+import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.utilities.WebUtilities;
 
 import java.util.List;
 
-public class BookRow extends WebUtilities {
+public class BookRow extends WebComponent {
 
     @FindBy(css = ".rt-td")
     public List<WebElement> cells;

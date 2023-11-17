@@ -1,17 +1,13 @@
 package common;
 
 import org.openqa.selenium.TimeoutException;
-import pickleib.utilities.WebUtilities;
 import utils.*;
 
 import java.util.concurrent.TimeUnit;
 
 import static utils.EmailUtilities.Inbox.EmailField.CONTENT;
 
-public class EmailInbox extends WebUtilities {
-
-    Printer log = new Printer(EmailInbox.class);
-    TextParser parser = new TextParser();
+public class EmailInbox extends PageObject {
 
     public String getEmail(
             EmailUtilities.Inbox.EmailField filter,
@@ -21,15 +17,15 @@ public class EmailInbox extends WebUtilities {
             Boolean print,
             Boolean save){
         double initialTime = System.currentTimeMillis();
-        log.new Info("Acquiring email...");
+        log.info("Acquiring email...");
 
         EmailUtilities.Inbox inbox;
         do {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    properties.getProperty("test-email"),
-                    properties.getProperty("email-application-password"),
+                    PropertyUtility.getProperty("test-email"),
+                    PropertyUtility.getProperty("email-application-password"),
                     "ssl",
                     filter,
                     filterKey,
@@ -43,8 +39,8 @@ public class EmailInbox extends WebUtilities {
         }
         while (inbox.messages.size() == 0);
 
-        log.new Success("Email acquired!");
-        return parser.parse(initialKeyword, finalKeyword, inbox.messages.get(0).get(CONTENT).toString());
+        log.success("Email acquired!");
+        return TextParser.parse(initialKeyword, finalKeyword, inbox.messages.get(0).get(CONTENT).toString());
     }
 
     public String getEmail(
@@ -53,15 +49,15 @@ public class EmailInbox extends WebUtilities {
             Boolean print,
             Boolean save){
         double initialTime = System.currentTimeMillis();
-        log.new Info("Acquiring email...");
+        log.info("Acquiring email...");
 
         EmailUtilities.Inbox inbox;
         do {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    properties.getProperty("test-email"),
-                    properties.getProperty("email-application-password"),
+                    PropertyUtility.getProperty("test-email"),
+                    PropertyUtility.getProperty("email-application-password"),
                     "ssl",
                     filter,
                     filterKey,
@@ -76,7 +72,7 @@ public class EmailInbox extends WebUtilities {
         while (inbox.messages.size() == 0);
 
 
-        log.new Success("Email acquired!");
+        log.success("Email acquired!");
         return inbox.messages.get(0).get(CONTENT).toString();
     }
 
@@ -85,8 +81,8 @@ public class EmailInbox extends WebUtilities {
         new EmailUtilities.Inbox(
                 "pop.gmail.com",
                 "995",
-                PropertyUtility.properties.getProperty("test-email"),
-                PropertyUtility.properties.getProperty("email-application-password"),
+                PropertyUtility.getProperty("test-email"),
+                PropertyUtility.getProperty("email-application-password"),
                 "ssl",
                 false,
                 false,

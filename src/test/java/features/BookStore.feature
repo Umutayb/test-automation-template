@@ -6,7 +6,7 @@ Feature: BookStore API
     * Get the user in context
     * Navigate to the test page
     * Click listed element Book Store Application from categoryCards list on the LandingPage
-    * Click listed element Login from tools list on the ToolsPage
+    * Click the loginButton on the ToolsPage
     * Fill component form input of LoginWrapper component on the loginPage
       | Input Element | Input            |
       | userName      | CONTEXT-userName |

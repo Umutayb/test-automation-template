@@ -1,10 +1,10 @@
 package pages.demoqa.components;
 
+import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.utilities.WebUtilities;
 
-public class LoginWrapper extends WebUtilities {
+public class LoginWrapper extends WebComponent {
 
     @FindBy(id = "userName")
     public WebElement userName;

@@ -1,16 +1,16 @@
 package pages.demoqa;
 
+import common.PageObject;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.demoqa.components.BookDetailRow;
 import pages.demoqa.components.BookRow;
-import pickleib.utilities.WebUtilities;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class ProfilePage extends WebUtilities {
+public class ProfilePage extends PageObject {
 
     @FindBy(css = ".rt-tr-group")
     public List<BookRow> bookRows;

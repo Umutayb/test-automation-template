@@ -6,9 +6,10 @@ import pages.demoqa.LandingPage;
 import pages.demoqa.LoginPage;
 import pages.demoqa.ProfilePage;
 import pages.demoqa.ToolsPage;
+import pickleib.utilities.page.repository.PageRepository;
 
 @SuppressWarnings("unused")
-public class ObjectRepository {
+public class ObjectRepository implements PageRepository {
 
     @Getter
     public enum Environment {
