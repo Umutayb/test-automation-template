@@ -1,6 +1,7 @@
 package steps;
 
 import common.FilterPair;
+import common.ObjectRepository;
 import context.ContextStore;
 import io.cucumber.java.en.Given;
 import collections.Pair;
@@ -21,17 +22,26 @@ import static utils.email.EmailUtilities.Inbox.EmailField.SUBJECT;
 public class EmailSteps {
 
     public Printer log = new Printer(this.getClass());
-    EmailAcquisition emailAcquisition = new EmailAcquisition(getEmailInbox(ContextStore.get("environment"))); // multiple environment support
+    EmailAcquisition emailAcquisition = new EmailAcquisition(getEmailInbox(ObjectRepository.Environment.valueOf(ContextStore.get("goodbits-environment"))));
 
     @Getter
     public enum EmailSubjects {
+        BOOKING_CONFIRMATION("Booking code"),
+        PAYMENT_CONFIRMATION("we have received your payment for your booking"),
+        BOOKING_CANCELLATION("You cancelled your booking"),
+        BOOKING_INVOICE("Open me to get your citizenM invoice"),
         ACCOUNT_VERIFICATION("Please verify your email address"),
-        RESET_PASSWORD("Please reset your password");
+        RESET_PASSWORD("Please reset your password"),
+        CITIZENM_MAGIC_LINK("citizenM magic link");
 
-        private final String key; // Set custom subject values here
+        private final String key;
 
         EmailSubjects(String key) {
             this.key = key;
+        }
+
+        public String getKey() {
+            return key;
         }
     }
 
@@ -57,9 +67,8 @@ public class EmailSteps {
             LocalDateTime startEmailAcquisitionTime = LocalDateTime.now();
             ContextStore.put("emailPath", emailAcquisition.acquireEmail(SUBJECT, subject.getKey()));
             long timeForEmailAcquisition = ChronoUnit.SECONDS.between(startEmailAcquisitionTime, LocalDateTime.now());
-            log.info("It took about " + markup(StringUtilities.Color.BLUE, String.valueOf(timeForEmailAcquisition)) + " seconds to acquire the email.");
-        }
-        catch (Exception e){
+            log.info("It took about " + markup(StringUtilities.Color.BLUE, String.valueOf(timeForEmailAcquisition)) + " seconds to get email");
+        }catch (Exception e){
             log.error("No emails was found with conditions indicated!", e);
         }
         Assert.assertNotNull("The acquired email path should not be null or empty", ContextStore.get("emailPath"));
@@ -74,24 +83,17 @@ public class EmailSteps {
     public void acquireEmailByMultipleFilters(List<FilterPair> pairs) {
         try{
             List<Pair<EmailUtilities.Inbox.EmailField, String>> updatedPairs = pairs.stream().map(pair-> {
-                if (pair.getKey().equals("SUBJECT"))
-                    return Pair.of(
-                            EmailUtilities.Inbox.EmailField.SUBJECT,
-                            EmailSubjects.valueOf(pair.getValue()).getKey()
-                    );
-                else
-                    return Pair.of(
-                            EmailUtilities.Inbox.EmailField.valueOf(pair.getKey()),
-                            StringUtilities.contextCheck(pair.getValue())
-                    );
+                if (pair.getKey().equals("SUBJECT")) {
+                    return Pair.of(EmailUtilities.Inbox.EmailField.SUBJECT, EmailSubjects.valueOf(pair.getValue()).getKey());
+                }
+                return Pair.of(EmailUtilities.Inbox.EmailField.valueOf(pair.getKey()), StringUtilities.contextCheck(pair.getValue()));
             }).collect(Collectors.toList());
 
             LocalDateTime startEmailAcquisitionTime = LocalDateTime.now();
             ContextStore.put("emailPath", emailAcquisition.acquireEmail(updatedPairs));
             long timeForEmailAcquisition = ChronoUnit.SECONDS.between(startEmailAcquisitionTime, LocalDateTime.now());
             log.info("It took about " + markup(StringUtilities.Color.BLUE, String.valueOf(timeForEmailAcquisition)) + " seconds to get email");
-        }
-        catch (Exception e){
+        }catch (Exception e){
             log.error("No emails was found with conditions indicated!", e);
         }
         Assert.assertNotNull("The acquired email path should not be null or empty", ContextStore.get("emailPath"));
@@ -100,8 +102,9 @@ public class EmailSteps {
     /**
      * Cleans the email inbox.
      */
+
     @Given("Clean the {} email inbox")
-    public void flushEmail(String environment) {
+    public void flushEmail(ObjectRepository.Environment environment) {
         getEmailInbox(environment).clearInbox();
     }
 
@@ -110,17 +113,14 @@ public class EmailSteps {
      */
     @Given("Clean the email inbox")
     public void flushEmailOnEnvironmentFromContext() {
-        getEmailInbox(ContextStore.get("environment")).clearInbox();
+        getEmailInbox(ContextStore.get("goodbits-environment")).clearInbox();
     }
 
-    private EmailUtilities.Inbox getEmailInbox(String environment) {
+    public static EmailUtilities.Inbox getEmailInbox(ObjectRepository.Environment environment) {
         Pair<String, String> emailCredentials = switch (environment) {
-            case "test" -> Pair.of(ContextStore.get("test-email"), ContextStore.get("email-application-password"));
-            case "acc" -> Pair.of(ContextStore.get("acc-email"), ContextStore.get("acc-email-application-password"));
-            default -> throw new RuntimeException(
-                    "Email or email application password is null! Please make sure that the test.properties for " +
-                            "'test-email' and 'email-application-password' properties are set."
-            );
+            case test -> Pair.of(ContextStore.get("test-email"),
+                    ContextStore.get("email-application-password"));
+            default -> throw new RuntimeException(environment.name() + " is undefined.");
         };
 
         return new EmailUtilities.Inbox(

@@ -6,6 +6,6 @@ import pickleib.web.driver.PickleibWebDriver;
 
 public class PageObject extends PickleibPageObject {
     public PageObject(){
-        super(PickleibWebDriver.get());
+        super(new WebDriverExtensionFieldDecorator(PickleibWebDriver.get()));
     }
 }
