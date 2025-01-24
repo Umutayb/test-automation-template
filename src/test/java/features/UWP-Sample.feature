@@ -1,4 +1,4 @@
-@Mobile-UI
+@Desktop-UI
 Feature: UWP Demo
 Demonstrating UI capabilities of Pickleib
 

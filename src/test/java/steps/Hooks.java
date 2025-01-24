@@ -112,6 +112,7 @@ public class Hooks extends PageObject {
         this.scenario = scenario;
         authenticate = scenario.getSourceTagNames().contains("@Authenticate");
         initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
+        initialiseAppiumDriver = scenario.getSourceTagNames().contains("@Mobile-UI") || scenario.getSourceTagNames().contains("@Desktop-UI");
     }
 
     public WebDriverFactory.BrowserType getBrowserType(Scenario scenario) {
