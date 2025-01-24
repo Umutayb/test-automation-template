@@ -26,8 +26,9 @@ public class CucumberUtilities extends WebUtilities {
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
+
     public static List<Receivers.Receiver> getReceivers() {
-        try(FileReader file = new FileReader((String) ContextStore.get("receivers-directory"))) {
+        try(FileReader file = new FileReader(String.valueOf(ContextStore.get("receivers-directory")))) {
             return mapper.readValue(file, Receivers.class).receivers();
         }
         catch (IOException e) {throw new RuntimeException(e);}

@@ -6,6 +6,7 @@ import pages.LoginPage;
 import pages.ProfilePage;
 import pages.ToolsPage;
 import pickleib.utilities.interfaces.repository.PageRepository;
+import uwp.BasicUWPMainPage;
 
 @SuppressWarnings("unused")
 public class ObjectRepository implements PageRepository {
@@ -29,5 +30,5 @@ public class ObjectRepository implements PageRepository {
     ToolsPage toolsPage;
     LoginPage loginPage;
     ProfilePage profilePage;
-
+    BasicUWPMainPage basicUWPMainPage;
 }
