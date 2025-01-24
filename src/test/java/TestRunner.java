@@ -18,6 +18,7 @@ public class TestRunner {
 
     @BeforeClass
     public static void initialSequence(){
+        //Anything you have to set up before the test suite runs will be implemented here
         File dir = new File("screenshots");
         File[] screenshots = dir.listFiles();
         assert screenshots != null;
@@ -31,6 +32,8 @@ public class TestRunner {
 
     @AfterClass
     public static void finalSequence(){
+        //Anything you have to set up after the test suite runs will be implemented here, such as uploading test results
+
         //String tags = System.getProperty("cucumber.filter.tags");
         //if (tags != null)
         //    new ShutdownSequence().publishReports(System.getProperty("cucumber.filter.tags"));

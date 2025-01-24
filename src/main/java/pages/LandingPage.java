@@ -1,4 +1,4 @@
-package pages.demoqa;
+package pages;
 
 import common.PageObject;
 import org.openqa.selenium.WebElement;

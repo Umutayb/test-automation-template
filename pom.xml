@@ -3,20 +3,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bora</groupId>
-    <artifactId>Web-UI-Automation</artifactId>
+    <artifactId>test-automation-template</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Web UI Automation</name>
-    <url>https://github.com/Umutayb/Web-Automation-Sample-Cucumber</url>
+    <name>Test Automation Template</name>
+    <url>https://github.com/Umutayb/test-automation-template</url>
 
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>1.9.3</web.ui.framework.version>
+        <web.ui.framework.version>1.9.9-1</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <cucumber.version>7.14.0</cucumber.version>
-        <selenium.version>4.15.0</selenium.version>
+        <selenium.version>4.19.0</selenium.version>
         <retrofit.version>2.9.0</retrofit.version>
         <okhttp.version>4.12.0</okhttp.version>
     </properties>

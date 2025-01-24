@@ -1,11 +1,11 @@
-package pages.demoqa;
+package pages;
 
 import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.demoqa.components.DatePicker;
-import pages.demoqa.components.PracticeForm;
-import pages.demoqa.components.ResultModel;
+import pages.components.DatePicker;
+import pages.components.PracticeForm;
+import pages.components.ResultModel;
 
 import java.util.List;
 

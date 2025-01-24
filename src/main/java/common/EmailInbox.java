@@ -1,11 +1,11 @@
 package common;
 
+import context.ContextStore;
 import org.openqa.selenium.TimeoutException;
 import utils.*;
+import utils.email.EmailUtilities;
 
 import java.util.concurrent.TimeUnit;
-
-import static utils.EmailUtilities.Inbox.EmailField.CONTENT;
 
 public class EmailInbox extends PageObject {
 
@@ -24,8 +24,8 @@ public class EmailInbox extends PageObject {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    PropertyUtility.getProperty("test-email"),
-                    PropertyUtility.getProperty("email-application-password"),
+                    ContextStore.get("test-email"),
+                    ContextStore.get("email-application-password"),
                     "ssl",
                     filter,
                     filterKey,

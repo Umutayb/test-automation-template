@@ -1,11 +1,8 @@
-package pages.demoqa.components;
+package pages.components;
 
 import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-
-import java.util.List;
 
 public class BookDetailRow extends WebComponent {
 

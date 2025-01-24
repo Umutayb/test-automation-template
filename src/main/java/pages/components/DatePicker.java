@@ -1,4 +1,4 @@
-package pages.demoqa.components;
+package pages.components;
 
 import com.github.webdriverextensions.WebComponent;
 import org.openqa.selenium.WebElement;

@@ -1,8 +1,8 @@
-package pages.demoqa;
+package pages;
 
 import common.PageObject;
 import org.openqa.selenium.support.FindBy;
-import pages.demoqa.components.LoginWrapper;
+import pages.components.LoginWrapper;
 
 
 public class LoginPage extends PageObject {
