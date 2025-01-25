@@ -15,16 +15,17 @@ import pickleib.enums.Direction;
 import pickleib.enums.ElementState;
 import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
-import pickleib.mobile.interactions.MobileInteractions;
+import pickleib.mobile.interactions.PlatformInteractions;
 import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
 import pickleib.utilities.steps.PageObjectStepUtilities;
 import pickleib.web.driver.PickleibWebDriver;
 import pickleib.web.interactions.WebInteractions;
 import java.util.*;
-import static pickleib.driver.DriverFactory.DriverType.Web;
+
 import static pickleib.driver.DriverFactory.DriverType.getType;
-import static pickleib.utilities.platform.PlatformUtilities.isMobileElement;
+import static pickleib.driver.DriverFactory.DriverType.selenium;
+import static pickleib.utilities.platform.PlatformUtilities.isPlatformElement;
 import static pickleib.web.driver.WebDriverFactory.BrowserType.CHROME;
 import static steps.Hooks.*;
 import static utils.StringUtilities.Color.*;
@@ -33,12 +34,12 @@ import static utils.StringUtilities.*;
 public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
 
     WebInteractions webInteractions;
-    MobileInteractions mobileInteractions;
+    PlatformInteractions mobileInteractions;
 
     public CommonSteps() {
         super(ObjectRepository.class, initialiseAppiumDriver, initialiseBrowser);
         if (initialiseAppiumDriver)
-            mobileInteractions = new MobileInteractions();
+            mobileInteractions = new PlatformInteractions();
         if (initialiseBrowser)
             webInteractions = new WebInteractions();
     }
@@ -56,8 +57,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * Given Set default platform as Mobile
      * </pre>
      *
-     * @param type The platform type which can be either {@link DriverFactory.DriverType#Mobile} or
-     *             {@link DriverFactory.DriverType#Web}.
+     * @param type The platform type which can be either {@link DriverFactory.DriverType#appium} or
+     *             {@link DriverFactory.DriverType#selenium}.
      */
     @Given("^Set default platform as (Mobile|Web)$")
     public void setDefaultPlatform(DriverFactory.DriverType type) {
@@ -322,7 +323,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^(?:Click|Tap) the (\\w+) on the (\\w+)$")
     public void click(String buttonName, String pageName) {
         WebElement element = objectRepository.acquireElementFromPage(buttonName, pageName);
-        getInteractions(element).clickElement(element, buttonName, pageName, !isMobileElement(element));
+        getInteractions(element).clickElement(element, buttonName, pageName, !isPlatformElement(element));
     }
 
     /**
@@ -787,8 +788,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
                 inputName,
                 pageName,
                 input,
-                !isMobileElement(inputElement),
-                !isMobileElement(inputElement),
+                !isPlatformElement(inputElement),
+                !isPlatformElement(inputElement),
                 true
         );
     }
@@ -811,7 +812,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
                 inputName,
                 pageName,
                 input,
-                !isMobileElement(inputElement),
+                !isPlatformElement(inputElement),
                 true,
                 Objects.equals(verify, "verified")
         );
@@ -1077,7 +1078,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^Verify presence of component (\\w+) on the (\\w+)$")
     public void verifyComponentPresence(String componentName, String pageName) {
         WebElement element = objectRepository.acquireElementFromPage(componentName, pageName);
-        getInteractions(Web).verifyElementState(element, componentName, pageName, ElementState.displayed);
+        getInteractions(selenium).verifyElementState(element, componentName, pageName, ElementState.displayed);
     }
 
     /**

@@ -1,10 +1,17 @@
 package uwp;
 
-import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pickleib.mobile.PickleibScreenObject;
 
-public class BasicUWPMainPage extends PageObject {
-    @FindBy(xpath = "")
-    WebElement button;
+import java.util.List;
+
+public class BasicUWPMainPage extends PickleibScreenObject {
+    @FindBy(xpath = "asdf")
+    List<WebElement> categories;
+
+    @FindBy(name = "Buttons")
+    WebElement buttonsCategoryCard;
+
+
 }
