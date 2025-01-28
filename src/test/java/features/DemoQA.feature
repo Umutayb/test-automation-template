@@ -23,7 +23,7 @@ Feature: Login
     * Fill component input subjectsInput of PracticeForm component on the ToolsPage with text: Science
     * Click listed component element Computer Science of PracticeForm from dropdownOptions list on the ToolsPage
     * Click listed component element Music of PracticeForm from hobbiesCheckboxes list on the ToolsPage
-    * Upload file on component input uploadPictureButton of PracticeForm component on the ToolsPage with file: UPLOAD-src/test/resources/files/profile-picture.jpeg
+    * Upload file on component input uploadPictureButton of PracticeForm component on the ToolsPage with file: UPLOAD-src/test/resources/files/profile-picture.jpg
     * Fill component input currentAddressInput of PracticeForm component on the ToolsPage with text: Den Haag - Netherlands
     * Click component element stateDropdown of PracticeForm component on the ToolsPage
     * Click listed component element Haryana of PracticeForm from dropdownOptions list on the ToolsPage

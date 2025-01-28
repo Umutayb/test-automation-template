@@ -12,6 +12,4 @@ public class BasicUWPMainPage extends PickleibScreenObject {
 
     @FindBy(name = "Buttons")
     WebElement buttonsCategoryCard;
-
-
 }
