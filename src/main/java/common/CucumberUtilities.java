@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import context.ContextStore;
 import models.cucumber.CucumberReport;
 import models.slack.Receivers;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import utils.PropertyUtility;
+
+import javax.naming.Context;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public  class CucumberUtilities extends PageObject {
     }
 
     public List<Receivers.Receiver> getReceivers() {
-        try(FileReader file = new FileReader(PropertyUtility.getProperty("receivers-directory"))) {
+        try(FileReader file = new FileReader(ContextStore.get("receivers-directory").toString())) {
             return mapper.readValue(file, Receivers.class).receivers();
         }
         catch (IOException e) {throw new RuntimeException(e);}

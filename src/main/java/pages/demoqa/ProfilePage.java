@@ -42,10 +42,10 @@ public class ProfilePage extends PageObject {
     }
 
     public BookRow getBookRow(String bookTitle){
-        log.new Warning("SIZE: " + bookRows.size());
+        log.warning("SIZE: " + bookRows.size());
         for (BookRow bookRow:bookRows) {
-            log.new Warning("TITLE: " + bookRow.getTitle());
-            log.new Warning("TEXT: " + bookRow.getText());
+            log.warning("TITLE: " + bookRow.getTitle());
+            log.warning("TEXT: " + bookRow.getText());
             if (bookRow.getTitle().equalsIgnoreCase(bookTitle)) return bookRow;
         }
         return null;
@@ -76,18 +76,18 @@ public class ProfilePage extends PageObject {
             }
             catch (WebDriverException webDriverException){
                 if (counter == 0) {
-                    log.new Warning("Iterating... (" + webDriverException.getClass().getName() + ")");
+                    log.warning("Iterating... (" + webDriverException.getClass().getName() + ")");
                     caughtException = webDriverException;
                 }
                 else if (!webDriverException.getClass().getName().equals(caughtException.getClass().getName())){
-                    log.new Warning("Iterating... (" + webDriverException.getClass().getName() + ")");
+                    log.warning("Iterating... (" + webDriverException.getClass().getName() + ")");
                     caughtException = webDriverException;
                 }
                 counter++;
             }
         }
         while (!timeout);
-        if (counter > 0) log.new Warning("Iterated " + counter + " time(s)!");
-        log.new Warning(caughtException.getMessage());
+        if (counter > 0) log.warning("Iterated " + counter + " time(s)!");
+        log.warning(caughtException.getMessage());
     }
 }

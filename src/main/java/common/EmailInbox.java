@@ -1,11 +1,10 @@
 package common;
 
+import context.ContextStore;
 import org.openqa.selenium.TimeoutException;
 import utils.*;
-
+import utils.email.EmailUtilities;
 import java.util.concurrent.TimeUnit;
-
-import static utils.EmailUtilities.Inbox.EmailField.CONTENT;
 
 public class EmailInbox extends PageObject {
 
@@ -24,14 +23,9 @@ public class EmailInbox extends PageObject {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    PropertyUtility.getProperty("test-email"),
-                    PropertyUtility.getProperty("email-application-password"),
-                    "ssl",
-                    filter,
-                    filterKey,
-                    print,
-                    save,
-                    save
+                    ContextStore.get("test-email"),
+                    ContextStore.get("email-application-password"),
+                    "ssl"
             );
             try {TimeUnit.SECONDS.sleep(3);}
             catch (InterruptedException e) {throw new RuntimeException(e);}
@@ -40,7 +34,7 @@ public class EmailInbox extends PageObject {
         while (inbox.messages.size() == 0);
 
         log.success("Email acquired!");
-        return TextParser.parse(initialKeyword, finalKeyword, inbox.messages.get(0).get(CONTENT).toString());
+        return TextParser.parse(initialKeyword, finalKeyword, inbox.messages.get(0).getMessageContent());
     }
 
     public String getEmail(
@@ -56,14 +50,9 @@ public class EmailInbox extends PageObject {
             inbox = new EmailUtilities.Inbox(
                     "pop.gmail.com",
                     "995",
-                    PropertyUtility.getProperty("test-email"),
-                    PropertyUtility.getProperty("email-application-password"),
-                    "ssl",
-                    filter,
-                    filterKey,
-                    print,
-                    save,
-                    save
+                    ContextStore.get("test-email"),
+                    ContextStore.get("email-application-password"),
+                    "ssl"
             );
             try {TimeUnit.SECONDS.sleep(1);}
             catch (InterruptedException e) {throw new RuntimeException(e);}
@@ -73,20 +62,17 @@ public class EmailInbox extends PageObject {
 
 
         log.success("Email acquired!");
-        return inbox.messages.get(0).get(CONTENT).toString();
+        return inbox.messages.get(0).getMessageContent();
     }
 
     public static void main(String[] args) { // Flush email
-        new Printer(EmailInbox.class).new Info("Flushing email inbox...");
+        new Printer(EmailInbox.class).info("Flushing email inbox...");
         new EmailUtilities.Inbox(
                 "pop.gmail.com",
                 "995",
-                PropertyUtility.getProperty("test-email"),
-                PropertyUtility.getProperty("email-application-password"),
-                "ssl",
-                false,
-                false,
-                false
+                ContextStore.get("test-email"),
+                ContextStore.get("email-application-password"),
+                "ssl"
         );
     }
 }

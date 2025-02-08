@@ -1,5 +1,5 @@
 Feature: BookStore API
-  @Authenticate @Web-UI
+  @Authenticate @Web-UI @BookStore_Test_01
   Scenario: Get books
     * Get all the books from database
     * Get all books on bookstore and add by publisher named No Starch Press to user in context

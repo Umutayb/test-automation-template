@@ -4,6 +4,7 @@ import bookstore.BookStoreAuthorisation;
 import bookstore.models.CredentialModel;
 import bookstore.models.TokenResponseModel;
 import bookstore.models.UserResponseModel;
+import ch.qos.logback.classic.Level;
 import common.LogUtility;
 import common.ObjectRepository;
 import common.PageObject;
@@ -11,19 +12,17 @@ import context.ContextStore;
 import io.cucumber.java.*;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pickleib.mobile.driver.PickleibAppiumDriver;
 import pickleib.mobile.driver.ServiceFactory;
 import pickleib.web.driver.PickleibWebDriver;
 import pickleib.web.driver.WebDriverFactory;
 import utils.Printer;
-import utils.PropertyUtility;
-import utils.StringUtilities;
-
 import java.lang.reflect.Type;
 import java.util.stream.Collectors;
-
 import static utils.StringUtilities.Color.PURPLE;
+import static utils.StringUtilities.highlighted;
 
 public class Hooks extends PageObject {
 
@@ -31,13 +30,15 @@ public class Hooks extends PageObject {
     public boolean authenticate;
     public static boolean initialiseBrowser;
     public static boolean initialiseAppiumDriver;
+    public static boolean isWebUI;
     LogUtility logUtil = new LogUtility();
     Printer log = new Printer(this.getClass());
 
 
     public Hooks() {
-        PropertyUtility.loadProperties("src/test/resources/test.properties");
-        logUtil.setLogLevel(logUtil.getLogLevel(PropertyUtility.getProperty("system-log-level", "error")));
+        ContextStore.loadProperties("test.properties");
+        //ContextStore.merge(fromEnvironment(), fromSystemProperties()); // This was left here in case system properties are needed in ContextStore in the future.
+        logUtil.setLogLevel(Level.OFF);
     }
 
 
@@ -89,9 +90,10 @@ public class Hooks extends PageObject {
                     .map(tag -> tag.replaceAll("SCN-", ""))
                     .collect(Collectors.joining());
             if (scenario.isFailed()) {
-                WebDriver driver = initialiseBrowser ? PickleibWebDriver.driver : PickleibAppiumDriver.driver;
+                WebDriver driver = initialiseBrowser ? PickleibWebDriver.get() : PickleibAppiumDriver.get();
                 capture.captureScreen(screenshotTag, "png", (RemoteWebDriver) driver);
             }
+            
             if (initialiseBrowser) {
                 PickleibWebDriver.terminate();
             }
@@ -127,6 +129,6 @@ public class Hooks extends PageObject {
      */
     @Given("Take a screenshot")
     public void takeAScreenshot() {
-        capture.captureScreen(scenario.getName().replaceAll(" ", "_"), "png", PickleibWebDriver.driver);
+        capture.captureScreen(scenario.getName().replaceAll(" ", "_"), "png", PickleibWebDriver.get());
     }
 }
