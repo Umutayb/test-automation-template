@@ -1,0 +1,9 @@
+{
+  "platformName": "Windows",
+  "automationName": "Windows",
+  "deviceName": "WindowsPC",
+  "appTopLevelWindow": "0x206AA",
+  "ms:waitForAppLaunch": 10000,
+  "appium:platformVersion": "10.0",
+  "noReset": true
+}

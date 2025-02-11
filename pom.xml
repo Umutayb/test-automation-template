@@ -17,6 +17,7 @@
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <cucumber.version>7.14.0</cucumber.version>
         <selenium.version>4.19.0</selenium.version>
+        <appium.version>9.2.2</appium.version>
         <retrofit.version>2.9.0</retrofit.version>
         <okhttp.version>4.12.0</okhttp.version>
     </properties>
@@ -88,6 +89,13 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
             <version>${selenium.version}</version>
+        </dependency>
+
+        <!-- Appium -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
         </dependency>
 
         <!-- Lombok -->

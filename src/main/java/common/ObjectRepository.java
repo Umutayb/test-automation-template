@@ -5,6 +5,7 @@ import pages.LandingPage;
 import pages.LoginPage;
 import pages.ProfilePage;
 import pages.ToolsPage;
+import pages.winform.LoginFrame;
 import pickleib.utilities.interfaces.repository.PageRepository;
 import uwp.BasicUWPMainPage;
 
@@ -31,4 +32,5 @@ public class ObjectRepository implements PageRepository {
     LoginPage loginPage;
     ProfilePage profilePage;
     BasicUWPMainPage basicUWPMainPage;
+    LoginFrame loginFrame;
 }
