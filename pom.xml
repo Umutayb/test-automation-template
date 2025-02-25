@@ -52,6 +52,13 @@
             <version>${web.ui.framework.version}</version>
         </dependency>
 
+        <!-- SQL Query Builder -->
+        <dependency>
+            <groupId>io.github.soldelv</groupId>
+            <artifactId>sql-query-builder</artifactId>
+            <version>0.0.3</version>
+        </dependency>
+
         <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
