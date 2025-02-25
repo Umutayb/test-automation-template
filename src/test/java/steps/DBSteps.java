@@ -1,6 +1,7 @@
 package steps;
 
 import context.ContextStore;
+import io.cucumber.java.en.Given;
 import io.github.soldelv.sql.builder.QueryBuilder;
 import lombok.Getter;
 import utils.DBUtilities;
@@ -128,4 +129,28 @@ public class CustomerDataPlatform extends QueryBuilder {
         return results;
     }
 
+    @Given("Print {} attribute of {} from {} table")
+    public void printResultsFromTable(String attribute, DataType dataType, CustomerDataPlatform.CdpTable tableName, List<CustomerDataPlatform.QueryConditions> conditions) {
+        log.info("Generating query to check table " + tableName.getValue());
+
+        CustomerDataPlatform.QueryAttributes queryValues = new CustomerDataPlatform.QueryAttributes();
+        queryValues.selectAll();
+        queryValues.setFrom(tableName.getValue());
+        queryValues.setConditions(conditions);
+
+        List<?> dataList = List.of();
+
+        switch (dataType) {
+            case USER, UPODI_CUSTOMER, UPODI_SUBSCRIPTION, IRU_RESERVATION ->
+                    dataList = cdp.getData(User.class, queryValues);
+        }
+
+        dataList.forEach(data -> {
+            try {
+                log.important(attribute + " : " + getMethod("get" + attribute, data.getClass()).invoke(data));
+            } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
 }
