@@ -15,6 +15,7 @@ import pickleib.enums.Direction;
 import pickleib.enums.ElementState;
 import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
+import pickleib.mobile.driver.PickleibAppiumDriver;
 import pickleib.mobile.interactions.PlatformInteractions;
 import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
@@ -74,6 +75,15 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     public void getUrl(String url) {
         url = contextCheck(url);
         webInteractions.getUrl(url);
+    }
+
+    /**
+     * Switches to next active window.
+     *
+     */
+    @Given("Switch to the next active window")
+    public void switchToNextActiveWindow() {
+        PickleibAppiumDriver.get().switchTo().window(PickleibAppiumDriver.get().getWindowHandles().stream().findAny().orElseGet(null));
     }
 
     /**
@@ -537,7 +547,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^(?:Click|Tap) listed element (.+?(?:\\s+.+?)*) from (\\w+) list on the (\\w+)$")
     public void clickListedButton(String elementName, String listName, String pageName) {
         List<WebElement> elements = pageObjectReflections.getElementsFromPage(listName, pageName);
-        WebElement element = getInteractions(elements.get(0)).scrollInList(elementName, elements);
+        WebElement element = getInteractions(elements.get(0)).acquireNamedElementAmongst(elements, elementName, pageName);
         getInteractions(element).clickElement(element, elementName, pageName);
     }
 

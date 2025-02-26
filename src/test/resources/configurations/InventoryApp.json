@@ -1,0 +1,8 @@
+{
+  "platformName": "Windows",
+  "automationName": "Windows",
+  "deviceName": "WindowsPC",
+  "appium:app": "C:\\Users\\sC\\Documents\\GitHub\\test-automation-template\\Release\\InventoryApp.exe",
+  "appium:platformVersion": "10.0",
+  "fullReset": false
+}

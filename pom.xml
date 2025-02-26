@@ -52,6 +52,12 @@
             <version>${web.ui.framework.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.umutayb</groupId>
+            <artifactId>Utilities</artifactId>
+            <version>1.7.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- SQL Query Builder -->
         <dependency>
             <groupId>io.github.soldelv</groupId>
@@ -139,8 +145,9 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>11.2.2.jre17</version>
+            <version>11.2.3.jre17</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

@@ -5,7 +5,7 @@ import pages.LandingPage;
 import pages.LoginPage;
 import pages.ProfilePage;
 import pages.ToolsPage;
-import pages.winform.LoginFrame;
+import pages.inventory.app.*;
 import pickleib.utilities.interfaces.repository.PageRepository;
 import uwp.BasicUWPMainPage;
 
@@ -33,4 +33,10 @@ public class ObjectRepository implements PageRepository {
     ProfilePage profilePage;
     BasicUWPMainPage basicUWPMainPage;
     LoginFrame loginFrame;
+    Dashboard dashboard;
+    Categories categories;
+    Products products;
+    Sales sales;
+    Transaction transaction;
+    InventoryManagementFrame inventoryManagementFrame;
 }
