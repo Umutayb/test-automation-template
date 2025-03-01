@@ -2,6 +2,7 @@ package slack;
 
 import api_assured.ApiUtilities;
 import api_assured.ServiceGenerator;
+import context.ContextStore;
 import models.slack.SimpleMessageModel;
 import models.slack.SuccessfulMessage;
 import models.slack.ThreadMessageModel;
@@ -18,7 +19,7 @@ import java.nio.file.Files;
 public class Slack extends ApiUtilities {
 
     SlackServices slackServices = new ServiceGenerator(new Headers.Builder()
-            .add("Authorization", properties.getProperty("slack-token"))
+            .add("Authorization", ContextStore.get("slack-token").toString())
             .build())
             .generate(SlackServices.class);
 

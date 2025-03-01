@@ -24,7 +24,6 @@ public class BookStoreApiSteps {
     }
     @Given("Get the user in context")
     public void getContextUser() {
-        UserResponseModel userResponse = new UserResponseModel();
         getUserById(ContextStore.get("userId").toString());
     }
 

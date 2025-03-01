@@ -1,11 +1,11 @@
 package common;
 
 import com.github.webdriverextensions.WebDriverExtensionFieldDecorator;
+import pickleib.web.PickleibPageObject;
 import pickleib.web.driver.PickleibWebDriver;
-import pickleib.web.utilities.WebUtilities;
 
-public class PageObject extends WebUtilities {
+public class PageObject extends PickleibPageObject {
     public PageObject(){
-        super(new WebDriverExtensionFieldDecorator(PickleibWebDriver.driver));
+        super(new WebDriverExtensionFieldDecorator(PickleibWebDriver.get()));
     }
 }

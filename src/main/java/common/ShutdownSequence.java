@@ -1,20 +1,11 @@
 package common;
 
-import models.calliope.ReportResponse;
-import models.cucumber.CucumberReport;
-import models.slack.Receivers;
-import models.slack.SuccessfulMessage;
-import retrofit2.Response;
 import slack.Slack;
 import utils.FileUtilities;
 import utils.Printer;
 import utils.StringUtilities;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+import static utils.StringUtilities.highlighted;
 
 public class ShutdownSequence extends CucumberUtilities {
 
@@ -23,7 +14,7 @@ public class ShutdownSequence extends CucumberUtilities {
     Slack slack = new Slack();
 
     public void publishReports(String testName){ // This method is called upon after the tests are done running
-        log.new Info("Performing final sequence for the test specification: " + highlighted(StringUtilities.Color.PURPLE,testName));
+        log.info("Performing final sequence for the test specification: " + highlighted(StringUtilities.Color.PURPLE,testName));
         /*
             if (Boolean.parseBoolean(properties.getProperty("upload-results", "false"))) {
                 File screenshotsDirectory = new File("screenshots");
@@ -40,7 +31,7 @@ public class ShutdownSequence extends CucumberUtilities {
                 List<CucumberReport> reports = getCucumberReport(directory);
                 String profileId = properties.getProperty("profile-id");
                 String profileUrl = CalliopeApi.BASE_REPORT_URL + CalliopeApi.PROFILES_SUFFIX + profileId;
-                log.new Info("Uploading test results to Calliope.pro");
+                log.info();("Uploading test results to Calliope.pro");
                 Response<ReportResponse> reportResponse;
                 if (upload.get()) reportResponse = calliope.uploadResults(
                         reportFile,
@@ -51,7 +42,7 @@ public class ShutdownSequence extends CucumberUtilities {
                 assert reportResponse.body() != null;
                 if (reportResponse.isSuccessful()){
                     log.new Success("Test results are successfully uploaded!");
-                    log.new Info(reportResponse.body().message());
+                    log.info();(reportResponse.body().message());
                     log.new Success("The results can be accessed from: " + reportResponse.body().report_url());
                 }
                 else {
@@ -87,6 +78,6 @@ public class ShutdownSequence extends CucumberUtilities {
                 }
             }            */
 
-        log.new Info("Final sequence completed.");
+        log.info("Final sequence completed.");
     }
 }
