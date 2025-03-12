@@ -13,7 +13,7 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>1.9.9-2-SNAPSHOT</web.ui.framework.version>
+        <web.ui.framework.version>2.0.0</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <cucumber.version>7.14.0</cucumber.version>
         <selenium.version>4.19.0</selenium.version>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>io.github.umutayb</groupId>
             <artifactId>Utilities</artifactId>
-            <version>1.7.1-SNAPSHOT</version>
+            <version>1.7.2</version>
         </dependency>
 
         <!-- SQL Query Builder -->
