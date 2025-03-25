@@ -3,20 +3,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bora</groupId>
-    <artifactId>Web-UI-Automation</artifactId>
+    <artifactId>test-automation-template</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Web UI Automation</name>
-    <url>https://github.com/Umutayb/Web-Automation-Sample-Cucumber</url>
+    <name>Test Automation Template</name>
+    <url>https://github.com/Umutayb/test-automation-template</url>
 
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>1.9.3</web.ui.framework.version>
+        <web.ui.framework.version>2.0.0</web.ui.framework.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <cucumber.version>7.14.0</cucumber.version>
-        <selenium.version>4.15.0</selenium.version>
+        <selenium.version>4.19.0</selenium.version>
+        <appium.version>9.2.2</appium.version>
         <retrofit.version>2.9.0</retrofit.version>
         <okhttp.version>4.12.0</okhttp.version>
     </properties>
@@ -49,6 +50,19 @@
             <groupId>io.github.umutayb</groupId>
             <artifactId>Pickleib</artifactId>
             <version>${web.ui.framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.umutayb</groupId>
+            <artifactId>Utilities</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+
+        <!-- SQL Query Builder -->
+        <dependency>
+            <groupId>io.github.soldelv</groupId>
+            <artifactId>sql-query-builder</artifactId>
+            <version>0.0.3</version>
         </dependency>
 
         <!-- Cucumber -->
@@ -90,6 +104,13 @@
             <version>${selenium.version}</version>
         </dependency>
 
+        <!-- Appium -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
+        </dependency>
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -124,8 +145,9 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>11.2.2.jre17</version>
+            <version>11.2.3.jre17</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

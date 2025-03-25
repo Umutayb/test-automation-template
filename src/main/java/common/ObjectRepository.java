@@ -1,12 +1,13 @@
 package common;
 
 import lombok.Getter;
-import pages.amazon.HomePage;
-import pages.demoqa.LandingPage;
-import pages.demoqa.LoginPage;
-import pages.demoqa.ProfilePage;
-import pages.demoqa.ToolsPage;
-import pickleib.utilities.page.repository.PageRepository;
+import pages.LandingPage;
+import pages.LoginPage;
+import pages.ProfilePage;
+import pages.ToolsPage;
+import pages.inventory.app.*;
+import pickleib.utilities.interfaces.repository.PageRepository;
+import uwp.BasicUWPMainPage;
 
 @SuppressWarnings("unused")
 public class ObjectRepository implements PageRepository {
@@ -26,10 +27,16 @@ public class ObjectRepository implements PageRepository {
 
     public static Environment environment;
 
-    LandingPage landingPage = new LandingPage();
-    ToolsPage toolsPage = new ToolsPage();
-    HomePage homePage = new HomePage();
-    LoginPage loginPage = new LoginPage();
-    ProfilePage profilePage = new ProfilePage();
-
+    LandingPage landingPage;
+    ToolsPage toolsPage;
+    LoginPage loginPage;
+    ProfilePage profilePage;
+    BasicUWPMainPage basicUWPMainPage;
+    LoginFrame loginFrame;
+    Dashboard dashboard;
+    Categories categories;
+    Products products;
+    Sales sales;
+    Transaction transaction;
+    InventoryManagementFrame inventoryManagementFrame;
 }

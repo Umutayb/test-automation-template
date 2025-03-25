@@ -1,7 +1,10 @@
 package models.slack;
 
+import lombok.Setter;
+
 import java.util.List;
 
+@Setter
 public class SimpleMessageModel {
 
     String channel;
@@ -14,13 +17,10 @@ public class SimpleMessageModel {
 
     public SimpleMessageModel(){}
 
-    public void setChannel(String channel) {this.channel = channel;}
-
     public void setBlock(String type, String message) {this.blocks = List.of(new Block(type, message));}
 
-    public void setBlocks(List<Block> blocks){this.blocks = blocks;}
-
     public static class Block{
+        @Setter
         String type;
         Text text;
 
@@ -31,10 +31,9 @@ public class SimpleMessageModel {
 
         public Block(){}
 
-        public void setType(String type) {this.type = type;}
-
         public void setText(String type, String message) {this.text = new Text(type, message);}
 
+        @Setter
         public static class Text {
             String type;
             String text;
@@ -46,9 +45,6 @@ public class SimpleMessageModel {
 
             public Text(){}
 
-            public void setType(String type) {this.type = type;}
-
-            public void setText(String text) {this.text = text;}
         }
     }
 }

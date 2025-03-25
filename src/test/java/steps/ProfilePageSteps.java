@@ -6,7 +6,7 @@ import common.PageObject;
 import context.ContextStore;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
-import pages.demoqa.ProfilePage;
+import pages.ProfilePage;
 
 import java.util.List;
 import static utils.StringUtilities.Color.*;
@@ -27,7 +27,7 @@ public class ProfilePageSteps extends PageObject {
         profilePage.waitForList(profilePage.bookTitles);
 
         for (BookModel book : bookList) {
-            clickElement(profilePage.getBookTitle(book.getTitle()));
+            clickElement(profilePage.getBookTitle(book.getTitle()), true);
 
             String expectedIsbn = book.getIsbn().trim();
             String actualIsbn = profilePage.getDetailRow("ISBN").getValue().trim();

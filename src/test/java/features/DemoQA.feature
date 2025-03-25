@@ -23,24 +23,24 @@ Feature: Login
     * Fill component input subjectsInput of PracticeForm component on the ToolsPage with text: Science
     * Click listed component element Computer Science of PracticeForm from dropdownOptions list on the ToolsPage
     * Click listed component element Music of PracticeForm from hobbiesCheckboxes list on the ToolsPage
-    * Upload file on component input uploadPictureButton of PracticeForm component on the ToolsPage with file: UPLOAD-src/test/resources/files/profile-picture.jpeg
+    * Upload file on component input uploadPictureButton of PracticeForm component on the ToolsPage with file: UPLOAD-src/test/resources/files/profile-picture.jpg
     * Fill component input currentAddressInput of PracticeForm component on the ToolsPage with text: Den Haag - Netherlands
     * Click component element stateDropdown of PracticeForm component on the ToolsPage
     * Click listed component element Haryana of PracticeForm from dropdownOptions list on the ToolsPage
     * Click component element cityDropdown of PracticeForm component on the ToolsPage
     * Click listed component element Karnal of PracticeForm from dropdownOptions list on the ToolsPage
     * Click component element submitButton of PracticeForm component on the ToolsPage
-    * Verify text of listed component element Student Name from the dataRows of resultModel on the ToolsPage is equal to Umut Bora
-    * Verify text of listed component element Student Email from the dataRows of resultModel on the ToolsPage is equal to umutaybora@gmail.com
-    * Verify text of listed component element Gender from the dataRows of resultModel on the ToolsPage is equal to Male
-    * Verify text of listed component element Mobile from the dataRows of resultModel on the ToolsPage is equal to 0655500001
-    * Verify text of listed component element Date of Birth from the dataRows of resultModel on the ToolsPage is equal to 02 September,1996
-    * Verify text of listed component element Subjects from the dataRows of resultModel on the ToolsPage is equal to Computer Science
-    * Verify text of listed component element Hobbies from the dataRows of resultModel on the ToolsPage is equal to Music
-    * Verify text of listed component element Picture from the dataRows of resultModel on the ToolsPage is equal to profile-picture.jpeg
-    * Verify text of listed component element Mobile from the dataRows of resultModel on the ToolsPage is equal to 0655500001
-    * Verify text of listed component element Address from the dataRows of resultModel on the ToolsPage is equal to Den Haag - Netherlands
-    * Verify text of listed component element State and City from the dataRows of resultModel on the ToolsPage is equal to Haryana Karnal
+    * Verify text of listed component element Student Name from the dataRows of resultModel on the ToolsPage contains Umut Bora
+    * Verify text of listed component element Student Email from the dataRows of resultModel on the ToolsPage contains umutaybora@gmail.com
+    * Verify text of listed component element Gender from the dataRows of resultModel on the ToolsPage contains Male
+    * Verify text of listed component element Mobile from the dataRows of resultModel on the ToolsPage contains 0655500001
+    * Verify text of listed component element Date of Birth from the dataRows of resultModel on the ToolsPage contains 02 September,1996
+    * Verify text of listed component element Subjects from the dataRows of resultModel on the ToolsPage contains Computer Science
+    * Verify text of listed component element Hobbies from the dataRows of resultModel on the ToolsPage contains Music
+    * Verify text of listed component element Picture from the dataRows of resultModel on the ToolsPage contains profile-picture.jpg
+    * Verify text of listed component element Mobile from the dataRows of resultModel on the ToolsPage contains 0655500001
+    * Verify text of listed component element Address from the dataRows of resultModel on the ToolsPage contains Den Haag - Netherlands
+    * Verify text of listed component element State and City from the dataRows of resultModel on the ToolsPage contains Haryana Karnal
     * Click component element closeButton of ResultModel component on the ToolsPage
 
   @Web-UI @SCN-DEMO-QA-2

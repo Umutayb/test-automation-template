@@ -1,15 +1,10 @@
 package bookstore.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter @Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class IsbnModel {
     String isbn;
-
-    public IsbnModel(String isbn) {
-        this.isbn = isbn;
-    }
-    public IsbnModel() {
-    }
 }
