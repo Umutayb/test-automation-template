@@ -1,0 +1,9 @@
+{
+  "platformName": "Windows",
+  "automationName": "Windows",
+  "deviceName": "WindowsPC",
+  "app": "WinAppDriver.AppUIBasics_3k8ehwws4ef34!App",
+  "ms:waitForAppLaunch": 10000,
+  "appium:platformVersion": "10.0",
+  "noReset": true
+}

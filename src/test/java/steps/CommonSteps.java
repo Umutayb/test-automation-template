@@ -1,47 +1,64 @@
 package steps;
-
 import collections.Bundle;
 import com.github.webdriverextensions.WebComponent;
-import common.ObjectRepository;
+import com.google.common.collect.ImmutableMap;
 import context.ContextStore;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.*;
+import common.ObjectRepository;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import pickleib.driver.DriverFactory;
 import pickleib.enums.Direction;
 import pickleib.enums.ElementState;
 import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
-import pickleib.mobile.interactions.MobileInteractions;
+import pickleib.mobile.driver.PickleibAppiumDriver;
+import pickleib.mobile.interactions.PlatformInteractions;
 import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
 import pickleib.utilities.steps.PageObjectStepUtilities;
 import pickleib.web.driver.PickleibWebDriver;
 import pickleib.web.interactions.WebInteractions;
+import utils.*;
 import java.util.*;
-import static pickleib.driver.DriverFactory.DriverType.Web;
-import static pickleib.driver.DriverFactory.DriverType.getType;
-import static pickleib.utilities.platform.PlatformUtilities.isMobileElement;
-import static pickleib.web.driver.WebDriverFactory.BrowserType.CHROME;
-import static steps.Hooks.*;
+
+import static pickleib.driver.DriverFactory.DriverType.*;
+import static pickleib.utilities.platform.PlatformUtilities.isPlatformElement;
+import static steps.Hooks.initialiseAppiumDriver;
 import static utils.StringUtilities.*;
 import static utils.StringUtilities.Color.*;
+import static utils.StringUtilities.markup;
+
 
 public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
 
     WebInteractions webInteractions;
-    MobileInteractions mobileInteractions;
+    PlatformInteractions platformInteractions;
 
     public CommonSteps() {
-        super(ObjectRepository.class, initialiseAppiumDriver, initialiseBrowser);
+        super(ObjectRepository.class, initialiseAppiumDriver, Hooks.initialiseBrowser);
         if (initialiseAppiumDriver)
-            mobileInteractions = new MobileInteractions();
-        if (initialiseBrowser)
+            platformInteractions = new PlatformInteractions();
+        if (Hooks.initialiseBrowser)
             webInteractions = new WebInteractions();
     }
+
+    @Override
+    public PolymorphicUtilities getInteractions(DriverFactory.DriverType driverType) {
+        if (!StringUtilities.isBlank(driverType))
+            switch (driverType) {
+                case selenium -> {
+                    return webInteractions;
+                }
+                case appium-> {
+                    return platformInteractions;
+                }
+            }
+        else return getInteractions(defaultPlatform);
+        return null;
+    }
+
 
     /**
      * Sets the default platform type for subsequent operations.
@@ -56,10 +73,10 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * Given Set default platform as Mobile
      * </pre>
      *
-     * @param type The platform type which can be either {@link DriverFactory.DriverType#Mobile} or
-     *             {@link DriverFactory.DriverType#Web}.
+     * @param type The platform type which can be either {@link DriverFactory.DriverType#appium} or
+     *             {@link DriverFactory.DriverType#selenium}.
      */
-    @Given("^Set default platform as (Mobile|Web)$")
+    @Given("^Set default platform as (appium|selenium)$")
     public void setDefaultPlatform(DriverFactory.DriverType type) {
         defaultPlatform = type;
     }
@@ -72,6 +89,29 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("Navigate to url: {}")
     public void getUrl(String url) {
         webInteractions.getUrl(url);
+    }
+
+
+    /**
+     * Navigates to the specified environment page.
+     *
+     * @param environment The environment to navigate to (acceptance, test, or dev).
+     */
+    @Given("^Navigate to the (acceptance|test|dev) page$")
+    public void navigateToTargetEnv(ObjectRepository.Environment environment) {
+        String username = ContextStore.get("website-username");
+        String password = ContextStore.get("website-password");
+        String protocol = ContextStore.get("protocol", "https").toLowerCase();
+        String baseUrl = ContextStore.get(environment.getUrlKey());
+        String url = protocol + "://" + baseUrl;
+
+        // appending username, password with URL
+        // We check if the env is null so that we do not set credentials twice
+        if (ObjectRepository.environment == null && username != null && password != null)
+            url = protocol + "://" + username + ":" + password + "@" + baseUrl;
+        log.info("Navigating to " + highlighted(BLUE, url));
+        webInteractions.driver.get(url);
+        ObjectRepository.environment = environment;
     }
 
     /**
@@ -127,41 +167,12 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Navigates to the specified email path.
-     * Email on a given path is treated like a web page and the driver navigates to it, enabling various interactions.
+     * Switches to next active window.
      *
-     * @param url The URL of the email to navigate to.
      */
-    @Given("Get email at {}")
-    public void getHTML(String url) {
-        url = contextCheck(url);
-        log.info("Navigating to the email @" + url);
-        if (!isWebUI) {
-            initialiseBrowser = true;
-            webInteractions = new WebInteractions();
-            PickleibWebDriver.initialize(CHROME);
-            webInteractions.driver = PickleibWebDriver.get();
-        }
-        webInteractions.driver.get(url);
-    }
-
-    /**
-     * Navigates to the specified environment page.
-     *
-     * @param environment The environment to navigate to (acceptance, test, or dev).
-     */
-    @Given("^Navigate to the (acceptance|test|dev) page$")
-    public void getURL(ObjectRepository.Environment environment) {
-        String username = ContextStore.get("website-username");
-        String password = ContextStore.get("website-password");
-        String protocol = ContextStore.get("protocol", "https").toLowerCase();
-        String baseUrl = ContextStore.get(environment.getUrlKey());
-        String url = protocol + "://" + baseUrl;
-
-        if (ObjectRepository.environment == null && username != null && password != null) url = protocol + "://" + username + ":" + password + "@" + baseUrl;
-        log.info("Navigating to " + highlighted(BLUE, url));
-        webInteractions.driver.get(url);
-        ObjectRepository.environment = environment;
+    @Given("Switch to the next active window")
+    public void switchToNextActiveWindow() {
+        PickleibAppiumDriver.get().switchTo().window(PickleibAppiumDriver.get().getWindowHandles().stream().findAny().orElseGet(null));
     }
 
     /**
@@ -265,6 +276,28 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
+     * Clicks or taps a specified element on a given page if it is enabled.
+     * <p>
+     * This method retrieves an element by its name from a page in the object repository,
+     * checks if it is enabled, and performs a click action if the condition is met. If the
+     * element is not present or an error occurs, a warning is logged and the exception is ignored.
+     * </p>
+     *
+     * @param elementName The name of the element to interact with (e.g., "button", "link").
+     * @param pageName    The name of the page containing the element (e.g., "loginPage").
+     */
+    @Given("^If enabled, (?:click|tap) the (\\w+) on the (\\w+)$")
+    public void clickIfEnabled(String elementName, String pageName) {
+        try {
+            WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+            if (getInteractions(element).elementIs(element, elementName, pageName, ElementState.enabled))
+                getInteractions(element).clickElement(element, elementName, pageName);
+        } catch (WebDriverException ignored) {
+            log.warning("The " + elementName + " was not present");
+        }
+    }
+
+    /**
      * Waits for the specified duration in seconds.
      *
      * @param duration   the duration to wait in seconds
@@ -318,7 +351,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^(?:Click|Tap) the (\\w+) on the (\\w+)$")
     public void click(String buttonName, String pageName) {
         WebElement element = objectRepository.acquireElementFromPage(buttonName, pageName);
-        getInteractions(element).clickElement(element, buttonName, pageName, !isMobileElement(element));
+        getInteractions(element).clickElement(element, buttonName, pageName, !isPlatformElement(element));
     }
 
     /**
@@ -506,25 +539,6 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Clicks on the specified element until it disappears from the page.
-     * @param buttonName the name of the button to click on
-     * @param pageName    the name of the page containing the element
-     * @throws WebDriverException if the element cannot be found or clicked
-     */
-    @Given("^Repeatedly (?:Click) the (\\w+) on the (\\w+) until it disappears$")
-    public void clickUntilDisappear(String buttonName, String pageName) {
-        //TODO : need to make it faster to not wait the full timeout
-        try {
-            WebElement element = objectRepository.acquireElementFromPage(buttonName, pageName);
-            while (element.isDisplayed())
-                element.click();
-        } catch (Exception exception) {
-            log.warning("The " + buttonName + " was not present");
-        }
-
-    }
-
-    /**
      * Clicks on the specified component element if it is present on the page.
      *
      * @param elementName   the name of the component element to click on
@@ -580,7 +594,27 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Scrolls through a list until an element containing a given text is found
+     * Hover overs on the specified component element from a list on the page.
+     *
+     * @param elementName   the name of the component element
+     * @param componentName the name of the component containing the element
+     * @param listName      the name of the list containing the element
+     * @param pageName      the name of the page containing the list and component
+     * @throws WebDriverException if the element cannot be found
+     */
+    @Given("Hover over listed component element {} of {} from {} list on the {}")
+    public void hoverOverListedComponentButton(String elementName, String componentName, String listName, String pageName) {
+        WebElement element = objectRepository.acquireListedElementFromComponent(
+                elementName,
+                componentName,
+                listName,
+                pageName
+        );
+        webInteractions.hoverOver(element);
+    }
+
+    /**
+     * Scrolls through a list and click the target element
      *
      * @param listName    the name of the list containing the element
      * @param pageName    the name of the page containing the list and component
@@ -599,8 +633,27 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
         webInteractions.clickElement(targetElement);
     }
 
-    @Given("Scroll in (\\w+) container and click (.+?(?:\\s+.+?)*) element from (\\w+) list of (\\w+) component on (\\w+)$")
-    public void scrollContainerElementsFromComponent(String containerName, String elementText, String listName, String componentName, String pageName) {
+    /**
+     * Scrolls through a list until an element containing a given text is found
+     *
+     * @param listName    the name of the list containing the element
+     * @param pageName    the name of the page containing the list and component
+     * @param elementText the name of the component element to click on from the list
+     */
+    @Given("Scroll in (\\w+) container until (.+?(?:\\s+.+?)*) element is found from (\\w+) list on (\\w+)$")
+    public void scrollUntilFoundContainerElements(String containerName, String elementText, String listName, String pageName) {
+        containerName = firstLetterDeCapped(containerName);
+        listName = firstLetterDeCapped(listName);
+        pageName = firstLetterDeCapped(pageName);
+        elementText = contextCheck(elementText);
+        List<WebElement> elements = pageObjectReflections.getElementsFromPage(listName, pageName);
+        WebElement container = pageObjectReflections.getElementFromPage(containerName, pageName);
+        log.info("Scrolling elements...");
+        webInteractions.scrollInContainer(container, elements, elementText);
+    }
+
+    @Given("Scroll in {} container and click {} element from {} list of {} component on {}")
+    public void scrollAndClickContainerElementsFromComponent(String containerName, String elementText, String listName, String componentName, String pageName) {
         containerName = firstLetterDeCapped(containerName);
         componentName = firstLetterDeCapped(componentName);
         listName = firstLetterDeCapped(listName);
@@ -611,6 +664,19 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
         log.info("Scrolling elements...");
         WebElement targetElement = webInteractions.scrollInContainer(container, elements, elementText);
         webInteractions.clickElement(targetElement);
+    }
+
+    @Given("Scroll through {} container and acquire {} element from {} list of {} component on {}")
+    public void scrollAndAcquireContainerElementsFromComponent(String containerName, String elementText, String listName, String componentName, String pageName) {
+        containerName = firstLetterDeCapped(containerName);
+        componentName = firstLetterDeCapped(componentName);
+        listName = firstLetterDeCapped(listName);
+        pageName = firstLetterDeCapped(pageName);
+        elementText = contextCheck(elementText);
+        List<WebElement> elements = pageObjectReflections.getElementsFromComponent(listName, componentName, pageName);
+        WebElement container = pageObjectReflections.getElementFromComponent(containerName, componentName, pageName);
+        log.info("Scrolling elements...");
+        webInteractions.scrollInContainer(container, elements, elementText);
     }
 
     /**
@@ -678,6 +744,29 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
+     * Clicks an element if the element named equals to the given text
+     *
+     * @param componentName the name of the component containing the element
+     * @param pageName      the name of the page containing the list and component
+     * @param elementText   the name of the component element to click on from the list
+     */
+    @Given("Select exact element named {} from {} component on the {}")
+    public void clickExactNamedElementFromComponent(String elementText, String componentName, String pageName) {
+        componentName = firstLetterDeCapped(componentName);
+        pageName = firstLetterDeCapped(pageName);
+        WebElement element = pageObjectReflections.getElementFromComponent(
+                elementText,
+                componentName,
+                pageName
+        );
+        log.info("Acquiring element...");
+        if (element.getText().equals(elementText)) {
+            webInteractions.clickElement(element);
+        }
+        log.info("Element named " + markup(BLUE, elementText) + " is acquired");
+    }
+
+    /**
      * Scrolls through a list of component elements until an element containing a given text is found
      *
      * @param listName      the name of the list containing the element
@@ -685,8 +774,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * @param pageName      the name of the page containing the list and component
      * @param elementText   the name of the component element to click on from the list
      */
-    @Given("Select exact element named {} amongst the elements of {} container from {} component on the {}")
-    public void clickElementInContainerFromComponent(String elementText, String listName, String componentName, String pageName) {
+    @Given("Click exact element named {} amongst {} list from {} component on the {}")
+    public void clickListedExactNamedElementFromComponent(String elementText, String listName, String componentName, String pageName) {
         componentName = firstLetterDeCapped(componentName);
         listName = firstLetterDeCapped(listName);
         pageName = firstLetterDeCapped(pageName);
@@ -812,8 +901,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
                 inputName,
                 pageName,
                 input,
-                !isMobileElement(inputElement),
-                !isMobileElement(inputElement),
+                !isPlatformElement(inputElement),
+                !isPlatformElement(inputElement),
                 true
         );
     }
@@ -835,8 +924,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
                 inputName,
                 pageName,
                 input,
-                !isMobileElement(inputElement),
-                true,
+                !isPlatformElement(inputElement),
+                false,
                 Objects.equals(verify, "verified")
         );
     }
@@ -1013,41 +1102,6 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Verifies that the text listed within the specified component elements on the specified page matches the expected text.
-     *
-     * @param listName      The name or identifier of the list containing the component elements to verify.
-     * @param componentName The name or identifier of the component containing the elements.
-     * @param pageName      The name or identifier of the page where the component elements are located.
-     * @param table         A DataTable containing the expected text values for the component elements.
-     */
-    @Given("Verify text of component element list {} of {} on the {}") //TODO check
-    public void verifyListedText(String listName, String componentName, String pageName, DataTable table) {
-        List<Bundle<WebElement, String, String>> signForms = objectRepository.acquireElementList(table.asMaps(), pageName);
-        webInteractions.verifyListedText(signForms, pageName);
-
-        //List<Map<String, String>> forms = table.asMaps();
-        //String elementName;
-        //String expectedText;
-        //for (Map<String, String> form : forms) {
-        //  elementName = form.get("Input Element");
-        //  expectedText = contextCheck(form.get("Input"));
-        //  log.info();("Performing text verification for " +
-        //          highlighted(BLUE, elementName) +
-        //          highlighted(GRAY," on the ") +
-        //          highlighted(BLUE, pageName) +
-        //          highlighted(GRAY, " with the text: ") +
-        //          highlighted(BLUE, expectedText)
-        //  );
-        //  pageName = firstLetterDeCapped(pageName);
-        //  componentName = firstLetterDeCapped(componentName);
-        //  List<WebElement> elements = getElementsFromComponent(listName, componentName, pageName);
-        //  WebElement element = acquireNamedElementAmongst(elements, elementName);
-        //  Assert.assertEquals("The " + element.getText() + " does not contain text '",expectedText,element.getText());
-        //  log.success();("Text of the element " + element.getText() + " was verified!");
-        //}
-    }
-
-    /**
      * Verifies the absence of an element with the specified text from a list of components on the specified page.
      *
      * @param elementName       The name or identifier of the element to verify its absence.
@@ -1101,7 +1155,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^Verify presence of component (\\w+) on the (\\w+)$")
     public void verifyComponentPresence(String componentName, String pageName) {
         WebElement element = objectRepository.acquireElementFromPage(componentName, pageName);
-        getInteractions(Web).verifyElementState(element, componentName, pageName, ElementState.displayed);
+        getInteractions(appium).verifyElementState(element, componentName, pageName, ElementState.displayed);
     }
 
     /**
@@ -1115,47 +1169,6 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     public void componentVerifyPresence(String elementName, String componentName, String pageName) {
         WebElement element = objectRepository.acquireElementFromComponent(elementName, componentName, pageName);
         webInteractions.verifyElementState(element, elementName, pageName, ElementState.displayed);
-    }
-
-    /**
-     * Verifies the presence of text within the specified elements on the specified page.
-     *
-     * @param pageName The name or identifier of the page containing the elements to verify.
-     * @param table    A DataTable containing the elements and their expected text values.
-     */
-    @Given("Checking the presence of the element text on the {}") //TODO check
-    public void verifyPresenceText(String pageName, DataTable table) {
-        List<Bundle<WebElement, String, String>> elements = objectRepository.acquireElementList(table.asMaps(), pageName);
-        for (Bundle<WebElement, String, String> element : elements) {
-            WebElement targetElement = objectRepository.acquireElementFromPage(element.beta(), pageName);
-            webInteractions.verifyElementState(targetElement, element.beta(), pageName, ElementState.enabled);
-
-        }
-
-        //String elementText;
-        //List<Map<String, String>> signForms = table.asMaps();
-        //List<Map<String, String>> signForms = table.asMaps();
-        //for (Map<String, String> form : signForms) {
-        //  elementText = contextCheck(form.get("Input"));
-        //  log.info();("Performing text verification for " +
-        //          highlighted(BLUE, elementText) +
-        //          highlighted(GRAY, " on the ") +
-        //          highlighted(BLUE, pageName)
-        //  );
-        //
-        //  WebElement element = getElementContainingText(elementText);
-        //  verifyElementState(element, ElementState.enabled);
-        //  log.success();("Presence of the element text " + elementText + " was verified!");
-        //}
-    }
-
-    /**
-     * Closes the current browser window.
-     */
-    @Given("Close the browser")
-    public void closeBrowser() {
-        webInteractions.driver.quit();
-        initialiseBrowser = isWebUI;
     }
 
     /**
@@ -1494,6 +1507,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String pageName,
             String attributeValue,
             String attributeName) {
+        elementText = contextCheck(elementText);
+        attributeValue = contextCheck(attributeValue);
         WebElement element = objectRepository.acquireExactNamedListedComponentElement(
                 elementFieldName,
                 elementText,
@@ -1608,71 +1623,24 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Verifies that each listed element within the specified list on the specified page contains the expected text.
+     * Verifies if a component element in a list contains a specified text.
      *
-     * @param listName The name or identifier of the list containing the elements to verify.
-     * @param pageName The name or identifier of the page where the list is located.
-     * @param table    A DataTable containing the expected text values for the listed elements.
+     * @param elementName   the name of the element to be verified.
+     * @param listName      the name of the list containing the element.
+     * @param componentName the name of the component containing the element.
+     * @param pageName      the name of the page containing the list.
+     * @param expectedText  the expected text to be verified in the element.
      */
-    @Given("Verify text of listed element from the {} on the {}") //TODO: fix this step
-    public void verifyListedElementContainsText(String listName, String pageName, DataTable table) {
-        List<Map<String, String>> signForms = table.asMaps();
-        String elementText;
-        for (Map<String, String> form : signForms) {
-            elementText = form.get("Element Text");
-
-            WebElement element = objectRepository.acquireListedElementFromPage(elementText, listName, pageName);
-            log.info("Performing text verification for element with text '" +
-                    highlighted(BLUE, elementText) +
-                    highlighted(GRAY, "' on the ") +
-                    highlighted(BLUE, pageName)
-            );
-            Assert.assertTrue(
-                    "The " + elementText + " does not contain text '" + elementText + "' ",
-                    element.getText().contains(elementText)
-            );
-            log.success("Element is verified to contain '" + elementText + "' text!");
-        }
-    }
-
-    /**
-     * Verifies if an element contains a specified text.
-     *
-     * @param elementName  the name of the element to be verified.
-     * @param elementName  the name of the element to be verified.
-     * @param pageName     the name of the page containing the list.
-     * @param expectedText the expected text to be verified in the element.
-     */
-    @Given("Verify text of (.+?(?:\\s+.+?)*) element on the (.+?(?:\\s+.+?)*) is contains (.+?(?:\\s+.+?)*)$")
-    public void verifyElementContainsText(
+    @Given("Verify text of listed component element {} from the {} of {} on the {} contains {}")
+    public void verifyListedComponentElementContainsText(
             String elementName,
+            String listName,
+            String componentName,
             String pageName,
             String expectedText) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
-        (isWebUI ? getInteractions(element) : webInteractions)
-                .centerElement(element, elementName, pageName);
-        (isWebUI ? getInteractions(element) : webInteractions)
-                .verifyContainsText(element, elementName, pageName, expectedText);
-    }
-
-    /**
-     * Verifies if an element contains a specified text from another element.
-     *
-     * @param firstElementName  the name of the main element going to be verified if contains a text.
-     * @param pageName          the name of the page containing the list.
-     * @param secondElementName the name of the element going to be verified if includes in the main element.
-     */
-    @Given("Perform text verification for (.+?(?:\\s+.+?)*) element on the (.+?(?:\\s+.+?)*) is contains text of (.+?(?:\\s+.+?)*)$")
-    public void verifyElementsTextMatch(
-            String firstElementName,
-            String pageName,
-            String secondElementName) {
-        WebElement firstElement = objectRepository.acquireElementFromPage(firstElementName, pageName);
-        WebElement secondElement = objectRepository.acquireElementFromPage(secondElementName, pageName);
-        (isWebUI ? getInteractions(secondElement) : webInteractions)
-                .centerElement(secondElement, secondElementName, pageName);
-        (isWebUI ? getInteractions(firstElement) : webInteractions)
-                .verifyContainsText(firstElement, firstElementName, pageName, secondElement.getText());
+        WebElement element = objectRepository.acquireListedElementFromComponent(elementName, componentName, listName, pageName);
+        System.out.println(element.getText());
+        webInteractions.verifyContainsText(element, elementName, pageName, expectedText);
     }
 
     /**
@@ -1684,15 +1652,15 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * @param pageName      the name of the page containing the list.
      * @param expectedText  the expected text to be verified in the element.
      */
-    @Given("Verify text of listed component element {} from the {} of {} on the {} is equal to {}")
-    public void verifyListedComponentElementContainsText(
+    @Given("Verify text of listed component element {} from the {} of {} on the {} is equals to {}")
+    public void verifyListedComponentElementText(
             String elementName,
             String listName,
             String componentName,
             String pageName,
             String expectedText) {
         WebElement element = objectRepository.acquireListedElementFromComponent(elementName, componentName, listName, pageName);
-        webInteractions.verifyContainsText(element, elementName, pageName, expectedText);
+        webInteractions.verifyText(element, elementName, pageName, expectedText);
     }
 
     /**
@@ -1703,7 +1671,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * @param pageName      The name or identifier of the page where the component and list are located.
      * @param table         A DataTable containing the expected text values for the listed component elements.
      */
-    @Given("Verify text of listed component element from the {} of {} on the {}") //TODO check
+    @Given("Verify text of listed component element from the {} of {} on the {}")
     public void verifyListedComponentElementContainsText(String listName, String componentName, String pageName, DataTable table) {
         List<Map<String, String>> signForms = table.asMaps();
         String elementText;
@@ -1732,7 +1700,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * @param expectedText The expected text that each listed element should contain.
      */
     @Given("Perform text verification for listed elements of {} list on the {} contains {}")
-    public void verifyListedElementsContainsText(
+    public void textVerificationForListedElement(
             String listName,
             String pageName,
             String expectedText) {
@@ -1887,7 +1855,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^Clear input field (\\w+) on the (\\w+)$")
     public void clearInputField(String elementName, String pageName) {
         WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
-        element.clear(); // TODO Inner clear() method may be needed
+        element.clear();
     }
 
     /**
@@ -1904,19 +1872,6 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Presses a specified key on an element of a page.
-     *
-     * @param key         the key to be pressed.
-     * @param elementName the name of the element to be pressed.
-     * @param pageName    the name of the page containing the element.
-     */
-    @Given("^Press (\\w+) key on (\\w+) element of the (\\w+)(?: using (Mobile|Web) driver)?$")
-    public void pressKey(Keys key, String elementName, String pageName, String driverType) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
-        getInteractions(element).pressKey(element, elementName, pageName, key);
-    }
-
-    /**
      * Presses a specified key on a component element.
      *
      * @param key           the key to be pressed.
@@ -1928,6 +1883,29 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     public void componentPressKey(Keys key, String elementName, String componentName, String pageName) {
         WebElement element = objectRepository.acquireElementFromComponent(elementName, componentName, pageName);
         webInteractions.pressKey(element, elementName, pageName, key);
+    }
+
+    /**
+     * Executes a specified mobile command
+     *
+     * @param command search, go, done, next, previous, send, return, clear
+     */
+    @Given("Execute mobile editor command: {}")
+    public void executeMobileEditCommand(String command) {
+        PickleibAppiumDriver.get().executeScript("mobile:performEditorAction", ImmutableMap.of("action", command));
+    }
+    /**
+     * Executes a specified mobile command
+     *
+     * @param command search, go, done, next, previous, send, return, clear
+     */
+    @Given("Execute {} mobile command with {} parameter for {} from {}")
+    public void executeGenericMobileCommand(String command, String parameter, String elementName, String pageName) {
+        Map<String, String> params = new HashMap<>();
+        platformInteractions.scrollUntilFound(elementName);
+        WebElement element = platformInteractions.getElementByText(elementName, pageName);
+        params.put(parameter, element.getAttribute("resourceId"));
+        PickleibAppiumDriver.get().executeScript("mobile: " + command, params);
     }
 
     /**
@@ -1982,7 +1960,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("Upload file on component input {} of {} component on the {} with file: {}")
     public void fillInputWithFile(String inputName, String componentName, String pageName, String path) {
         WebElement inputElement = objectRepository.acquireElementFromComponent(inputName, componentName, pageName);
-        webInteractions.fillInputWithFile(inputElement, inputName, pageName, path);
+        //webInteractions.fillInputWithFile(inputElement, inputName, pageName, path);
         webInteractions.fillInputElement(inputElement, inputName, pageName, path, true, false, true);
     }
 
@@ -2044,6 +2022,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String pageName,
             String targetElementFieldName,
             String expectedText) {
+        elementText = contextCheck(elementText);
+        expectedText = contextCheck(expectedText);
         WebComponent component = objectRepository.acquireExactNamedListedComponent(
                 elementFieldName,
                 elementText,
@@ -2054,6 +2034,25 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
         webInteractions.verifyElementContainsText(element, expectedText);
     }
 
+    @Given("Select component by {} named {} from {} component list on the {} and verify {} element equals {} text")
+    public void verifySelectedComponentEqualsText(
+            String elementFieldName,
+            String elementText,
+            String componentListName,
+            String pageName,
+            String targetElementFieldName,
+            String expectedText) {
+        elementText = contextCheck(elementText);
+        expectedText = contextCheck(expectedText);
+        WebComponent component = objectRepository.acquireExactNamedListedComponent(
+                elementFieldName,
+                elementText,
+                componentListName,
+                pageName
+        );
+        WebElement element = pageObjectReflections.getElementFromComponent(targetElementFieldName, component);
+        webInteractions.verifyElementText(element, expectedText);
+    }
     /**
      * Performs interactions with elements on a specified page object, based on the provided specifications.
      *
@@ -2070,27 +2069,6 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     }
 
     /**
-     * Performs interactions with the elements of a specified component in a page object, based on the provided specifications.
-     *
-     * @param componentFieldName The name of the component field in the page object.
-     * @param pageName           The name of the page object.
-     * @param specifications     A DataTable containing the specifications for each element to be interacted with, including the element name and interaction type.
-     */
-    @Given("Interact with component element of {} component on the {}")
-    public void componentElementInteraction(
-            String componentFieldName,
-            String pageName,
-            DataTable specifications //TODO: fix this step and its logs
-    ) {
-        List<Bundle<String, WebElement, Map<String, String>>> bundles = objectRepository.acquireElementBundlesFromComponent(
-                componentFieldName,
-                pageName,
-                specifications.asMaps()
-        );
-        webInteractions.bundleInteraction(bundles, pageName);
-    }
-
-    /**
      * Save context value to another context key to save it before it will be overwritten.
      */
     @Given("Save context value from {} context key to {}")
@@ -2100,9 +2078,20 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
         log.info("Value of " + markup(BLUE, contextKey) + markup(GREEN, " was saved to ") + markup(BLUE, newContextKey));
     }
 
+    /**
+     * Executes a JavaScript script on a web element identified by its text content.
+     * <p>
+     * This method locates a web element containing the specified text and executes the provided
+     * JavaScript script on it using the configured web interactions utility.
+     * </p>
+     *
+     * @param script       The JavaScript code to execute on the target element.
+     * @param elementText  The text content used to identify the target web element.
+     */
     @Given("Execute script {string} on element with text {string}")
     public void executeScript(String script, String elementText) {
         WebElement element = webInteractions.getElementContainingText(elementText);
         webInteractions.executeScript(script, element);
     }
+
 }

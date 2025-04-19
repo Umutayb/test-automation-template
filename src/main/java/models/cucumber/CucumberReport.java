@@ -1,9 +1,13 @@
 package models.cucumber;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CucumberReport {
 
     Integer line;
@@ -15,7 +19,7 @@ public class CucumberReport {
     String uri;
     List<Tag> tags;
 
-    public Boolean testSuccessful(){
+    public boolean testSuccessful(){
         for (Element.StepComponent step: getElements().get(0).getSteps()) {
             if (!step.getResult().getStatus().equals("passed")) return false;
         }

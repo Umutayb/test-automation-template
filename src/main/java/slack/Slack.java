@@ -11,7 +11,6 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,33 +19,33 @@ public class Slack extends ApiUtilities {
 
     SlackServices slackServices = new ServiceGenerator(new Headers.Builder()
             .add("Authorization", ContextStore.get("slack-token").toString())
-            .build())
-            .generate(SlackServices.class);
+            .build()
+    ).generate(SlackServices.class);
 
-    public SuccessfulMessage postSimpleMessage(String message, String channelId){
-        Call<SuccessfulMessage> messageCall = slackServices.postMessage(
-                new SimpleMessageModel(channelId, "mrkdwn", message)
-        );
+    public SuccessfulMessage postSimpleMessage(SimpleMessageModel message, String channelId){
+        log.info("Posting simple message to channel: " + channelId);
+        Call<SuccessfulMessage> messageCall = slackServices.postMessage(message);
         return perform(messageCall, false, false);
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public Object postThreadMessage(String message, String channelId, String threadTs){
-        Call<Object> messageCall = slackServices.postThreadMessage(
-                new ThreadMessageModel(channelId, "mrkdwn", message, threadTs)
-        );
+    public Object postThreadMessage(ThreadMessageModel message, String channelId){
+        log.info("Posting thread message to channel: " + channelId);
+        Call<Object> messageCall = slackServices.postThreadMessage(message);
         return perform(messageCall, false, false);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public Object postMultipartThreadMessage(File file, String comments, String channelId, String threadTs){
+        log.info("Posting multipart message to channel: " + channelId);
         String mediaType;
         try {mediaType = Files.probeContentType(file.toPath());}
         catch (IOException e) {throw new RuntimeException(e);}
         RequestBody fileBody = RequestBody.create(file, MediaType.parse(mediaType));
         MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), fileBody);
+
         Call<Object> postFile = slackServices.postMultipartThreadMessage(
-                part,
+                getMultipartFromFile(file, "file"),
                 RequestBody.create(comments, MediaType.parse("text/plain")),
                 RequestBody.create(channelId, MediaType.parse("text/plain")),
                 RequestBody.create(threadTs, MediaType.parse("text/plain"))
@@ -56,13 +55,14 @@ public class Slack extends ApiUtilities {
 
     @SuppressWarnings({"UnusedReturnValue", "unused"})
     public Object postMultipartMessage(File file, String comments, String channelId){
+        log.info("Posting multipart thread message to channel: " + channelId);
         String mediaType;
         try {mediaType = Files.probeContentType(file.toPath());}
         catch (IOException e) {throw new RuntimeException(e);}
         RequestBody fileBody = RequestBody.create(file, MediaType.parse(mediaType));
         MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), fileBody);
         Call<Object> postFile = slackServices.postMultipartMessage(
-                part,
+                getMultipartFromFile(file, "file"),
                 RequestBody.create(comments, MediaType.parse("text/plain")),
                 RequestBody.create(channelId, MediaType.parse("text/plain"))
         );

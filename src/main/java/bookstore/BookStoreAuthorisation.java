@@ -6,7 +6,6 @@ import bookstore.models.CredentialModel;
 import bookstore.models.TokenResponseModel;
 import bookstore.models.UserResponseModel;
 import retrofit2.Call;
-import retrofit2.http.Headers;
 import utils.Printer;
 
 public class BookStoreAuthorisation extends ApiUtilities {

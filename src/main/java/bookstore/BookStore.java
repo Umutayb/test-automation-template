@@ -9,7 +9,6 @@ import retrofit2.Call;
 
 import static java.awt.Color.*;
 
-
 public class BookStore extends ApiUtilities {
 
     BookStoreServices.Authorised bookStoreAuthorized = new ServiceGenerator(
@@ -22,11 +21,13 @@ public class BookStore extends ApiUtilities {
         Call<BookListModel> bookCall = bookStore.getBooks();
         return perform(bookCall, true, true);
     }
+
     public UserResponseModel getUser(String userId) {
         log.info("Getting user by Id: " + BLUE+userId);
         Call<UserResponseModel> userCall = bookStoreAuthorized.getUser(userId);
         return perform(userCall, true, true);
     }
+
     public Object postBooks(CollectionOfIsbnsModel books) {
         log.info("Posting selected books to context user");
         Call<Object> bookCall = bookStoreAuthorized.postBooks(books);

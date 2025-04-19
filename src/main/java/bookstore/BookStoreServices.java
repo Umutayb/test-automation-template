@@ -14,16 +14,20 @@ public interface BookStoreServices {
 
     interface Authorisation {
         String BASE_URL = BookStoreApi.BASE_URL;
+
         @POST(USER_SUFFIX)
         Call<UserResponseModel> createUser(@Body CredentialModel body);
+
         @POST(TOKEN_SUFFIX)
         Call<TokenResponseModel> generateToken(@Body CredentialModel body);
     }
 
     interface Authorised {
         String BASE_URL = BookStoreApi.BASE_URL;
+
         @GET(USER_SUFFIX + USER_ID)
         Call<UserResponseModel> getUser(@Path("UUID") String userId);
+
         @POST(BOOKS_SUFFIX)
         Call<Object> postBooks(@Body CollectionOfIsbnsModel books);
     }
