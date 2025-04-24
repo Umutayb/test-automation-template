@@ -16,7 +16,7 @@ public interface BookStoreServices {
         String BASE_URL = BookStoreApi.BASE_URL;
 
         @POST(USER_SUFFIX)
-        Call<UserResponseModel> createUser(@Body CredentialModel body);
+        Call<CreateUserResponse> createUser(@Body CredentialModel body);
 
         @POST(TOKEN_SUFFIX)
         Call<TokenResponseModel> generateToken(@Body CredentialModel body);

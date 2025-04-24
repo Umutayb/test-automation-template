@@ -4,22 +4,23 @@ import common.PageObject;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.components.BookDetailRow;
-import pages.components.BookRow;
 import pickleib.enums.ElementState;
 
 import java.util.List;
 
 public class ProfilePage extends PageObject {
 
-    @FindBy(css = ".rt-tr-group")
-    public List<BookRow> bookRows;
+    @FindBy(css = ".rt-tr-group .rt-td")
+    public List<WebElement> bookRowCells;
 
-    @FindBy(css = "[class='mt-2 row']")
-    public List<BookDetailRow> bookDetailRows;
+    @FindBy(css = ".rt-resizable-header-content")
+    public List<WebElement> sectionNames;
 
-    @FindBy(css = ".rt-tr")
-    public BookRow bookRow;
+    @FindBy(css = "[class='mt-2 row'] [class='col-md-3 col-sm-12']")
+    public List<WebElement> labels;
+
+    @FindBy(css = "[class='mt-2 row'] [class='col-md-9 col-sm-12']")
+    public List<WebElement> values;
 
     @FindBy(css = "[class='rt-tr -odd']")
     public List<WebElement> bookSections;
@@ -33,27 +34,21 @@ public class ProfilePage extends PageObject {
     @FindBy(id = "addNewRecordButton")
     public WebElement backToBookStoreButton;
 
-    public BookDetailRow getDetailRow(String label){
-        for (BookDetailRow bookDetailRow:bookDetailRows) {
-
-            if (elementIs(bookDetailRow.label, ElementState.enabled) && bookDetailRow.getLabel().replaceAll(":", "").trim().equals(label))
-                return bookDetailRow;
+    public String getDetailRow(String label){
+        for (WebElement targetLabel : labels) {
+            if (targetLabel.getText().equals(label))
+                return targetLabel.getText().replaceAll(":", "").trim();
         }
         throw new RuntimeException("Label not found!");
     }
 
-    public BookRow getBookRow(String bookTitle){
-        log.warning("SIZE: " + bookRows.size());
-        for (BookRow bookRow:bookRows) {
-            log.warning("TITLE: " + bookRow.getTitle());
-            log.warning("TEXT: " + bookRow.getText());
-            if (bookRow.getTitle().equalsIgnoreCase(bookTitle)) return bookRow;
+    public WebElement getBookRow(String bookTitle){
+        log.warning("SIZE: " + bookRowCells.size());
+        for (WebElement bookRowCell : bookRowCells) {
+            log.warning("TEXT: " + bookRowCell.getText());
+            if (bookRowCell.getText().equalsIgnoreCase(bookTitle)) return bookRowCell;
         }
-        return null;
-    }
-
-    public String getRowAttribute(String bookTitle, String bookAttribute){
-        return getBookRow(bookTitle).cells.get(2).getText();
+        throw new RuntimeException("BookRowCell not found!");
     }
 
     public WebElement getBookTitle(String title) {

@@ -1,6 +1,7 @@
 package steps;
 
 import bookstore.BookStoreAuthorisation;
+import bookstore.models.CreateUserResponse;
 import bookstore.models.CredentialModel;
 import bookstore.models.TokenResponseModel;
 import bookstore.models.UserResponseModel;
@@ -67,11 +68,11 @@ public class Hooks extends PageObject {
             CredentialModel user = new CredentialModel("Booker");
             user.setPassword("Bookersbooks1*");
 
-            UserResponseModel userResponseModel = BookStoreAuthorisation.createUser(user);
+            CreateUserResponse createUserResponse = BookStoreAuthorisation.createUser(user);
             ContextStore.put("contextUser", user);
 
-            ContextStore.put("userId", userResponseModel.getUserID());
-            ContextStore.put("userName", userResponseModel.getUsername());
+            ContextStore.put("userId", createUserResponse.getUserID());
+            ContextStore.put("userName", createUserResponse.getUsername());
             ContextStore.put("password", user.getPassword());
 
             TokenResponseModel tokenResponse = BookStoreAuthorisation.generateToken(user);

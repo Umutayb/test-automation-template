@@ -21,8 +21,7 @@ public class BookStore extends ApiUtilities {
         Call<BookListModel> bookCall = bookStore.getBooks();
         return perform(bookCall, true, true);
     }
-    public
-    UserResponseModel getUser(String userId) {
+    public UserResponseModel getUser(String userId) {
         log.info("Getting user by Id: " + BLUE+userId);
         Call<UserResponseModel> userCall = bookStoreAuthorized.getUser(userId);
         return perform(userCall, true, true);
