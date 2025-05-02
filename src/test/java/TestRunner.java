@@ -12,6 +12,7 @@ import java.nio.file.Files;
         features = {"src/test/java/features"},
         plugin = {"json:target/reports/Cucumber.json"},
         glue = {"steps"},
+        tags = "@BookStore",
         publish = true
 )
 public class TestRunner {

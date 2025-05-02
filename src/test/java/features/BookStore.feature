@@ -1,5 +1,8 @@
+@BookStore
 Feature: BookStore API
-  @Authenticate @Web-UI
+  Demonstrating API capabilities of api_assured
+
+  @Authenticate @Web-UI @BookStore-01
   Scenario: Get books
     * Get all the books from database
     * Get all books on bookstore and add by publisher named No Starch Press to user in context
@@ -15,3 +18,5 @@ Feature: BookStore API
     #* Verify the book info for the user in context
     # Crosscheck scenario, the website is full of ads therefore this doesn't work very smoothly
     # TODO: fix the final verification step
+
+  

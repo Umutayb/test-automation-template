@@ -1,5 +1,5 @@
-@Login
-Feature: Login
+@DemoQA
+Feature: DemoQA
   A feature where the login scenarios are tested.
   There are dedicated scenarios for acceptance and test environments
   Background: Context user
@@ -50,4 +50,3 @@ Feature: Login
   @Web-UI @SCN-DEMO-QA-3
   Scenario: DemoQA bookstore test
     * Click listed element Book Store Application from categoryCards list on the LandingPage
-    * Print book attribute
