@@ -24,7 +24,7 @@ public class TestRunner {
         File dir = new File("screenshots");
         File[] screenshots = dir.listFiles();
         String mediaType;
-        if(screenshots.length>0) for (File screenshot : screenshots) {
+        if(screenshots != null && screenshots.length>0) for (File screenshot : screenshots) {
             try {mediaType = Files.probeContentType(screenshot.toPath());}
             catch (IOException e) {throw new RuntimeException(e);}
             if (mediaType != null && mediaType.equals("image/jpeg")) screenshot.delete();
