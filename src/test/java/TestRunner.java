@@ -23,7 +23,6 @@ public class TestRunner {
         //Anything you have to set up before the test suite runs will be implemented here
         File dir = new File("screenshots");
         File[] screenshots = dir.listFiles();
-        assert screenshots != null;
         String mediaType;
         if(screenshots.length>0) for (File screenshot : screenshots) {
             try {mediaType = Files.probeContentType(screenshot.toPath());}
