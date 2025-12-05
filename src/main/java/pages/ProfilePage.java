@@ -1,14 +1,13 @@
 package pages;
 
-import common.PageObject;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.enums.ElementState;
+import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
-public class ProfilePage extends PageObject {
+public class ProfilePage extends PickleibPageObject {
 
     @FindBy(css = ".rt-tr-group .rt-td")
     public List<WebElement> bookRowCells;

@@ -14,7 +14,6 @@ import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
 import pickleib.mobile.driver.PickleibAppiumDriver;
 import pickleib.mobile.interactions.PlatformInteractions;
-import pickleib.utilities.element.acquisition.ElementAcquisition;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
 import pickleib.utilities.steps.PageObjectStepUtilities;
 import pickleib.web.driver.PickleibWebDriver;
@@ -479,7 +478,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * Fills in the specified input field of on the page with the given text.
      *
      * @param inputName the name of the input field to fill in
-     * @param pageName  the name of the page containing the component
+     * @param pageName  the name of the page containing the element
      * @param input     the text to fill in the input field
      * @throws WebDriverException if the input field cannot be found or filled
      */
@@ -956,7 +955,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * Fills the input field from a given page with a specified file.
      *
      * @param inputName     the name of the input field to be filled.
-     * @param pageName      the name of the page containing the component.
+     * @param pageName      the name of the page containing the element.
      * @param path          the file path of the file to be uploaded.
      */
     @Given("Upload file on input {} on the {} with file: {}")

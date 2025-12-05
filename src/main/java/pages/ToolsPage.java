@@ -1,12 +1,12 @@
 package pages;
 
-import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
-public class ToolsPage extends PageObject {
+public class ToolsPage extends PickleibPageObject {
 
     @FindBy(css = ".element-group")
     List<WebElement> categories;

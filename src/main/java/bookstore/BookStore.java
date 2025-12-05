@@ -1,20 +1,29 @@
 package bookstore;
 
-import api_assured.ApiUtilities;
-import api_assured.ServiceGenerator;
 import bookstore.models.*;
 import context.ContextStore;
 import okhttp3.Headers;
 import retrofit2.Call;
+import wasapi.WasapiClient;
+import wasapi.WasapiUtilities;
 
 import static java.awt.Color.*;
 
-public class BookStore extends ApiUtilities {
+public class BookStore extends WasapiUtilities {
 
-    BookStoreServices.Authorised bookStoreAuthorized = new ServiceGenerator(
-            new Headers.Builder().add("Authorization", "Bearer " + ContextStore.get("token").toString()).build()
-    ).generate(BookStoreServices.Authorised.class);
-    BookStoreServices bookStore = new ServiceGenerator().generate(BookStoreServices.class);
+    BookStoreServices.Authorised bookStoreAuthorized;
+    BookStoreServices bookStore;
+
+    public BookStore(){
+        bookStoreAuthorized = new WasapiClient.Builder()
+                .headers(new Headers.Builder().add(
+                        "Authorization",
+                                "Bearer " + ContextStore.get("token").toString()
+                        ).build()
+                )
+                .build(BookStoreServices.Authorised.class);
+        bookStore = new WasapiClient.Builder().build(BookStoreServices.class);
+    }
 
     public BookListModel getAllBooks() {
         log.info("Getting all books on the bookstore");

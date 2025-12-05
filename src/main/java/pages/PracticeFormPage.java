@@ -1,12 +1,12 @@
 package pages;
 
-import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
-public class PracticeFormPage extends PageObject {
+public class PracticeFormPage extends PickleibPageObject {
 
     @FindBy(css = ".practice-form-wrapper h5")
     public WebElement header;

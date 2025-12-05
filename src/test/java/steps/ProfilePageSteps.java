@@ -2,16 +2,16 @@ package steps;
 
 import bookstore.models.BookModel;
 import bookstore.models.UserResponseModel;
-import common.PageObject;
 import context.ContextStore;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import pages.ProfilePage;
-
+import pickleib.web.PickleibPageObject;
 import java.util.List;
+
 import static utils.StringUtilities.Color.*;
 
-public class ProfilePageSteps extends PageObject {
+public class ProfilePageSteps extends PickleibPageObject {
 
     ProfilePage profilePage = new ProfilePage();
 
