@@ -4,7 +4,7 @@
 
     <groupId>bora</groupId>
     <artifactId>test-automation-template</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>Test Automation Template</name>
@@ -13,56 +13,32 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <web.ui.framework.version>2.0.0</web.ui.framework.version>
-        <maven.surefire.version>2.22.1</maven.surefire.version>
+        <pickleib.version>2.0.2</pickleib.version>
         <cucumber.version>7.14.0</cucumber.version>
         <selenium.version>4.19.0</selenium.version>
         <appium.version>9.2.2</appium.version>
-        <retrofit.version>2.9.0</retrofit.version>
-        <okhttp.version>4.12.0</okhttp.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>31.0.1-jre</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>2.9.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>2.11.0</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <!-- Pickleib -->
         <dependency>
             <groupId>io.github.umutayb</groupId>
-            <artifactId>Pickleib</artifactId>
-            <version>${web.ui.framework.version}</version>
+            <artifactId>pickleib</artifactId>
+            <version>${pickleib.version}</version>
         </dependency>
 
+        <!-- Java Utilities -->
         <dependency>
             <groupId>io.github.umutayb</groupId>
             <artifactId>Utilities</artifactId>
-            <version>1.7.2</version>
+            <version>1.7.5</version>
         </dependency>
 
-        <!-- SQL Query Builder -->
+        <!-- Wasapi -->
         <dependency>
-            <groupId>io.github.soldelv</groupId>
-            <artifactId>sql-query-builder</artifactId>
-            <version>0.0.3</version>
+            <groupId>io.github.umutayb</groupId>
+            <artifactId>wasapi</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
         <!-- Cucumber -->
@@ -118,40 +94,23 @@
             <version>1.18.26</version>
         </dependency>
 
-        <!-- Commons -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-
-        <!-- Jackson Databind -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.14.2</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- HTTP Components -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.14</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- My SQL -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>11.2.3.jre17</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.32</version>
+        </dependency>
+
+        <!-- SQL Query Builder -->
+        <dependency>
+            <groupId>io.github.soldelv</groupId>
+            <artifactId>sql-query-builder</artifactId>
+            <version>0.0.3</version>
         </dependency>
 
         <!-- Gson -->
@@ -169,71 +128,18 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- OKHttp -->
+        <!-- JUnit -->
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${okhttp.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>logging-interceptor</artifactId>
-            <version>${okhttp.version}</version>
-        </dependency>
-
-        <!-- Retrofit -->
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>adapter-rxjava</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-gson</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>retrofit</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-jackson</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-
-        <!-- Assert -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.24.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.1</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Logback -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.4.6</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Web Driver Extensions -->
-        <dependency>
-            <groupId>com.github.webdriverextensions</groupId>
-            <artifactId>webdriverextensions</artifactId>
-            <version>3.11.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>1.2.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -246,6 +152,13 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.26</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 

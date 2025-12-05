@@ -11,6 +11,7 @@ import java.util.List;
 public class BookStoreApiSteps {
 
     BookStore bookStore = new BookStore();
+
     @Given("Get all the books from database")
     public void getBooks() {
         BookListModel books = bookStore.getAllBooks();

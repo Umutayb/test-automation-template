@@ -1,11 +1,19 @@
 package pages;
 
-import common.PageObject;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.components.LoginWrapper;
+import pickleib.web.PickleibPageObject;
 
 
-public class LoginPage extends PageObject {
-    @FindBy(css = ".login-wrapper")
-    LoginWrapper loginWrapper;
+public class LoginPage extends PickleibPageObject {
+
+    @FindBy(css = ".login-wrapper #userName")
+    public WebElement userName;
+
+    @FindBy(css = ".login-wrapper #password")
+    public WebElement password;
+
+    @FindBy(css = ".login-wrapper #login")
+    public WebElement loginButton;
+
 }

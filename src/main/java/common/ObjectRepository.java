@@ -1,10 +1,7 @@
 package common;
 
 import lombok.Getter;
-import pages.LandingPage;
-import pages.LoginPage;
-import pages.ProfilePage;
-import pages.ToolsPage;
+import pages.*;
 import pages.inventory.app.*;
 import pickleib.utilities.interfaces.repository.PageRepository;
 import uwp.BasicUWPMainPage;
@@ -27,16 +24,22 @@ public class ObjectRepository implements PageRepository {
 
     public static Environment environment;
 
+    //Pages
+    BasicUWPMainPage basicUWPMainPage;
+    PracticeFormPage practiceFormPage;
+    BookDetailsPage bookDetailsPage;
+    BookStorePage bookStorePage;
+    Transaction transaction;
     LandingPage landingPage;
+    ProfilePage profilePage;
+    Categories categories;
+    LoginFrame loginFrame;
     ToolsPage toolsPage;
     LoginPage loginPage;
-    ProfilePage profilePage;
-    BasicUWPMainPage basicUWPMainPage;
-    LoginFrame loginFrame;
     Dashboard dashboard;
-    Categories categories;
     Products products;
     Sales sales;
-    Transaction transaction;
+
+    //Screens
     InventoryManagementFrame inventoryManagementFrame;
 }

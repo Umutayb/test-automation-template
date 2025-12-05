@@ -1,30 +1,18 @@
 package pages;
 
-import common.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.components.DatePicker;
-import pages.components.PracticeForm;
-import pages.components.ResultModel;
+import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
-public class ToolsPage extends PageObject {
+public class ToolsPage extends PickleibPageObject {
 
     @FindBy(css = ".element-group")
     List<WebElement> categories;
 
     @FindBy(css = ".menu-list li")
     List<WebElement> tools;
-
-    @FindBy(css = ".practice-form-wrapper")
-    PracticeForm practiceForm;
-
-    @FindBy(css = ".react-datepicker__month-container")
-    DatePicker datePicker;
-
-    @FindBy(css = ".modal-content")
-    ResultModel resultModel;
 
     @FindBy(css = "#login")
     WebElement loginButton;

@@ -3,6 +3,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,6 +13,7 @@ import java.nio.file.Files;
         features = {"src/test/java/features"},
         plugin = {"json:target/reports/Cucumber.json"},
         glue = {"steps"},
+        tags = "@BookStore",
         publish = true
 )
 public class TestRunner {
@@ -21,9 +23,8 @@ public class TestRunner {
         //Anything you have to set up before the test suite runs will be implemented here
         File dir = new File("screenshots");
         File[] screenshots = dir.listFiles();
-        assert screenshots != null;
         String mediaType;
-        if(screenshots.length>0) for (File screenshot : screenshots) {
+        if(screenshots != null && screenshots.length>0) for (File screenshot : screenshots) {
             try {mediaType = Files.probeContentType(screenshot.toPath());}
             catch (IOException e) {throw new RuntimeException(e);}
             if (mediaType != null && mediaType.equals("image/jpeg")) screenshot.delete();
