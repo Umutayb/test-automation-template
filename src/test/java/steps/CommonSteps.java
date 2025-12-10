@@ -1,5 +1,5 @@
 package steps;
-import collections.Bundle;
+
 import com.google.common.collect.ImmutableMap;
 import context.ContextStore;
 import io.cucumber.datatable.DataTable;
@@ -14,8 +14,9 @@ import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
 import pickleib.mobile.driver.PickleibAppiumDriver;
 import pickleib.mobile.interactions.PlatformInteractions;
+import pickleib.utilities.element.ElementBundle;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
-import pickleib.utilities.steps.PageObjectStepUtilities;
+import pickleib.utilities.steps.PageJsonStepUtilities;
 import pickleib.web.driver.PickleibWebDriver;
 import pickleib.web.interactions.WebInteractions;
 import utils.*;
@@ -24,39 +25,21 @@ import java.util.*;
 import static pickleib.driver.DriverFactory.DriverType.*;
 import static pickleib.utilities.platform.PlatformUtilities.isPlatformElement;
 import static steps.Hooks.initialiseAppiumDriver;
+import static steps.Hooks.initialiseBrowser;
 import static utils.StringUtilities.*;
 import static utils.StringUtilities.Color.*;
 import static utils.StringUtilities.markup;
+import static utils.arrays.ArrayUtilities.getRandomItemFrom;
 
-
-public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
-
-    WebInteractions webInteractions;
-    PlatformInteractions platformInteractions;
+public class CommonSteps extends PageJsonStepUtilities {
 
     public CommonSteps() {
-        super(ObjectRepository.class, initialiseAppiumDriver, Hooks.initialiseBrowser);
-        if (initialiseAppiumDriver)
-            platformInteractions = new PlatformInteractions();
-        if (Hooks.initialiseBrowser)
-            webInteractions = new WebInteractions();
+        super(
+                FileUtilities.Json.parseJsonFile("src/test/resources/PageRepository.json"),
+                initialiseAppiumDriver,
+                initialiseBrowser
+        );
     }
-
-    @Override
-    public PolymorphicUtilities getInteractions(DriverFactory.DriverType driverType) {
-        if (!StringUtilities.isBlank(driverType))
-            switch (driverType) {
-                case selenium -> {
-                    return webInteractions;
-                }
-                case appium-> {
-                    return platformInteractions;
-                }
-            }
-        else return getInteractions(defaultPlatform);
-        return null;
-    }
-
 
     /**
      * Sets the default platform type for subsequent operations.
@@ -170,7 +153,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("Switch to the next active window")
     public void switchToNextActiveWindow() {
-        PickleibAppiumDriver.get().switchTo().window(PickleibAppiumDriver.get().getWindowHandles().stream().findAny().orElseGet(null));
+        PickleibAppiumDriver.get().switchTo().window(PickleibAppiumDriver.get().getWindowHandles().stream().findAny().orElseThrow());
     }
 
     /**
@@ -287,7 +270,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^If enabled, (?:click|tap) the (\\w+) on the (\\w+)$")
     public void clickIfEnabled(String elementName, String pageName) {
         try {
-            WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+            WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
             if (getInteractions(element).elementIs(element, elementName, pageName, ElementState.enabled))
                 getInteractions(element).clickElement(element, elementName, pageName);
         } catch (WebDriverException ignored) {
@@ -326,7 +309,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^(?:Scroll|Swipe) until listed (.+?(?:\\s+.+?)*) element from (\\w+) list is found on the (\\w+)$")
     public void swipeUntilElementFound(String elementText, String listName, String screenName) {
-        List<WebElement> elements = pageObjectReflections.getElementsFromPage(listName, screenName);
+        List<WebElement> elements = getObjectRepository().acquireElementsFromPage(listName, screenName);
         getInteractions(elements.get(0)).scrollInList(elementText, elements);
     }
 
@@ -348,7 +331,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^(?:Click|Tap) the (\\w+) on the (\\w+)$")
     public void click(String buttonName, String pageName) {
-        WebElement element = objectRepository.acquireElementFromPage(buttonName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(buttonName, pageName);
         getInteractions(element).clickElement(element, buttonName, pageName, !isPlatformElement(element));
     }
 
@@ -361,7 +344,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Acquire the (\\w+) attribute of (\\w+) on the (\\w+)$")
     public void getAttributeValue(String attributeName, String elementName, String pageName) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).saveAttributeValue(element, attributeName, elementName, pageName);
     }
 
@@ -373,7 +356,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("Center the {} on the {}")
     public void center(String elementName, String pageName) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         webInteractions.centerElement(element, elementName, pageName);
     }
 
@@ -387,7 +370,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("Center element named {} on the {} from {}")
     public void centerListedElement(String elementName, String elementListName, String pageName) {
         elementName = contextCheck(elementName);
-        WebElement element = objectRepository.acquireListedElementFromPage(elementName, elementListName, pageName);
+        WebElement element = getObjectRepository().acquireListedElementFromPage(elementName, elementListName, pageName);
         webInteractions.centerElement(element, elementName, pageName);
     }
 
@@ -399,7 +382,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Click towards the (\\w+) on the (\\w+)$")
     public void clickTowardsElement(String elementName, String pageName) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).clickTowards(element, elementName, pageName);
     }
 
@@ -413,7 +396,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^If present, click the (\\w+) on the (\\w+)$")
     public void clickIfPresent(String elementName, String pageName) {
         try {
-            WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+            WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
             if (getInteractions(element).elementIs(element, elementName, pageName, ElementState.displayed))
                 getInteractions(element).clickElement(element, elementName, pageName);
         } catch (WebDriverException ignored) {
@@ -431,7 +414,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^(?:Click|Tap) listed element (.+?(?:\\s+.+?)*) from (\\w+) list on the (\\w+)$")
     public void clickListedButton(String elementName, String listName, String pageName) {
-        List<WebElement> elements = pageObjectReflections.getElementsFromPage(listName, pageName);
+        List<WebElement> elements = getObjectRepository().acquireElementsFromPage(listName, pageName);
         WebElement element = getInteractions(elements.get(0)).scrollInList(elementName, elements);
         getInteractions(element).clickElement(element, elementName, pageName);
     }
@@ -446,7 +429,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      * @throws WebDriverException if the element cannot be found or clicked
      */
     @Given("^Click listed attribute element that has (\\w+) value for its (\\w+) attribute from (\\w+) list on the (\\w+)$")
-    public void clickListedButtonByAttribute(String attributeValue, String attributeName, String listName, String pageName) {WebElement element = objectRepository.acquireListedElementByAttribute(attributeName, attributeValue, listName, pageName);
+    public void clickListedButtonByAttribute(String attributeValue, String attributeName, String listName, String pageName) {WebElement element = getObjectRepository().acquireListedElementByAttribute(attributeName, attributeValue, listName, pageName);
         getInteractions(element).clickElement(element, attributeName + " attribute named element", pageName);
     }
 
@@ -461,7 +444,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Fill listed input (\\w+) from (\\w+) list on the (\\w+) with text: (.+?(?:\\s+.+?)*)$")
     public void fillListedInput(String inputName, String listName, String pageName, String input) {
-        WebElement inputElement = objectRepository.acquireListedElementFromPage(inputName, listName, pageName);
+        WebElement inputElement = getObjectRepository().acquireListedElementFromPage(inputName, listName, pageName);
         PolymorphicUtilities interactions = getInteractions(inputElement);
         interactions.fillInputElement(
                 inputElement,
@@ -485,7 +468,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^Fill input (\\w+) on the (\\w+) with (?:(un-verified|verified) )?text: (.+?(?:\\s+.+?)*)$")
     public void fill(String inputName, String pageName, String verify, String input) {
         input = contextCheck(input);
-        WebElement inputElement = objectRepository.acquireElementFromPage(inputName, pageName);
+        WebElement inputElement = getObjectRepository().acquireElementFromPage(inputName, pageName);
         PolymorphicUtilities interactions = getInteractions(inputElement);
         interactions.fillInputElement(
                 inputElement,
@@ -507,8 +490,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Fill form input on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void fillForm(String pageName, String driverType, DataTable table) {
-        List<Bundle<WebElement, String, String>> inputBundles = objectRepository.acquireElementList(table.asMaps(), pageName);
-        getInteractions(getType(driverType)).fillForm(inputBundles, pageName);
+        List<ElementBundle<String>> inputBundles = getObjectRepository().acquireElementList(table.asMaps(), pageName);
+        getInteractions(getType(getRandomItemFrom(inputBundles).platform())).fillForm(inputBundles, pageName);
     }
 
     /**
@@ -522,8 +505,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("Fill iFrame element {} of {} on the {} with text: {}")
     public void fillIframeInput(String inputName, String iframeName, String pageName, String inputText) {
-        WebElement iframe = objectRepository.acquireElementFromPage(iframeName, pageName);
-        WebElement element = objectRepository.acquireElementFromPage(inputName, pageName);
+        WebElement iframe = getObjectRepository().acquireElementFromPage(iframeName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(inputName, pageName);
         webInteractions.fillIframeInput(iframe, element, inputName, pageName, inputText);
     }
 
@@ -536,8 +519,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("Click i-frame element {} in {} on the {}")
     public void clickIframeElement(String elementName, String iframeName, String pageName) {
-        WebElement iframe = objectRepository.acquireElementFromPage(iframeName, pageName);
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement iframe = getObjectRepository().acquireElementFromPage(iframeName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         webInteractions.clickIframeElement(iframe, element, elementName, iframeName, pageName);
     }
 
@@ -551,7 +534,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("^Verify the text of (\\w+) on the (\\w+) to be: (.+?(?:\\s+.+?)*)$")
     public void verifyText(String elementName, String pageName, String expectedText) {
         expectedText = contextCheck(expectedText);
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).centerElement(element, elementName, pageName);
         pageName = firstLetterDeCapped(pageName);
         getInteractions(element).verifyText(element, elementName, pageName, expectedText);
@@ -566,10 +549,10 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Verify the text of (\\w+) on the (\\w+) contains: (.+?(?:\\s+.+?)*)$")
     public void verifyContainsText(String elementName, String pageName, String expectedText) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).centerElement(element, elementName, pageName);
         pageName = firstLetterDeCapped(pageName);
-        getInteractions(element).verifyContainsText(element,elementName,pageName,expectedText);
+        getInteractions(element).verifyElementContainsText(element,elementName,pageName,expectedText);
     }
 
     /**
@@ -580,7 +563,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Verify absence of element (\\w+) on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void verifyAbsence(String elementName, String pageName, String driverType) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(getType(driverType)).verifyElementState(element, elementName, pageName, ElementState.absent);
     }
 
@@ -592,7 +575,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Verify presence of element (\\w+) on the (\\w+)$")
     public void verifyPresence(String elementName, String pageName) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).verifyElementState(element, elementName, pageName, ElementState.displayed);
     }
 
@@ -605,7 +588,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Verify that element (\\w+) on the (\\w+) is in (\\w+) state$")
     public void verifyState(String elementName, String pageName, ElementState expectedState) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).verifyElementState(element, elementName, pageName, expectedState);
     }
 
@@ -617,7 +600,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Wait for absence of element (\\w+) on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void waitUntilAbsence(String elementName, String pageName, DriverFactory.DriverType driverType) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(driverType).waitUntilAbsence(element, elementName, pageName);
     }
 
@@ -629,7 +612,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Wait for element (\\w+) on the (\\w+) to be visible$")
     public void waitUntilVisible(String elementName, String pageName) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).waitUntilVisible(element, elementName, pageName);
     }
 
@@ -648,7 +631,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String attributeValue,
             String attributeName) {
         attributeValue = contextCheck(attributeValue);
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         try {
             getInteractions(element).waitUntilElementContainsAttribute(element, elementName, pageName, attributeName, attributeValue);
         } catch (WebDriverException ignored) {
@@ -669,7 +652,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String pageName,
             String attributeValue,
             String attributeName) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         getInteractions(element).verifyElementContainsAttribute(element, elementName, pageName, attributeName, attributeValue);
     }
 
@@ -689,7 +672,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String value
     ) {
         value = contextCheck(value);
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         webInteractions.verifyElementAttributeContainsValue(element, attributeName, elementName, pageName, value);
         log.info("-> " + markup(BLUE, value));
     }
@@ -708,7 +691,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String elementName,
             String pageName,
             String attributeValue) {
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         webInteractions.verifyElementColor(element, attributeName, elementName, pageName, attributeValue);
     }
 
@@ -728,7 +711,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String pageName,
             String attributeValue,
             String attributeName) {
-        WebElement element = objectRepository.acquireListedElementFromPage(elementName, listName, pageName);
+        WebElement element = getObjectRepository().acquireListedElementFromPage(elementName, listName, pageName);
         getInteractions(element).verifyElementContainsAttribute(element, elementName, pageName, attributeName, attributeValue);
     }
 
@@ -746,8 +729,8 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
             String listName,
             String pageName,
             String expectedText) {
-        WebElement element = objectRepository.acquireListedElementFromPage(elementName, listName, pageName);
-        getInteractions(element).verifyContainsText(element, elementName, pageName, expectedText);
+        WebElement element = getObjectRepository().acquireListedElementFromPage(elementName, listName, pageName);
+        getInteractions(element).verifyElementContainsText(element, elementName, pageName, expectedText);
     }
 
     /**
@@ -768,7 +751,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
                 highlighted(GRAY, "' list on the ") +
                 highlighted(BLUE, pageName)
         );
-        List<WebElement> elementList = pageObjectReflections.getElementsFromPage(listName, pageName);
+        List<WebElement> elementList = getObjectRepository().acquireElementsFromPage(listName, pageName);
         for (WebElement element : elementList) {
             if (element.getText().contains(expectedText)) log.success("Element contains '" + expectedText + "' text!");
             else
@@ -840,7 +823,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
     @Given("Assert the value of {} attribute for {} element on {} is equal to {}")
     public void assertAttribute(String attributeName, String elementName, String pageName, String actualValue) {
         log.info("Acquiring the" + attributeName + " value...");
-        WebElement element = objectRepository.acquireElementFromPage(elementName, pageName);
+        WebElement element = getObjectRepository().acquireElementFromPage(elementName, pageName);
         String value = element.getAttribute(attributeName);
         Assert.assertEquals("Values not match!", value, actualValue);
         log.success("Values verified as: " + actualValue);
@@ -960,7 +943,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("Upload file on input {} on the {} with file: {}")
     public void uploadFile(String inputName, String pageName, String path) {
-        WebElement inputElement = objectRepository.acquireElementFromPage(inputName, pageName);
+        WebElement inputElement = getObjectRepository().acquireElementFromPage(inputName, pageName);
         webInteractions.fillInputElement(inputElement, path, false, false);
     }
 
@@ -972,7 +955,7 @@ public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
      */
     @Given("^Interact with element on the (\\w+) of (Mobile|Web) driver?$")
     public void pageElementInteraction(String pageName, String driverType, DataTable specifications) {
-        List<Bundle<String, WebElement, Map<String, String>>> bundles = objectRepository.acquireElementBundlesFromPage(
+        List<ElementBundle<Map<String, String>>> bundles = getObjectRepository().acquireElementBundlesFromPage(
                 pageName,
                 specifications.asMaps()
         );

@@ -3,11 +3,11 @@ package common;
 import lombok.Getter;
 import pages.*;
 import pages.inventory.app.*;
-import pickleib.utilities.interfaces.repository.PageRepository;
+import pickleib.utilities.interfaces.repository.PageObjectRepository;
 import uwp.BasicUWPMainPage;
 
 @SuppressWarnings("unused")
-public class ObjectRepository implements PageRepository {
+public class ObjectRepository implements PageObjectRepository {
 
     @Getter
     public enum Environment {
