@@ -15,27 +15,26 @@ import pickleib.exceptions.PickleibVerificationException;
 import pickleib.platform.driver.PickleibAppiumDriver;
 import pickleib.utilities.element.ElementBundle;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
-import pickleib.utilities.steps.PageObjectStepUtilities;
+import pickleib.utilities.steps.PageJsonStepUtilities;
 import pickleib.web.driver.PickleibWebDriver;
 import utils.*;
 import java.util.*;
 
 import static pickleib.driver.DriverFactory.DriverType.*;
 import static pickleib.utilities.platform.PlatformUtilities.isPlatformElement;
-import static steps.Hooks.initialiseAppiumDriver;
-import static steps.Hooks.initialiseBrowser;
+
 import static utils.StringUtilities.*;
 import static utils.StringUtilities.Color.*;
 import static utils.StringUtilities.markup;
 import static utils.arrays.ArrayUtilities.getRandomItemFrom;
 
-public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
+public class CommonSteps extends PageJsonStepUtilities {
 
     public CommonSteps() {
         super(
-                ObjectRepository.class,
-                initialiseAppiumDriver,
-                initialiseBrowser
+                FileUtilities.Json.parseJsonFile("src/test/resources/PageRepository.json"),
+                Hooks.initialiseAppiumDriver,
+                Hooks.initialiseBrowser
         );
     }
 
