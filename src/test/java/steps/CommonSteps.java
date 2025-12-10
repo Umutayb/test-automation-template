@@ -12,10 +12,10 @@ import pickleib.enums.Direction;
 import pickleib.enums.ElementState;
 import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
-import pickleib.mobile.driver.PickleibAppiumDriver;
+import pickleib.platform.driver.PickleibAppiumDriver;
 import pickleib.utilities.element.ElementBundle;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
-import pickleib.utilities.steps.PageJsonStepUtilities;
+import pickleib.utilities.steps.PageObjectStepUtilities;
 import pickleib.web.driver.PickleibWebDriver;
 import utils.*;
 import java.util.*;
@@ -29,11 +29,11 @@ import static utils.StringUtilities.Color.*;
 import static utils.StringUtilities.markup;
 import static utils.arrays.ArrayUtilities.getRandomItemFrom;
 
-public class CommonSteps extends PageJsonStepUtilities {
+public class CommonSteps extends PageObjectStepUtilities<ObjectRepository> {
 
     public CommonSteps() {
         super(
-                FileUtilities.Json.parseJsonFile("src/test/resources/PageRepository.json"),
+                ObjectRepository.class,
                 initialiseAppiumDriver,
                 initialiseBrowser
         );
@@ -489,7 +489,7 @@ public class CommonSteps extends PageJsonStepUtilities {
     @Given("^Fill form input on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void fillForm(String pageName, String driverType, DataTable table) {
         List<ElementBundle<String>> inputBundles = getObjectRepository().acquireElementList(table.asMaps(), pageName);
-        getInteractions(getType(getRandomItemFrom(inputBundles).platform())).fillForm(inputBundles, pageName);
+        getInteractions(getRandomItemFrom(inputBundles).element()).fillForm(inputBundles, pageName);
     }
 
     /**
