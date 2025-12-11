@@ -15,6 +15,36 @@
       ]
     },
     {
+      "name": "LoginPage",
+      "platform": "web",
+      "elements": [
+        {
+          "elementName": "userName",
+          "selectors": {
+            "web": [
+              {"css": ".login-wrapper #userName"}
+            ]
+          }
+        },
+        {
+          "elementName": "password",
+          "selectors": {
+            "web": [
+              {"css": ".login-wrapper #password"}
+            ]
+          }
+        },
+        {
+          "elementName": "loginButton",
+          "selectors": {
+            "web": [
+              {"css": ".login-wrapper #login"}
+            ]
+          }
+        }
+      ]
+    },
+    {
       "name": "ToolsPage",
       "platform": "web",
       "elements": [
@@ -23,6 +53,22 @@
           "selectors": {
             "web": [
               {"css": ".menu-list li"}
+            ]
+          }
+        },
+        {
+          "elementName": "loginButton",
+          "selectors": {
+            "web": [
+              {"css": "#login"}
+            ]
+          }
+        },
+        {
+          "elementName": "categories",
+          "selectors": {
+            "web": [
+              {"css": ".element-group"}
             ]
           }
         }
