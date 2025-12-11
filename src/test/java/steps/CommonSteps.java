@@ -425,7 +425,7 @@ public class CommonSteps extends PageJsonStepUtilities {
      * @param pageName       the name of the page containing the list
      * @throws WebDriverException if the element cannot be found or clicked
      */
-    @Given("^Click listed attribute element that has (\\w+) value for its (\\w+) attribute from (\\w+) list on the (\\w+)$")
+    @Given("^Click listed attribute element that has (.+?(?:\\s+.+?)*) value for its (\\w+) attribute from (\\w+) list on the (\\w+)$")
     public void clickListedButtonByAttribute(String attributeValue, String attributeName, String listName, String pageName) {WebElement element = getObjectRepository().acquireListedElementByAttribute(attributeName, attributeValue, listName, pageName);
         getInteractions(element).clickElement(element, attributeName + " attribute named element", pageName);
     }
