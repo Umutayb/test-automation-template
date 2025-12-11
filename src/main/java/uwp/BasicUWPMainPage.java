@@ -2,7 +2,7 @@ package uwp;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.mobile.PickleibScreenObject;
+import pickleib.platform.PickleibScreenObject;
 
 import java.util.List;
 

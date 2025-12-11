@@ -3,8 +3,8 @@ package pages.inventory.app;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.mobile.PickleibScreenObject;
-import pickleib.mobile.driver.PickleibAppiumDriver;
+import pickleib.platform.PickleibScreenObject;
+import pickleib.platform.driver.PickleibAppiumDriver;
 
 import java.util.List;
 

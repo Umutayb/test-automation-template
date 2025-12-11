@@ -2,7 +2,7 @@ package pages.inventory.app;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.mobile.PickleibScreenObject;
+import pickleib.platform.PickleibScreenObject;
 
 public class Categories extends PickleibScreenObject {
 

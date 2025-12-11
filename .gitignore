@@ -21,3 +21,4 @@ target
 /.allure/
 Web-UI-Automation.iml
 src/test/resources/files/Record.log.lck
+/src/test/resources/files
