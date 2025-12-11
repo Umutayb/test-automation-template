@@ -5,8 +5,12 @@
       "platform": "web",
       "elements": [
         {
-          "elementName" : "categoryCards",
-          "css": "[class='card mt-4 top-card']"
+          "elementName": "categoryCards",
+          "selectors": {
+            "web": [
+              {"css": "[class='card mt-4 top-card']"}
+            ]
+          }
         }
       ]
     },
@@ -15,8 +19,12 @@
       "platform": "web",
       "elements": [
         {
-          "elementName" : "tools",
-          "css": ".menu-list li"
+          "elementName": "tools",
+          "selectors": {
+            "web": [
+              {"css": ".menu-list li"}
+            ]
+          }
         }
       ]
     },
@@ -25,88 +33,172 @@
       "platform": "web",
       "elements": [
         {
-          "elementName" : "firstNameInput",
-          "css": ".practice-form-wrapper #firstName"
+          "elementName": "firstNameInput",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #firstName"}
+            ]
+          }
         },
         {
-          "elementName" : "lastNameInput",
-          "css": ".practice-form-wrapper #lastName"
+          "elementName": "lastNameInput",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #lastName"}
+            ]
+          }
         },
         {
-          "elementName" : "userEmailInput",
-          "css": ".practice-form-wrapper #userEmail"
+          "elementName": "userEmailInput",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #userEmail"}
+            ]
+          }
         },
         {
-          "elementName" : "userNumber",
-          "css": ".practice-form-wrapper #userNumber"
+          "elementName": "userNumber",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #userNumber"}
+            ]
+          }
         },
         {
-          "elementName" : "dateOfBirthInput",
-          "css": ".practice-form-wrapper #dateOfBirthInput"
+          "elementName": "dateOfBirthInput",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #dateOfBirthInput"}
+            ]
+          }
         },
         {
-          "elementName" : "subjectsInput",
-          "css": ".practice-form-wrapper #subjectsInput"
+          "elementName": "subjectsInput",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #subjectsInput"}
+            ]
+          }
         },
         {
-          "elementName" : "genderRadioButtons",
-          "css": ".practice-form-wrapper [for*='gender-radio']"
+          "elementName": "genderRadioButtons",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper [for*='gender-radio']"}
+            ]
+          }
         },
         {
-          "elementName" : "hobbiesCheckboxes",
-          "css": ".practice-form-wrapper [for*='hobbies-checkbox']"
+          "elementName": "hobbiesCheckboxes",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper [for*='hobbies-checkbox']"}
+            ]
+          }
         },
         {
-          "elementName" : "uploadPictureButton",
-          "css": ".practice-form-wrapper #uploadPicture"
+          "elementName": "uploadPictureButton",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #uploadPicture"}
+            ]
+          }
         },
         {
-          "elementName" : "currentAddressInput",
-          "css": ".practice-form-wrapper #currentAddress"
+          "elementName": "currentAddressInput",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #currentAddress"}
+            ]
+          }
         },
         {
-          "elementName" : "stateDropdown",
-          "css": ".practice-form-wrapper #state"
+          "elementName": "stateDropdown",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #state"}
+            ]
+          }
         },
         {
-          "elementName" : "cityDropdown",
-          "css": ".practice-form-wrapper #city"
+          "elementName": "cityDropdown",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #city"}
+            ]
+          }
         },
         {
-          "elementName" : "subjectOptions",
-          "css": ".practice-form-wrapper [class*='subjects-auto-complete__menu']"
+          "elementName": "subjectOptions",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper [class*='subjects-auto-complete__menu']"}
+            ]
+          }
         },
         {
-          "elementName" : "dropdownOptions",
-          "css": ".practice-form-wrapper [id*='react-select']"
+          "elementName": "dropdownOptions",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper [id*='react-select']"}
+            ]
+          }
         },
         {
-          "elementName" : "submitButton",
-          "css": ".practice-form-wrapper #submit"
+          "elementName": "submitButton",
+          "selectors": {
+            "web": [
+              {"css": ".practice-form-wrapper #submit"}
+            ]
+          }
         },
         {
-          "elementName" : "Months",
-          "css": ".react-datepicker__month-container .react-datepicker__month-select option"
+          "elementName": "Months",
+          "selectors": {
+            "web": [
+              {"css": ".react-datepicker__month-container .react-datepicker__month-select option"}
+            ]
+          }
         },
         {
-          "elementName" : "Years",
-          "css": ".react-datepicker__month-container .react-datepicker__year-select option"
+          "elementName": "Years",
+          "selectors": {
+            "web": [
+              {"css": ".react-datepicker__month-container .react-datepicker__year-select option"}
+            ]
+          }
         },
         {
-          "elementName" : "Days",
-          "css": ".react-datepicker__month-container .react-datepicker__month [role='option']"
+          "elementName": "Days",
+          "selectors": {
+            "web": [
+              {"css": ".react-datepicker__month-container .react-datepicker__month [role='option']"}
+            ]
+          }
         },
         {
-          "elementName" : "resultModelHeader",
-          "css": ".modal-content #example-modal-sizes-title-lg"
+          "elementName": "resultModelHeader",
+          "selectors": {
+            "web": [
+              {"css": ".modal-content #example-modal-sizes-title-lg"}
+            ]
+          }
         },
         {
-          "elementName" : "resultModelDataRows",
-          "css": ".modal-content.modal-content tbody tr"
+          "elementName": "resultModelDataRows",
+          "selectors": {
+            "web": [
+              {"css": ".modal-content.modal-content tbody tr"}
+            ]
+          }
         },
         {
-          "elementName" : "resultModelCloseButton",
-          "css": ".modal-content #closeLargeModal"
+          "elementName": "resultModelCloseButton",
+          "selectors": {
+            "web": [
+              {"css": ".modal-content #closeLargeModal"}
+            ]
+          }
         }
       ]
     }
