@@ -1,7 +1,7 @@
 
 # 🥒 Test Automation Template
 
-A unified, multi-platform test automation framework built on **Java** and **Cucumber**. This framework utilizes the power of the **Pickleib** library to support Web, Mobile (Appium), Desktop (Appium), and API testing within a single codebase.
+A unified, multi-platform test automation framework built on **Java** and **Cucumber**. This framework utilizes the power of the **[pickleib](https://github.com/Umutayb/pickleib)** library to support Web, Mobile (Appium), Desktop (Appium), and API testing within a single codebase.
 
 It is designed to be **developer-friendly** (Java POJOs) and **tester-friendly** (Low-Code JSON), allowing teams to scale automation rapidly.
 
