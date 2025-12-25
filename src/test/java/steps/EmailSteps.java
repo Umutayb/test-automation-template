@@ -22,7 +22,7 @@ import static utils.email.EmailUtilities.Inbox.EmailField.SUBJECT;
 public class EmailSteps {
 
     public Printer log = new Printer(this.getClass());
-    EmailAcquisition emailAcquisition = new EmailAcquisition(getEmailInbox(ObjectRepository.Environment.valueOf(ContextStore.get("goodbits-environment"))));
+    EmailAcquisition emailAcquisition = new EmailAcquisition(getEmailInbox(ObjectRepository.Environment.valueOf(ContextStore.get("environment"))));
 
     @Getter
     public enum EmailSubjects {
@@ -113,7 +113,7 @@ public class EmailSteps {
      */
     @Given("Clean the email inbox")
     public void flushEmailOnEnvironmentFromContext() {
-        getEmailInbox(ContextStore.get("goodbits-environment")).clearInbox();
+        getEmailInbox(ContextStore.get("environment")).clearInbox();
     }
 
     public static EmailUtilities.Inbox getEmailInbox(ObjectRepository.Environment environment) {

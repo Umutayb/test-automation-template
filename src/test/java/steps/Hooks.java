@@ -32,9 +32,6 @@ public class Hooks extends PickleibPageObject {
 
     Printer log = new Printer(this.getClass());
 
-    public Hooks() {
-        ContextStore.loadProperties("src/test/resources/test.properties");
-    }
 
     @SuppressWarnings("unused")
     @DefaultParameterTransformer
