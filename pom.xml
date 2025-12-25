@@ -13,7 +13,7 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <pickleib.version>2.0.4</pickleib.version>
+        <pickleib.version>2.0.6</pickleib.version>
         <cucumber.version>7.14.0</cucumber.version>
         <selenium.version>4.19.0</selenium.version>
         <appium.version>9.2.2</appium.version>
