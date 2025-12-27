@@ -26,7 +26,7 @@ While `CommonSteps` contains a massive library of interactions, these **5 steps*
 
 | Step Pattern | Description |
 | :--- | :--- |
-| `Maps to url: {}` | **Navigate:** Directs the driver to a specific URL. |
+| `Navigate to url: {}` | **Navigate:** Directs the driver to a specific URL. |
 | `^(?:Click\|Tap) the (\w+) on the (\w+)$` | **Click:** Interactions with a button or link defined in your Page Object/JSON. |
 | `^Fill input (\w+) on the (\w+) with (?:(un-verified\|verified) )?text: (.+?(?:\s+.+?)*)$` | **Type:** Clears and fills a specific input field. |
 | `^Verify the text of (\w+) on the (\w+) to be: (.+?(?:\s+.+?)*)$` | **Assert Text:** Validates that an element's text matches your expectation. |
