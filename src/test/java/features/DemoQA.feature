@@ -5,6 +5,14 @@ Feature: DemoQA
   There are dedicated scenarios for acceptance and test environments
   Background: Context user
     * Navigate to the test page
+    * Update context firstName -> Umut
+    * Update context lastName -> Bora
+    * Update context email -> umutaybora@gmail.com
+    * Update context userNumber -> 0655500001
+    * Update context address -> Apeldoorn - Netherlands
+    * Update context subject -> Science
+    * Update context hobby -> Music
+    * Update context gender -> Male
 
   @Web-UI @SCN-DEMO-QA-1
   Scenario: DemoQA form interactions
@@ -12,34 +20,34 @@ Feature: DemoQA
     * Click listed element Practice Form from tools list on the ToolsPage
     * Fill form input on the PracticeFormPage
       | Input Element  | Input                |
-      | firstNameInput | Umut                 |
-      | lastNameInput  | Bora                 |
-      | userEmailInput | umutaybora@gmail.com |
-      | userNumber     | 0655500001           |
-    * Click listed element Male from genderRadioButtons list on the PracticeFormPage
+      | firstNameInput | CONTEXT-firstName    |
+      | lastNameInput  | CONTEXT-lastName     |
+      | userEmailInput | CONTEXT-email        |
+      | userNumber     | CONTEXT-userNumber   |
+    * Click listed element CONTEXT-gender from genderRadioButtons list on the PracticeFormPage
     * Click the dateOfBirthInput on the PracticeFormPage
     * Click listed element September from Months list on the PracticeFormPage
     * Click listed element 1996 from Years list on the PracticeFormPage
     * Click listed element 2 from Days list on the PracticeFormPage
-    * Fill input subjectsInput on the PracticeFormPage with text: Science
+    * Fill input subjectsInput on the PracticeFormPage with text: CONTEXT-subject
     * Click listed element Computer Science from subjectOptions list on the PracticeFormPage
-    * Click listed element Music from hobbiesCheckboxes list on the PracticeFormPage
+    * Click listed element CONTEXT-hobby from hobbiesCheckboxes list on the PracticeFormPage
     * Upload file on input uploadPictureButton on the PracticeFormPage with file: UPLOAD-src/test/resources/files/profile-picture.jpg
-    * Fill input currentAddressInput on the PracticeFormPage with text: Apeldoorn - Netherlands
+    * Fill input currentAddressInput on the PracticeFormPage with text: CONTEXT-address
     * Click the stateDropdown on the PracticeFormPage
     * Click listed element Haryana from dropdownOptions list on the PracticeFormPage
     * Click the cityDropdown on the PracticeFormPage
     * Click listed element Karnal from dropdownOptions list on the PracticeFormPage
     * Click the submitButton on the PracticeFormPage
     * Select listed element containing partial text Student Name from the resultModelDataRows on the PracticeFormPage and verify its text contains Umut Bora
-    * Select listed element containing partial text Student Email from the resultModelDataRows on the PracticeFormPage and verify its text contains umutaybora@gmail.com
-    * Select listed element containing partial text Gender from the resultModelDataRows on the PracticeFormPage and verify its text contains Male
-    * Select listed element containing partial text Mobile from the resultModelDataRows on the PracticeFormPage and verify its text contains 0655500001
+    * Select listed element containing partial text Student Email from the resultModelDataRows on the PracticeFormPage and verify its text contains CONTEXT-email
+    * Select listed element containing partial text Gender from the resultModelDataRows on the PracticeFormPage and verify its text contains CONTEXT-gender
+    * Select listed element containing partial text Mobile from the resultModelDataRows on the PracticeFormPage and verify its text contains CONTEXT-userNumber
     * Select listed element containing partial text Date from the resultModelDataRows on the PracticeFormPage and verify its text contains 02 September,1996
-    * Select listed element containing partial text Subjects from the resultModelDataRows on the PracticeFormPage and verify its text contains Computer Science
-    * Select listed element containing partial text Hobbies from the resultModelDataRows on the PracticeFormPage and verify its text contains Music
+    * Select listed element containing partial text Subjects from the resultModelDataRows on the PracticeFormPage and verify its text contains CONTEXT-subject
+    * Select listed element containing partial text Hobbies from the resultModelDataRows on the PracticeFormPage and verify its text contains CONTEXT-hobby
     * Select listed element containing partial text Picture from the resultModelDataRows on the PracticeFormPage and verify its text contains profile-picture.jpg
-    * Select listed element containing partial text Address from the resultModelDataRows on the PracticeFormPage and verify its text contains Apeldoorn - Netherlands
+    * Select listed element containing partial text Address from the resultModelDataRows on the PracticeFormPage and verify its text contains CONTEXT-address
     * Select listed element containing partial text State and City from the resultModelDataRows on the PracticeFormPage and verify its text contains Haryana Karnal
     * Click the resultModelCloseButton on the PracticeFormPage
 
