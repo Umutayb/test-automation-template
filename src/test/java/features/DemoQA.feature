@@ -1,5 +1,6 @@
 @DemoQA
 Feature: DemoQA
+
   A feature where the login scenarios are tested.
   There are dedicated scenarios for acceptance and test environments
   Background: Context user

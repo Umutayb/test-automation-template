@@ -15,10 +15,8 @@ import pickleib.exceptions.PickleibVerificationException;
 import pickleib.platform.driver.PickleibAppiumDriver;
 import pickleib.utilities.element.ElementBundle;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
+import pickleib.utilities.steps.PickleibSteps;
 import pickleib.web.driver.PickleibWebDriver;
-import pickleib.utilities.steps.PageJsonDesign;
-import pickleib.utilities.steps.PageObjectDesign;
-import utils.*;
 import java.util.*;
 
 import static pickleib.driver.DriverFactory.DriverType.*;
@@ -28,11 +26,11 @@ import static utils.StringUtilities.Color.*;
 import static utils.StringUtilities.markup;
 import static utils.arrays.ArrayUtilities.getRandomItemFrom;
 
-public class CommonSteps extends PageJsonDesign {
+public class CommonSteps extends PickleibSteps {
 
     public CommonSteps() {
         super(
-                FileUtilities.Json.parseJsonFile("src/test/resources/page-repository.json"),
+                ObjectRepository.class,
                 Hooks.initialiseAppiumDriver,
                 Hooks.initialiseBrowser
         );
