@@ -73,6 +73,10 @@ Below is a real-world example from the included **DemoQA** feature. It demonstra
 Scenario: DemoQA form interactions
   # Navigation
   Given Navigate to the test page
+  * Update context firstName -> Testing
+  * Update context lastName -> isGreat
+  * Update context email -> pickleib@email.com
+  * Update context number -> 0655500001
   
   # List Interaction (Clicking an item from a menu list)
   When Click listed element "Forms" from "categoryCards" list on the "LandingPage"
@@ -81,17 +85,17 @@ Scenario: DemoQA form interactions
   # Batch Form Filling
   And Fill form input on the "PracticeFormPage"
     | Input Element  | Input                |
-    | firstNameInput | Testing              |
-    | lastNameInput  | isGreat              |
-    | userEmailInput | pickleib@email.com   |
-    | userNumber     | 0655500001           |
+    | firstNameInput | CONTEXT-firstName    |
+    | lastNameInput  | CONTEXT-lastName     |
+    | userEmailInput | CONTEXT-email        |
+    | userNumber     | CONTEXT-number       |
 
   # Complex Interactions
   And Upload file on input "uploadPictureButton" on the "PracticeFormPage" with file: "UPLOAD-src/test/resources/files/profile-picture.jpg"
   And Click the "submitButton" on the "PracticeFormPage"
 
-  # Intelligent Validation (Find a row by 'Student Name', verify it contains 'Umut Bora')
-  Then Select listed element containing partial text "Student Name" from the "resultModelDataRows" on the "PracticeFormPage" and verify its text contains "Testing isGreat"
+  # Intelligent Validation (Find a row by 'Email', verify it contains 'pickleib@email.com')
+  Then Select listed element containing partial text "Email" from the "resultModelDataRows" on the "PracticeFormPage" and verify its text contains CONTEXT-email
 ```
 
 ---
