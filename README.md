@@ -81,9 +81,9 @@ Scenario: DemoQA form interactions
   # Batch Form Filling
   And Fill form input on the "PracticeFormPage"
     | Input Element  | Input                |
-    | firstNameInput | Testing                 |
-    | lastNameInput  | isGreat                 |
-    | userEmailInput | pickleib@email.com |
+    | firstNameInput | Testing              |
+    | lastNameInput  | isGreat              |
+    | userEmailInput | pickleib@email.com   |
     | userNumber     | 0655500001           |
 
   # Complex Interactions
