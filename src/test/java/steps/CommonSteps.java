@@ -141,6 +141,26 @@ public class CommonSteps extends PickleibSteps {
         String parentHandle = webInteractions.switchWindowByIndex(handle);
         ContextStore.put("parentHandle", parentHandle);
     }
+    
+    /**
+     * Switches to a new tab and stores the parent tab handle.
+     *
+     */
+    @Given("Switch to a new tab")
+    public void switch2NewTab() {
+        ContextStore.put("parentHandle", webInteractions.driver.getWindowHandle());
+        webInteractions.driver.switchTo().newWindow(WindowType.TAB);
+    }
+
+    /**
+     * Closes current tab.
+     *
+     */
+    @Given("Close current tab")
+    public void closeTab() {
+        webInteractions.driver.close();
+        webInteractions.driver.switchTo().window(ContextStore.get("parentHandle"));
+    }
 
     /**
      * Switches to next active window.
