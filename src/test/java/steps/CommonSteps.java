@@ -485,7 +485,10 @@ public class CommonSteps extends PickleibSteps {
     @Given("^Fill form input on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void fillForm(String pageName, String driverType, DataTable table) {
         List<ElementBundle<String>> inputBundles = getElementRepository().acquireElementList(table.asMaps(), pageName);
-        getInteractions(getRandomItemFrom(inputBundles).element()).fillForm(inputBundles, pageName);
+        PolymorphicUtilities interactions = driverType != null ?
+                getInteractions(DriverFactory.DriverType.getType(driverType)):
+                getInteractions(getRandomItemFrom(inputBundles).element());
+        interactions.fillForm(inputBundles, pageName);
     }
 
     /**
@@ -558,7 +561,10 @@ public class CommonSteps extends PickleibSteps {
     @Given("^Verify absence of element (\\w+) on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void verifyAbsence(String elementName, String pageName, String driverType) {
         WebElement element = getElementRepository().acquireElementFromPage(elementName, pageName);
-        getInteractions(getType(driverType)).verifyElementState(element, elementName, pageName, ElementState.absent);
+        PolymorphicUtilities interactions = driverType != null ?
+                getInteractions(DriverFactory.DriverType.getType(driverType)):
+                getInteractions(element);
+        interactions.verifyElementState(element, elementName, pageName, ElementState.absent);
     }
 
     /**
@@ -593,9 +599,12 @@ public class CommonSteps extends PickleibSteps {
      * @param pageName    The name of the page on which the element is located.
      */
     @Given("^Wait for absence of element (\\w+) on the (\\w+)(?: using (Mobile|Web) driver)?$")
-    public void waitUntilAbsence(String elementName, String pageName, DriverFactory.DriverType driverType) {
+    public void waitUntilAbsence(String elementName, String pageName, String driverType) {
         WebElement element = getElementRepository().acquireElementFromPage(elementName, pageName);
-        getInteractions(driverType).waitUntilAbsence(element, elementName, pageName);
+        PolymorphicUtilities interactions = driverType != null ?
+                getInteractions(DriverFactory.DriverType.getType(driverType)):
+                getInteractions(element);
+        interactions.waitUntilAbsence(element, elementName, pageName);
     }
 
     /**
@@ -831,8 +840,9 @@ public class CommonSteps extends PickleibSteps {
      */
     @Given("Update context {} -> {}")
     public void updateContext(String key, String value) {
+        value = contextCheck(value);
         log.info("Updating context " + markup(BLUE, key) + " to " + markup(BLUE, value));
-        ContextStore.put(key, contextCheck(value));
+        ContextStore.put(key, value);
     }
 
     /**

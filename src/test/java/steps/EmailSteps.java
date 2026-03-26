@@ -28,11 +28,8 @@ public class EmailSteps {
     public enum EmailSubjects {
         BOOKING_CONFIRMATION("Booking code"),
         PAYMENT_CONFIRMATION("we have received your payment for your booking"),
-        BOOKING_CANCELLATION("You cancelled your booking"),
-        BOOKING_INVOICE("Open me to get your citizenM invoice"),
         ACCOUNT_VERIFICATION("Please verify your email address"),
-        RESET_PASSWORD("Please reset your password"),
-        CITIZENM_MAGIC_LINK("citizenM magic link");
+        RESET_PASSWORD("Please reset your password");
 
         private final String key;
 
