@@ -40,6 +40,17 @@ public class ObjectRepository implements PageObjectRepository {
     Products products;
     Sales sales;
 
+    // Vue Test App Pages
+    HomePage homePage;
+    FormsPage formsPage;
+    AlertsPage alertsPage;
+    ButtonsPage buttonsPage;
+    DropdownPage dropdownPage;
+    TallPage tallPage;
+    ElementsPage elementsPage;
+    InteractionsPage interactionsPage;
+    RadioButtonsPage radioButtonsPage;
+
     //Screens
     InventoryManagementFrame inventoryManagementFrame;
 }

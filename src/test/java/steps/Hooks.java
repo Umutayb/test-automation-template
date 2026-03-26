@@ -52,7 +52,7 @@ public class Hooks extends PickleibPageObject {
             else PickleibWebDriver.initialize();
         }
         if (initialiseAppiumDriver) {
-            if (ServiceFactory.service == null) PickleibAppiumDriver.startService();
+            if (ServiceFactory.service.get() == null) PickleibAppiumDriver.startService();
             PickleibAppiumDriver.initialize();
         }
         if (authenticate) {
