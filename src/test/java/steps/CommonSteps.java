@@ -224,7 +224,7 @@ public class CommonSteps extends PickleibSteps {
      *
      * @param direction the direction to navigate in, either "BACKWARDS" or "FORWARDS"
      */
-    @Given("^Navigate browser (BACKWARDS|FORWARDS)$")
+    @Given("^Navigate browser (backwards|forwards|BACKWARDS|FORWARDS)$")
     public void browserNavigate(Navigation direction) {
         webInteractions.navigateBrowser(direction);
     }

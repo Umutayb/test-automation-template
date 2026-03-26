@@ -35,6 +35,9 @@ public class ButtonsPage extends PickleibPageObject {
     @FindBy(css = ".btn.btn-lg")
     public WebElement largeButton;
 
+    @FindBy(css = "button[disabled]:not(.loading)")
+    public WebElement disabledButton;
+
     @FindBy(css = "main .btn")
     public List<WebElement> allButtons;
 
