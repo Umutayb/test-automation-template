@@ -13,7 +13,7 @@ import java.nio.file.Files;
         features = {"src/test/java/features"},
         plugin = {"json:target/reports/Cucumber.json"},
         glue = {"steps"},
-        tags = "@BookStore",
+        tags = "@Web-UI",
         publish = true
 )
 public class TestRunner {

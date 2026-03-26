@@ -24,23 +24,7 @@ public class ObjectRepository implements PageObjectRepository {
 
     public static Environment environment;
 
-    //Pages
-    BasicUWPMainPage basicUWPMainPage;
-    PracticeFormPage practiceFormPage;
-    BookDetailsPage bookDetailsPage;
-    BookStorePage bookStorePage;
-    Transaction transaction;
-    LandingPage landingPage;
-    ProfilePage profilePage;
-    Categories categories;
-    LoginFrame loginFrame;
-    ToolsPage toolsPage;
-    LoginPage loginPage;
-    Dashboard dashboard;
-    Products products;
-    Sales sales;
-
-    // Vue Test App Pages
+    // Web Pages
     HomePage homePage;
     FormsPage formsPage;
     AlertsPage alertsPage;
@@ -51,6 +35,13 @@ public class ObjectRepository implements PageObjectRepository {
     InteractionsPage interactionsPage;
     RadioButtonsPage radioButtonsPage;
 
-    //Screens
+    // Desktop/Mobile Screens
+    BasicUWPMainPage basicUWPMainPage;
     InventoryManagementFrame inventoryManagementFrame;
+    Transaction transaction;
+    Categories categories;
+    LoginFrame loginFrame;
+    Dashboard dashboard;
+    Products products;
+    Sales sales;
 }
