@@ -44,6 +44,18 @@ public class ObjectRepository implements PageObjectRepository {
     LoginFormPage loginFormPage;
     DroppablePage droppablePage;
     DraggablePage draggablePage;
+    TabsPage tabsPage;
+    AccordionPage accordionPage;
+    ProgressPage progressPage;
+    TablePage tablePage;
+    ToastPage toastPage;
+    TooltipPage tooltipPage;
+    DrawerPage drawerPage;
+    SortablePage sortablePage;
+    ResizablePage resizablePage;
+    FileUploadPage fileUploadPage;
+    PiniaCounterPage piniaCounterPage;
+    GalleryPage galleryPage;
 
     // Desktop/Mobile Screens
     BasicUWPMainPage basicUWPMainPage;

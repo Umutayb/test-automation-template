@@ -296,3 +296,143 @@ Feature: Vue Test App
     * Update context rawUrl -> https://example.com/path
     * Perform text replacement on CONTEXT-rawUrl context by replacing https:// value in cleanUrl
     * Assert that value of CONTEXT-cleanUrl is equal to example.com/path
+
+  # ==================== Tabs ====================
+
+  @Web-UI @SCN-VUE-TABS
+  Scenario: Tab navigation switches content panels
+    * Navigate to url: http://127.0.0.1:7457/tabs
+    * Wait for element overviewTab on the TabsPage to be visible
+    * Verify the text of activePanel on the TabsPage contains: Overview
+    * Click the detailsTab on the TabsPage
+    * Verify the text of activePanel on the TabsPage contains: Details
+    * Click the codeTab on the TabsPage
+    * Verify the text of activePanel on the TabsPage contains: Code
+    * Click the settingsTab on the TabsPage
+    * Verify the text of activePanel on the TabsPage contains: Settings
+
+  # ==================== Accordion ====================
+
+  @Web-UI @SCN-VUE-ACCORDION
+  Scenario: Accordion expand and collapse
+    * Navigate to url: http://127.0.0.1:7457/accordion
+    * Wait for element expandAllButton on the AccordionPage to be visible
+    * Verify absence of element firstBody on the AccordionPage
+    * Click the expandAllButton on the AccordionPage
+    * Verify the text of firstBody on the AccordionPage contains: accordion
+    * Click the collapseAllButton on the AccordionPage
+    * Verify absence of element firstBody on the AccordionPage
+
+  # ==================== Progress ====================
+
+  @Web-UI @SCN-VUE-PROGRESS
+  Scenario: Progress bar animation
+    * Navigate to url: http://127.0.0.1:7457/progress
+    * Wait for element animatedValue on the ProgressPage to be visible
+    * Verify the text of animatedValue on the ProgressPage contains: 0%
+    * Click the startButton on the ProgressPage
+    * Wait 2 seconds
+    * Click the resetButton on the ProgressPage
+    * Verify the text of animatedValue on the ProgressPage contains: 0%
+
+  # ==================== Table ====================
+
+  @Web-UI @SCN-VUE-TABLE
+  Scenario: Table data and row selection
+    * Navigate to url: http://127.0.0.1:7457/table
+    * Wait for element selectedCount on the TablePage to be visible
+    * Verify the text of selectedCount on the TablePage contains: 0 rows selected
+    * Verify the text of pageInfo on the TablePage contains: Page 1 of 4
+    * Click the firstRowCheckbox on the TablePage
+    * Verify the text of selectedCount on the TablePage contains: 1 rows selected
+    * Click the nextButton on the TablePage
+    * Verify the text of pageInfo on the TablePage contains: Page 2 of 4
+
+  # ==================== Toast ====================
+
+  @Web-UI @SCN-VUE-TOAST
+  Scenario: Toast notification triggers
+    * Navigate to url: http://127.0.0.1:7457/toast
+    * Wait for element successButton on the ToastPage to be visible
+    * Click the successButton on the ToastPage
+    * Verify the text of toastContainer on the ToastPage contains: successfully
+
+  # ==================== Tooltip ====================
+
+  @Web-UI @SCN-VUE-TOOLTIP
+  Scenario: Tooltip on hover
+    * Navigate to url: http://127.0.0.1:7457/tooltip
+    * Wait for element hoverTarget on the TooltipPage to be visible
+    * Hover over the hoverTarget on the TooltipPage
+    * Wait for element tooltipContent on the TooltipPage to be visible
+    * Verify the text of tooltipContent on the TooltipPage contains: tooltip one
+
+  # ==================== Drawer ====================
+
+  @Web-UI @SCN-VUE-DRAWER
+  Scenario: Drawer open and close
+    * Navigate to url: http://127.0.0.1:7457/drawer
+    * Wait for element statusText on the DrawerPage to be visible
+    * Verify the text of statusText on the DrawerPage contains: closed
+    * Click the openLeftButton on the DrawerPage
+    * Verify the text of statusText on the DrawerPage contains: left
+    * Click the closeButton on the DrawerPage
+    * Verify the text of statusText on the DrawerPage contains: closed
+
+  # ==================== Sortable ====================
+
+  @Web-UI @SCN-VUE-SORTABLE
+  Scenario: Sortable list items
+    * Navigate to url: http://127.0.0.1:7457/sortable
+    * Wait for element firstListCount on the SortablePage to be visible
+    * Verify the text of firstListCount on the SortablePage contains: 3 items
+    * Verify the text of secondListCount on the SortablePage contains: 2 items
+    * Verify the text of firstItem on the SortablePage contains: Item A
+
+  # ==================== Resizable ====================
+
+  @Web-UI @SCN-VUE-RESIZABLE
+  Scenario: Resizable panel
+    * Navigate to url: http://127.0.0.1:7457/resizable
+    * Wait for element widthDisplay on the ResizablePage to be visible
+    * Verify the text of widthDisplay on the ResizablePage contains: 300px
+
+  # ==================== File Upload ====================
+
+  @Web-UI @SCN-VUE-FILEUPLOAD
+  Scenario: File upload inputs
+    * Navigate to url: http://127.0.0.1:7457/file-upload
+    * Wait for element singleFileStatus on the FileUploadPage to be visible
+    * Verify the text of singleFileStatus on the FileUploadPage contains: No file selected
+    * Verify the text of multipleFileList on the FileUploadPage contains: No files selected
+    * Verify the text of dropList on the FileUploadPage contains: No files dropped
+
+  # ==================== Pinia Counter ====================
+
+  @Web-UI @SCN-VUE-COUNTER
+  Scenario: Pinia counter state management
+    * Navigate to url: http://127.0.0.1:7457/pinia-counter
+    * Wait for element counterDisplay on the PiniaCounterPage to be visible
+    * Verify the text of counterDisplay on the PiniaCounterPage contains: 0
+    * Click the incrementButton on the PiniaCounterPage
+    * Verify the text of counterDisplay on the PiniaCounterPage contains: 1
+    * Click the incrementButton on the PiniaCounterPage
+    * Verify the text of counterDisplay on the PiniaCounterPage contains: 2
+    * Click the decrementButton on the PiniaCounterPage
+    * Verify the text of counterDisplay on the PiniaCounterPage contains: 1
+    * Click the resetButton on the PiniaCounterPage
+    * Verify the text of counterDisplay on the PiniaCounterPage contains: 0
+
+  # ==================== Gallery ====================
+
+  @Web-UI @SCN-VUE-GALLERY
+  Scenario: Image gallery thumbnails and lightbox
+    * Navigate to url: http://127.0.0.1:7457/gallery
+    * Wait for element firstImage on the GalleryPage to be visible
+    * Verify the text of firstImage on the GalleryPage contains: Mountain landscape
+    * Click the firstImage on the GalleryPage
+    * Wait for element galleryCaption on the GalleryPage to be visible
+    * Verify the text of galleryCaption on the GalleryPage contains: Image 1 of 8
+    * Click the nextButton on the GalleryPage
+    * Verify the text of galleryCaption on the GalleryPage contains: Image 2 of 8
+    * Click the closeButton on the GalleryPage
