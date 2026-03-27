@@ -12,7 +12,7 @@ import java.nio.file.Files;
 @CucumberOptions(
         features = {"src/test/java/features"},
         plugin = {"json:target/reports/Cucumber.json"},
-        glue = {"steps"},
+        glue = {"steps", "pickleib.steps"},
         tags = "@Web-UI",
         publish = true
 )
