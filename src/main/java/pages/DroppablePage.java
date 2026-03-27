@@ -17,7 +17,7 @@ public class DroppablePage extends PickleibPageObject {
     @FindBy(css = "[data-testid='droppable-zone-red']")
     public WebElement dropTarget;
 
-    @FindBy(css = "[data-testid='droppable-status']")
+    @FindBy(css = ".status-text")
     public WebElement statusText;
 
     @FindBy(css = ".drop-item")
@@ -25,6 +25,15 @@ public class DroppablePage extends PickleibPageObject {
 
     @FindBy(css = ".drop-zone")
     public List<WebElement> dropZones;
+
+    @FindBy(css = "[data-testid='droppable-zone-red']")
+    public WebElement redZone;
+
+    @FindBy(css = "[data-testid='droppable-zone-blue']")
+    public WebElement blueZone;
+
+    @FindBy(css = "[data-testid='droppable-zone-green']")
+    public WebElement greenZone;
 
     @FindBy(css = "[data-testid='droppable-reset']")
     public WebElement resetButton;

@@ -43,6 +43,7 @@ public class ObjectRepository implements PageObjectRepository {
     ModalPage modalPage;
     LoginFormPage loginFormPage;
     DroppablePage droppablePage;
+    DraggablePage draggablePage;
 
     // Desktop/Mobile Screens
     BasicUWPMainPage basicUWPMainPage;

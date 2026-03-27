@@ -228,6 +228,23 @@ Feature: Vue Test App
     * Verify presence of element dropTarget on the DroppablePage
     * Verify the text of statusText on the DroppablePage contains: Ready
 
+  @Web-UI @SCN-VUE-DND-1
+  Scenario: Drag and drop to zone
+    * Navigate to url: http://127.0.0.1:7457/droppable
+    * Wait for element statusText on the DroppablePage to be visible
+    * Verify the text of statusText on the DroppablePage contains: Ready
+    * Verify presence of element draggableItem on the DroppablePage
+    * Verify presence of element redZone on the DroppablePage
+    * Verify presence of element resetButton on the DroppablePage
+
+  @Web-UI @SCN-VUE-DND-2
+  Scenario: Draggable blocks
+    * Navigate to url: http://127.0.0.1:7457/draggable
+    * Wait for element statusText on the DraggablePage to be visible
+    * Verify the text of statusText on the DraggablePage contains: Dragging: none
+    * Verify presence of element blockA on the DraggablePage
+    * Verify presence of element blockB on the DraggablePage
+
   # ==================== New Tab ====================
 
   @Web-UI @SCN-VUE-25
