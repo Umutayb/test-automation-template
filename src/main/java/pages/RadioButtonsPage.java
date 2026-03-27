@@ -8,9 +8,21 @@ import java.util.List;
 
 public class RadioButtonsPage extends PickleibPageObject {
 
-    @FindBy(css = ".radio-button")
+    @FindBy(id = "yes")
+    public WebElement yesRadio;
+
+    @FindBy(id = "impressive")
+    public WebElement impressiveRadio;
+
+    @FindBy(id = "no")
+    public WebElement noRadio;
+
+    @FindBy(css = ".radio-label")
+    public List<WebElement> radioLabels;
+
+    @FindBy(css = "input[type='radio']")
     public List<WebElement> radioButtons;
 
-    @FindBy(css = ".radio-button label")
-    public List<WebElement> radioLabels;
+    @FindBy(css = "h2")
+    public WebElement questionTitle;
 }

@@ -135,3 +135,147 @@ Feature: Vue Test App
     * Wait for element pageTitle on the ButtonsPage to be visible
     * If present, click the primaryButton on the ButtonsPage
     * Verify the text of resultText on the ButtonsPage contains: Primary
+
+  # ==================== Radio Buttons ====================
+
+  @Web-UI @SCN-VUE-14
+  Scenario: Radio button click and selected state verification
+    * Navigate to url: http://127.0.0.1:7457/radiobuttons
+    * Click the yesRadio on the RadioButtonsPage
+    * Verify that element yesRadio on the RadioButtonsPage is in selected state
+
+  @Web-UI @SCN-VUE-15
+  Scenario: Disabled radio button state verification
+    * Navigate to url: http://127.0.0.1:7457/radiobuttons
+    * Verify that element noRadio on the RadioButtonsPage is in disabled state
+
+  @Web-UI @SCN-VUE-16
+  Scenario: Click listed radio button by text
+    * Navigate to url: http://127.0.0.1:7457/radiobuttons
+    * Click listed element Impressive from radioLabels list on the RadioButtonsPage
+    * Verify that element impressiveRadio on the RadioButtonsPage is in selected state
+
+  # ==================== Text Inputs ====================
+
+  @Web-UI @SCN-VUE-17
+  Scenario: Fill text input and verify value attribute
+    * Navigate to url: http://127.0.0.1:7457/text-inputs
+    * Wait for element textInput on the TextInputsPage to be visible
+    * Fill input textInput on the TextInputsPage with text: Hello World
+    * Verify that value attribute of element textInput on the TextInputsPage contains Hello World value
+
+  @Web-UI @SCN-VUE-18
+  Scenario: Verify disabled input state
+    * Navigate to url: http://127.0.0.1:7457/text-inputs
+    * Wait for element disabledInput on the TextInputsPage to be visible
+    * Verify that element disabledInput on the TextInputsPage is in disabled state
+
+  @Web-UI @SCN-VUE-19
+  Scenario: Fill multiple text inputs via form DataTable
+    * Navigate to url: http://127.0.0.1:7457/text-inputs
+    * Wait for element textInput on the TextInputsPage to be visible
+    * Fill form input on the TextInputsPage
+      | Input Element | Input              |
+      | textInput     | Sample Text        |
+      | emailInput    | test@example.com   |
+    * Verify that value attribute of element textInput on the TextInputsPage contains Sample Text value
+
+  # ==================== Checkboxes ====================
+
+  @Web-UI @SCN-VUE-20
+  Scenario: Checkbox click and selected state
+    * Navigate to url: http://127.0.0.1:7457/checkboxes
+    * Wait for element uncheckedCheckbox on the CheckboxesPage to be visible
+    * Click the uncheckedCheckbox on the CheckboxesPage
+    * Verify that element uncheckedCheckbox on the CheckboxesPage is in selected state
+
+  @Web-UI @SCN-VUE-21
+  Scenario: Disabled checkbox state verification
+    * Navigate to url: http://127.0.0.1:7457/checkboxes
+    * Wait for element disabledUncheckedCheckbox on the CheckboxesPage to be visible
+    * Verify that element disabledUncheckedCheckbox on the CheckboxesPage is in disabled state
+
+  # ==================== Modal ====================
+
+  @Web-UI @SCN-VUE-22
+  Scenario: Open modal and verify status change
+    * Navigate to url: http://127.0.0.1:7457/modal
+    * Wait for element openModalButton on the ModalPage to be visible
+    * Verify the text of statusText on the ModalPage contains: idle
+    * Click the openModalButton on the ModalPage
+    * Wait 1 seconds
+    * Verify the text of statusText on the ModalPage contains: open
+
+  # ==================== Login Form ====================
+
+  @Web-UI @SCN-VUE-23
+  Scenario: Login form fill and submit
+    * Navigate to url: http://127.0.0.1:7457/login-form
+    * Wait for element usernameInput on the LoginFormPage to be visible
+    * Update context login-user -> admin
+    * Update context login-pass -> password123
+    * Fill input usernameInput on the LoginFormPage with text: CONTEXT-login-user
+    * Fill input passwordInput on the LoginFormPage with text: CONTEXT-login-pass
+    * Click the signInButton on the LoginFormPage
+
+  # ==================== Drag and Drop ====================
+
+  @Web-UI @SCN-VUE-24
+  Scenario: Droppable page element presence
+    * Navigate to url: http://127.0.0.1:7457/droppable
+    * Wait for element draggableItem on the DroppablePage to be visible
+    * Verify presence of element draggableItem on the DroppablePage
+    * Verify presence of element dropTarget on the DroppablePage
+    * Verify the text of statusText on the DroppablePage contains: Ready
+
+  # ==================== New Tab ====================
+
+  @Web-UI @SCN-VUE-25
+  Scenario: Click New Tab button and switch tab
+    * Navigate to url: http://127.0.0.1:7457/alerts
+    * Wait for element clickMeButton on the AlertsPage to be visible
+    * Click button with New Tab text using web driver
+    * Wait 1 seconds
+    * Switch to the next tab
+    * Verify the url contains with the text 127.0.0.1
+
+  # ==================== Scroll with web driver ====================
+
+  @Web-UI @SCN-VUE-26
+  Scenario: Scroll down on tall page using JS
+    * Navigate to url: http://127.0.0.1:7457/tall
+    * Wait for element pageTitle on the TallPage to be visible
+    * Execute JS command: window.scrollBy(0, 500)
+
+  # ==================== Click by text ====================
+
+  @Web-UI @SCN-VUE-27
+  Scenario: Click button by visible text
+    * Navigate to url: http://127.0.0.1:7457/buttons
+    * Wait for element resultText on the ButtonsPage to be visible
+    * Click button with Primary text using web driver
+    * Verify the text of resultText on the ButtonsPage contains: Primary
+
+  # ==================== Acquire attribute ====================
+
+  @Web-UI @SCN-VUE-28
+  Scenario: Acquire attribute value of an element
+    * Navigate to url: http://127.0.0.1:7457/text-inputs
+    * Wait for element disabledInput on the TextInputsPage to be visible
+    * Acquire the value attribute of disabledInput on the TextInputsPage
+
+  # ==================== Execute JS ====================
+
+  @Web-UI @SCN-VUE-29
+  Scenario: Execute JavaScript command
+    * Navigate to url: http://127.0.0.1:7457/buttons
+    * Wait for element pageTitle on the ButtonsPage to be visible
+    * Execute JS command: document.title = 'JS Test'
+
+  # ==================== Context text replacement ====================
+
+  @Web-UI @SCN-VUE-30
+  Scenario: Perform text replacement on context value
+    * Update context rawUrl -> https://example.com/path
+    * Perform text replacement on CONTEXT-rawUrl context by replacing https:// value in cleanUrl
+    * Assert that value of CONTEXT-cleanUrl is equal to example.com/path

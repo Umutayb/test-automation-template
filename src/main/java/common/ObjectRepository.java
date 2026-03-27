@@ -20,6 +20,10 @@ public class ObjectRepository implements PageObjectRepository {
         Environment(String urlKey){
             this.urlKey = urlKey;
         }
+
+        public String getUrlKey() {
+            return urlKey;
+        }
     }
 
     public static Environment environment;
@@ -34,6 +38,11 @@ public class ObjectRepository implements PageObjectRepository {
     ElementsPage elementsPage;
     InteractionsPage interactionsPage;
     RadioButtonsPage radioButtonsPage;
+    TextInputsPage textInputsPage;
+    CheckboxesPage checkboxesPage;
+    ModalPage modalPage;
+    LoginFormPage loginFormPage;
+    DroppablePage droppablePage;
 
     // Desktop/Mobile Screens
     BasicUWPMainPage basicUWPMainPage;

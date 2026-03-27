@@ -12,7 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pickleib.platform.driver.PickleibAppiumDriver;
 import pickleib.platform.driver.ServiceFactory;
+import pickleib.steps.BuiltInSteps;
+import pickleib.utilities.interfaces.repository.ElementRepository;
 import pickleib.utilities.screenshot.ScreenCaptureUtility;
+import pickleib.utilities.steps.design.PageObjectDesign;
 import pickleib.web.PickleibPageObject;
 import pickleib.web.driver.PickleibWebDriver;
 import pickleib.web.driver.WebDriverFactory;
@@ -39,6 +42,21 @@ public class Hooks extends PickleibPageObject {
     @DefaultDataTableCellTransformer
     public Object transformer(Object fromValue, Type toValueType) {
         return objectMapper.convertValue(fromValue, objectMapper.constructType(toValueType));
+    }
+
+    @Before(order = 0)
+    public void wireBuiltInSteps() {
+        ElementRepository repo = new PageObjectDesign<>(ObjectRepository.class).getElementRepository();
+        BuiltInSteps.setElementRepository(repo);
+    }
+
+    @Given("^Navigate to the (acceptance|test|dev) page$")
+    public void navigateToTargetEnv(ObjectRepository.Environment environment) {
+        String baseUrl = ContextStore.get(environment.getUrlKey());
+        String url = baseUrl.startsWith("http") ? baseUrl : "https://" + baseUrl;
+        log.info("Navigating to " + highlighted(PURPLE, url));
+        PickleibWebDriver.get().get(url);
+        ObjectRepository.environment = environment;
     }
 
     @Before
