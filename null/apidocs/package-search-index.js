@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"bookstore"},{"l":"bookstore.models"},{"l":"common"},{"l":"jira"},{"l":"jira.xray"},{"l":"models.cucumber"},{"l":"models.jira"},{"l":"models.slack"},{"l":"models.sql.database"},{"l":"models.sql.database.model"},{"l":"pages"},{"l":"pages.inventory.app"},{"l":"slack"},{"l":"uwp"}];updateSearchResults();

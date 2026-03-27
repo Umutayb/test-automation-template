@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestRunner" time="31.197" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestRunner" time="63.926" tests="30" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="NL"/>
     <property name="sun.boot.library.path" value="/Users/Ay/Library/Java/JavaVirtualMachines/corretto-17.0.18/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/Ay/Github/test-automation-template/null/surefire/surefirebooter-20260327101648044_3.jar /Users/Ay/Github/test-automation-template/null/surefire 2026-03-27T10-16-47_986-jvmRun1 surefire-20260327101648044_1tmp surefire_0-20260327101648044_2tmp"/>
+    <property name="sun.java.command" value="/Users/Ay/Github/test-automation-template/null/surefire/surefirebooter-20260327111113692_3.jar /Users/Ay/Github/test-automation-template/null/surefire 2026-03-27T11-11-13_624-jvmRun1 surefire-20260327111113692_1tmp surefire_0-20260327111113692_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/Ay/Github/test-automation-template/${buildDirectory}/test-classes:/Users/Ay/Github/test-automation-template/${buildDirectory}/classes:/Users/Ay/.m2/repository/io/github/umutayb/pickleib/2.0.9/pickleib-2.0.9.jar:/Users/Ay/.m2/repository/io/github/umutayb/context-store/1.0.2/context-store-1.0.2.jar:/Users/Ay/.m2/repository/io/github/umutayb/gpt-utilities/0.1.5/gpt-utilities-0.1.5.jar:/Users/Ay/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.jar:/Users/Ay/.m2/repository/com/fifesoft/rsyntaxtextarea/3.1.2/rsyntaxtextarea-3.1.2.jar:/Users/Ay/.m2/repository/io/github/bonigarcia/webdrivermanager/5.9.2/webdrivermanager-5.9.2.jar:/Users/Ay/.m2/repository/com/github/docker-java/docker-java/3.4.0/docker-java-3.4.0.jar:/Users/Ay/.m2/repository/com/github/docker-java/docker-java-core/3.4.0/docker-java-core-3.4.0.jar:/Users/Ay/.m2/repository/com/github/docker-java/docker-java-api/3.4.0/docker-java-api-3.4.0.jar:/Users/Ay/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/Users/Ay/.m2/repository/com/github/docker-java/docker-java-transport-httpclient5/3.4.0/docker-java-transport-httpclient5-3.4.0.jar:/Users/Ay/.m2/repository/com/github/docker-java/docker-java-transport/3.4.0/docker-java-transport-3.4.0.jar:/Users/Ay/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/Users/Ay/.m2/repository/org/brotli/dec/0.1.2/dec-0.1.2.jar:/Users/Ay/.m2/repository/org/apache/commons/commons-compress/1.26.2/commons-compress-1.26.2.jar:/Users/Ay/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.2.1/httpclient5-5.2.1.jar:/Users/Ay/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2/httpcore5-5.2.jar:/Users/Ay/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2/httpcore5-h2-5.2.jar:/Users/Ay/.m2/repository/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0.jar:/Users/Ay/.m2/repository/com/squareup/okio/okio/3.6.0/okio-3.6.0.jar:/Users/Ay/.m2/repository/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0.jar:/Users/Ay/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar:/Users/Ay/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.21/kotlin-stdlib-jdk8-1.8.21.jar:/Users/Ay/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.8.21/kotlin-stdlib-1.8.21.jar:/Users/Ay/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/Users/Ay/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.21/kotlin-stdlib-jdk7-1.8.21.jar:/Users/Ay/.m2/repository/com/squareup/okhttp3/logging-interceptor/4.12.0/logging-interceptor-4.12.0.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/adapter-rxjava/2.9.0/adapter-rxjava-2.9.0.jar:/Users/Ay/.m2/repository/io/reactivex/rxjava/1.3.8/rxjava-1.3.8.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-gson/2.9.0/converter-gson-2.9.0.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/retrofit/2.9.0/retrofit-2.9.0.jar:/Users/Ay/.m2/repository/org/jsoup/jsoup/1.15.4/jsoup-1.15.4.jar:/Users/Ay/.m2/repository/org/json/json/20231013/json-20231013.jar:/Users/Ay/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.1/junit-jupiter-5.13.1.jar:/Users/Ay/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.1/junit-jupiter-params-5.13.1.jar:/Users/Ay/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.1/junit-jupiter-engine-5.13.1.jar:/Users/Ay/.m2/repository/io/github/umutayb/Utilities/1.7.6/Utilities-1.7.6.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-jackson/2.9.0/converter-jackson-2.9.0.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-scalars/2.9.0/converter-scalars-2.9.0.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-simplexml/2.9.0/converter-simplexml-2.9.0.jar:/Users/Ay/.m2/repository/org/simpleframework/simple-xml/2.7.1/simple-xml-2.7.1.jar:/Users/Ay/.m2/repository/stax/stax-api/1.0.1/stax-api-1.0.1.jar:/Users/Ay/.m2/repository/stax/stax/1.2.0/stax-1.2.0.jar:/Users/Ay/.m2/repository/xpp3/xpp3/1.1.3.3/xpp3-1.1.3.3.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-moshi/2.9.0/converter-moshi-2.9.0.jar:/Users/Ay/.m2/repository/com/squareup/moshi/moshi/1.8.0/moshi-1.8.0.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-protobuf/2.9.0/converter-protobuf-2.9.0.jar:/Users/Ay/.m2/repository/com/squareup/retrofit2/converter-wire/2.9.0/converter-wire-2.9.0.jar:/Users/Ay/.m2/repository/com/squareup/wire/wire-runtime/2.2.0/wire-runtime-2.2.0.jar:/Users/Ay/.m2/repository/org/apache/poi/poi/5.2.2/poi-5.2.2.jar:/Users/Ay/.m2/repository/commons-codec/commons-codec/1.15/commons-codec-1.15.jar:/Users/Ay/.m2/repository/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar:/Users/Ay/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:/Users/Ay/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/Ay/.m2/repository/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar:/Users/Ay/.m2/repository/org/apache/logging/log4j/log4j-api/2.17.2/log4j-api-2.17.2.jar:/Users/Ay/.m2/repository/org/apache/poi/poi-ooxml/5.2.2/poi-ooxml-5.2.2.jar:/Users/Ay/.m2/repository/org/apache/poi/poi-ooxml-lite/5.2.2/poi-ooxml-lite-5.2.2.jar:/Users/Ay/.m2/repository/org/apache/xmlbeans/xmlbeans/5.0.3/xmlbeans-5.0.3.jar:/Users/Ay/.m2/repository/com/github/virtuald/curvesapi/1.07/curvesapi-1.07.jar:/Users/Ay/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/Users/Ay/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/Ay/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/Ay/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/Ay/.m2/repository/com/sun/mail/jakarta.mail/2.0.1/jakarta.mail-2.0.1.jar:/Users/Ay/.m2/repository/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1.jar:/Users/Ay/.m2/repository/org/apache/pdfbox/pdfbox/3.0.1/pdfbox-3.0.1.jar:/Users/Ay/.m2/repository/org/apache/pdfbox/pdfbox-io/3.0.1/pdfbox-io-3.0.1.jar:/Users/Ay/.m2/repository/org/apache/pdfbox/fontbox/3.0.1/fontbox-3.0.1.jar:/Users/Ay/.m2/repository/com/fasterxml/jackson/module/jackson-module-jsonSchema/2.18.3/jackson-module-jsonSchema-2.18.3.jar:/Users/Ay/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar:/Users/Ay/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/Users/Ay/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/Users/Ay/.m2/repository/io/github/umutayb/wasapi/0.0.1/wasapi-0.0.1.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-java/7.14.0/cucumber-java-7.14.0.jar:/Users/Ay/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-core/7.14.0/cucumber-core-7.14.0.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-gherkin/7.14.0/cucumber-gherkin-7.14.0.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.14.0/cucumber-gherkin-messages-7.14.0.jar:/Users/Ay/.m2/repository/io/cucumber/gherkin/26.2.0/gherkin-26.2.0.jar:/Users/Ay/.m2/repository/io/cucumber/messages/22.0.0/messages-22.0.0.jar:/Users/Ay/.m2/repository/io/cucumber/tag-expressions/5.0.6/tag-expressions-5.0.6.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-expressions/16.1.2/cucumber-expressions-16.1.2.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-plugin/7.14.0/cucumber-plugin-7.14.0.jar:/Users/Ay/.m2/repository/io/cucumber/docstring/7.14.0/docstring-7.14.0.jar:/Users/Ay/.m2/repository/io/cucumber/html-formatter/20.4.0/html-formatter-20.4.0.jar:/Users/Ay/.m2/repository/io/cucumber/junit-xml-formatter/0.2.0/junit-xml-formatter-0.2.0.jar:/Users/Ay/.m2/repository/io/cucumber/ci-environment/9.2.0/ci-environment-9.2.0.jar:/Users/Ay/.m2/repository/io/cucumber/cucumber-junit/7.14.0/cucumber-junit-7.14.0.jar:/Users/Ay/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/Ay/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/Ay/.m2/repository/io/cucumber/datatable/7.14.0/datatable-7.14.0.jar:/Users/Ay/.m2/repository/io/cucumber/datatable-dependencies/3.0.0/datatable-dependencies-3.0.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-java/4.19.0/selenium-java-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.19.0/selenium-chrome-driver-4.19.0.jar:/Users/Ay/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.19.0/selenium-chromium-driver-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-json/4.19.0/selenium-json-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.19.0/selenium-manager-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v121/4.19.0/selenium-devtools-v121-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v122/4.19.0/selenium-devtools-v122-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v123/4.19.0/selenium-devtools-v123-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.19.0/selenium-devtools-v85-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.19.0/selenium-edge-driver-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.19.0/selenium-firefox-driver-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-http/4.19.0/selenium-http-4.19.0.jar:/Users/Ay/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.19.0/selenium-ie-driver-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.19.0/selenium-remote-driver-4.19.0.jar:/Users/Ay/.m2/repository/com/google/guava/guava/33.1.0-jre/guava-33.1.0-jre.jar:/Users/Ay/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/Users/Ay/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/Ay/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/Ay/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/Users/Ay/.m2/repository/com/google/errorprone/error_prone_annotations/2.26.1/error_prone_annotations-2.26.1.jar:/Users/Ay/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.23.1-alpha/opentelemetry-semconv-1.23.1-alpha.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-api/1.36.0/opentelemetry-api-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-context/1.36.0/opentelemetry-context-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.36.0/opentelemetry-exporter-logging-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.36.0/opentelemetry-sdk-common-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.36.0/opentelemetry-sdk-extension-autoconfigure-spi-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.36.0/opentelemetry-sdk-extension-autoconfigure-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-api-events/1.36.0-alpha/opentelemetry-api-events-1.36.0-alpha.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.36.0/opentelemetry-sdk-trace-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-extension-incubator/1.36.0-alpha/opentelemetry-extension-incubator-1.36.0-alpha.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.36.0/opentelemetry-sdk-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.36.0/opentelemetry-sdk-metrics-1.36.0.jar:/Users/Ay/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.36.0/opentelemetry-sdk-logs-1.36.0.jar:/Users/Ay/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-os/4.19.0/selenium-os-4.19.0.jar:/Users/Ay/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.19.0/selenium-safari-driver-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-support/4.19.0/selenium-support-4.19.0.jar:/Users/Ay/.m2/repository/org/seleniumhq/selenium/selenium-api/4.19.0/selenium-api-4.19.0.jar:/Users/Ay/.m2/repository/io/appium/java-client/9.2.2/java-client-9.2.2.jar:/Users/Ay/.m2/repository/org/slf4j/slf4j-api/2.0.12/slf4j-api-2.0.12.jar:/Users/Ay/.m2/repository/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar:/Users/Ay/.m2/repository/com/microsoft/sqlserver/mssql-jdbc/11.2.3.jre17/mssql-jdbc-11.2.3.jre17.jar:/Users/Ay/.m2/repository/com/mysql/mysql-connector-j/8.0.32/mysql-connector-j-8.0.32.jar:/Users/Ay/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/Users/Ay/.m2/repository/io/github/soldelv/sql-query-builder/0.0.3/sql-query-builder-0.0.3.jar:/Users/Ay/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/Ay/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar:/Users/Ay/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar:/Users/Ay/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/Ay/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar:/Users/Ay/.m2/repository/org/junit/platform/junit-platform-runner/1.2.0/junit-platform-runner-1.2.0.jar:/Users/Ay/.m2/repository/org/junit/platform/junit-platform-launcher/1.2.0/junit-platform-launcher-1.2.0.jar:/Users/Ay/.m2/repository/org/junit/platform/junit-platform-engine/1.2.0/junit-platform-engine-1.2.0.jar:/Users/Ay/.m2/repository/org/junit/platform/junit-platform-suite-api/1.2.0/junit-platform-suite-api-1.2.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/Ay/Github/test-automation-template/null/surefire/surefirebooter-20260327101648044_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/Ay/Github/test-automation-template/null/surefire/surefirebooter-20260327111113692_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.18+9-LTS"/>
@@ -58,581 +58,1226 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="Homepage category navigation" classname="Vue Test App" time="3.405">
-    <system-err><![CDATA[Mar 27, 2026 10:16:49 AM steps.Hooks before
+  <testcase name="Homepage category navigation" classname="Vue Test App" time="2.687">
+    <system-err><![CDATA[Mar 27, 2026 11:11:14 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mHomepage category navigation&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:49 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:14 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-1]&amp#27;[0m
-Mar 27, 2026 10:16:49 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:14 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:16:51 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:16 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:16:51 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:16 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:16:51 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:16 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:16 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:16 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mHomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:16 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mHomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:16 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:16 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mHomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:16 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mHomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:51 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:16 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mUI Components Test Suite&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mhomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:52 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:16 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "UI Components Test Suite" text!&amp#27;[0m
-Mar 27, 2026 10:16:52 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
+Mar 27, 2026 11:11:16 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
 INFO: &amp#27;[1;90mAcquiring listed element named &amp#27;[1;34mForms&amp#27;[0m&amp#27;[1;90m selected from &amp#27;[0m&amp#27;[1;34mcategoryCards&amp#27;[0m&amp#27;[1;90m on  &amp#27;[0m&amp#27;[1;34mHomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:52 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:16 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34mForms&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mHomePage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:52 AM pickleib.steps.BuiltInSteps verifyTextUrl
+Mar 27, 2026 11:11:17 AM pickleib.steps.BuiltInSteps verifyTextUrl
 INFO: &amp#27;[1;32mThe url contains 'forms'&amp#27;[0m
-Mar 27, 2026 10:16:52 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:17 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:16:52 AM steps.Hooks kill
+Mar 27, 2026 11:11:17 AM steps.Hooks kill
 INFO: &amp#27;[1;32mHomepage category navigation: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Browser navigation forwards and backwards" classname="Vue Test App" time="1.502">
-    <system-err><![CDATA[Mar 27, 2026 10:16:52 AM steps.Hooks before
+  <testcase name="Browser navigation forwards and backwards" classname="Vue Test App" time="1.657">
+    <system-err><![CDATA[Mar 27, 2026 11:11:17 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mBrowser navigation forwards and backwards&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:52 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:17 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-2]&amp#27;[0m
-Mar 27, 2026 10:16:52 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:17 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:16:53 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:18 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:16:53 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:18 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:16:53 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:18 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:18 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:18 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/forms&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.steps.BuiltInSteps verifyTextUrl
+Mar 27, 2026 11:11:18 AM pickleib.steps.BuiltInSteps verifyTextUrl
 INFO: &amp#27;[1;32mThe url contains 'forms'&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:18 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.steps.BuiltInSteps verifyTextUrl
+Mar 27, 2026 11:11:18 AM pickleib.steps.BuiltInSteps verifyTextUrl
 INFO: &amp#27;[1;32mThe url contains 'buttons'&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.web.interactions.WebInteractions navigateBrowser
+Mar 27, 2026 11:11:18 AM pickleib.web.interactions.WebInteractions navigateBrowser
 INFO: &amp#27;[1;90mNavigating &amp#27;[1;34mbackwards&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.steps.BuiltInSteps verifyTextUrl
+Mar 27, 2026 11:11:18 AM pickleib.steps.BuiltInSteps verifyTextUrl
 INFO: &amp#27;[1;32mThe url contains 'forms'&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:18 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:16:53 AM steps.Hooks kill
+Mar 27, 2026 11:11:18 AM steps.Hooks kill
 INFO: &amp#27;[1;32mBrowser navigation forwards and backwards: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Form submission and verification" classname="Vue Test App" time="4.709">
-    <system-err><![CDATA[Mar 27, 2026 10:16:53 AM steps.Hooks before
+  <testcase name="Form submission and verification" classname="Vue Test App" time="4.788">
+    <system-err><![CDATA[Mar 27, 2026 11:11:18 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mForm submission and verification&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:53 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:18 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-3]&amp#27;[0m
-Mar 27, 2026 10:16:53 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:18 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:16:54 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:19 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:16:54 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:19 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:16:54 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:20 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:20 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:20 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/forms&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:20 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:20 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:20 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.steps.BuiltInSteps updateContext
+Mar 27, 2026 11:11:20 AM pickleib.steps.BuiltInSteps updateContext
 INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34mtestName&amp#27;[1;90m to &amp#27;[1;34mJohn Smith&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.steps.BuiltInSteps updateContext
+Mar 27, 2026 11:11:20 AM pickleib.steps.BuiltInSteps updateContext
 INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34mtestEmail&amp#27;[1;90m to &amp#27;[1;34mjohn@example.com&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:16:54 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementList
+Mar 27, 2026 11:11:20 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementList
 INFO: &amp#27;[1;90mAcquiring element list from &amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:55 AM pickleib.web.interactions.WebInteractions fillForm
+Mar 27, 2026 11:11:20 AM pickleib.web.interactions.WebInteractions fillForm
 INFO: &amp#27;[1;90mFilling form on &amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:55 AM pickleib.utilities.helpers.InputHelper fillInputForm
+Mar 27, 2026 11:11:20 AM pickleib.utilities.helpers.InputHelper fillInputForm
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mJohn Smith&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:55 AM pickleib.utilities.helpers.InputHelper fillInputForm
+Mar 27, 2026 11:11:20 AM pickleib.utilities.helpers.InputHelper fillInputForm
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34memailInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mjohn@example.com&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:55 AM pickleib.utilities.helpers.InputHelper fillInputForm
+Mar 27, 2026 11:11:21 AM pickleib.utilities.helpers.InputHelper fillInputForm
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34mmobileInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34m0655500001&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:56 AM pickleib.utilities.helpers.InputHelper fillInputForm
+Mar 27, 2026 11:11:21 AM pickleib.utilities.helpers.InputHelper fillInputForm
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34mhobbiesInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mReading&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:56 AM pickleib.utilities.helpers.InputHelper fillInputForm
+Mar 27, 2026 11:11:21 AM pickleib.utilities.helpers.InputHelper fillInputForm
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34maddressInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34m123 Main Street&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:57 AM pickleib.utilities.helpers.InputHelper fillInputForm
+Mar 27, 2026 11:11:22 AM pickleib.utilities.helpers.InputHelper fillInputForm
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34mcityInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mAmsterdam&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:57 AM pickleib.web.interactions.WebInteractions fillForm
+Mar 27, 2026 11:11:22 AM pickleib.web.interactions.WebInteractions fillForm
 INFO: &amp#27;[1;32mForm was filled on &amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:57 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:22 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msubmitButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:57 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:22 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34msubmitButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:57 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:23 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msubmissionTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:23 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34msubmissionTitle&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:23 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:23 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msubmissionTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:23 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34msubmissionTitle&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:23 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34msubmissionTitle&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mSubmitted Information&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mformsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:23 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Submitted Information" text!&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:23 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:16:58 AM steps.Hooks kill
+Mar 27, 2026 11:11:23 AM steps.Hooks kill
 INFO: &amp#27;[1;32mForm submission and verification: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Fill individual input and verify value" classname="Vue Test App" time="1.91">
-    <system-err><![CDATA[Mar 27, 2026 10:16:58 AM steps.Hooks before
+  <testcase name="Fill individual input and verify value" classname="Vue Test App" time="2.131">
+    <system-err><![CDATA[Mar 27, 2026 11:11:23 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mFill individual input and verify value&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:58 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:23 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-4]&amp#27;[0m
-Mar 27, 2026 10:16:58 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:23 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:16:59 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:24 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:16:59 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:24 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:16:59 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:24 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:16:59 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:24 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:59 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:25 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/forms&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:59 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:25 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:16:59 AM pickleib.web.interactions.WebInteractions fillInputElement
+Mar 27, 2026 11:11:25 AM pickleib.web.interactions.WebInteractions fillInputElement
 INFO: &amp#27;[1;90mFilling &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mPickleib Tester&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:00 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:25 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mFormsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:00 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+Mar 27, 2026 11:11:25 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
 INFO: &amp#27;[1;90mVerifying that &amp#27;[1;34mnameInput&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mPickleib&amp#27;[0m&amp#27;[1;90m in its &amp#27;[0m&amp#27;[1;34mvalue&amp#27;[0m&amp#27;[1;90m attribute.&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:00 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+Mar 27, 2026 11:11:25 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
 INFO: &amp#27;[1;32mThe value attribute of element nameInput is verified!&amp#27;[0m
-Mar 27, 2026 10:17:00 AM pickleib.steps.BuiltInSteps verifyElementAttributeContainsValue
+Mar 27, 2026 11:11:25 AM pickleib.steps.BuiltInSteps verifyElementAttributeContainsValue
 INFO: &amp#27;[1;90m-> &amp#27;[1;34mPickleib&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:17:00 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:25 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:00 AM steps.Hooks kill
+Mar 27, 2026 11:11:25 AM steps.Hooks kill
 INFO: &amp#27;[1;32mFill individual input and verify value: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Button click and result verification" classname="Vue Test App" time="3.872">
-    <system-err><![CDATA[Mar 27, 2026 10:17:00 AM steps.Hooks before
+  <testcase name="Button click and result verification" classname="Vue Test App" time="3.976">
+    <system-err><![CDATA[Mar 27, 2026 11:11:25 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mButton click and result verification&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:00 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:25 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-5]&amp#27;[0m
-Mar 27, 2026 10:17:00 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:25 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:26 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:26 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:01 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:26 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:26 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:27 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:27 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:27 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:27 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mLast clicked: none&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:27 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Last clicked: none" text!&amp#27;[0m
-Mar 27, 2026 10:17:01 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:27 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:27 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:27 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:27 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:28 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mPrimary&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:28 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Primary" text!&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:28 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msecondaryButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:02 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:28 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34msecondaryButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:28 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:28 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:28 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mSecondary&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:28 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Secondary" text!&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:28 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdangerButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:28 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34mdangerButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:29 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:03 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:29 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:04 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:29 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mDanger&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:04 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:29 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Danger" text!&amp#27;[0m
-Mar 27, 2026 10:17:04 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:29 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:04 AM steps.Hooks kill
+Mar 27, 2026 11:11:29 AM steps.Hooks kill
 INFO: &amp#27;[1;32mButton click and result verification: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Button states — disabled element verification" classname="Vue Test App" time="1.751">
-    <system-err><![CDATA[Mar 27, 2026 10:17:04 AM steps.Hooks before
+  <testcase name="Button states — disabled element verification" classname="Vue Test App" time="1.862">
+    <system-err><![CDATA[Mar 27, 2026 11:11:29 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mButton states — disabled element verification&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:04 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:29 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-6]&amp#27;[0m
-Mar 27, 2026 10:17:04 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:29 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:05 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:30 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:05 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:30 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:05 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:30 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:30 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:30 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:31 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:31 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:31 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mButtons&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:31 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Buttons" text!&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:31 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:31 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdisabledButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisabled&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:31 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: disabled&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:31 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:05 AM steps.Hooks kill
+Mar 27, 2026 11:11:31 AM steps.Hooks kill
 INFO: &amp#27;[1;32mButton states — disabled element verification: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Alert page button interactions" classname="Vue Test App" time="1.879">
-    <system-err><![CDATA[Mar 27, 2026 10:17:05 AM steps.Hooks before
+  <testcase name="Alert page button interactions" classname="Vue Test App" time="1.965">
+    <system-err><![CDATA[Mar 27, 2026 11:11:31 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mAlert page button interactions&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:05 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:31 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-7]&amp#27;[0m
-Mar 27, 2026 10:17:05 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:31 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:07 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:32 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:07 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:32 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:07 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:32 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:32 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:32 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/alerts&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:32 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:32 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:32 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:32 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:32 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:32 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:32 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mrightClickMeButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:33 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mrightClickMeButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:33 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:33 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdoubleClickMeButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:33 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdoubleClickMeButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:33 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:33 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:33 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:33 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:07 AM steps.Hooks kill
+Mar 27, 2026 11:11:33 AM steps.Hooks kill
 INFO: &amp#27;[1;32mAlert page button interactions: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Dropdown elements presence" classname="Vue Test App" time="1.371">
-    <system-err><![CDATA[Mar 27, 2026 10:17:07 AM steps.Hooks before
+  <testcase name="Dropdown elements presence" classname="Vue Test App" time="1.524">
+    <system-err><![CDATA[Mar 27, 2026 11:11:33 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mDropdown elements presence&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:07 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:33 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-8]&amp#27;[0m
-Mar 27, 2026 10:17:07 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:33 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:08 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:34 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:08 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:34 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:08 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:34 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:08 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/dropdown&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:34 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msingleSelect&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34msingleSelect&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:34 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msingleSelect&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34msingleSelect&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:34 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:34 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mmultiSelect&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mmultiSelect&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:34 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:34 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mcustomDropdownButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:34 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mcustomDropdownButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDropdownPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:34 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:34 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:09 AM steps.Hooks kill
+Mar 27, 2026 11:11:35 AM steps.Hooks kill
 INFO: &amp#27;[1;32mDropdown elements presence: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Tall page scroll and section verification" classname="Vue Test App" time="2.082">
-    <system-err><![CDATA[Mar 27, 2026 10:17:09 AM steps.Hooks before
+  <testcase name="Tall page scroll and section verification" classname="Vue Test App" time="2.315">
+    <system-err><![CDATA[Mar 27, 2026 11:11:35 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mTall page scroll and section verification&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:09 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:35 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-9]&amp#27;[0m
-Mar 27, 2026 10:17:09 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:35 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:10 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:36 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:10 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:36 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:10 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:36 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:36 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:36 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/tall&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:36 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:36 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:36 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mTall Page&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mtallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:36 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Tall Page" text!&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:36 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mscrollInfo&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:36 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mscrollInfo&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:36 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
+Mar 27, 2026 11:11:36 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
 INFO: &amp#27;[1;90mAcquiring listed element named &amp#27;[1;34mSection 10&amp#27;[0m&amp#27;[1;90m selected from &amp#27;[0m&amp#27;[1;34msectionHeadings&amp#27;[0m&amp#27;[1;90m on  &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:10 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:36 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mSection 10&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:11 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
+Mar 27, 2026 11:11:37 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
 INFO: &amp#27;[1;90mAcquiring listed element named &amp#27;[1;34mSection 5&amp#27;[0m&amp#27;[1;90m selected from &amp#27;[0m&amp#27;[1;34msectionHeadings&amp#27;[0m&amp#27;[1;90m on  &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:11 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:37 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mSection 5&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mSection 5&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:11 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:37 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Section 5" text!&amp#27;[0m
-Mar 27, 2026 10:17:11 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:37 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:11 AM steps.Hooks kill
+Mar 27, 2026 11:11:37 AM steps.Hooks kill
 INFO: &amp#27;[1;32mTall page scroll and section verification: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Context store operations and assertions" classname="Vue Test App" time="1.321">
-    <system-err><![CDATA[Mar 27, 2026 10:17:11 AM steps.Hooks before
+  <testcase name="Context store operations and assertions" classname="Vue Test App" time="1.349">
+    <system-err><![CDATA[Mar 27, 2026 11:11:37 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mContext store operations and assertions&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:11 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:37 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-10]&amp#27;[0m
-Mar 27, 2026 10:17:11 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:37 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:12 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:38 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:12 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:38 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:12 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:38 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:38 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps updateContext
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps updateContext
 INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34mmyKey&amp#27;[1;90m to &amp#27;[1;34mmyValue&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps updateContext
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps updateContext
 INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34manotherKey&amp#27;[1;90m to &amp#27;[1;34manotherValue&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps saveContextValueFromOneContextKeyToAnother
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps saveContextValueFromOneContextKeyToAnother
 INFO: &amp#27;[1;90mValue of &amp#27;[1;34mmyKey&amp#27;[1;90m&amp#27;[1;32m was saved to &amp#27;[1;90m&amp#27;[1;34mcopiedKey&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps verifyText
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps verifyText
 INFO: &amp#27;[1;90mChecking values...&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps verifyText
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps verifyText
 INFO: &amp#27;[1;32mValues verified as: myValue&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps verifyNoText
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps verifyNoText
 INFO: &amp#27;[1;90mChecking values...&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.steps.BuiltInSteps verifyNoText
+Mar 27, 2026 11:11:38 AM pickleib.steps.BuiltInSteps verifyNoText
 INFO: &amp#27;[1;32mValues verified as: anotherValue&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:38 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:12 AM steps.Hooks kill
+Mar 27, 2026 11:11:38 AM steps.Hooks kill
 INFO: &amp#27;[1;32mContext store operations and assertions: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Element attribute verification" classname="Vue Test App" time="1.382">
-    <system-err><![CDATA[Mar 27, 2026 10:17:12 AM steps.Hooks before
+  <testcase name="Element attribute verification" classname="Vue Test App" time="1.47">
+    <system-err><![CDATA[Mar 27, 2026 11:11:38 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mElement attribute verification&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:12 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:38 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-11]&amp#27;[0m
-Mar 27, 2026 10:17:12 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:38 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:13 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:39 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:13 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:39 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:13 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:39 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:39 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:39 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:40 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:40 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdisabledButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisabled&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:40 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: disabled&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:40 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+Mar 27, 2026 11:11:40 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
 INFO: &amp#27;[1;90mVerifying that &amp#27;[1;34mdisabledButton&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mtrue&amp#27;[0m&amp#27;[1;90m in its &amp#27;[0m&amp#27;[1;34mdisabled&amp#27;[0m&amp#27;[1;90m attribute.&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+Mar 27, 2026 11:11:40 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
 INFO: &amp#27;[1;32mThe disabled attribute of element disabledButton is verified!&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.steps.BuiltInSteps verifyElementAttributeContainsValue
+Mar 27, 2026 11:11:40 AM pickleib.steps.BuiltInSteps verifyElementAttributeContainsValue
 INFO: &amp#27;[1;90m-> &amp#27;[1;34mtrue&amp#27;[1;90m&amp#27;[0m
-Mar 27, 2026 10:17:13 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:40 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:14 AM steps.Hooks kill
+Mar 27, 2026 11:11:40 AM steps.Hooks kill
 INFO: &amp#27;[1;32mElement attribute verification: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="Wait operations" classname="Vue Test App" time="2.356">
-    <system-err><![CDATA[Mar 27, 2026 10:17:14 AM steps.Hooks before
+  <testcase name="Wait operations" classname="Vue Test App" time="2.474">
+    <system-err><![CDATA[Mar 27, 2026 11:11:40 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mWait operations&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:14 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:40 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-12]&amp#27;[0m
-Mar 27, 2026 10:17:14 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:40 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:15 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:41 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:15 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:41 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:15 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:41 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:15 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:41 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:15 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:41 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:15 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:41 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:15 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:41 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:15 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:41 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:16 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:42 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:16 AM pickleib.web.interactions.WebInteractions verifyElementState
+Mar 27, 2026 11:11:42 AM pickleib.web.interactions.WebInteractions verifyElementState
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:16 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+Mar 27, 2026 11:11:42 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
 INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
-Mar 27, 2026 10:17:16 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:42 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:16 AM steps.Hooks kill
+Mar 27, 2026 11:11:42 AM steps.Hooks kill
 INFO: &amp#27;[1;32mWait operations: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
-  <testcase name="If present click does not throw" classname="Vue Test App" time="1.7">
-    <system-err><![CDATA[Mar 27, 2026 10:17:16 AM steps.Hooks before
+  <testcase name="If present click does not throw" classname="Vue Test App" time="1.805">
+    <system-err><![CDATA[Mar 27, 2026 11:11:42 AM steps.Hooks before
 INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mIf present click does not throw&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:16 AM steps.Hooks processScenarioTags
+Mar 27, 2026 11:11:42 AM steps.Hooks processScenarioTags
 INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-13]&amp#27;[0m
-Mar 27, 2026 10:17:16 AM pickleib.web.driver.PickleibWebDriver initialize
+Mar 27, 2026 11:11:42 AM pickleib.web.driver.PickleibWebDriver initialize
 INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
-Mar 27, 2026 10:17:17 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Mar 27, 2026 11:11:43 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 146
-Mar 27, 2026 10:17:17 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Mar 27, 2026 11:11:43 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
-Mar 27, 2026 10:17:17 AM pickleib.web.driver.WebDriverFactory getDriver
+Mar 27, 2026 11:11:43 AM pickleib.web.driver.WebDriverFactory getDriver
 INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions navigate
+Mar 27, 2026 11:11:43 AM pickleib.web.interactions.WebInteractions navigate
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions getUrl
+Mar 27, 2026 11:11:43 AM pickleib.web.interactions.WebInteractions getUrl
 INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:43 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:43 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+Mar 27, 2026 11:11:43 AM pickleib.web.interactions.WebInteractions waitUntilVisible
 INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:43 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions elementIs
+Mar 27, 2026 11:11:43 AM pickleib.web.interactions.WebInteractions elementIs
 INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions clickElement
+Mar 27, 2026 11:11:43 AM pickleib.web.interactions.WebInteractions clickElement
 INFO: &amp#27;[1;90mClicking &amp#27;[1;34mprimaryButton&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+Mar 27, 2026 11:11:44 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
 INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.interactions.WebInteractions centerElement
+Mar 27, 2026 11:11:44 AM pickleib.web.interactions.WebInteractions centerElement
 INFO: &amp#27;[1;90mCentering &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:44 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mPrimary&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+Mar 27, 2026 11:11:44 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
 INFO: &amp#27;[1;32mThe element text does contain "Primary" text!&amp#27;[0m
-Mar 27, 2026 10:17:17 AM pickleib.web.driver.PickleibWebDriver terminate
+Mar 27, 2026 11:11:44 AM pickleib.web.driver.PickleibWebDriver terminate
 INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
-Mar 27, 2026 10:17:18 AM steps.Hooks kill
+Mar 27, 2026 11:11:44 AM steps.Hooks kill
 INFO: &amp#27;[1;32mIf present click does not throw: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Radio button click and selected state verification" classname="Vue Test App" time="1.863">
+    <system-err><![CDATA[Mar 27, 2026 11:11:44 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mRadio button click and selected state verification&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:44 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-14]&amp#27;[0m
+Mar 27, 2026 11:11:44 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:45 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:45 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:45 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:45 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:45 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/radiobuttons&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:45 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34myesRadio&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:45 AM pickleib.web.interactions.WebInteractions clickElement
+INFO: &amp#27;[1;90mClicking &amp#27;[1;34myesRadio&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:46 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34myesRadio&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:46 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34myesRadio&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mselected&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:46 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: selected&amp#27;[0m
+Mar 27, 2026 11:11:46 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:46 AM steps.Hooks kill
+INFO: &amp#27;[1;32mRadio button click and selected state verification: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Disabled radio button state verification" classname="Vue Test App" time="1.572">
+    <system-err><![CDATA[Mar 27, 2026 11:11:46 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mDisabled radio button state verification&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:46 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-15]&amp#27;[0m
+Mar 27, 2026 11:11:46 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:47 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:47 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:47 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/radiobuttons&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mnoRadio&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mnoRadio&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisabled&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: disabled&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:47 AM steps.Hooks kill
+INFO: &amp#27;[1;32mDisabled radio button state verification: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Click listed radio button by text" classname="Vue Test App" time="1.52">
+    <system-err><![CDATA[Mar 27, 2026 11:11:47 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mClick listed radio button by text&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:47 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-16]&amp#27;[0m
+Mar 27, 2026 11:11:47 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:48 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:48 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:49 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/radiobuttons&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.utilities.interfaces.repository.ElementRepository acquireListedElementFromPage
+INFO: &amp#27;[1;90mAcquiring listed element named &amp#27;[1;34mImpressive&amp#27;[0m&amp#27;[1;90m selected from &amp#27;[0m&amp#27;[1;34mradioLabels&amp#27;[0m&amp#27;[1;90m on  &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.web.interactions.WebInteractions clickElement
+INFO: &amp#27;[1;90mClicking &amp#27;[1;34mImpressive&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mimpressiveRadio&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mimpressiveRadio&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mselected&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mRadioButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: selected&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:49 AM steps.Hooks kill
+INFO: &amp#27;[1;32mClick listed radio button by text: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Fill text input and verify value attribute" classname="Vue Test App" time="1.845">
+    <system-err><![CDATA[Mar 27, 2026 11:11:49 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mFill text input and verify value attribute&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:49 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-17]&amp#27;[0m
+Mar 27, 2026 11:11:49 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:50 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:50 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:50 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/text-inputs&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:50 AM pickleib.web.interactions.WebInteractions fillInputElement
+INFO: &amp#27;[1;90mFilling &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mHello World&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:51 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:51 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+INFO: &amp#27;[1;90mVerifying that &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mHello World&amp#27;[0m&amp#27;[1;90m in its &amp#27;[0m&amp#27;[1;34mvalue&amp#27;[0m&amp#27;[1;90m attribute.&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:51 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+INFO: &amp#27;[1;32mThe value attribute of element textInput is verified!&amp#27;[0m
+Mar 27, 2026 11:11:51 AM pickleib.steps.BuiltInSteps verifyElementAttributeContainsValue
+INFO: &amp#27;[1;90m-> &amp#27;[1;34mHello World&amp#27;[1;90m&amp#27;[0m
+Mar 27, 2026 11:11:51 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:51 AM steps.Hooks kill
+INFO: &amp#27;[1;32mFill text input and verify value attribute: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Verify disabled input state" classname="Vue Test App" time="1.501">
+    <system-err><![CDATA[Mar 27, 2026 11:11:51 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mVerify disabled input state&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:51 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-18]&amp#27;[0m
+Mar 27, 2026 11:11:51 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:52 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:52 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:52 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/text-inputs&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisabled&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: disabled&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:52 AM steps.Hooks kill
+INFO: &amp#27;[1;32mVerify disabled input state: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Fill multiple text inputs via form DataTable" classname="Vue Test App" time="2.258">
+    <system-err><![CDATA[Mar 27, 2026 11:11:52 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mFill multiple text inputs via form DataTable&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:52 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-19]&amp#27;[0m
+Mar 27, 2026 11:11:52 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:53 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:53 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:53 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:53 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:53 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/text-inputs&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementList
+INFO: &amp#27;[1;90mAcquiring element list from &amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.interactions.WebInteractions fillForm
+INFO: &amp#27;[1;90mFilling form on &amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.utilities.helpers.InputHelper fillInputForm
+INFO: &amp#27;[1;90mFilling &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mSample Text&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.utilities.helpers.InputHelper fillInputForm
+INFO: &amp#27;[1;90mFilling &amp#27;[1;34memailInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mtest@example.com&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.interactions.WebInteractions fillForm
+INFO: &amp#27;[1;32mForm was filled on &amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+INFO: &amp#27;[1;90mVerifying that &amp#27;[1;34mtextInput&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mSample Text&amp#27;[0m&amp#27;[1;90m in its &amp#27;[0m&amp#27;[1;34mvalue&amp#27;[0m&amp#27;[1;90m attribute.&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.interactions.WebInteractions verifyElementAttributeContainsValue
+INFO: &amp#27;[1;32mThe value attribute of element textInput is verified!&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.steps.BuiltInSteps verifyElementAttributeContainsValue
+INFO: &amp#27;[1;90m-> &amp#27;[1;34mSample Text&amp#27;[1;90m&amp#27;[0m
+Mar 27, 2026 11:11:54 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:55 AM steps.Hooks kill
+INFO: &amp#27;[1;32mFill multiple text inputs via form DataTable: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Checkbox click and selected state" classname="Vue Test App" time="1.88">
+    <system-err><![CDATA[Mar 27, 2026 11:11:55 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mCheckbox click and selected state&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:55 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-20]&amp#27;[0m
+Mar 27, 2026 11:11:55 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:56 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:56 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:56 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/checkboxes&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34muncheckedCheckbox&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34muncheckedCheckbox&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34muncheckedCheckbox&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.interactions.WebInteractions clickElement
+INFO: &amp#27;[1;90mClicking &amp#27;[1;34muncheckedCheckbox&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34muncheckedCheckbox&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34muncheckedCheckbox&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mselected&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: selected&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:56 AM steps.Hooks kill
+INFO: &amp#27;[1;32mCheckbox click and selected state: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Disabled checkbox state verification" classname="Vue Test App" time="1.442">
+    <system-err><![CDATA[Mar 27, 2026 11:11:56 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mDisabled checkbox state verification&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:56 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-21]&amp#27;[0m
+Mar 27, 2026 11:11:56 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:57 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:57 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:58 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/checkboxes&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledUncheckedCheckbox&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mdisabledUncheckedCheckbox&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledUncheckedCheckbox&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdisabledUncheckedCheckbox&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisabled&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mCheckboxesPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: disabled&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:11:58 AM steps.Hooks kill
+INFO: &amp#27;[1;32mDisabled checkbox state verification: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Open modal and verify status change" classname="Vue Test App" time="3.507">
+    <system-err><![CDATA[Mar 27, 2026 11:11:58 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mOpen modal and verify status change&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:58 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-22]&amp#27;[0m
+Mar 27, 2026 11:11:58 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:11:59 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:11:59 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:11:59 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/modal&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mopenModalButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mopenModalButton&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:11:59 AM pickleib.web.interactions.WebInteractions centerElement
+INFO: &amp#27;[1;90mCentering &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:00 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34midle&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mmodalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:00 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;32mThe element text does contain "idle" text!&amp#27;[0m
+Mar 27, 2026 11:12:00 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mopenModalButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:00 AM pickleib.web.interactions.WebInteractions clickElement
+INFO: &amp#27;[1;90mClicking &amp#27;[1;34mopenModalButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:01 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:01 AM pickleib.web.interactions.WebInteractions centerElement
+INFO: &amp#27;[1;90mCentering &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mModalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:01 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mopen&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mmodalPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:01 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;32mThe element text does contain "open" text!&amp#27;[0m
+Mar 27, 2026 11:12:01 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:01 AM steps.Hooks kill
+INFO: &amp#27;[1;32mOpen modal and verify status change: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Login form fill and submit" classname="Vue Test App" time="2.574">
+    <system-err><![CDATA[Mar 27, 2026 11:12:01 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mLogin form fill and submit&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:01 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-23]&amp#27;[0m
+Mar 27, 2026 11:12:01 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:02 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:02 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:02 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:02 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/login-form&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34musernameInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34musernameInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.steps.BuiltInSteps updateContext
+INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34mlogin-user&amp#27;[1;90m to &amp#27;[1;34madmin&amp#27;[1;90m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.steps.BuiltInSteps updateContext
+INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34mlogin-pass&amp#27;[1;90m to &amp#27;[1;34mpassword123&amp#27;[1;90m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34musernameInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.web.interactions.WebInteractions fillInputElement
+INFO: &amp#27;[1;90mFilling &amp#27;[1;34musernameInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34madmin&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpasswordInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.web.interactions.WebInteractions fillInputElement
+INFO: &amp#27;[1;90mFilling &amp#27;[1;34mpasswordInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[1;90m with the text: &amp#27;[0m&amp#27;[1;34mpassword123&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34msignInButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:03 AM pickleib.web.interactions.WebInteractions clickElement
+INFO: &amp#27;[1;90mClicking &amp#27;[1;34msignInButton&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mLoginFormPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:04 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:04 AM steps.Hooks kill
+INFO: &amp#27;[1;32mLogin form fill and submit: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Droppable page element presence" classname="Vue Test App" time="1.824">
+    <system-err><![CDATA[Mar 27, 2026 11:12:04 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mDroppable page element presence&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:04 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-24]&amp#27;[0m
+Mar 27, 2026 11:12:04 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:05 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:05 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:05 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/droppable&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdraggableItem&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mdraggableItem&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdraggableItem&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdraggableItem&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdropTarget&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions verifyElementState
+INFO: &amp#27;[1;90mVerifying that the state of &amp#27;[1;34mdropTarget&amp#27;[0m&amp#27;[1;90m is &amp#27;[0m&amp#27;[1;34mdisplayed&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.utilities.helpers.ElementStateHelper verifyElementState
+INFO: &amp#27;[1;32mElement state is verified to be: displayed&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:05 AM pickleib.web.interactions.WebInteractions centerElement
+INFO: &amp#27;[1;90mCentering &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mDroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:06 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mstatusText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mReady&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mdroppablePage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:06 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;32mThe element text does contain "Ready" text!&amp#27;[0m
+Mar 27, 2026 11:12:06 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:06 AM steps.Hooks kill
+INFO: &amp#27;[1;32mDroppable page element presence: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Click New Tab button and switch tab" classname="Vue Test App" time="2.51">
+    <system-err><![CDATA[Mar 27, 2026 11:12:06 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mClick New Tab button and switch tab&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:06 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-25]&amp#27;[0m
+Mar 27, 2026 11:12:06 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:07 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:07 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:07 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:07 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:07 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/alerts&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:07 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:07 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mclickMeButton&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mAlertsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:07 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:07 AM pickleib.web.interactions.WebInteractions clickByText
+INFO: &amp#27;[1;90mClicking button by text &amp#27;[1;34mNew Tab&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:08 AM pickleib.web.interactions.WebInteractions switchWindowByHandle
+INFO: &amp#27;[1;90mSwitching to the next tab&amp#27;[0m
+Mar 27, 2026 11:12:08 AM pickleib.steps.BuiltInSteps verifyTextUrl
+INFO: &amp#27;[1;32mThe url contains '127.0.0.1'&amp#27;[0m
+Mar 27, 2026 11:12:08 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:08 AM steps.Hooks kill
+INFO: &amp#27;[1;32mClick New Tab button and switch tab: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Scroll down on tall page using JS" classname="Vue Test App" time="1.399">
+    <system-err><![CDATA[Mar 27, 2026 11:12:08 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mScroll down on tall page using JS&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:08 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-26]&amp#27;[0m
+Mar 27, 2026 11:12:08 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:09 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:09 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:09 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:09 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:09 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/tall&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:10 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:10 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTallPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:10 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:10 AM pickleib.web.interactions.WebInteractions executeScript
+INFO: &amp#27;[1;90mExecuting script: &amp#27;[1;34mwindow.scrollBy(0, 500)&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:10 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:10 AM steps.Hooks kill
+INFO: &amp#27;[1;32mScroll down on tall page using JS: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Click button by visible text" classname="Vue Test App" time="1.925">
+    <system-err><![CDATA[Mar 27, 2026 11:12:10 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mClick button by visible text&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:10 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-27]&amp#27;[0m
+Mar 27, 2026 11:12:10 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:11 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:11 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:11 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.interactions.WebInteractions clickByText
+INFO: &amp#27;[1;90mClicking button by text &amp#27;[1;34mPrimary&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.interactions.WebInteractions centerElement
+INFO: &amp#27;[1;90mCentering &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;90mVerifying that text of element &amp#27;[1;34mresultText&amp#27;[0m&amp#27;[1;90m contains &amp#27;[0m&amp#27;[1;34mPrimary&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mbuttonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.utilities.helpers.ElementStateHelper verifyElementContainsText
+INFO: &amp#27;[1;32mThe element text does contain "Primary" text!&amp#27;[0m
+Mar 27, 2026 11:12:11 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:12 AM steps.Hooks kill
+INFO: &amp#27;[1;32mClick button by visible text: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Acquire attribute value of an element" classname="Vue Test App" time="1.409">
+    <system-err><![CDATA[Mar 27, 2026 11:12:12 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mAcquire attribute value of an element&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:12 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-28]&amp#27;[0m
+Mar 27, 2026 11:12:12 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:13 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:13 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:13 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/text-inputs&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions saveAttributeValue
+INFO: &amp#27;[1;90mSaving attribute &amp#27;[1;34mvalue&amp#27;[0m&amp#27;[1;90m of &amp#27;[0m&amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m on &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[1;90m to context&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions updateContextByElementAttribute
+INFO: &amp#27;[1;90mAcquiring &amp#27;[1;34mvalue&amp#27;[0m&amp#27;[1;90m attribute of &amp#27;[0m&amp#27;[1;34mdisabledInput&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mTextInputsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions updateContextByElementAttribute
+INFO: &amp#27;[1;90mAttribute -> &amp#27;[1;34mvalue&amp#27;[0m&amp#27;[1;90m : &amp#27;[0m&amp#27;[1;34mRead-only value&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions updateContextByElementAttribute
+INFO: &amp#27;[1;90mElement attribute saved to the ContextStore as -> '&amp#27;[1;34mdisabledInput-value&amp#27;[0m&amp#27;[1;90m' : '&amp#27;[0m&amp#27;[1;34mRead-only value&amp#27;[0m&amp#27;[1;90m'&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.interactions.WebInteractions saveAttributeValue
+INFO: &amp#27;[1;32mAttribute value of disabledInput from TextInputsPage was saved to context!&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:13 AM steps.Hooks kill
+INFO: &amp#27;[1;32mAcquire attribute value of an element: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Execute JavaScript command" classname="Vue Test App" time="1.547">
+    <system-err><![CDATA[Mar 27, 2026 11:12:13 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mExecute JavaScript command&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:13 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-29]&amp#27;[0m
+Mar 27, 2026 11:12:13 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:14 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:14 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:14 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.web.interactions.WebInteractions getUrl
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/buttons&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.utilities.interfaces.repository.ElementRepository acquireElementFromPage
+INFO: &amp#27;[1;90mAcquiring element &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m from the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mWaiting visibility of &amp#27;[1;34mpageTitle&amp#27;[0m&amp#27;[1;90m on the &amp#27;[0m&amp#27;[1;34mButtonsPage&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.web.interactions.WebInteractions waitUntilVisible
+INFO: &amp#27;[1;90mElement is visible ? &amp#27;[1;34mtrue&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.web.interactions.WebInteractions executeScript
+INFO: &amp#27;[1;90mExecuting script: &amp#27;[1;34mdocument.title = 'JS Test'&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:14 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:15 AM steps.Hooks kill
+INFO: &amp#27;[1;32mExecute JavaScript command: PASS!&amp#27;[0m
+]]></system-err>
+  </testcase>
+  <testcase name="Perform text replacement on context value" classname="Vue Test App" time="1.457">
+    <system-err><![CDATA[Mar 27, 2026 11:12:15 AM steps.Hooks before
+INFO: &amp#27;[1;90mRunning: &amp#27;[1;35mPerform text replacement on context value&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:15 AM steps.Hooks processScenarioTags
+INFO: &amp#27;[1;35m[@VueTestApp, @Web-UI, @SCN-VUE-30]&amp#27;[0m
+Mar 27, 2026 11:12:15 AM pickleib.web.driver.PickleibWebDriver initialize
+INFO: &amp#27;[1;90mInitializing &amp#27;[1;35mChrome&amp#27;[1;90m driver...&amp#27;[0m
+Mar 27, 2026 11:12:16 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 27, 2026 11:12:16 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.80. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 27, 2026 11:12:16 AM pickleib.web.driver.WebDriverFactory getDriver
+INFO: &amp#27;[1;35mChrome&amp#27;[1;90m was selected&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.web.interactions.WebInteractions navigate
+INFO: &amp#27;[1;90mNavigating to &amp#27;[1;34mhttp://127.0.0.1:7457/&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.steps.BuiltInSteps updateContext
+INFO: &amp#27;[1;90mUpdating context &amp#27;[1;34mrawUrl&amp#27;[1;90m to &amp#27;[1;34mhttps://example.com/path&amp#27;[1;90m&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.steps.BuiltInSteps replaceAttributeValue
+INFO: &amp#27;[1;90mAcquiring &amp#27;[1;34mhttps://example.com/path&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.steps.BuiltInSteps replaceAttributeValue
+INFO: &amp#27;[1;90mRemoving -> &amp#27;[1;34mhttps://&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.steps.BuiltInSteps replaceAttributeValue
+INFO: &amp#27;[1;90mUpdated value -> &amp#27;[1;32mexample.com/path&amp#27;[0m&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.steps.BuiltInSteps verifyText
+INFO: &amp#27;[1;90mChecking values...&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.steps.BuiltInSteps verifyText
+INFO: &amp#27;[1;32mValues verified as: example.com/path&amp#27;[0m
+Mar 27, 2026 11:12:16 AM pickleib.web.driver.PickleibWebDriver terminate
+INFO: &amp#27;[1;90mTerminating driver...&amp#27;[0m
+Mar 27, 2026 11:12:16 AM steps.Hooks kill
+INFO: &amp#27;[1;32mPerform text replacement on context value: PASS!&amp#27;[0m
 ]]></system-err>
   </testcase>
 </testsuite>
