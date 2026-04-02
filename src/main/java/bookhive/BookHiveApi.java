@@ -10,142 +10,155 @@ import wasapi.WasapiUtilities;
 import java.util.List;
 import java.util.Map;
 
+import static utils.StringUtilities.Color.*;
+
 /**
- * BookHive API client using Wasapi (Retrofit).
- * Provides static methods for unauthenticated calls (admin, books, auth)
- * and instance methods for authenticated calls (cart, orders, marketplace).
+ * BookHive API client for authenticated and public operations.
+ * Mirrors the BookStore pattern: instance-based with token injection at construction time.
+ *
+ * Usage:
+ * <pre>
+ *   // After login, token is in ContextStore
+ *   BookHiveApi bookHive = new BookHiveApi();
+ *   List<CartItem> cart = bookHive.getCart();
+ * </pre>
  */
 public class BookHiveApi extends WasapiUtilities {
 
-    private static final BookHiveServices publicApi;
-    private static final BookHiveServices.Auth authApi;
-    private final BookHiveServices.Authenticated authenticatedApi;
+    BookHiveServices.Authenticated authenticated;
+    BookHiveServices publicApi;
 
-    static {
-        String baseUrl = ContextStore.get("bookhive-url", "http://localhost:3000/");
-        if (!baseUrl.endsWith("/")) baseUrl += "/";
-        BookHiveEndpoints.BASE_URL = baseUrl;
-
-        publicApi = new WasapiClient.Builder().build(BookHiveServices.class);
-        authApi = new WasapiClient.Builder().build(BookHiveServices.Auth.class);
-    }
-
-    /**
-     * Creates an authenticated API client using the token from ContextStore.
-     */
     public BookHiveApi() {
-        String token = ContextStore.get("bookhive-token");
-        authenticatedApi = new WasapiClient.Builder()
-                .headers(new Headers.Builder()
-                        .add("Authorization", "Bearer " + token)
-                        .build())
+        authenticated = new WasapiClient.Builder()
+                .headers(new Headers.Builder().add(
+                        "Authorization",
+                        "Bearer " + ContextStore.get("bookhive-token").toString()
+                ).build())
                 .build(BookHiveServices.Authenticated.class);
+        publicApi = new WasapiClient.Builder().build(BookHiveServices.class);
     }
 
-    /**
-     * Creates an authenticated API client with the given token.
-     */
-    public BookHiveApi(String token) {
-        authenticatedApi = new WasapiClient.Builder()
-                .headers(new Headers.Builder()
-                        .add("Authorization", "Bearer " + token)
-                        .build())
-                .build(BookHiveServices.Authenticated.class);
+    // ── Admin ────────────────────────────────────────────────────────────
+
+    public Map<String, String> resetDatabase() {
+        log.info("Resetting BookHive database");
+        Call<Map<String, String>> call = publicApi.reset();
+        return perform(call, true, true);
     }
 
-    // ── Admin (static, no auth) ─────────────────────────────────────────
-
-    public static Map<String, String> resetDatabase() {
-        return perform(publicApi.reset(), true, true);
+    public Map<String, String> seedDatabase() {
+        log.info("Seeding BookHive database");
+        Call<Map<String, String>> call = publicApi.seed();
+        return perform(call, true, true);
     }
 
-    public static Map<String, String> seedDatabase() {
-        return perform(publicApi.seed(), true, true);
+    public Map<String, String> healthCheck() {
+        log.info("Checking BookHive health");
+        Call<Map<String, String>> call = publicApi.health();
+        return perform(call, true, true);
     }
 
-    public static Map<String, String> healthCheck() {
-        return perform(publicApi.health(), true, true);
+    // ── Books ────────────────────────────────────────────────────────────
+
+    public BookPage getBooks(String query, String genre, int page, int size) {
+        log.info("Getting books" +
+                (query != null ? " matching: " + BLUE + query : "") +
+                (genre != null ? " genre: " + BLUE + genre : ""));
+        Call<BookPage> call = publicApi.getBooks(query, genre, page, size);
+        return perform(call, true, true);
     }
 
-    // ── Auth (static, no auth) ──────────────────────────────────────────
-
-    public static BookHiveUser signup(SignupRequest request) {
-        return perform(authApi.signup(request), true, true);
+    public Book getBook(String bookId) {
+        log.info("Getting book by ID: " + BLUE + bookId);
+        Call<Book> call = publicApi.getBook(bookId);
+        return perform(call, true, true);
     }
 
-    public static BookHiveUser login(LoginRequest request) {
-        return perform(authApi.login(request), true, true);
-    }
-
-    // ── Books (static, no auth) ─────────────────────────────────────────
-
-    public static BookPage getBooks(String query, String genre, int page, int size) {
-        return perform(publicApi.getBooks(query, genre, page, size), true, true);
-    }
-
-    public static Book getBook(String bookId) {
-        return perform(publicApi.getBook(bookId), true, true);
-    }
-
-    // ── Marketplace (static, no auth for listing) ───────────────────────
-
-    public static List<MarketplaceListing> getListings() {
-        return perform(publicApi.getListings(), true, true);
-    }
-
-    // ── Profile (authenticated, instance methods) ───────────────────────
+    // ── Profile ──────────────────────────────────────────────────────────
 
     public BookHiveUser getProfile() {
-        return perform(authenticatedApi.getProfile(), true, true);
+        log.info("Getting user profile");
+        Call<BookHiveUser> call = authenticated.getProfile();
+        return perform(call, true, true);
     }
 
     public void logout() {
-        perform(authenticatedApi.logout(), true, true);
+        log.info("Logging out");
+        Call<Map<String, String>> call = authenticated.logout();
+        perform(call, true, false);
     }
 
-    // ── Cart (authenticated) ────────────────────────────────────────────
+    // ── Cart ─────────────────────────────────────────────────────────────
 
     public List<CartItem> getCart() {
-        return perform(authenticatedApi.getCart(), true, true);
+        log.info("Getting cart contents");
+        Call<List<CartItem>> call = authenticated.getCart();
+        return perform(call, true, true);
     }
 
     public CartItem addToCart(CartItemRequest request) {
-        return perform(authenticatedApi.addToCart(request), true, true);
+        log.info("Adding to cart: " + BLUE + request.getBookId() + GRAY + " x" + request.getQuantity());
+        Call<CartItem> call = authenticated.addToCart(request);
+        return perform(call, true, true);
     }
 
     public void clearCart() {
-        perform(authenticatedApi.clearCart(), false, false);
+        log.info("Clearing cart");
+        Call<Void> call = authenticated.clearCart();
+        perform(call, false, false);
     }
 
-    // ── Orders (authenticated) ──────────────────────────────────────────
+    // ── Orders ───────────────────────────────────────────────────────────
 
     public List<Order> getOrders() {
-        return perform(authenticatedApi.getOrders(), true, true);
+        log.info("Getting orders");
+        Call<List<Order>> call = authenticated.getOrders();
+        return perform(call, true, true);
     }
 
     public Order getOrder(String orderId) {
-        return perform(authenticatedApi.getOrder(orderId), true, true);
+        log.info("Getting order: " + BLUE + orderId);
+        Call<Order> call = authenticated.getOrder(orderId);
+        return perform(call, true, true);
     }
 
     public Order checkout() {
-        return perform(authenticatedApi.checkout(), true, true);
+        log.info("Checking out cart");
+        Call<Order> call = authenticated.checkout();
+        return perform(call, true, true);
     }
 
     public void returnOrder(String orderId) {
-        perform(authenticatedApi.returnOrder(orderId), true, true);
+        log.info("Returning order: " + BLUE + orderId);
+        Call<Map<String, String>> call = authenticated.returnOrder(orderId);
+        perform(call, true, false);
     }
 
-    // ── Marketplace (authenticated) ─────────────────────────────────────
+    // ── Marketplace ──────────────────────────────────────────────────────
+
+    public List<MarketplaceListing> getListings() {
+        log.info("Getting marketplace listings");
+        Call<List<MarketplaceListing>> call = publicApi.getListings();
+        return perform(call, true, true);
+    }
 
     public MarketplaceListing createListing(ListingRequest request) {
-        return perform(authenticatedApi.createListing(request), true, true);
+        log.info("Creating listing for book: " + BLUE + request.getBookId() +
+                GRAY + " condition: " + BLUE + request.getCondition() +
+                GRAY + " price: $" + request.getPrice());
+        Call<MarketplaceListing> call = authenticated.createListing(request);
+        return perform(call, true, true);
     }
 
     public void buyListing(String listingId) {
-        perform(authenticatedApi.buyListing(listingId), true, true);
+        log.info("Buying listing: " + BLUE + listingId);
+        Call<Map<String, String>> call = authenticated.buyListing(listingId);
+        perform(call, true, false);
     }
 
     public void cancelListing(String listingId) {
-        perform(authenticatedApi.cancelListing(listingId), true, true);
+        log.info("Cancelling listing: " + BLUE + listingId);
+        Call<Map<String, String>> call = authenticated.cancelListing(listingId);
+        perform(call, true, false);
     }
 }

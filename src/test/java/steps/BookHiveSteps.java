@@ -1,10 +1,10 @@
 package steps;
 
 import bookhive.BookHiveApi;
+import bookhive.BookHiveAuth;
 import bookhive.models.*;
 import context.ContextStore;
 import io.cucumber.java.en.Given;
-import utils.Printer;
 
 import java.util.List;
 import java.util.Locale;
@@ -13,132 +13,134 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Step definitions for BookHive API operations used in cross-functional testing.
- * These steps set up state via the API that is then verified through the UI,
- * and verify API state after UI interactions.
+ * Follows the same pattern as BookStoreApiSteps — one API instance per step class,
+ * static auth via BookHiveAuth, business operations via BookHiveApi.
  */
 public class BookHiveSteps {
-
-    private final Printer log = new Printer(this.getClass());
 
     // ─── Admin ──────────────────────────────────────────────────────────
 
     @Given("Reset BookHive database")
     public void resetDatabase() {
-        BookHiveApi.resetDatabase();
-        log.info("BookHive database reset");
+        // Admin calls don't need auth — use a temporary public-only client
+        BookHiveApi bookHive = publicApi();
+        bookHive.resetDatabase();
     }
 
     @Given("Seed BookHive database")
     public void seedDatabase() {
-        BookHiveApi.seedDatabase();
-        log.info("BookHive database seeded");
+        BookHiveApi bookHive = publicApi();
+        bookHive.seedDatabase();
     }
 
     // ─── Auth ───────────────────────────────────────────────────────────
 
     @Given("Create BookHive user {} with email {} and password {}")
     public void createUser(String username, String email, String password) {
-        BookHiveUser user = BookHiveApi.signup(new SignupRequest(username, email, password));
+        BookHiveUser user = BookHiveAuth.signup(new SignupRequest(username, email, password));
         ContextStore.put("bookhive-token", user.getToken());
         ContextStore.put("bookhive-userId", user.getUserId());
         ContextStore.put("bookhive-username", user.getUsername());
-        log.info("Created BookHive user: " + username);
     }
 
     @Given("Login to BookHive API as {} with password {}")
     public void loginApi(String email, String password) {
-        BookHiveUser user = BookHiveApi.login(new LoginRequest(email, password));
+        BookHiveUser user = BookHiveAuth.login(new LoginRequest(email, password));
         ContextStore.put("bookhive-token", user.getToken());
         ContextStore.put("bookhive-userId", user.getUserId());
         ContextStore.put("bookhive-username", user.getUsername());
-        log.info("Logged in as: " + email);
     }
 
     @Given("Verify BookHive API profile username is {}")
     public void verifyProfile(String expectedUsername) {
-        BookHiveApi api = new BookHiveApi();
-        BookHiveUser profile = api.getProfile();
-        assertEquals(expectedUsername, profile.getUsername(),
-                "Profile username mismatch");
-        log.info("Verified profile username: " + expectedUsername);
+        BookHiveApi bookHive = new BookHiveApi();
+        BookHiveUser profile = bookHive.getProfile();
+        assertEquals(expectedUsername, profile.getUsername(), "Profile username mismatch");
     }
 
     // ─── Books ──────────────────────────────────────────────────────────
 
     @Given("Verify BookHive API has books available")
     public void verifyBooksExist() {
-        BookPage books = BookHiveApi.getBooks(null, null, 0, 12);
+        BookHiveApi bookHive = publicApi();
+        BookPage books = bookHive.getBooks(null, null, 0, 12);
         assertTrue(books.getTotalElements() > 0, "No books found in API");
-        log.info("API has " + books.getTotalElements() + " books");
     }
 
     @Given("Get BookHive book details for {} via API")
     public void getBookDetails(String bookId) {
-        Book book = BookHiveApi.getBook(bookId);
+        BookHiveApi bookHive = publicApi();
+        Book book = bookHive.getBook(bookId);
         ContextStore.put("bookTitle", book.getTitle());
         ContextStore.put("bookAuthor", book.getAuthor());
         ContextStore.put("bookPrice", "$" + String.format(Locale.US, "%.2f", book.getPrice()));
         ContextStore.put("bookGenre", book.getGenre());
-        log.info("Got book: " + book.getTitle() + " by " + book.getAuthor());
     }
 
     // ─── Cart ───────────────────────────────────────────────────────────
 
     @Given("Add book {} to BookHive cart via API with quantity {int}")
     public void addToCart(String bookId, int quantity) {
-        BookHiveApi api = new BookHiveApi();
-        api.addToCart(new CartItemRequest(bookId, quantity));
-        log.info("Added " + quantity + "x " + bookId + " to cart via API");
+        BookHiveApi bookHive = new BookHiveApi();
+        bookHive.addToCart(new CartItemRequest(bookId, quantity));
     }
 
     @Given("Verify BookHive API cart has {int} items")
     public void verifyCartSize(int expectedSize) {
-        BookHiveApi api = new BookHiveApi();
-        List<CartItem> cart = api.getCart();
+        BookHiveApi bookHive = new BookHiveApi();
+        List<CartItem> cart = bookHive.getCart();
         assertEquals(expectedSize, cart.size(),
                 "Cart size mismatch. Expected " + expectedSize + " but got " + cart.size());
-        log.info("Verified cart has " + expectedSize + " item(s)");
     }
 
     @Given("Clear BookHive cart via API")
     public void clearCart() {
-        BookHiveApi api = new BookHiveApi();
-        api.clearCart();
-        log.info("Cart cleared via API");
+        BookHiveApi bookHive = new BookHiveApi();
+        bookHive.clearCart();
     }
 
     // ─── Orders ─────────────────────────────────────────────────────────
 
     @Given("Checkout BookHive cart via API")
     public void checkout() {
-        BookHiveApi api = new BookHiveApi();
-        Order order = api.checkout();
+        BookHiveApi bookHive = new BookHiveApi();
+        Order order = bookHive.checkout();
         ContextStore.put("bookhive-orderId", order.getId());
-        log.info("Checked out order: " + order.getId());
     }
 
     @Given("Verify BookHive API has {int} orders")
     public void verifyOrderCount(int expectedCount) {
-        BookHiveApi api = new BookHiveApi();
-        List<Order> orders = api.getOrders();
+        BookHiveApi bookHive = new BookHiveApi();
+        List<Order> orders = bookHive.getOrders();
         assertEquals(expectedCount, orders.size(),
                 "Order count mismatch. Expected " + expectedCount + " but got " + orders.size());
-        log.info("Verified " + expectedCount + " order(s)");
     }
 
     // ─── Marketplace ────────────────────────────────────────────────────
 
     @Given("Create BookHive marketplace listing for book {} in {} condition at price {double}")
     public void createListing(String bookId, String condition, double price) {
-        BookHiveApi api = new BookHiveApi();
-        api.createListing(new ListingRequest(bookId, condition, price));
-        log.info("Created marketplace listing for " + bookId);
+        BookHiveApi bookHive = new BookHiveApi();
+        bookHive.createListing(new ListingRequest(bookId, condition, price));
     }
 
     @Given("Verify BookHive API marketplace has listings")
     public void verifyMarketplaceHasListings() {
-        List<MarketplaceListing> listings = BookHiveApi.getListings();
+        BookHiveApi bookHive = publicApi();
+        List<MarketplaceListing> listings = bookHive.getListings();
         assertFalse(listings.isEmpty(), "No marketplace listings found");
-        log.info("Marketplace has " + listings.size() + " listing(s)");
+    }
+
+    // ─── Helpers ────────────────────────────────────────────────────────
+
+    /**
+     * Creates a public-only API client for unauthenticated calls.
+     * Uses a dummy token since the constructor requires one,
+     * but only public endpoints are called.
+     */
+    private BookHiveApi publicApi() {
+        if (ContextStore.get("bookhive-token") == null)
+            ContextStore.put("bookhive-token", "none");
+        return new BookHiveApi();
     }
 }

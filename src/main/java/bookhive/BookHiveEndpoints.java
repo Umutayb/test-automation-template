@@ -1,8 +1,10 @@
 package bookhive;
 
+import context.ContextStore;
+
 public class BookHiveEndpoints {
 
-    public static String BASE_URL = "http://localhost:3000/";
+    public static String BASE_URL = ContextStore.get("bookhive-url", "http://localhost:3000") + "/";
 
     public static final String RESET = "api/reset";
     public static final String SEED = "api/seed";
