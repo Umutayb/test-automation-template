@@ -1,31 +1,78 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Manual Test Run With Maven
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Cucumber tags to run (e.g. @Web-UI, @BookHive)'
+        required: false
+        default: '@Web-UI'
 
 jobs:
   manual-regression:
     runs-on: ubuntu-latest
 
+    services:
+      vue-test-site:
+        image: umutayb/vue-test-site:latest
+        ports:
+          - 7457:8080
+
+      bookhive-mongo:
+        image: mongo:7
+        ports:
+          - 27017:27017
+
+      bookhive-backend:
+        image: umutayb/book-hive-backend:latest
+        ports:
+          - 8082:8080
+        env:
+          SPRING_DATA_MONGODB_URI: mongodb://bookhive-mongo:27017/bookhive
+
+      bookhive-frontend:
+        image: umutayb/book-hive-frontend:latest
+        ports:
+          - 3000:80
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
       - name: Create Properties File
         run: |
           echo "
             secret-token=secret
           " >> src/test/resources/secret.properties
-      - name: Build & Test
-        run: mvn clean test
+
+      - name: Wait for services
+        run: |
+          echo "Waiting for Vue test site..."
+          timeout 30 bash -c 'until curl -sf http://localhost:7457 > /dev/null; do sleep 1; done' || true
+          echo "Waiting for BookHive backend..."
+          timeout 60 bash -c 'until curl -sf http://localhost:3000/api/health | grep -q healthy; do sleep 2; done' || true
+          echo "Seeding BookHive..."
+          curl -sf -X POST http://localhost:3000/api/seed || true
+
+      - name: Run tests
+        run: mvn clean test -Dheadless=true -Dbrowser=chrome -Dcucumber.filter.tags="${{ github.event.inputs.tags }}"
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: target/reports/Cucumber.json
+          retention-days: 7
