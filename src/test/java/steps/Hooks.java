@@ -12,10 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pickleib.platform.driver.PickleibAppiumDriver;
 import pickleib.platform.driver.ServiceFactory;
-import pickleib.steps.BuiltInSteps;
-import pickleib.utilities.interfaces.repository.ElementRepository;
 import pickleib.utilities.screenshot.ScreenCaptureUtility;
-import pickleib.utilities.steps.design.PageObjectDesign;
 import pickleib.web.PickleibPageObject;
 import pickleib.web.driver.PickleibWebDriver;
 import pickleib.web.driver.WebDriverFactory;
@@ -57,9 +54,6 @@ public class Hooks extends PickleibPageObject {
     public void before(Scenario scenario){
         log.info("Running: " + highlighted(PURPLE, scenario.getName()));
         processScenarioTags(scenario);
-
-        ElementRepository repo = new PageObjectDesign<>(ObjectRepository.class).getElementRepository();
-        BuiltInSteps.setElementRepository(repo);
 
         if (initialiseBrowser) {
             WebDriverFactory.BrowserType browserType = getBrowserType(scenario);

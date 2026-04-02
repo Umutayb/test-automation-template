@@ -1,9 +1,11 @@
 package pages;
 
+import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pickleib.web.PickleibPageObject;
 
+@PageObject
 public class CheckboxesPage extends PickleibPageObject {
 
     @FindBy(css = "h1")
