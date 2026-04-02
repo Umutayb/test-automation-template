@@ -23,6 +23,15 @@ public class FormsPage extends PickleibPageObject {
     @FindBy(id = "mobile")
     public WebElement mobileInput;
 
+    @FindBy(css = "#dob input[data-test='dp-input']")
+    public WebElement dateOfBirthInput;
+
+    @FindBy(css = ".dp__calendar_item:not(.dp__cell_offset) .dp__cell_inner")
+    public List<WebElement> calendarDays;
+
+    @FindBy(css = ".dp__action_buttons .dp__action_button:last-child")
+    public WebElement datePickerSelectButton;
+
     @FindBy(id = "hobbies")
     public WebElement hobbiesInput;
 

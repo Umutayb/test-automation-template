@@ -32,17 +32,33 @@ Feature: Vue Test App
     * Wait for element nameInput on the FormsPage to be visible
     * Update context testName -> John Smith
     * Update context testEmail -> john@example.com
+    # Fill text inputs
     * Fill form input on the FormsPage
-      | Input Element | Input              |
+      | element       | input              |
       | nameInput     | CONTEXT-testName   |
       | emailInput    | CONTEXT-testEmail  |
       | mobileInput   | 0655500001         |
       | hobbiesInput  | Reading            |
       | addressInput  | 123 Main Street    |
       | cityInput     | Amsterdam          |
+    # Select dropdown
+    * Select option Male from genderSelect on the FormsPage
+    # Pick date
+    * Click the dateOfBirthInput on the FormsPage
+    * Click listed element 15 from calendarDays list on the FormsPage
+    * Click the datePickerSelectButton on the FormsPage
+    # Submit and verify
     * Click the submitButton on the FormsPage
     * Wait for element submissionTitle on the FormsPage to be visible
     * Verify the text of submissionTitle on the FormsPage contains: Submitted Information
+    # Verify individual submitted values
+    * Select listed element containing partial text Name from the submittedRows on the FormsPage and verify its text contains John Smith
+    * Select listed element containing partial text Email from the submittedRows on the FormsPage and verify its text contains john@example.com
+    * Select listed element containing partial text Gender from the submittedRows on the FormsPage and verify its text contains Male
+    * Select listed element containing partial text Mobile from the submittedRows on the FormsPage and verify its text contains 0655500001
+    * Select listed element containing partial text Hobbies from the submittedRows on the FormsPage and verify its text contains Reading
+    * Select listed element containing partial text Current Address from the submittedRows on the FormsPage and verify its text contains 123 Main Street
+    * Select listed element containing partial text City from the submittedRows on the FormsPage and verify its text contains Amsterdam
 
   @Web-UI @SCN-VUE-4
   Scenario: Fill individual input and verify value

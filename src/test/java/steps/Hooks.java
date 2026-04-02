@@ -44,12 +44,6 @@ public class Hooks extends PickleibPageObject {
         return objectMapper.convertValue(fromValue, objectMapper.constructType(toValueType));
     }
 
-    @Before(order = 0)
-    public void wireBuiltInSteps() {
-        ElementRepository repo = new PageObjectDesign<>(ObjectRepository.class).getElementRepository();
-        BuiltInSteps.setElementRepository(repo);
-    }
-
     @Given("^Navigate to the (acceptance|test|dev) page$")
     public void navigateToTargetEnv(ObjectRepository.Environment environment) {
         String baseUrl = ContextStore.get(environment.getUrlKey());
@@ -63,6 +57,9 @@ public class Hooks extends PickleibPageObject {
     public void before(Scenario scenario){
         log.info("Running: " + highlighted(PURPLE, scenario.getName()));
         processScenarioTags(scenario);
+
+        ElementRepository repo = new PageObjectDesign<>(ObjectRepository.class).getElementRepository();
+        BuiltInSteps.setElementRepository(repo);
 
         if (initialiseBrowser) {
             WebDriverFactory.BrowserType browserType = getBrowserType(scenario);
