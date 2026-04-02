@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import utils.Printer;
 
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,8 +56,8 @@ public class BookHiveSteps {
 
     @Given("Verify BookHive API profile username is {}")
     public void verifyProfile(String expectedUsername) {
-        String token = ContextStore.get("bookhive-token");
-        BookHiveUser profile = BookHiveApi.getProfile(token);
+        BookHiveApi api = new BookHiveApi();
+        BookHiveUser profile = api.getProfile();
         assertEquals(expectedUsername, profile.getUsername(),
                 "Profile username mismatch");
         log.info("Verified profile username: " + expectedUsername);
@@ -76,7 +77,7 @@ public class BookHiveSteps {
         Book book = BookHiveApi.getBook(bookId);
         ContextStore.put("bookTitle", book.getTitle());
         ContextStore.put("bookAuthor", book.getAuthor());
-        ContextStore.put("bookPrice", "$" + String.format(java.util.Locale.US, "%.2f", book.getPrice()));
+        ContextStore.put("bookPrice", "$" + String.format(Locale.US, "%.2f", book.getPrice()));
         ContextStore.put("bookGenre", book.getGenre());
         log.info("Got book: " + book.getTitle() + " by " + book.getAuthor());
     }
@@ -85,15 +86,15 @@ public class BookHiveSteps {
 
     @Given("Add book {} to BookHive cart via API with quantity {int}")
     public void addToCart(String bookId, int quantity) {
-        String token = ContextStore.get("bookhive-token");
-        BookHiveApi.addToCart(token, new CartItemRequest(bookId, quantity));
+        BookHiveApi api = new BookHiveApi();
+        api.addToCart(new CartItemRequest(bookId, quantity));
         log.info("Added " + quantity + "x " + bookId + " to cart via API");
     }
 
     @Given("Verify BookHive API cart has {int} items")
     public void verifyCartSize(int expectedSize) {
-        String token = ContextStore.get("bookhive-token");
-        List<CartItem> cart = BookHiveApi.getCart(token);
+        BookHiveApi api = new BookHiveApi();
+        List<CartItem> cart = api.getCart();
         assertEquals(expectedSize, cart.size(),
                 "Cart size mismatch. Expected " + expectedSize + " but got " + cart.size());
         log.info("Verified cart has " + expectedSize + " item(s)");
@@ -101,8 +102,8 @@ public class BookHiveSteps {
 
     @Given("Clear BookHive cart via API")
     public void clearCart() {
-        String token = ContextStore.get("bookhive-token");
-        BookHiveApi.clearCart(token);
+        BookHiveApi api = new BookHiveApi();
+        api.clearCart();
         log.info("Cart cleared via API");
     }
 
@@ -110,16 +111,16 @@ public class BookHiveSteps {
 
     @Given("Checkout BookHive cart via API")
     public void checkout() {
-        String token = ContextStore.get("bookhive-token");
-        Order order = BookHiveApi.checkout(token);
+        BookHiveApi api = new BookHiveApi();
+        Order order = api.checkout();
         ContextStore.put("bookhive-orderId", order.getId());
         log.info("Checked out order: " + order.getId());
     }
 
     @Given("Verify BookHive API has {int} orders")
     public void verifyOrderCount(int expectedCount) {
-        String token = ContextStore.get("bookhive-token");
-        List<Order> orders = BookHiveApi.getOrders(token);
+        BookHiveApi api = new BookHiveApi();
+        List<Order> orders = api.getOrders();
         assertEquals(expectedCount, orders.size(),
                 "Order count mismatch. Expected " + expectedCount + " but got " + orders.size());
         log.info("Verified " + expectedCount + " order(s)");
@@ -129,8 +130,8 @@ public class BookHiveSteps {
 
     @Given("Create BookHive marketplace listing for book {} in {} condition at price {double}")
     public void createListing(String bookId, String condition, double price) {
-        String token = ContextStore.get("bookhive-token");
-        BookHiveApi.createListing(token, new ListingRequest(bookId, condition, price));
+        BookHiveApi api = new BookHiveApi();
+        api.createListing(new ListingRequest(bookId, condition, price));
         log.info("Created marketplace listing for " + bookId);
     }
 

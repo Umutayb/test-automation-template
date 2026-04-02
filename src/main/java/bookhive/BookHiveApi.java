@@ -1,172 +1,151 @@
 package bookhive;
 
 import bookhive.models.*;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import context.ContextStore;
-import okhttp3.*;
+import okhttp3.Headers;
+import retrofit2.Call;
+import wasapi.WasapiClient;
+import wasapi.WasapiUtilities;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
-public class BookHiveApi {
+/**
+ * BookHive API client using Wasapi (Retrofit).
+ * Provides static methods for unauthenticated calls (admin, books, auth)
+ * and instance methods for authenticated calls (cart, orders, marketplace).
+ */
+public class BookHiveApi extends WasapiUtilities {
 
-    private static final Gson gson = new Gson();
-    private static final OkHttpClient client = new OkHttpClient();
-    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    private static final BookHiveServices publicApi;
+    private static final BookHiveServices.Auth authApi;
+    private final BookHiveServices.Authenticated authenticatedApi;
 
-    private static String baseUrl() {
-        return ContextStore.get("bookhive-api-url", "http://localhost:3000/api");
+    static {
+        String baseUrl = ContextStore.get("bookhive-url", "http://localhost:3000/");
+        if (!baseUrl.endsWith("/")) baseUrl += "/";
+        BookHiveEndpoints.BASE_URL = baseUrl;
+
+        publicApi = new WasapiClient.Builder().build(BookHiveServices.class);
+        authApi = new WasapiClient.Builder().build(BookHiveServices.Auth.class);
     }
 
-    // ── Admin ────────────────────────────────────────────────────────────
-
-    public static void resetDatabase() {
-        execute(new Request.Builder().url(baseUrl() + "/reset").post(emptyBody()).build());
+    /**
+     * Creates an authenticated API client using the token from ContextStore.
+     */
+    public BookHiveApi() {
+        String token = ContextStore.get("bookhive-token");
+        authenticatedApi = new WasapiClient.Builder()
+                .headers(new Headers.Builder()
+                        .add("Authorization", "Bearer " + token)
+                        .build())
+                .build(BookHiveServices.Authenticated.class);
     }
 
-    public static void seedDatabase() {
-        execute(new Request.Builder().url(baseUrl() + "/seed").post(emptyBody()).build());
+    /**
+     * Creates an authenticated API client with the given token.
+     */
+    public BookHiveApi(String token) {
+        authenticatedApi = new WasapiClient.Builder()
+                .headers(new Headers.Builder()
+                        .add("Authorization", "Bearer " + token)
+                        .build())
+                .build(BookHiveServices.Authenticated.class);
+    }
+
+    // ── Admin (static, no auth) ─────────────────────────────────────────
+
+    public static Map<String, String> resetDatabase() {
+        return perform(publicApi.reset(), true, true);
+    }
+
+    public static Map<String, String> seedDatabase() {
+        return perform(publicApi.seed(), true, true);
     }
 
     public static Map<String, String> healthCheck() {
-        String body = execute(new Request.Builder().url(baseUrl() + "/health").get().build());
-        Type type = new TypeToken<Map<String, String>>() {}.getType();
-        return gson.fromJson(body, type);
+        return perform(publicApi.health(), true, true);
     }
 
-    // ── Auth ─────────────────────────────────────────────────────────────
+    // ── Auth (static, no auth) ──────────────────────────────────────────
 
     public static BookHiveUser signup(SignupRequest request) {
-        String body = execute(jsonPost(baseUrl() + "/auth/signup", request));
-        return gson.fromJson(body, BookHiveUser.class);
+        return perform(authApi.signup(request), true, true);
     }
 
     public static BookHiveUser login(LoginRequest request) {
-        String body = execute(jsonPost(baseUrl() + "/auth/login", request));
-        return gson.fromJson(body, BookHiveUser.class);
+        return perform(authApi.login(request), true, true);
     }
 
-    public static void logout(String token) {
-        execute(authed(new Request.Builder().url(baseUrl() + "/auth/logout").post(emptyBody()), token).build());
-    }
-
-    public static BookHiveUser getProfile(String token) {
-        String body = execute(authed(new Request.Builder().url(baseUrl() + "/auth/me").get(), token).build());
-        return gson.fromJson(body, BookHiveUser.class);
-    }
-
-    // ── Books ────────────────────────────────────────────────────────────
+    // ── Books (static, no auth) ─────────────────────────────────────────
 
     public static BookPage getBooks(String query, String genre, int page, int size) {
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl() + "/books").newBuilder()
-                .addQueryParameter("page", String.valueOf(page))
-                .addQueryParameter("size", String.valueOf(size));
-        if (query != null && !query.isEmpty()) urlBuilder.addQueryParameter("query", query);
-        if (genre != null && !genre.isEmpty()) urlBuilder.addQueryParameter("genre", genre);
-        String body = execute(new Request.Builder().url(urlBuilder.build()).get().build());
-        return gson.fromJson(body, BookPage.class);
+        return perform(publicApi.getBooks(query, genre, page, size), true, true);
     }
 
     public static Book getBook(String bookId) {
-        String body = execute(new Request.Builder().url(baseUrl() + "/books/" + bookId).get().build());
-        return gson.fromJson(body, Book.class);
+        return perform(publicApi.getBook(bookId), true, true);
     }
 
-    // ── Cart ─────────────────────────────────────────────────────────────
-
-    public static List<CartItem> getCart(String token) {
-        String body = execute(authed(new Request.Builder().url(baseUrl() + "/cart").get(), token).build());
-        Type type = new TypeToken<List<CartItem>>() {}.getType();
-        return gson.fromJson(body, type);
-    }
-
-    public static void addToCart(String token, CartItemRequest request) {
-        execute(authed(jsonPostBuilder(baseUrl() + "/cart/items", request), token).build());
-    }
-
-    public static void clearCart(String token) {
-        execute(authed(new Request.Builder().url(baseUrl() + "/cart").delete(), token).build());
-    }
-
-    // ── Orders ───────────────────────────────────────────────────────────
-
-    public static Order checkout(String token) {
-        String body = execute(authed(new Request.Builder().url(baseUrl() + "/orders").post(emptyBody()), token).build());
-        return gson.fromJson(body, Order.class);
-    }
-
-    public static List<Order> getOrders(String token) {
-        String body = execute(authed(new Request.Builder().url(baseUrl() + "/orders").get(), token).build());
-        Type type = new TypeToken<List<Order>>() {}.getType();
-        return gson.fromJson(body, type);
-    }
-
-    public static Order getOrder(String token, String orderId) {
-        String body = execute(authed(new Request.Builder().url(baseUrl() + "/orders/" + orderId).get(), token).build());
-        return gson.fromJson(body, Order.class);
-    }
-
-    public static void returnOrder(String token, String orderId) {
-        execute(authed(new Request.Builder().url(baseUrl() + "/orders/" + orderId + "/return").post(emptyBody()), token).build());
-    }
-
-    // ── Marketplace ──────────────────────────────────────────────────────
+    // ── Marketplace (static, no auth for listing) ───────────────────────
 
     public static List<MarketplaceListing> getListings() {
-        String body = execute(new Request.Builder().url(baseUrl() + "/marketplace").get().build());
-        Type type = new TypeToken<List<MarketplaceListing>>() {}.getType();
-        return gson.fromJson(body, type);
+        return perform(publicApi.getListings(), true, true);
     }
 
-    public static void createListing(String token, ListingRequest request) {
-        execute(authed(jsonPostBuilder(baseUrl() + "/marketplace/listings", request), token).build());
+    // ── Profile (authenticated, instance methods) ───────────────────────
+
+    public BookHiveUser getProfile() {
+        return perform(authenticatedApi.getProfile(), true, true);
     }
 
-    public static void buyListing(String token, String listingId) {
-        execute(authed(new Request.Builder().url(baseUrl() + "/marketplace/listings/" + listingId + "/buy").post(emptyBody()), token).build());
+    public void logout() {
+        perform(authenticatedApi.logout(), true, true);
     }
 
-    public static void cancelListing(String token, String listingId) {
-        execute(authed(new Request.Builder().url(baseUrl() + "/marketplace/listings/" + listingId).delete(), token).build());
+    // ── Cart (authenticated) ────────────────────────────────────────────
+
+    public List<CartItem> getCart() {
+        return perform(authenticatedApi.getCart(), true, true);
     }
 
-    // ── Helpers ──────────────────────────────────────────────────────────
-
-    private static Request.Builder authed(Request.Builder builder, String token) {
-        return builder.header("Authorization", "Bearer " + token);
+    public CartItem addToCart(CartItemRequest request) {
+        return perform(authenticatedApi.addToCart(request), true, true);
     }
 
-    private static Request jsonPost(String url, Object body) {
-        return new Request.Builder()
-                .url(url)
-                .post(RequestBody.create(gson.toJson(body), JSON))
-                .build();
+    public void clearCart() {
+        perform(authenticatedApi.clearCart(), false, false);
     }
 
-    private static Request.Builder jsonPostBuilder(String url, Object body) {
-        return new Request.Builder()
-                .url(url)
-                .post(RequestBody.create(gson.toJson(body), JSON));
+    // ── Orders (authenticated) ──────────────────────────────────────────
+
+    public List<Order> getOrders() {
+        return perform(authenticatedApi.getOrders(), true, true);
     }
 
-    private static RequestBody emptyBody() {
-        return RequestBody.create("", JSON);
+    public Order getOrder(String orderId) {
+        return perform(authenticatedApi.getOrder(orderId), true, true);
     }
 
-    private static String execute(Request request) {
-        try (Response response = client.newCall(request).execute()) {
-            String responseBody = response.body() != null ? response.body().string() : "";
-            if (!response.isSuccessful()) {
-                throw new RuntimeException(
-                        "HTTP " + response.code() + " : " + responseBody
-                );
-            }
-            return responseBody;
-        } catch (IOException e) {
-            throw new RuntimeException("Request failed: " + e.getMessage(), e);
-        }
+    public Order checkout() {
+        return perform(authenticatedApi.checkout(), true, true);
+    }
+
+    public void returnOrder(String orderId) {
+        perform(authenticatedApi.returnOrder(orderId), true, true);
+    }
+
+    // ── Marketplace (authenticated) ─────────────────────────────────────
+
+    public MarketplaceListing createListing(ListingRequest request) {
+        return perform(authenticatedApi.createListing(request), true, true);
+    }
+
+    public void buyListing(String listingId) {
+        perform(authenticatedApi.buyListing(listingId), true, true);
+    }
+
+    public void cancelListing(String listingId) {
+        perform(authenticatedApi.cancelListing(listingId), true, true);
     }
 }
