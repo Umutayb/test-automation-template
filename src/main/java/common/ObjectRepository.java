@@ -2,6 +2,7 @@ package common;
 
 import lombok.Getter;
 import pages.*;
+import pages.bookhive.*;
 import pages.inventory.app.*;
 import pickleib.utilities.interfaces.repository.PageObjectRepository;
 import uwp.BasicUWPMainPage;
@@ -56,6 +57,18 @@ public class ObjectRepository implements PageObjectRepository {
     FileUploadPage fileUploadPage;
     PiniaCounterPage piniaCounterPage;
     GalleryPage galleryPage;
+
+    // BookHive Pages
+    BookHiveHomePage bookHiveHomePage;
+    BookHiveLoginPage bookHiveLoginPage;
+    BookHiveSignupPage bookHiveSignupPage;
+    BookHiveBookDetailPage bookHiveBookDetailPage;
+    BookHiveCartPage bookHiveCartPage;
+    BookHiveOrdersPage bookHiveOrdersPage;
+    BookHiveMarketplacePage bookHiveMarketplacePage;
+    BookHiveSellPage bookHiveSellPage;
+    BookHiveProfilePage bookHiveProfilePage;
+    BookHiveNavBar bookHiveNavBar;
 
     // Desktop/Mobile Screens
     BasicUWPMainPage basicUWPMainPage;
