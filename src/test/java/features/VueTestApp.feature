@@ -191,7 +191,7 @@ Feature: Vue Test App
     * Navigate to url: http://127.0.0.1:7457/text-inputs
     * Wait for element textInput on the TextInputsPage to be visible
     * Fill form input on the TextInputsPage
-      | Input Element | Input              |
+      | element       | input              |
       | textInput     | Sample Text        |
       | emailInput    | test@example.com   |
     * Verify that value attribute of element textInput on the TextInputsPage contains Sample Text value
