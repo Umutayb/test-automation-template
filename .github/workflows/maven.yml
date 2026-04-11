@@ -34,7 +34,7 @@ jobs:
             secret-token=secret
             bookhive-api-url=http://localhost:8082
           " >> src/test/resources/secret.properties
-          sed -i 's|bookhive-api-url=http://localhost:3000|bookhive-api-url=http://localhost:8082|g' src/test/resources/pickleib.properties
+
 
       - name: Wait for services
         run: |
