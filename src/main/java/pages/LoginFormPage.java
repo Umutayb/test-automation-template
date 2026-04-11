@@ -3,10 +3,9 @@ package pages;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class LoginFormPage extends PickleibPageObject {
+public class LoginFormPage {
 
     @FindBy(css = "h1")
     public WebElement pageTitle;

@@ -3,10 +3,9 @@ package pages;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class ModalPage extends PickleibPageObject {
+public class ModalPage {
 
     @FindBy(css = "h1")
     public WebElement pageTitle;

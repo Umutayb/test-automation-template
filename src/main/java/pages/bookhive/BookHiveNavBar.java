@@ -3,10 +3,9 @@ package pages.bookhive;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class BookHiveNavBar extends PickleibPageObject {
+public class BookHiveNavBar {
 
     @FindBy(css = "[data-testid='nav-login']")
     public WebElement loginLink;

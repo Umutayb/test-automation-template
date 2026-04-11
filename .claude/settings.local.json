@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn compile:*)",
+      "Bash(mvn test-compile:*)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh run:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(docker compose up:*)",
+      "Bash(curl:*)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn test:*)",
+      "Bash(find:*)",
+      "Bash(git remote:*)",
+      "Bash(docker run:*)",
+      "Bash(docker pull:*)",
+      "Bash(wait)",
+      "Bash(awk '{print $1, $9}')",
+      "Bash(docker compose:*)",
+      "Bash(git commit:*)",
+      "Bash(xargs cat:*)"
+    ]
+  }
+}

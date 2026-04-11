@@ -2,11 +2,10 @@ package pages.inventory.app;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.platform.PickleibScreenObject;
 
 import java.util.List;
 
-public class Products extends PickleibScreenObject {
+public class Products {
 
     @FindBy(xpath = "//*[@AutomationId='textBox1']")
     WebElement nameInput;

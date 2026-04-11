@@ -3,12 +3,11 @@ package pages;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
 @PageObject
-public class HomePage extends PickleibPageObject {
+public class HomePage {
 
     @FindBy(css = ".home-card")
     public List<WebElement> categoryCards;

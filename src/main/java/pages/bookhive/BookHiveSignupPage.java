@@ -3,10 +3,9 @@ package pages.bookhive;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class BookHiveSignupPage extends PickleibPageObject {
+public class BookHiveSignupPage {
 
     @FindBy(css = "[data-testid='signup-username']")
     public WebElement usernameInput;

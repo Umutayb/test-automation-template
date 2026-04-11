@@ -3,10 +3,9 @@ package pages;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class FileUploadPage extends PickleibPageObject {
+public class FileUploadPage {
 
     @FindBy(css = "main h1")
     public WebElement pageTitle;

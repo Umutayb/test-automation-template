@@ -3,12 +3,11 @@ package pages.bookhive;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
 @PageObject
-public class BookHiveHomePage extends PickleibPageObject {
+public class BookHiveHomePage {
 
     @FindBy(css = "input[placeholder*='Search']")
     public WebElement searchInput;

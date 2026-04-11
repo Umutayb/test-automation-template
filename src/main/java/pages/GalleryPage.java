@@ -3,12 +3,11 @@ package pages;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 import java.util.List;
 
 @PageObject
-public class GalleryPage extends PickleibPageObject {
+public class GalleryPage {
 
     @FindBy(css = "main h1")
     public WebElement pageTitle;

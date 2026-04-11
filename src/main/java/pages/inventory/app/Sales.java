@@ -2,9 +2,8 @@ package pages.inventory.app;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.platform.PickleibScreenObject;
 
-public class Sales extends PickleibScreenObject {
+public class Sales {
     @FindBy(xpath = "//*[@Name='CHECK OUT']")
     WebElement checkOutButton;
 

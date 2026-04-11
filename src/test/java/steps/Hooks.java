@@ -4,10 +4,10 @@ import bookstore.BookStoreAuthorisation;
 import bookstore.models.CreateUserResponse;
 import bookstore.models.CredentialModel;
 import bookstore.models.TokenResponseModel;
-import common.ObjectRepository;
 import context.ContextStore;
 import io.cucumber.java.*;
 import io.cucumber.java.en.Given;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pickleib.platform.driver.PickleibAppiumDriver;
@@ -24,6 +24,25 @@ import static utils.StringUtilities.Color.PURPLE;
 import static utils.StringUtilities.highlighted;
 
 public class Hooks extends PickleibPageObject {
+
+    @Getter
+    public enum Environment {
+        test("test-url"),
+        dev("dev-url"),
+        acceptance("acc-url");
+
+        final String urlKey;
+
+        Environment(String urlKey){
+            this.urlKey = urlKey;
+        }
+
+        public String getUrlKey() {
+            return urlKey;
+        }
+    }
+
+    public static Environment environment;
 
     public Scenario scenario;
     public boolean authenticate;
@@ -42,12 +61,12 @@ public class Hooks extends PickleibPageObject {
     }
 
     @Given("^Navigate to the (acceptance|test|dev) page$")
-    public void navigateToTargetEnv(ObjectRepository.Environment environment) {
+    public void navigateToTargetEnv(Environment environment) {
         String baseUrl = ContextStore.get(environment.getUrlKey());
         String url = baseUrl.startsWith("http") ? baseUrl : "https://" + baseUrl;
         log.info("Navigating to " + highlighted(PURPLE, url));
         PickleibWebDriver.get().get(url);
-        ObjectRepository.environment = environment;
+        Hooks.environment = environment;
     }
 
     @Before
@@ -78,7 +97,7 @@ public class Hooks extends PickleibPageObject {
             TokenResponseModel tokenResponse = BookStoreAuthorisation.generateToken(user);
             ContextStore.put("token", tokenResponse.getToken());
         }
-        ObjectRepository.environment = null;
+        Hooks.environment = null;
     }
 
     @After

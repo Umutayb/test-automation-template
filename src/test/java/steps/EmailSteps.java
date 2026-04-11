@@ -1,12 +1,12 @@
 package steps;
 
 import common.FilterPair;
-import common.ObjectRepository;
 import context.ContextStore;
 import io.cucumber.java.en.Given;
 import collections.Pair;
 import lombok.Getter;
 import org.junit.Assert;
+import steps.Hooks;
 import utils.Printer;
 import utils.StringUtilities;
 import utils.email.EmailAcquisition;
@@ -22,7 +22,7 @@ import static utils.email.EmailUtilities.Inbox.EmailField.SUBJECT;
 public class EmailSteps {
 
     public Printer log = new Printer(this.getClass());
-    EmailAcquisition emailAcquisition = new EmailAcquisition(getEmailInbox(ObjectRepository.Environment.valueOf(ContextStore.get("environment"))));
+    EmailAcquisition emailAcquisition = new EmailAcquisition(getEmailInbox(Hooks.Environment.valueOf(ContextStore.get("environment"))));
 
     @Getter
     public enum EmailSubjects {
@@ -101,7 +101,7 @@ public class EmailSteps {
      */
 
     @Given("Clean the {} email inbox")
-    public void flushEmail(ObjectRepository.Environment environment) {
+    public void flushEmail(Hooks.Environment environment) {
         getEmailInbox(environment).clearInbox();
     }
 
@@ -113,7 +113,7 @@ public class EmailSteps {
         getEmailInbox(ContextStore.get("environment")).clearInbox();
     }
 
-    public static EmailUtilities.Inbox getEmailInbox(ObjectRepository.Environment environment) {
+    public static EmailUtilities.Inbox getEmailInbox(Hooks.Environment environment) {
         Pair<String, String> emailCredentials = switch (environment) {
             case test -> Pair.of(ContextStore.get("test-email"),
                     ContextStore.get("email-application-password"));

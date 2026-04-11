@@ -3,10 +3,9 @@ package pages.bookhive;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class BookHiveCartPage extends PickleibPageObject {
+public class BookHiveCartPage {
 
     @FindBy(css = "[data-testid='cart-clear']")
     public WebElement clearCartButton;

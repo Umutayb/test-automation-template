@@ -3,12 +3,11 @@ package pages.inventory.app;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.platform.PickleibScreenObject;
 import pickleib.platform.driver.PickleibAppiumDriver;
 
 import java.util.List;
 
-public class Transaction extends PickleibScreenObject {
+public class Transaction {
 
     @FindBy(xpath = "//*[@Name='Subtotal Row 0']")
     WebElement subtotal;

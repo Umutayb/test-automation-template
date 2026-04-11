@@ -3,10 +3,9 @@ package pages.bookhive;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class BookHiveBookDetailPage extends PickleibPageObject {
+public class BookHiveBookDetailPage {
 
     @FindBy(css = "[data-testid='book-detail-title']")
     public WebElement bookTitle;

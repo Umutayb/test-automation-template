@@ -3,10 +3,9 @@ package pages;
 import pickleib.annotations.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.web.PickleibPageObject;
 
 @PageObject
-public class ToastPage extends PickleibPageObject {
+public class ToastPage {
 
     @FindBy(css = "main h1")
     public WebElement pageTitle;
