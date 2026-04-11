@@ -9,29 +9,6 @@ jobs:
   regression-tests:
     runs-on: ubuntu-latest
 
-    services:
-      vue-test-site:
-        image: umutayb/vue-test-site:latest
-        ports:
-          - 7457:8080
-
-      bookhive-mongo:
-        image: mongo:7
-        ports:
-          - 27017:27017
-
-      bookhive-backend:
-        image: umutayb/book-hive-backend:latest
-        ports:
-          - 8082:8080
-        env:
-          SPRING_DATA_MONGODB_URI: mongodb://bookhive-mongo:27017/bookhive
-
-      bookhive-frontend:
-        image: umutayb/book-hive-frontend:latest
-        ports:
-          - 3000:80
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -48,24 +25,25 @@ jobs:
         with:
           chrome-version: stable
 
+      - name: Start Docker services
+        run: docker compose up -d
+
       - name: Create Properties File
         run: |
           echo "
             secret-token=secret
-            bookhive-url=http://localhost:8082
-            bookhive-api-url=http://localhost:8082/api
+            bookhive-api-url=http://localhost:8082
           " >> src/test/resources/secret.properties
-          sed -i 's|bookhive-url=http://localhost:3000|bookhive-url=http://localhost:8082|g' src/test/resources/pickleib.properties
-          sed -i 's|bookhive-api-url=http://localhost:3000/api|bookhive-api-url=http://localhost:8082/api|g' src/test/resources/pickleib.properties
+          sed -i 's|bookhive-api-url=http://localhost:3000|bookhive-api-url=http://localhost:8082|g' src/test/resources/pickleib.properties
 
       - name: Wait for services
         run: |
           echo "Waiting for Vue test site..."
           timeout 30 bash -c 'until curl -sf http://localhost:7457 > /dev/null; do sleep 1; done'
-          echo "Waiting for BookHive backend (direct port 8082)..."
+          echo "Waiting for BookHive backend..."
           timeout 120 bash -c 'until curl -sf http://localhost:8082/api/health > /dev/null; do sleep 3; done'
           echo "Waiting for BookHive frontend..."
-          timeout 60 bash -c 'until curl -sf http://localhost:3000 > /dev/null; do sleep 2; done' || echo "WARNING: BookHive frontend not responding on port 3000"
+          timeout 60 bash -c 'until curl -sf http://localhost:3000 > /dev/null; do sleep 2; done'
           echo "Seeding BookHive..."
           curl -f -X POST http://localhost:8082/api/seed
 
