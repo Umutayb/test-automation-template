@@ -4,7 +4,6 @@ import lombok.Getter;
 import pages.*;
 import pages.inventory.app.*;
 import pickleib.utilities.interfaces.repository.PageObjectRepository;
-import uwp.BasicUWPMainPage;
 
 @SuppressWarnings("unused")
 public class ObjectRepository implements PageObjectRepository {
@@ -25,7 +24,6 @@ public class ObjectRepository implements PageObjectRepository {
     public static Environment environment;
 
     //Pages
-    BasicUWPMainPage basicUWPMainPage;
     PracticeFormPage practiceFormPage;
     BookDetailsPage bookDetailsPage;
     BookStorePage bookStorePage;

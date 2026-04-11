@@ -59,3 +59,8 @@ Feature: DemoQA
   @Web-UI @SCN-DEMO-QA-3
   Scenario: DemoQA bookstore test
     * Click listed element Book Store Application from categoryCards list on the LandingPage
+    
+  @Web-UI @SCN-DEMO-QA-4
+  Scenario: Tab test
+    * Switch to a new tab
+    * Close current tab

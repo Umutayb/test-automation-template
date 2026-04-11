@@ -16,13 +16,14 @@ public class BookStoreApiSteps {
     public void getBooks() {
         BookListModel books = bookStore.getAllBooks();
         ContextStore.put("books", books);
-
     }
+
     @Given("Get user by Id: {}")
     public void getUserById(String userId) {
         UserResponseModel userResponse = bookStore.getUser(userId);
         ContextStore.put("userResponse", userResponse);
     }
+
     @Given("Get the user in context")
     public void getContextUser() {
         UserResponseModel userResponse = new UserResponseModel();

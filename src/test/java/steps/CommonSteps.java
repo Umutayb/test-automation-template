@@ -7,6 +7,12 @@ import io.cucumber.java.en.*;
 import common.ObjectRepository;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 import pickleib.driver.DriverFactory;
 import pickleib.enums.Direction;
 import pickleib.enums.ElementState;
@@ -14,9 +20,21 @@ import pickleib.enums.Navigation;
 import pickleib.exceptions.PickleibVerificationException;
 import pickleib.platform.driver.PickleibAppiumDriver;
 import pickleib.utilities.element.ElementBundle;
+import pickleib.utilities.element.FormInput;
 import pickleib.utilities.interfaces.PolymorphicUtilities;
 import pickleib.utilities.steps.PickleibSteps;
 import pickleib.web.driver.PickleibWebDriver;
+import utils.arrays.ArrayUtilities;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.*;
 
 import static pickleib.driver.DriverFactory.DriverType.*;
@@ -193,16 +211,6 @@ public class CommonSteps extends PickleibSteps {
     }
 
     /**
-     * Adds the specified values to the browser's LocalStorage.
-     *
-     * @param valueTable a DataTable containing the values to add
-     */
-    @Given("Add the following values to LocalStorage:")
-    public void addLocalStorageValues(DataTable valueTable) {
-        webInteractions.addLocalStorageValues(valueTable.asMap());
-    }
-
-    /**
      * Adds the specified cookies to the browser.
      *
      * @param cookieTable a DataTable containing the cookies to add
@@ -299,7 +307,7 @@ public class CommonSteps extends PickleibSteps {
      * @param duration   the duration to wait in seconds
      */
     @Given("^Wait (\\d+) seconds$")
-    public void wait(double duration) {
+    public void wait(double duration) throws IOException, SAXException, ParserConfigurationException, XPathExpressionException {
         PolymorphicUtilities.waitFor(duration);
     }
 
@@ -504,7 +512,10 @@ public class CommonSteps extends PickleibSteps {
      */
     @Given("^Fill form input on the (\\w+)(?: using (Mobile|Web) driver)?$")
     public void fillForm(String pageName, String driverType, DataTable table) {
-        List<ElementBundle<String>> inputBundles = getElementRepository().acquireElementList(table.asMaps(), pageName);
+        List<FormInput> formInputs = table.asMaps().stream()
+                .map(row -> new FormInput(row.get("element"), row.get("input")))
+                .toList();
+        List<ElementBundle<String>> inputBundles = getElementRepository().acquireElementList(formInputs, pageName);
         getInteractions(getRandomItemFrom(inputBundles).element()).fillForm(inputBundles, pageName);
     }
 

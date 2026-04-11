@@ -52,10 +52,10 @@ public class Hooks extends PickleibPageObject {
             else PickleibWebDriver.initialize();
         }
         if (initialiseAppiumDriver) {
-            if (ServiceFactory.service == null) PickleibAppiumDriver.startService();
+            //if (ServiceFactory.service == null) PickleibAppiumDriver.startService();
             PickleibAppiumDriver.initialize();
         }
-        if (authenticate) {
+        /*if (authenticate) {
             CredentialModel user = new CredentialModel("Booker");
             user.setPassword("Bookersbooks1*");
 
@@ -68,7 +68,7 @@ public class Hooks extends PickleibPageObject {
 
             TokenResponseModel tokenResponse = BookStoreAuthorisation.generateToken(user);
             ContextStore.put("token", tokenResponse.getToken());
-        }
+        }*/
         ObjectRepository.environment = null;
     }
 

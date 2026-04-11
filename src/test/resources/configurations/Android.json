@@ -1,0 +1,10 @@
+{
+  "appium:platformName": "Android",
+  "appium:automationName": "uiautomator2",
+  "appium:deviceName": "Medium Phone API 36.1",
+  "appium:app": "src/test/resources/files/instagram.apk",
+  "appium:appActivity": "com.instagram.mainactivity.LauncherActivity",
+  "appium:appPackage": "com.instagram.android",
+  "appium:newCommandTimeout": "600000",
+  "appium:fullReset": false
+}

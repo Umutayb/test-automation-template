@@ -13,13 +13,20 @@
     <properties>
         <browser>Chrome</browser>
         <name>${project.name}</name>
-        <pickleib.version>2.0.8</pickleib.version>
+        <pickleib.version>2.1.0</pickleib.version>
         <cucumber.version>7.14.0</cucumber.version>
-        <selenium.version>4.19.0</selenium.version>
-        <appium.version>9.2.2</appium.version>
+        <selenium.version>4.39.0</selenium.version>
+        <appium.version>10.0.0</appium.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>javax.xml.parsers</groupId>
+            <artifactId>jaxp-api</artifactId>
+            <version>1.4.5</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Pickleib -->
         <dependency>
             <groupId>io.github.umutayb</groupId>
@@ -27,11 +34,18 @@
             <version>${pickleib.version}</version>
         </dependency>
 
+        <!-- Ollama Api -->
+        <dependency>
+            <groupId>io.github.umutayb</groupId>
+            <artifactId>ollama-api</artifactId>
+            <version>0.0.6</version>
+        </dependency>
+
         <!-- Java Utilities -->
         <dependency>
             <groupId>io.github.umutayb</groupId>
             <artifactId>Utilities</artifactId>
-            <version>1.7.5</version>
+            <version>1.7.6</version>
         </dependency>
 
         <!-- Wasapi -->
