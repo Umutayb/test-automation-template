@@ -29,7 +29,9 @@ services:
     ports:
       - "8082:8080"
     networks:
-      - test-network
+      test-network:
+        aliases:
+          - backend
 
   bookhive-frontend:
     image: umutayb/book-hive-frontend:latest
