@@ -2,9 +2,8 @@ package pages.inventory.app;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.platform.PickleibScreenObject;
 
-public class LoginFrame extends PickleibScreenObject {
+public class LoginFrame {
 
     @FindBy(xpath = "//*[@Name='Username Input']")
     WebElement loginInput;

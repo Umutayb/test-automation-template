@@ -2,9 +2,8 @@ package pages.inventory.app;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pickleib.platform.PickleibScreenObject;
 
-public class InventoryManagementFrame extends PickleibScreenObject {
+public class InventoryManagementFrame {
 
     @FindBy(xpath = "//*[@AutomationId='radioButton2']")
     WebElement categoriesButton;

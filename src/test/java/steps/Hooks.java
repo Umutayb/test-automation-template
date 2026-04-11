@@ -4,10 +4,10 @@ import bookstore.BookStoreAuthorisation;
 import bookstore.models.CreateUserResponse;
 import bookstore.models.CredentialModel;
 import bookstore.models.TokenResponseModel;
-import common.ObjectRepository;
 import context.ContextStore;
 import io.cucumber.java.*;
 import io.cucumber.java.en.Given;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pickleib.platform.driver.PickleibAppiumDriver;
@@ -25,6 +25,25 @@ import static utils.StringUtilities.highlighted;
 
 public class Hooks extends PickleibPageObject {
 
+    @Getter
+    public enum Environment {
+        test("test-url"),
+        dev("dev-url"),
+        acceptance("acc-url");
+
+        final String urlKey;
+
+        Environment(String urlKey){
+            this.urlKey = urlKey;
+        }
+
+        public String getUrlKey() {
+            return urlKey;
+        }
+    }
+
+    public static Environment environment;
+
     public Scenario scenario;
     public boolean authenticate;
     public static boolean initialiseBrowser;
@@ -41,6 +60,15 @@ public class Hooks extends PickleibPageObject {
         return objectMapper.convertValue(fromValue, objectMapper.constructType(toValueType));
     }
 
+    @Given("^Navigate to the (acceptance|test|dev) page$")
+    public void navigateToTargetEnv(Environment environment) {
+        String baseUrl = ContextStore.get(environment.getUrlKey());
+        String url = baseUrl.startsWith("http") ? baseUrl : "https://" + baseUrl;
+        log.info("Navigating to " + highlighted(PURPLE, url));
+        PickleibWebDriver.get().get(url);
+        Hooks.environment = environment;
+    }
+
     @Before
     public void before(Scenario scenario){
         log.info("Running: " + highlighted(PURPLE, scenario.getName()));
@@ -52,7 +80,7 @@ public class Hooks extends PickleibPageObject {
             else PickleibWebDriver.initialize();
         }
         if (initialiseAppiumDriver) {
-            if (ServiceFactory.service == null) PickleibAppiumDriver.startService();
+            if (ServiceFactory.service.get() == null) PickleibAppiumDriver.startService();
             PickleibAppiumDriver.initialize();
         }
         if (authenticate) {
@@ -69,7 +97,7 @@ public class Hooks extends PickleibPageObject {
             TokenResponseModel tokenResponse = BookStoreAuthorisation.generateToken(user);
             ContextStore.put("token", tokenResponse.getToken());
         }
-        ObjectRepository.environment = null;
+        Hooks.environment = null;
     }
 
     @After

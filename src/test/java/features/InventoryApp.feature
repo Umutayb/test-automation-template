@@ -3,8 +3,8 @@ Feature: Windows Application Demo
 Demonstrating UI capabilities of Pickleib
 
   Background: Populate context
-    * Update context username -> spriteCloud
-    * Update context password -> Secret-123
+    * Update context username -> Tester1
+    * Update context password -> Secret!
 
   Scenario: New user product flow #1
     * Click the registerButton on the LoginFrame

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Vue Test App (existing)
+  vue-test-site:
+    image: umutayb/vue-test-site:latest
+    restart: always
+    ports:
+      - "7457:8080"
+    networks:
+      - test-network
+
+  # BookHive App
+  bookhive-mongo:
+    image: mongo:7
+    restart: always
+    ports:
+      - "27018:27017"
+    networks:
+      - test-network
+
+  bookhive-backend:
+    image: umutayb/book-hive-backend:latest
+    restart: always
+    depends_on:
+      - bookhive-mongo
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://bookhive-mongo:27017/bookhive
+    ports:
+      - "8082:8080"
+    networks:
+      test-network:
+        aliases:
+          - backend
+
+  bookhive-frontend:
+    image: umutayb/book-hive-frontend:latest
+    restart: always
+    depends_on:
+      - bookhive-backend
+    ports:
+      - "3000:80"
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge

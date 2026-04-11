@@ -1,0 +1,41 @@
+package pages;
+
+import pickleib.annotations.PageObject;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+
+@PageObject
+public class DroppablePage {
+
+    @FindBy(css = "h1")
+    public WebElement pageTitle;
+
+    @FindBy(css = "[data-testid='droppable-item-1']")
+    public WebElement draggableItem;
+
+    @FindBy(css = "[data-testid='droppable-zone-red']")
+    public WebElement dropTarget;
+
+    @FindBy(css = ".status-text")
+    public WebElement statusText;
+
+    @FindBy(css = ".drop-item")
+    public List<WebElement> sourceItems;
+
+    @FindBy(css = ".drop-zone")
+    public List<WebElement> dropZones;
+
+    @FindBy(css = "[data-testid='droppable-zone-red']")
+    public WebElement redZone;
+
+    @FindBy(css = "[data-testid='droppable-zone-blue']")
+    public WebElement blueZone;
+
+    @FindBy(css = "[data-testid='droppable-zone-green']")
+    public WebElement greenZone;
+
+    @FindBy(css = "[data-testid='droppable-reset']")
+    public WebElement resetButton;
+}

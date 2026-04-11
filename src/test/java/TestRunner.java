@@ -12,8 +12,8 @@ import java.nio.file.Files;
 @CucumberOptions(
         features = {"src/test/java/features"},
         plugin = {"json:target/reports/Cucumber.json"},
-        glue = {"steps"},
-        tags = "@BookStore",
+        glue = {"steps", "pickleib.steps"},
+        tags = "@Web-UI",
         publish = true
 )
 public class TestRunner {
