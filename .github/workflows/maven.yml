@@ -52,8 +52,9 @@ jobs:
         run: |
           echo "
             secret-token=secret
-            bookhive-url=http://localhost:8082
           " >> src/test/resources/secret.properties
+          sed -i 's|bookhive-url=http://localhost:3000|bookhive-url=http://localhost:8082|g' src/test/resources/pickleib.properties
+          sed -i 's|bookhive-api-url=http://localhost:3000/api|bookhive-api-url=http://localhost:8082/api|g' src/test/resources/pickleib.properties
 
       - name: Wait for services
         run: |
