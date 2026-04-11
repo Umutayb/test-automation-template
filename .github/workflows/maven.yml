@@ -52,16 +52,19 @@ jobs:
         run: |
           echo "
             secret-token=secret
+            bookhive-url=http://localhost:8082
           " >> src/test/resources/secret.properties
 
       - name: Wait for services
         run: |
           echo "Waiting for Vue test site..."
-          timeout 30 bash -c 'until curl -sf http://localhost:7457 > /dev/null; do sleep 1; done' || true
-          echo "Waiting for BookHive backend..."
-          timeout 60 bash -c 'until curl -sf http://localhost:3000/api/health | grep -q healthy; do sleep 2; done' || true
+          timeout 30 bash -c 'until curl -sf http://localhost:7457 > /dev/null; do sleep 1; done'
+          echo "Waiting for BookHive backend (direct port 8082)..."
+          timeout 120 bash -c 'until curl -sf http://localhost:8082/api/health > /dev/null; do sleep 3; done'
+          echo "Waiting for BookHive frontend..."
+          timeout 60 bash -c 'until curl -sf http://localhost:3000 > /dev/null; do sleep 2; done' || echo "WARNING: BookHive frontend not responding on port 3000"
           echo "Seeding BookHive..."
-          curl -sf -X POST http://localhost:3000/api/seed || true
+          curl -f -X POST http://localhost:8082/api/seed
 
       - name: Run tests
         run: mvn clean test -Dheadless=true -Dbrowser=chrome
