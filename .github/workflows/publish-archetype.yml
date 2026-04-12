@@ -1,6 +1,8 @@
 name: Publish Maven Archetype
 
 on:
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       version:
@@ -45,7 +47,7 @@ jobs:
       - name: Set archetype version and metadata
         working-directory: target/generated-sources/archetype
         run: |
-          mvn versions:set -DnewVersion=${{ github.event.inputs.version }} -DgenerateBackupPoms=false
+          mvn versions:set -DnewVersion=${{ github.event.release.tag_name || github.event.inputs.version }} -DgenerateBackupPoms=false
           # Inject distributionManagement and SCM into archetype pom
           python3 - <<'EOF'
           import re, sys
