@@ -42,7 +42,7 @@ jobs:
             }]
 
       - name: Remove non-archetype files
-        run: rm -rf skills/ screenshots/ inbox/ .idea/ .claude/ null/ target/
+        run: rm -rf screenshots/ inbox/ .idea/ .claude/ null/ target/
 
       - name: Generate archetype from project
         run: mvn archetype:create-from-project -Darchetype.filteredExtensions=java,xml,properties,feature,json,yml,yaml
