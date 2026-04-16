@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.umutayb</groupId>
-    <artifactId>test-automation-template</artifactId>
+    <artifactId>pickle-jar</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>Test Automation Template</name>
+    <name>Pickle Jar</name>
     <url>https://github.com/Umutayb/test-automation-template</url>
 
     <properties>
