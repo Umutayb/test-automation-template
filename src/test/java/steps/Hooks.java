@@ -1,9 +1,5 @@
 package steps;
 
-import bookstore.BookStoreAuthorisation;
-import bookstore.models.CreateUserResponse;
-import bookstore.models.CredentialModel;
-import bookstore.models.TokenResponseModel;
 import context.ContextStore;
 import io.cucumber.java.*;
 import io.cucumber.java.en.Given;
@@ -45,7 +41,6 @@ public class Hooks extends PickleibPageObject {
     public static Environment environment;
 
     public Scenario scenario;
-    public boolean authenticate;
     public static boolean initialiseBrowser;
     public static boolean initialiseAppiumDriver;
 
@@ -83,20 +78,6 @@ public class Hooks extends PickleibPageObject {
             if (ServiceFactory.service.get() == null) PickleibAppiumDriver.startService();
             PickleibAppiumDriver.initialize();
         }
-        if (authenticate) {
-            CredentialModel user = new CredentialModel("Booker");
-            user.setPassword("Bookersbooks1*");
-
-            CreateUserResponse createUserResponse = BookStoreAuthorisation.createUser(user);
-
-            ContextStore.put("contextUser", user);
-            ContextStore.put("userId", createUserResponse.getUserID());
-            ContextStore.put("userName", createUserResponse.getUsername());
-            ContextStore.put("password", user.getPassword());
-
-            TokenResponseModel tokenResponse = BookStoreAuthorisation.generateToken(user);
-            ContextStore.put("token", tokenResponse.getToken());
-        }
         Hooks.environment = null;
     }
 
@@ -129,7 +110,6 @@ public class Hooks extends PickleibPageObject {
     public void processScenarioTags(Scenario scenario){
         log.important(scenario.getSourceTagNames().toString());
         this.scenario = scenario;
-        authenticate = scenario.getSourceTagNames().contains("@Authenticate");
         initialiseBrowser = scenario.getSourceTagNames().contains("@Web-UI");
         initialiseAppiumDriver = scenario.getSourceTagNames().contains("@Mobile-UI")
                 || scenario.getSourceTagNames().contains("@Desktop-UI");

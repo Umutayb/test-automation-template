@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>bora</groupId>
+    <groupId>io.github.umutayb</groupId>
     <artifactId>pickle-jar</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>Test Automation Template</name>
+    <name>Pickle Jar</name>
     <url>https://github.com/Umutayb/test-automation-template</url>
 
     <properties>

@@ -1,16 +1,6 @@
 version: '3.8'
 
 services:
-  # Vue Test App (existing)
-  vue-test-site:
-    image: umutayb/vue-test-site:latest
-    restart: always
-    ports:
-      - "7457:8080"
-    networks:
-      - test-network
-
-  # BookHive App
   bookhive-mongo:
     image: mongo:7
     restart: always
