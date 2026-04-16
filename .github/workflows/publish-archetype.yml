@@ -45,7 +45,7 @@ jobs:
         run: rm -rf screenshots/ inbox/ .idea/ .claude/ null/ target/
 
       - name: Generate archetype from project
-        run: mvn archetype:create-from-project -Darchetype.filteredExtensions=java,xml,properties,feature,json,yml,yaml
+        run: mvn archetype:create-from-project -DbuildDirectory=target -Darchetype.filteredExtensions=java,xml,properties,feature,json,yml,yaml
 
       - name: Set archetype version and metadata
         working-directory: target/generated-sources/archetype
