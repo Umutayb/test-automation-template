@@ -6,7 +6,23 @@ This is a **ready-to-use test automation template** built on top of **[Pickleib]
 
 It provides a pre-configured environment for **Web, Mobile, Desktop, and API testing** using a single, unified set of Gherkin steps. By extending `PickleibSteps`, this template allows you to write interaction-agnostic scenarios that work across platforms without writing custom Java code for every interaction.
 
+---
 
+## ⚡ Quickstart — Generate a Project from the Archetype
+
+Spin up a new test-automation project in seconds:
+
+```bash
+mvn archetype:generate -DarchetypeGroupId=io.github.umutayb -DarchetypeArtifactId=pickle-jar-archetype -DarchetypeVersion=0.1.0 -DinteractiveMode=false -DgroupId=com.example -DartifactId=my-test-automation
+```
+
+Replace `com.example` and `my-test-automation` with your own coordinates. The generated project comes with:
+
+- A working **BookHive cross-functional example** (UI + API in a single Cucumber scenario)
+- **Pickleib** with auto-detected page objects (`@PageObject`, `@ScreenObject`)
+- **Wasapi** (Retrofit) API client pattern
+- **Docker Compose** stack to run the BookHive app locally for the example tests
+- **GitHub Actions CI** workflow wired up for PR validation
 
 ---
 
