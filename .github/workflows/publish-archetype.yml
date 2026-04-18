@@ -45,10 +45,16 @@ jobs:
         run: rm -rf screenshots/ inbox/ .idea/ .claude/ null/ target/
 
       - name: Generate archetype from project
-        run: mvn archetype:create-from-project -Darchetype.filteredExtensions=java,xml,properties,feature,json,yml,yaml
+        run: mvn archetype:create-from-project -DbuildDirectory=target -Darchetype.filteredExtensions=java,xml,properties,feature,json,yml,yaml
+
+      - name: Locate generated archetype
+        run: |
+          ARCHETYPE_DIR=$(find . -name "archetype-metadata.xml" | head -1 | xargs dirname | xargs dirname)
+          echo "ARCHETYPE_DIR=$ARCHETYPE_DIR" >> $GITHUB_ENV
+          echo "Found archetype at: $ARCHETYPE_DIR"
 
       - name: Set archetype version and metadata
-        working-directory: target/generated-sources/archetype
+        working-directory: ${{ env.ARCHETYPE_DIR }}
         run: |
           mvn versions:set -DnewVersion=${{ github.event.release.tag_name || github.event.inputs.version }} -DgenerateBackupPoms=false
           # Inject distributionManagement and SCM into archetype pom
@@ -153,5 +159,5 @@ jobs:
           EOF
 
       - name: Deploy archetype to Maven Central
-        working-directory: target/generated-sources/archetype
+        working-directory: ${{ env.ARCHETYPE_DIR }}
         run: mvn deploy -DskipTests
