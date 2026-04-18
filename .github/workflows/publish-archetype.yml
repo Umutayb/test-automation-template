@@ -49,7 +49,7 @@ jobs:
 
       - name: Locate generated archetype
         run: |
-          ARCHETYPE_DIR=$(find . -name "archetype-metadata.xml" | head -1 | xargs dirname | xargs dirname)
+          ARCHETYPE_DIR=$(find . -path "*/generated-sources/archetype" -type d | head -1)
           echo "ARCHETYPE_DIR=$ARCHETYPE_DIR" >> $GITHUB_ENV
           echo "Found archetype at: $ARCHETYPE_DIR"
 
