@@ -135,7 +135,13 @@ jobs:
                 </plugin>
           """
 
-          content = content.replace("</project>", dist + "\n  <build>\n    <plugins>\n" + plugins + "\n    </plugins>\n  </build>\n</project>")
+          # Inject developers/licenses before </project>
+          content = content.replace("</project>", dist + "\n</project>")
+          # Inject publishing plugins into existing <build><plugins> section
+          if "</plugins>" in content:
+              content = content.replace("</plugins>", plugins + "\n    </plugins>", 1)
+          else:
+              content = content.replace("</project>", "  <build>\n    <plugins>\n" + plugins + "\n    </plugins>\n  </build>\n</project>")
           with open("pom.xml", "w") as f:
               f.write(content)
           print("pom.xml updated")
