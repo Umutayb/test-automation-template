@@ -65,6 +65,8 @@ jobs:
               content = f.read()
 
           dist = """
+            <description>Maven archetype for quickstarting Pickleib-based test automation projects with Cucumber, Selenium and Wasapi.</description>
+
             <developers>
               <developer>
                 <id>umutayb</id>
